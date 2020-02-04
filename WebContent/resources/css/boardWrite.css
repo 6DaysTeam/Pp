@@ -1,0 +1,77 @@
+#boardWrite {
+    font-size: 25px;
+    width: 667px;
+    margin-left: 7.8%;
+    align-content: center;
+    text-align: center;
+    background: white;
+    line-height: 36px;
+    height:100%;
+
+}
+
+#boardcontent{
+    padding-top:5px;
+    background-color: #f9f9f9;
+    margin-bottom:50px;
+
+
+}
+#board-title{
+    margin-left: 13.8%;
+    font-size:50px;
+    margin-top:200px;
+
+
+}
+#board-subject{
+    float:left;
+    width:600px;
+    height:20px;
+    margin-left: 5px;
+
+}
+#board-area{
+    border:1px solid #CCC;
+    border-radius:  50px;
+    width:800px;
+    margin-left:39px;
+    padding: 20px;
+
+}
+.board-type{
+    font-size:13px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+   
+  
+}
+.board-value{
+    font-size:16px;
+
+}
+
+.board-button{
+  color: #333;
+  background-color: #fff;
+  border-color: #adadad !important;
+  font-size:16px;
+  border:2px solid;
+  border-radius: 5px;
+  padding:5px;
+  float:right;
+  margin-right:15px;
+  cursor: pointer;
+  width:65px;
+}
+
+.board-button:hover{
+      color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+tr>td{
+    border-bottom: 1px solid whitesmoke;
+    /*background:blue;*/
+}

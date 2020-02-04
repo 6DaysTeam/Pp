@@ -1,0 +1,72 @@
+#all{
+    font-family: 'Jua', sans-serif;
+}
+
+#loginpage{   
+    width:1000px; 
+    height:450px;
+    margin: 7% auto 0;  
+} 
+#loginimage {
+    display: inline-block;
+    width:490px;
+    height:450px;
+    float: left;       
+}
+.login{          
+    display: inline-block;
+    width:490px;
+    height:450px;
+    border: 1px solid lightgray;
+    float: right;
+    border-radius: 27.5px;
+}
+#register:hover {
+text-decoration: underline;
+}   
+#idfind:hover {
+text-decoration: underline;
+}   
+#pwdfind:hover {
+text-decoration: underline;
+}
+#loginbtn{
+    margin-left: 10%; 
+    width: 380px; 
+    height: 50px; 
+    cursor:pointer;
+    background: rgb(15, 76, 129);
+    border-color:  rgb(15, 76, 129);
+    color:white;
+    border-style: none;
+}
+#register{  
+    border:0; 
+    background-color: white; 
+    cursor:pointer;    
+    font-family: 'Jua', sans-serif; 
+    font-size: 17px;     
+}
+
+#textbox{
+    margin-left: 10%; 
+    width: 380px; 
+    height: 45px; 
+    border: 1px solid lightgray;
+}
+#tbl{
+    margin-left: 10%; 
+    margin-right: 10%; 
+    width:80%;
+}
+#td1{
+    width: 100px; text-align: left;
+
+}
+#td2{
+    width: 200px; text-align: right; 
+}
+input:focus{outline: none;}
+button:focus{outline: none;}
+.textbox{margin-left: 10%; width: 80%; height: 35px;}        
+.find{border:0; background-color: white; cursor:pointer;  text-align: right;}   

@@ -1,0 +1,96 @@
+/* <!-- 작성자 : 박주완, 신경섭
+        작성일 : 2020-01-17
+        내용 : 메인화면 파일 업로드 css--> */
+
+#Infmodal {
+    display: none;
+    position: fixed;
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color : rgba(0,0,0,0.4);
+}
+
+#Infcontent {
+    margin-top : 5%;
+    margin-left: 20%;
+    width : 900px;
+    height: 500px;
+    border : none;
+    border-radius: 10px;
+    margin : auto;
+    background-color: white;
+    padding-top: 15px;
+    top: 10%;
+    left : 20%;
+}
+
+#Infclosebtn{
+    position: absolute;
+    z-index: 5;
+    font-size: 20px;
+    opacity: 70%;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    right: -1px;
+    top: -1px;
+    }   
+#Infleft {
+    width: 60%;
+    display: inline-block;
+    height: 100%;
+    float: left;
+   /*  background: lightblue; */
+}
+
+#Infadd {
+    font-size: 25px;
+    text-align: center;
+}
+
+#Infright { 
+    width: 40%;
+    height: 90%;
+    /* background: lightgreen; */
+    display: inline-block;
+    float: right;
+    color : gray;
+    font-size : 30px;
+
+}
+
+#Infcomment {
+    margin: 1% 5%;
+    width: 90%;
+    height: 99%;
+    border: none;
+    resize: none;
+    font-size: 25px;
+    padding: 5px;
+    text-align: left;
+    background-color: rgb(187, 184, 184);
+    border-radius: 10px;
+}
+
+#Infupload {
+    margin: 0.9% 5%;
+    border-radius: 10px;
+    width: 30%;
+    height: 7%;
+    background: #0d52ec;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+#infimg {
+    width: 50%;
+    height: 50%;
+    /* text-align: center; */
+    margin: 8% 25% 0;
+}

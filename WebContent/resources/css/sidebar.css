@@ -1,0 +1,52 @@
+html {
+    font-family: "Helvetica",Dotum,Arial,Verdana,sans-serif;
+    font-size: 13px;
+}
+body {
+    background-color: #555;
+}
+button {
+    outline: none;
+}
+button .sidebar-btn {
+    color: #fff;
+    font-weight: bold;
+
+}
+.sidebar {
+    background-color: #222;
+    width: 285px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -285px;
+    z-index: 9999;
+   margin-top: 70px;
+}
+.sidebar > .sidebar-content {
+    position: absolute;
+    top: 20px;
+    left: 90px;
+    color: #fff;
+}
+.sidebar button {
+    background-color: #222;
+    display: block;
+    position: absolute;
+    top: 117px;
+    left: 270px;
+    width: 70px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    margin-left: 16px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+
+}
+.sidebar-content{
+    font-size : 25px;
+    text-align: center;
+
+}

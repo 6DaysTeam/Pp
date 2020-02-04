@@ -1,0 +1,103 @@
+﻿/*          작성자 : 박주완
+            작성일 : 2020-01-08
+            내용 : 각화면단에서 운용할 메인 css*/
+            
+            
+            header{
+                background-color: white;
+                margin: -10px;
+                width: 110%;
+                border: 1px solid seashell;
+                position: fixed;
+                z-index: 99;
+                height: 70px;
+            }
+
+            body{
+                 font-family: 'Jua', sans-serif;
+                background-color: whitesmoke;
+                padding: 0%;
+                width:100%;
+            }
+
+
+            #STATICMENU{
+                border: 1px solid lightgray;
+                border-radius: 2px;
+                height: 300px;
+                padding: 10px;
+                width: 150px;
+                background-color: white;
+                font-size: 20px;
+            }
+
+/*          작성자 : 박주완
+            작성일 : ????
+            내용 :  질문! 메인단 컨텐츠 영역 01-17 부로 새로 만들어서 css 독립시켰는대
+                    이버전 파일에 있는 컨텐츠 관련 css들 계속 유지하나요?
+                    다른 화면단에서 사용하고 있는지 궁금해서 적어봅니다 
+                    #sendcoment 까지!*/
+            #contentArea{
+                width: 918px;
+                height: 100%;
+                margin-left: 1.8%;
+                align-content: center;
+                padding: 15px;
+                padding-top: 100px;
+                text-align: center;
+                margin : 0px auto;
+
+            }
+
+            #content{
+                border: none;
+                background-color: white;
+                width: 690px;
+                height: auto;
+                padding: 10px;
+                text-align: center;
+                padding-top: 15px;
+                font-size: 20px;
+            }
+
+            #sendcoment{
+                width: 600px;
+                border: 1px solid lightgray;
+                border-radius: 3px;
+                font-size: 20px;
+            }
+
+/*          작성자 : 박주완
+            작성일 : 2020-01-17
+            내용 : 여기서부터 스크롤바 관련 css */
+
+            ::-webkit-scrollbar{    /*스크롤바 넓이*/
+                width: 15px;
+            }
+
+            ::-webkit-scrollbar-track{  /*스크롤바 배경 색상*/
+                border-radius: 10px;
+                background-color: #F5F5F5;
+            }
+
+            ::-webkit-scrollbar-thumb{ /*스크롤바 그뭐냐 막대기 색상*/
+                background-color: lightgrey;
+                border-radius: 8px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover{    /*스크롤바 막대기 위에 커서 올렸을때 색상*/
+                background: -webkit-linear-gradient(145deg, rgb(37, 95, 229), rgb(177, 250, 208));
+                background: linear-gradient(145deg, rgb(37, 95, 229), rgb(177, 250, 208));
+            }            
+
+/*          작성자 : 박주완
+            작성일 : 2020-01-21
+            내용 : 우측 사이드배너 광고영역 */   
+            .advertising{
+                height: 70%;
+                display: inline-block;
+                margin-left: 38%;
+                margin-top: 4%;
+                position: fixed;
+            }    
+    
