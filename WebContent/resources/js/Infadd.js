@@ -5,3 +5,5 @@ function Infopen() {
 function Infclose() {
         $('#Infmodal').css("display","none");
     }
+
+

@@ -53,11 +53,10 @@
   	 	수정일 : 
 			-->
              <div id="Infmodal">
-                <div id="Infcontent">
+                <div id="Infcontent" style="margin-top: 4%;">
                     <button id="Infclosebtn" onclick="Infclose();">X</button>
-                    <div id="Infleft">
-                        <div id="Infadd">
-                            <img src = "/6Days/resources/images/add.png" id="infimg"> 
+                    <div id="Infleft" >
+                        <div id="Infadd" style="width: auto; height: 484px; margin-bottom: 8px; margin-left: 8px" >
                             Drop image here or click to upload
                         </div>
                     </div>
@@ -77,4 +76,71 @@
         </div>
     </header>
 </body>
+<script>
+$('#Infadd')
+.on("dragover", dragOver)
+.on("dragleave", dragOver)
+.on("drop", uploadFiles);
+
+function dragOver(e){
+e.stopPropagation();
+e.preventDefault();
+}
+
+function uploadFiles(e){
+e.stopPropagation();
+e.preventDefault();
+}
+
+function dragOver(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    if (e.type == "dragover") {
+        $(e.target).css({
+            "background-color": "black",
+            "outline-offset": "-20px"
+        });
+    } else {
+        $(e.target).css({
+            "background-color": "gray",
+            "outline-offset": "-10px"
+        });
+    }
+}
+
+function uploadFiles(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    dragOver(e); //1
+ 
+    e.dataTransfer = e.originalEvent.dataTransfer; //2
+    var files = e.target.files || e.dataTransfer.files;
+ 
+    if (files.length > 1) {
+        alert('하나만 올려라.');
+        return;
+    }
+    if (files[0].type.match(/image.*/)) {
+        
+    }else{
+        alert('이미지가 아닙니다.');
+        return;
+    }
+
+    if (files[0].type.match(/image.*/)) {
+        $(e.target).css({
+            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+            "outline": "none",
+            "background-size": "100% 100%"
+        });
+    }else{
+      alert('이미지가 아닙니다.');
+      return;
+    }
+
+}
+
+
+
+</script>
 </html>

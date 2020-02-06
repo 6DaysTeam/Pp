@@ -127,12 +127,12 @@
 //        	 작성일 : 2020-01-23
 //        	  내용 : 광고배너-->
 	
-          /*   var arr = new Array();
+            var arr = new Array();
             
             arr[0] ="arr1임"
             arr[1] ="arr2임"
             arr[2] ="arr3임"
-            // arr[3] = "<a href='http:// 이동할 광고주 사이트'target = _new><class='advertising' src='/6Days/resources/advertising/4.JPG></a>;"
+            arr[3] = "<a href='http:// 이동할 광고주 사이트'target = _new><class='advertising' src='/6Days/resources/advertising/4.JPG></a>;"
             // arr[4] = "<a href='http:// 이동할 광고주 사이트'target = _new><class='advertising' src='/6Days/resources/advertising/5.JPG></a>;"
             var num = 0; /* 바꿀 화면 넘버 기본값*/
 
