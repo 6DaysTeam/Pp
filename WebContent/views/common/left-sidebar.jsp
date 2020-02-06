@@ -51,7 +51,7 @@
                 Tel : 010-1234-5678 <br>
                 Email : ABCD @ gmail.com
                 </span>
-                <p>관리자 화면</p>
+                <p onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
             </div>
             <button><span class="sidebar-btn">메뉴</span></button>
         </aside>
