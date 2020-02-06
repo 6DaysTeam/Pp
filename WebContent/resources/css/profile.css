@@ -1,6 +1,6 @@
-/* <!-- 작성자 : 박주완
-        작성일 : 2020-01-17
-        내용 : 사용자 프로필 화면 css--> */           
+/* <!-- �옉�꽦�옄 : 諛뺤＜�셿
+        �옉�꽦�씪 : 2020-01-17
+        �궡�슜 : �궗�슜�옄 �봽濡쒗븘 �솕硫� css--> */           
             
             body{
                 font-family: 'Jua', sans-serif;
@@ -136,7 +136,7 @@
 
 
 
-            /* 여기서부터 모달창 */
+            /* �뿬湲곗꽌遺��꽣 紐⑤떖李� */
 
             #modal{
                 display: none;
@@ -222,7 +222,7 @@
             }
 
             #settinglist{
-                height: 420px;
+                height: 490px;
                 width: 250px;
                 border:none;
                 background-color: white;
