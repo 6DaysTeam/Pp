@@ -32,7 +32,16 @@
         </div>
         <div id="email">
             <label>이메일</label><br><br>
-            <input type="text" class="redata" placeholder="이메일을 입력해주세요."/><br><br>
+            <input type="text" class="emaildata" placeholder="이메일을 입력해주세요."/>
+            <select id="emailselect">
+                <option value="naver">@naver.com</option>
+                <option value="gmail">@gmail.com</option>
+                <option value="daum">@daum.net</option>
+                <option value="chol">@chol.com</option>
+                <option value="yahoo">@yahoo.com</option>
+                <option value="nate">@nate.com</option>
+            </select>
+            <br><br>
         </div>
         <div id="phone">
             <label>전화번호</label><br><br>

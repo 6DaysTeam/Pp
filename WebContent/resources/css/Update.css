@@ -1,16 +1,35 @@
 #updatepage{
     width: 700px;
-    height: 650px;    
-    margin: auto;
-    border: 1px solid lightgray;
+    height: 800px;
+    margin-left: 270px;
+    padding: 15px;
+    padding-top: 100px;
+    border: none;
 }
+
+#updatecontent{
+    border: none;
+    background-color: white;
+    width: 690px;
+    height: 560px;
+    padding: 10px;
+    padding-top: 15px;
+    font-size: 20px;
+}
+
 #bottom{
     margin-bottom: 10%;
+}
+
+#updatetext{
+    margin-top: 40px;
+    margin-left: 15%; 
+    margin-right: 15%;
 }
 #idupdate{
     margin-left: 15%; 
     margin-right: 15%; 
-    margin-top: 10%;
+    margin-top: 40px;
 }
 #pwd{
     margin-left: 15%; 
@@ -67,6 +86,11 @@
     height: 35px;
     float: right;
     cursor: pointer;
+}
+
+#upbtn{
+    margin-left: 15%; 
+    margin-right: 15%;
 }
 
 #updatebtn{
