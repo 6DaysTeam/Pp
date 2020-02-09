@@ -25,7 +25,7 @@
 		내용 : 좌측 메뉴바 -->
         <aside class="sidebar" style="line-height:15px;">
             <div class="sidebar-content">
-                <p onclick="location.href='boardlist.html'" style="cursor: pointer;">공지사항</p>
+                <p onclick="location.href='selectList.bo'" style="cursor: pointer;">공지사항</p>
                 <br>
                 <p onclick="location.href='QnAlist.html'" style="cursor: pointer;">Q & A</p>
                 <br>
