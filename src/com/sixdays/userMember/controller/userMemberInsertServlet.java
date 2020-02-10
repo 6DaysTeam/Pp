@@ -56,7 +56,7 @@ public class userMemberInsertServlet extends HttpServlet {
 			ms.insertMember(m);
 			System.out.println("회원가입성공");
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("main.jsp");
 			
 		}catch (Exception e) {
 			e.printStackTrace();

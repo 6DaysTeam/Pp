@@ -1,37 +1,9 @@
-// $(function() {
-//     //초기 상태
-//     $('#inputPhone').hide();
-//     $('#inputEmail').hide();
-    
-//     //toggle 직접 구현
-//     var check = false;
-
-//     $('#titlePhone').click(function() {
-//         console.log(check);
-
-//         if(check) {
-//             $('#inputPhone').hide();
-//         }else {
-//             $('#inputPhone').show();
-//         }
-
-//         check = !check;
-//     });
-
-//     $('#titleEmail').click(function() {
-//         console.log(check);
-
-//         if(check) {
-//             $('#inputEmail').hide();
-//         }else {
-//             $('#inputEmail').show();
-//         }
-
-//         check = !check;
-//     });
-
-// });
-
+/*-- 작성자 : 국영미,박주완
+   * 작성일 : 2020.01.14
+   * 내용 : 아이디찾기 / 비밀번호찾기 js 
+   * 연결된 페이지 : (IdSearch/IdSearchOk/IdEmailSend // PwdSearch/PwdSearchOk/PwdEmailSend)
+   * 수정일 : 2020.02.10
+*/
 
 $(function() {
     //초기 상태 설정

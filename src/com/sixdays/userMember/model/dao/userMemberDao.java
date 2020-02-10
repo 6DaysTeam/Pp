@@ -56,7 +56,6 @@ public class userMemberDao {
 					
 					pstmt = con.prepareStatement(sql);
 					
-				
 					pstmt.setString(1, m.getUserId());
 					pstmt.setString(2, m.getPassword());
 					pstmt.setString(3, m.getUserName());

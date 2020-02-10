@@ -17,10 +17,10 @@
 </head>
 
    <body onload="InitializeStaticMenu(),Initializerightsidebar();">
-<!-- 작성자 : 국영미
+<!-- 작성자 : 국영미, 박주완
    * 작성일 : 2020.01.14
    * 내용 : 비밀번호 찾기
-   * 수정일 : 
+   * 수정일 : 2020.02.10
 -->
         
 <!-- 비밀번호 찾기 전제 div-->
@@ -41,16 +41,16 @@
             </div>
             <div class="searchType">
                 <ul>
-                    <!-- 등록된 휴대폰 번호로 찾기 -->
+                    <!-- 등록된 아이디로 찾기 -->
                     <li class="typeList">
-                        <div class="title" id="titlePhone">등록된 휴대폰 번호로 찾기</div>
-                        <!-- 등록된 휴대폰 번호로 찾기 입력 부분 // 클릭시 펼쳐짐 -->
+                        <div class="title" id="titleID">등록된 아이디로 찾기</div>
+                        <!-- 등록된 아이디로 찾기 입력 부분 // 클릭시 펼쳐짐 -->
                         <div class="inputEnter" id="divPhone">
                             <div class="inputBox">
                                 <div class="styleInut">
-                                    <!-- 휴대폰 번호 입력 받기 inputBox -->
+                                    <!-- 아이디 입력 받기 inputBox -->
                                     <input id="inputPhone" name="inputPh" type="text" class="iInput"
-                                           placeholder="휴대폰번호 (-없이 입력)">
+                                           placeholder="아이디입력">
                                         <!-- inputBox에 입력받은 값 리셋 버튼 -->
                                         <span id="inputPhoneClear" class="delBtn" style="display: none;"></span>
                                         <!-- 에러 메세지 -->
@@ -65,44 +65,7 @@
                     </li>
                     <!-- 등록된 이메일로 찾기 -->
                     <li class="typeList">
-                        <div class="title" id="titleEmail">등록된 이메일로 찾기</div>
-                        <!-- 등록된 이메일로 찾기 입력 부분 // 클릭시 펼쳐짐 -->
-                        <div class="inputEnter" id="divEmail">
-                            <div class="inputBox">
-                                <div class="styleInut">
-                                    <!-- 이메일 입력 받기 inputBox -->
-                                    <input name="inputEmail" id="inputEmail" type="text"
-                                        class="eInput" placeholder="이메일">
-                                    <!-- inputBox에 입력받은 값 리셋 버튼 -->
-                                    <span id="inputEmailClear" class="delBtn" style="display: none;"></span>
-                                    <!-- 이메일 선택 selectBox -->
-                                    <!-- <div class="customSelect">
-                                        <select class="newSelect" name="memEmail2" id="ex_select" onchange="chkMemEmail();">
-                                           <option selected>선택하기</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                            <option value="chol.com">chol.com</option>
-                                            <option value="hanmail.net">hanmail.net</option>
-                                            <option value="empal.com">empal.com</option>
-                                            <option value="freechal.com">freechal.com</option>
-                                            <option value="hanafos.com">hanafos.com</option>
-                                            <option value="hanmail.net">hanmail.net</option>
-                                            <option value="hanmir.com">hanmir.com</option>
-                                            <option value="hotmail.com">hotmail.com</option>
-                                            <option value="korea.com">korea.com</option>
-                                            <option value="nate.com">nate.com</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                        </select>
-                                    </div> -->
-                                    <!-- 에러 메시지 -->
-                                    <p class="error" id="errorEmail" style="display: none;"></p>
-                                </div>
-                            </div>
-                                <!-- 이메일로 찾기 확인 버튼 -->
-                                <div class="btnArea">
-                                    <button id="idEmailSearch" class="btnRed">확인</button>
-                                </div> 
-                            </div>
+
                         </li>   
                     </ul>
                 </div>

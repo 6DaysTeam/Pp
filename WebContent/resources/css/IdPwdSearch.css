@@ -1,4 +1,4 @@
-/*-- 작성자 : 국영미
+/*-- 작성자 : 국영미, 박주완
    * 작성일 : 2020.01.14
    * 내용 : 아이디찾기 / 비밀번호찾기 css
    * 연결된 페이지 : (IdSearch/IdSearchOk/IdEmailSend // PwdSearch/PwdSearchOk/PwdEmailSend)
@@ -12,6 +12,7 @@ html {
     -webkit-touch-callout: none;
     touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
 }
 
 body {
