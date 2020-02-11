@@ -32,7 +32,8 @@
 
 <!--    작성자 : 박주완
 		작성일 : 2020-01-14 
-		내용 : 우측 사용자 채팅용 사이드바 -->
+        내용 : 우측 사용자 채팅용 사이드바 
+        수정일 : 2020-02-11 -->
 		<aside id="right_sidebar">
             <div id="right_sidebar_content">
                 <div id="chatarea">
@@ -59,7 +60,6 @@
                         <input type="text" style="margin:1px 0px 0px 0.8px;width:265px;height: 25px; border-radius: 3px;">
                         <input type="submit" id="chat_send_btn" value="전송">
                     </div>
-
                 </div> 
 
                 <div id="chatList">
