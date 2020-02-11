@@ -1,65 +1,85 @@
+
+/*<!--작성자 : 이서현,박주완
+작성일 : 2020.1.14 시작
+내용 : 메인 로고 딴따라
+수정일 : 2020.02.10 수정
+-->*/
 header{
-            line-height: 40px;
-            text-align: center;
-            align-content: center;
-        }
+    line-height: 40px;
+    text-align: center;
+    align-content: center;
+}
 
-        .top-btn{
-            width: 40px;
-            margin: 10px;
-        }
+.top-btn{
+    width: 40px;
+    margin: 10px;
+}
 
-        .center{
-            display:inline-block;
-        }
-        
-        #logo{  /*배너로고*/
-            width: 150px;
-            margin: 10px;
-            margin-right: 360px;
-            display: inline-block;
-            margin-left: -250px;
+.center{
+    display:inline-block;
+}
 
-        }
+#logo{  /*배너로고*/
+    width: 150px;
+    margin: 10px;
+    margin-right: 360px;
+    display: inline-block;
+    margin-left: -250px;
 
-
-        #headersearch{
-            display: inline-block;
-            margin-top: 19px;
-            margin-left: -200px;
-            position: absolute;
-        }
-
-        #searchInput{
-            height: 25px;
-            border-radius: 5px;
-            border: 1px solid lightgray;
-        }
-
-        #searchBtn{
-            
-        }
-
-        #loca{
-            display: inline-block;
-            margin-right: 5px;
-
-        }
-
-        #mg{
-            display: inline-block;
-            margin-right: 5px;
+}
 
 
-        }
+#headersearch{
+    display: inline-block;
+    margin-top: 19px;
+    margin-left: -200px;
+    position: absolute;
+}
 
-        #myp{
-            display: inline-block;
-            margin-right: 5px;
+#searchInput{
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+#searchBtn{
+    position: absolute;
+    top: 5px;
+    height: 28px;
+    margin-left: 1px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    background-color: white;
+
+}
+
+#searchImg{
+    height: 15px;
+    border-radius: 5px;
+    margin-top: 2px;
+    
+}
+
+#loca{
+    display: inline-block;
+    margin-right: 5px;
+
+}
+
+#mg{
+    display: inline-block;
+    margin-right: 5px;
 
 
-        }
-        
-        #Infcontent{
-        	margin-top: 4%;
-        }
+}
+
+#myp{
+    display: inline-block;
+    margin-right: 5px;
+
+
+}
+
+#Infcontent{
+    margin-top: 4%;
+}
