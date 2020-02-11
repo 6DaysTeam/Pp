@@ -35,6 +35,14 @@ public class userMember implements Serializable{
 		
 	}
 
+	
+
+	public userMember(String userId) {
+		super();
+		this.userId = userId;
+	}
+
+
 
 	public userMember(String userId, String userpwd, String userName, String email, String phone, String gender,
 			String mycomment) {

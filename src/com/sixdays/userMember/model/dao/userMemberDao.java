@@ -5,10 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 import static com.sixdays.common.JDBCTemplate.*;
+
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
@@ -73,5 +76,45 @@ public class userMemberDao {
 				}
 				return result;
 	}
+
+	/**
+	 * 아이디 중복 확인
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public userMember repectMember(Connection con, userMember m) {
+		userMember result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		try {
+			String sql = prop.getProperty("repeatMember");
+
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m.getUserId());
+			
+			rset = pstmt.executeQuery();
+			
+			// if while
+			if(rset.next()) {
+				result = new userMember();
+				
+				result.setUserId(m.getUserId());
+
+			}		
+		
+			}catch(Exception e) {
+			e.printStackTrace();
+		
+			}finally {
+				close(rset);
+				close(pstmt);
+				
+			}
+			
+			
+			return result;
+			}
 
 }

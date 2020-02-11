@@ -35,4 +35,19 @@ public class userMemberService {
 		
 	}
 
+	public userMember repectMember(userMember m)  {
+		con = getConnection();
+		
+		userMember result = mDao.repectMember(con,m);
+		
+		
+		
+		close(con);
+		
+		
+		return result;
+		
+		
+	}
+
 }
