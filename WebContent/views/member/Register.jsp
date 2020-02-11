@@ -71,16 +71,16 @@
     <script>
 	$('#idokbtn').click(function(){
 		$.ajax({
-			url:"/6Days/user.rc",
+			url:"/ajax/user.rc",
 			type:"get",
 			data:{
 				name:$('#idok').val()
 			},
 			success:function(data) {
-				console.log("전송 성공");
+				alert("사용할 수 있는 ID입니다.");
 			},
 			error:function(){
-				console.log("전송 실패");
+				alert("이미 중복된 ID 입니다.");
 			}
 
 		});

@@ -77,44 +77,37 @@ public class userMemberDao {
 				return result;
 	}
 
-	/**
-	 * 아이디 중복 확인
-	 * @param con
-	 * @param m
-	 * @return
-	 */
-	public userMember repectMember(Connection con, userMember m) {
-		userMember result = null;
+	public userMember repectMember(Connection con, String userId) {
+		userMember m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
+		
 		try {
 			String sql = prop.getProperty("repeatMember");
-
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, m.getUserId());
-			
+			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
 			
-			// if while
 			if(rset.next()) {
-				result = new userMember();
-				
-				result.setUserId(m.getUserId());
+				m = new userMember();
+				m.setEmail(rset.getString("EMAIL"));
+				m.setGender(rset.getString("GENDER"));
+				m.setMycomment(rset.getString("MYCOMMENT"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setUserId(rset.getString("USERID"));
+				m.setUserName(rset.getString("USERNAME"));
+				m.setUserpwd(rset.getString("USERPWD"));
+			}
 
-			}		
-		
-			}catch(Exception e) {
+		}catch(SQLException e) {
 			e.printStackTrace();
-		
-			}finally {
-				close(rset);
-				close(pstmt);
-				
-			}
-			
-			
-			return result;
-			}
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return m;
+	}
 
 }

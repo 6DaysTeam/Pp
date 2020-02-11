@@ -152,23 +152,3 @@ label{
     height: 30px;
 }
 
-.emaildata{
-    font-size:12px;
-    width: 35%;
-    height: 35px;
-    border-top: 0;
-    border-right:0; 
-    border-left:0; 
-    border-bottom: 1; 
-    border-color:lightgray;
-}
-
-.emaildata::placeholder {color: lightgray;}
-
-.emaildata:focus{outline: none;}
-
-#emailselect{
-    height: 30px;
-    width: 22%;
-    margin-left: 3%;
-}

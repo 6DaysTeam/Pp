@@ -1,6 +1,8 @@
 package com.sixdays.userMember.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,17 +34,21 @@ public class userRepeatCheck extends HttpServlet {
 		
 		String userId = request.getParameter("name");
 		
-		userMember m = new userMember(userId);
 		
 		userMemberService ms = new userMemberService();
 		
+		userMember m = ms.repectMember(userId);
 		
-		try {
-			ms.repectMember(m);
+		if(m == null) {
+			request.setAttribute("result",true);
 			
-		}catch(Exception e) {
-			e.printStackTrace();
+		}else {
+			request.setAttribute("result",false);
 		}
+
+		request.setAttribute("name", userId);
+		RequestDispatcher rd = request.getRequestDispatcher("/6Days/views/member/Register.jsp");
+		rd.forward(request,response);
 		
 	}
 

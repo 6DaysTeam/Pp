@@ -35,19 +35,17 @@ public class userMemberService {
 		
 	}
 
-	public userMember repectMember(userMember m)  {
+	public userMember repectMember(String userId) {
 		con = getConnection();
 		
-		userMember result = mDao.repectMember(con,m);
-		
-		
+		userMemberDao dao = new userMemberDao();
+		userMember m  = dao.repectMember(con,userId);
 		
 		close(con);
 		
-		
-		return result;
-		
-		
+		return m;
 	}
+
+
 
 }
