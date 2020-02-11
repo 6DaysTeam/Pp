@@ -38,7 +38,7 @@
                 <div id="chatarea">
                     <div id="chatid">
                           박주완
-                        <input type="submit" value="X" style="float:right;">
+                        <input type="submit" value="X" style="float:right; border-radius: 3px; border: 0px;">
                         </div>
                     <hr>
                     <div id="chatcontent">
@@ -56,12 +56,12 @@
                         <label style="float:right">juwan_777 : ㅂㅇ</label><br><br>
                     </div>
                     <div id="chatinput">
-                        <input type="text" style="margin:1px 0px 0px 0.8px;width:265px;height: 25px;">
+                        <input type="text" style="margin:1px 0px 0px 0.8px;width:265px;height: 25px; border-radius: 3px;">
                         <input type="submit" id="chat_send_btn" value="전송">
-                        <input type="file" style="margin-left: 6px; width: 95px; height: 31px;" value="사진"> 
                     </div>
 
                 </div> 
+
                 <div id="chatList">
                     <ul>
                         <br><br><br><br>
