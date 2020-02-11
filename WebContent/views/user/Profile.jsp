@@ -75,7 +75,76 @@
             <div id="modalcontent">
                 <button id="closebtn" onclick="modalclose();">X</button>
                 <div id="modalpost">
-                    <img id="modalimg" src="/6Days/resources/maruta/dummy3.JPG">
+                    <div id="modalimg" class="slideshow-container" >
+                        <div class="mySlides fade" style="display: block;">
+                            <div class="numbertext">1 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
+                        </div>
+                        
+                        <div class="mySlides fade">
+                            <div class="numbertext">2 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
+                        </div>
+                        
+                        <div class="mySlides fade">
+                            <div class="numbertext">3 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
+                        </div>
+            
+                        <div class="mySlides fade">
+                            <div class="numbertext">4 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">5 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">6 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">7 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">8 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <div class="numbertext">9 / 9</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy9.jpg" style="width:100%;">
+                        </div>
+
+
+                        
+                        <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1);">&#10095;</a>
+            
+                        </div>
+            
+                        <div style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1);"></span> 
+                            <span class="dot" onclick="currentSlide(2);"></span> 
+                            <span class="dot" onclick="currentSlide(3);"></span> 
+                            <span class="dot" onclick="currentSlide(4);"></span>
+                            <span class="dot" onclick="currentSlide(5);"></span> 
+                            <span class="dot" onclick="currentSlide(6);"></span> 
+                            <span class="dot" onclick="currentSlide(7);"></span> 
+                            <span class="dot" onclick="currentSlide(8);"></span> 
+                            <span class="dot" onclick="currentSlide(9);"></span> 
+                        </div>                  
+                    </div>
+
+
+
+
+
                     <div id="coments">
                         <div id="userprofilshow">
                             [사진]
@@ -100,6 +169,75 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- <div class="slideshow-container" >
+            <div class="mySlides fade" style="display: block;">
+                <div class="numbertext">1 / 4</div>
+                <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
+            <a class="next" onclick="plusSlides(1);">&#10095;</a>
+
+            </div>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1);"></span> 
+                <span class="dot" onclick="currentSlide(2);"></span> 
+                <span class="dot" onclick="currentSlide(3);"></span> 
+                <span class="dot" onclick="currentSlide(4);"></span> 
+            </div>                  
+        </div> -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--    작성자 : 박주완
         작성일 : 2020-01-14

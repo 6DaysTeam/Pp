@@ -26,6 +26,7 @@
    * 수정일 : 
 -->
 <!-- 아이디 찾기 전체 div-->
+<form>
 <div id="idContents" class="center">
     <!-- <form action="" method="POST" onsubmit="return validate();"> -->
         <div id="searchWrap">
@@ -52,11 +53,11 @@
                                 <div class="styleInut">
                                     <!-- 휴대폰 번호 입력 받기 inputBox -->
                                     <input id="inputPhone" name="inputPh" type="text" class="iInput"
-                                           placeholder="휴대폰번호 (-없이 입력)">
+                                           placeholder="휴대폰번호 (-없이 입력)" maxlength="13">
                                         <!-- inputBox에 입력받은 값 리셋 버튼 -->
                                         <span id="inputPhoneClear" class="delBtn" style="display: none;"></span>
-                                        <!-- 에러 메세지 -->
-                                        <p class="error" id="errorPhone" style="display: none;"></p>
+                                        <!-- 에러 메세지
+                                        <p class="error" id="errorPhone" style="display: none;"></p> -->
                                 </div>
                             </div>
                             <!-- 휴대폰 번호로 찾기 확인 버튼 -->
@@ -113,5 +114,22 @@
         </div>
     <!-- </form> -->
 </div>
+</form>
+
+<script>
+    $('.iInput').keydown(function(event) {
+        var key = event.charCode || event.keyCode || 0;
+        $text = $(this);
+        if (key !== 8 && key !== 9) {
+            if ($text.val().length === 3) {
+                $text.val($text.val() + '-');
+            }
+            if ($text.val().length === 8) {
+                $text.val($text.val() + '-');
+            }
+        }
+        return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));          
+    });
+    </script>
 </body>
 </html>

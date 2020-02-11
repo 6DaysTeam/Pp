@@ -33,18 +33,18 @@
                 <br>
                 <p onclick="location.href='/6Days/view/Profile.html'" style="cursor: pointer;">내 프로필</p>
 
-                <input type="text" list="menusearch" style="position:absolute; top:300px; left:-11px; width:185px; height:22px; margin-top: 1.5%; " placeholder="검색 내용을 입력하세요.">
+                <input type="text" list="menusearch" style="position:absolute; top:300px; left:-11px; width:185px; height:22px; margin-top: 5.5%; " placeholder="검색 내용을 입력하세요.">
                 <datalist id="menusearch" style="width:1000px;">
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                 </datalist>
-                <span><img src="/6Days/resources/images/search.png" style="position:absolute; width:28px; height:28px; top:300px; right:-28px; margin-top: 1.5%;"></span>
+                <span><img src="/6Days/resources/images/search.png" style="position:absolute; width:28px; height:28px; top:300px; right:-28px; margin-top: 5.5%;"></span>
                 
-                <div style="height:170px;"></div>
+                <div style="height:28%;"></div>
 
-                <span style="font-size:12px; text-align:left;">
+                <span id="footer" style="font-size:12px; text-align:left;">
                 CopyRight Six Days Company<br>
                 박주완    윤석훈    신경섭<br>
                     이서현    신지영<br>
