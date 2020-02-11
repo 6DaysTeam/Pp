@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%--     <% 
+    boolean result = (boolean)request.getAttribute("result");
+    	String userId = (String)request.getAttribute("userId");
+    %> --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,40 +19,32 @@
         <img src="/6Days/resources/images/logoletter.png" style="padding-top: 7%; width: 170px; height: 50px;">
     </div>
     <form id="joinForm" action="${pageContext.request.contextPath}/mInsert.me" method="post">
-    <div id="registerpage">
+         <div id="registerpage">
         <div id="idregister">
             <label>아이디</label><br><br>
+          
             <input type="text" id="idok" class="redata" name="uesrId" placeholder="아이디"/>
-            <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
+             <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
             <br><br>
         </div>
 
-        
         <div id="pwd">
-            <label style="font-family: 'Jua', sans-serif;" >비밀번호</label><br><br>
-            <input type="password" name="password" class="redata" placeholder="비밀번호(8~16자)"/><br><br>
-            <input type="password" class="redata" placeholder="비밀번호 재입력"/><br><br>
-        </div>
-        <div id="nicname">
+		 <label >비밀번호</label><br><br>
+            <input type="password" id="pwd1" name="password2" class="redata" placeholder="비밀번호(8~16자)"/><br><br>
+            <input type="password" id="pwd2" name="password" class="redata" placeholder="비밀번호 재입력"/><br>
+            <label id="pwdresult" style="font-size:xx-small;"></label><br><br>
             <label>닉네임</label><br><br>
             <input type="text" name="userName" class="redata" placeholder="닉네임을 입력해주세요."/><br><br>
         </div>
-        <div id="email">
+          <div id="email">
             <label>이메일</label><br><br>
-            <input type="text" class="emaildata" name="email" placeholder="이메일을 입력해주세요."/>
-            <select id="emailselect">
-                <option value="naver">@naver.com</option>
-                <option value="gmail">@gmail.com</option>
-                <option value="daum">@daum.net</option>
-                <option value="chol">@chol.com</option>
-                <option value="yahoo">@yahoo.com</option>
-                <option value="nate">@nate.com</option>
-            </select>
+            <input type="text" class="redata" name="email" placeholder="이메일을 입력해주세요."/>
             <br><br>
         </div>
         <div id="phone">
             <label>전화번호</label><br><br>
-            <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호"/>
+            <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호" maxlength="13"/>
+
             <button id="authbtn">인증번호 받기</button><br><br>
             <input type="text" id="authtext" placeholder="인증번호를 입력하세요.">&nbsp&nbsp<button style="float:none; cursor: pointer; background: rgb(15, 76, 129); 
     color:white; border: 0px; width: 80px; height: 30px;">확인</button>
@@ -65,27 +62,78 @@
         <div id="rebtn">
             <button id="registerbtn" onclick="return insertMember();">가입</button>
         </div>
-    </div>
+	</div>
     </form>
     
     <script>
 	$('#idokbtn').click(function(){
+		
+		var user_id = $('#idok').val();
 		$.ajax({
-			url:"/ajax/user.rc",
+			url:"/6Days/user.rc",
 			type:"get",
 			data:{
 				name:$('#idok').val()
 			},
-			success:function(data) {
-				alert("사용할 수 있는 ID입니다.");
-			},
-			error:function(){
-				alert("이미 중복된 ID 입니다.");
+			success : function(data) {
+				console.log("중복체크 : " + data);							
+				
+				if (data == 1) {
+					
+					$("#id_check").text("사용중인 아이디입니다 :p");
+					$("#id_check").css("color", "red");
+					$("#registerbtn").attr("disabled", true);
+				} else if(data == 0 && user_id!=""){
+					
+					$("#id_check").text("사용 가능한  아이디입니다 :p");
+					$("#id_check").css("color", "green");
+					$("#registerbtn").attr("disabled", false);
+					
+				} else if(user_id == ""){
+					
+					$('#id_check').text('아이디를 입력해주세요 :)');
+					$('#id_check').css('color', 'red');
+					$("#registerbtn").attr("disabled", true);				
+						
+					}
+					
+				
+			}, error : function() {
+					console.log("실패");
 			}
-
 		});
-	});
-	</script>
+		});
+</script>
+	
+	<script>
+    $(function(){
+        $('#pwd2').change(function(){
+            if($('#pwd1').val() == $(this).val()){
+                $('#pwdresult').html("");
+            }else{
+                $('#pwdresult').html("비밀번호 확인 값이 일치하지 않습니다.").css('color','red');
+                $('#pwd2').val('');
+                $(this).select();
+            }
+        });      
+    });
+    </script>
+    <script>
+        $('#auth').keydown(function(event) {
+        var key = event.charCode || event.keyCode || 0;
+        $text = $(this);
+        if (key !== 8 && key !== 9) {
+            if ($text.val().length === 3) {
+                $text.val($text.val() + '-');
+            }
+            if ($text.val().length === 8) {
+                $text.val($text.val() + '-');
+            }
+        }
+     
+        return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));          
+    });
+    </script>
     <div id="bottom"></div>
 </body>
 </html>
