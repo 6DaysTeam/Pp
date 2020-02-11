@@ -7,6 +7,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="/6Days/resources/css/Register.css">
     <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+	<script src="/6Days/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <div id="top">
@@ -17,7 +18,7 @@
         <div id="idregister">
             <label>아이디</label><br><br>
             <input type="text" id="idok" class="redata" name="uesrId" placeholder="아이디"/>
-            <button id="idokbtn">중복확인</button>
+            <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
             <br><br>
         </div>
 
@@ -59,13 +60,32 @@
         </div><br><br>
         <div id="introduction">
             <label>소개</label><br><br>
-            <input type="text" class="redata" name="coment" placeholder="소개를 입력해주세요"/><br><br><br>
+            <input type="text" class="redata" name="comment" placeholder="소개를 입력해주세요"/><br><br><br>
         </div>
         <div id="rebtn">
-            <button id="registerbtn" onclick="insertMember();">가입</button>
+            <button id="registerbtn" onclick="return insertMember();">가입</button>
         </div>
     </div>
     </form>
+    
+    <script>
+	$('#idokbtn').click(function(){
+		$.ajax({
+			url:"/ajax/user.rc",
+			type:"get",
+			data:{
+				name:$('#idok').val()
+			},
+			success:function(data) {
+				alert("사용할 수 있는 ID입니다.");
+			},
+			error:function(){
+				alert("이미 중복된 ID 입니다.");
+			}
+
+		});
+	});
+	</script>
     <div id="bottom"></div>
 </body>
 </html>

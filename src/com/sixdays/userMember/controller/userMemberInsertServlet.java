@@ -42,11 +42,11 @@ public class userMemberInsertServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
-		String coment = request.getParameter("coment");
+		String comment = request.getParameter("comment");
 
 		
 		// 회원 가입하믄 전달할 vo 생성
-		userMember m = new userMember(userId,password,userName,email,phone,gender,coment);
+		userMember m = new userMember(userId,password,userName,email,phone,gender,comment);
 		System.out.println("회원가입정보체크 : "+ m);
 		
 		// 회원가입 서비스 레츠기릿 
@@ -56,7 +56,7 @@ public class userMemberInsertServlet extends HttpServlet {
 			ms.insertMember(m);
 			System.out.println("회원가입성공");
 			
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("login.jsp");
 			
 		}catch (Exception e) {
 			e.printStackTrace();

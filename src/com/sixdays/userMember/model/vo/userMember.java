@@ -1,177 +1,235 @@
 package com.sixdays.userMember.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 /*
  * 작성자 : 박주완
  * 작성일 : 2020-02-06
  * 내용 : 사용자 정보 기본 vo
  */
-public class userMember {
+public class userMember implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5279850312044346879L;
+	
 	private String userId;
-	private String password;
+	private String userpwd;
 	private String userName;
 	private String email;
-	private String gender;
 	private String phone;
-	private String coment;
-	private char power;
-	private Date enrollDate;
-	private char blockCheck;
-	private String profileImg;
-	private String profileBackImg;
-	private char publicLevel;
+	private String gender;
+	private String mycomment;
+	private String proimg;
+	private String proback;
+	private Date enrolldate;
+	private String otype;
+	private String admin;
+	private String blockflag;
+	private String report;
+	private String delflag;
+	
 	
 	public userMember() {
-		super();
-	}
-	
-
-
-	public userMember(String userId, String password, String userName, String email, String gender, String phone,
-			String coment) {
-		super();
-		this.userId = userId;
-		this.password = password;
-		this.userName = userName;
-		this.email = email;
-		this.gender = gender;
-		this.phone = phone;
-		this.coment = coment;
+		
 	}
 
 
-	public userMember(String userId, String password, String userName, String email, String phone, String gender,
-			String coment, char power, Date enrollDate, char blockCheck, String profileImg, String profileBackImg,
-			char publicLevel) {
+	public userMember(String userId, String userpwd, String userName, String email, String phone, String gender,
+			String mycomment) {
 		super();
 		this.userId = userId;
-		this.password = password;
+		this.userpwd = userpwd;
 		this.userName = userName;
 		this.email = email;
 		this.phone = phone;
 		this.gender = gender;
-		this.coment = coment;
-		this.power = power;
-		this.enrollDate = enrollDate;
-		this.blockCheck = blockCheck;
-		this.profileImg = profileImg;
-		this.profileBackImg = profileBackImg;
-		this.publicLevel = publicLevel;
+		this.mycomment = mycomment;
 	}
+
+
+	public userMember(String userId, String userpwd, String userName, String email, String phone, String gender,
+			String mycomment, String proimg, String proback, Date enrolldate, String otype, String admin,
+			String blockflag, String report, String delflag) {
+		super();
+		this.userId = userId;
+		this.userpwd = userpwd;
+		this.userName = userName;
+		this.email = email;
+		this.phone = phone;
+		this.gender = gender;
+		this.mycomment = mycomment;
+		this.proimg = proimg;
+		this.proback = proback;
+		this.enrolldate = enrolldate;
+		this.otype = otype;
+		this.admin = admin;
+		this.blockflag = blockflag;
+		this.report = report;
+		this.delflag = delflag;
+	}
+
 
 	public String getUserId() {
 		return userId;
 	}
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public String getUserpwd() {
+		return userpwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setUserpwd(String userpwd) {
+		this.userpwd = userpwd;
 	}
+
 
 	public String getUserName() {
 		return userName;
 	}
 
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 
 	public String getGender() {
 		return gender;
 	}
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public String getComent() {
-		return coment;
+
+	public String getMycomment() {
+		return mycomment;
 	}
 
-	public void setComent(String coment) {
-		this.coment = coment;
+
+	public void setMycomment(String mycomment) {
+		this.mycomment = mycomment;
 	}
 
-	public char getPower() {
-		return power;
+
+	public String getProimg() {
+		return proimg;
 	}
 
-	public void setPower(char power) {
-		this.power = power;
+
+	public void setProimg(String proimg) {
+		this.proimg = proimg;
 	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
+
+	public String getProback() {
+		return proback;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
+
+	public void setProback(String proback) {
+		this.proback = proback;
 	}
 
-	public char getBlockCheck() {
-		return blockCheck;
+
+	public Date getEnrolldate() {
+		return enrolldate;
 	}
 
-	public void setBlockCheck(char blockCheck) {
-		this.blockCheck = blockCheck;
+
+	public void setEnrolldate(Date enrolldate) {
+		this.enrolldate = enrolldate;
 	}
 
-	public String getProfileImg() {
-		return profileImg;
+
+	public String getOtype() {
+		return otype;
 	}
 
-	public void setProfileImg(String profileImg) {
-		this.profileImg = profileImg;
+
+	public void setOtype(String otype) {
+		this.otype = otype;
 	}
 
-	public String getProfileBackImg() {
-		return profileBackImg;
+
+	public String getAdmin() {
+		return admin;
 	}
 
-	public void setProfileBackImg(String profileBackImg) {
-		this.profileBackImg = profileBackImg;
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 
-	public char getPublicLevel() {
-		return publicLevel;
+
+	public String getBlockflag() {
+		return blockflag;
 	}
 
-	public void setPublicLevel(char publicLevel) {
-		this.publicLevel = publicLevel;
+
+	public void setBlockflag(String blockflag) {
+		this.blockflag = blockflag;
 	}
+
+
+	public String getReport() {
+		return report;
+	}
+
+
+	public void setReport(String report) {
+		this.report = report;
+	}
+
+
+	public String getDelflag() {
+		return delflag;
+	}
+
+
+	public void setDelflag(String delflag) {
+		this.delflag = delflag;
+	}
+
 
 	@Override
 	public String toString() {
-		return "userMember [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email=" + email
-				+ ", phone=" + phone + ", gender=" + gender + ", coment=" + coment + ", power=" + power
-				+ ", enrollDate=" + enrollDate + ", blockCheck=" + blockCheck + ", profileImg=" + profileImg
-				+ ", profileBackImg=" + profileBackImg + ", publicLevel=" + publicLevel + "]";
+		return "userMember [userId=" + userId + ", userpwd=" + userpwd + ", userName=" + userName + ", email=" + email
+				+ ", phone=" + phone + ", gender=" + gender + ", mycomment=" + mycomment + ", proimg=" + proimg
+				+ ", proback=" + proback + ", enrolldate=" + enrolldate + ", otype=" + otype + ", admin=" + admin
+				+ ", blockflag=" + blockflag + ", report=" + report + ", delflag=" + delflag + "]";
 	}
-
 	
+	
+
 	
 }

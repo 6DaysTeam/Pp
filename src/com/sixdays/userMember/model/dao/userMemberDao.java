@@ -8,8 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static com.sixdays.common.JDBCTemplate.close;
-import com.sixdays.userMember.model.exception.MemberException;
+import static com.sixdays.common.JDBCTemplate.*;
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
@@ -57,13 +56,13 @@ public class userMemberDao {
 					pstmt = con.prepareStatement(sql);
 					
 					pstmt.setString(1, m.getUserId());
-					pstmt.setString(2, m.getPassword());
+					pstmt.setString(2, m.getUserpwd());
 					pstmt.setString(3, m.getUserName());
-					pstmt.setString(4, m.getGender());
-					pstmt.setString(5, m.getEmail());
-					pstmt.setString(6, m.getPhone());
-					pstmt.setString(7, m.getComent());
-					
+					pstmt.setString(4, m.getEmail());
+					pstmt.setString(5, m.getPhone());
+					pstmt.setString(6, m.getGender());
+					pstmt.setString(7, m.getMycomment());
+
 					
 					result = pstmt.executeUpdate();
 					
