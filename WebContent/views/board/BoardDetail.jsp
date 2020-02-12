@@ -14,6 +14,10 @@
        font-family: 'Jua', sans-serif;
 
     }
+    
+    .board-type {
+    width: 63px !important;
+}
     #boardArea {
     width: 918px;
     height: 100%;
@@ -53,7 +57,7 @@
                 <td class="board-value" style="width:265px;">
                 <%= b.getBwriter() %></td>
                 
-                <td class="board-type" style="width:136px;">작성일</td>
+                <td class="board-type" style="width: 63px;">작성일</td>
                 <td class="board-value" style="width:265px;">
                	<%= b.getBdate() %></td>
                	

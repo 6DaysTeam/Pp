@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
+	<script src="/6Days/resources/js/ckeditor/ckeditor.js"></script>
+    <script src="/6Days/resources/js/ckeditor/config.js"></script>
+	<link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
     <style>
 	    body{
 	       font-family: 'Jua', sans-serif;
@@ -22,6 +24,18 @@
 	    text-align: center;
 	    margin: 0px auto;
 		}
+		.cke_chrome {
+			margin-left : 13px !important;
+		}
+		
+		#board-subject {
+			width: 643px;
+		}
+		
+		.board-type {
+			width: 68px;
+		}
+	}
   </style>
 </head>
 <body>
@@ -48,27 +62,27 @@
                 <input type="text" id="board-subject" name="title" value="<%= b.getBtitle().replace("\"", "&#34;") %>">
               	<input type="hidden" name="bno" value="<%= b.getBno() %>"></td>
               </tr>
+              
               <tr>
-                <td class="board-type">작성일</td>
+                <td class="board-type">작성자</td>
+                <td class="board-value" style="width:265px;">
+                <%= b.getBwriter() %></td>
+                
+                <td class="board-type" style="width: 62px;">작성일</td>
                 <td class="board-value" style="width:265px;">
                 <%= b.getBdate() %></td>
-                
-                <td class="board-type" style="width: 48px;">작성자</td>
-                <td class="board-value">
-                <%= b.getBwriter() %></td>
               </tr>
               <tr>
                 <td class="board-type">첨부파일</td>
                 <td class="board-value" colspan="3" >
-                <input type="file" name="boardfile" style="float:left; margin-left:5px;"
+                <input type="file" name="boardfile" style="float:left; margin-left:13px;"
                 value="<%= b.getBoardfile() %>"></td>
 
               </tr>
               <tr>
-                <td style="border-radius: 10px;">내용</td>
+                <td class="board-type" style="border-radius: 10px; font-size:25px;">내용</td>
                 <td colspan="3">
-                <TEXTAREA name="content" style="height:220px; width:600px; resize:none; float:left;">
-                <%= b.getBcontent() %></TEXTAREA></td>
+                <textarea id="ckeditor" name="content" style="float:left;"><%= b.getBcontent() %></textarea></td>
               </tr>
             </table>
           </div>
@@ -83,6 +97,10 @@
 				$("#updateForm").attr("action","<%=request.getContextPath() %>/bDelete.bo");
 			}
 				
+			CKEDITOR.replace('ckeditor'
+	                , {height: 300
+	        		
+	                 });
 				</script>
         
         </form>

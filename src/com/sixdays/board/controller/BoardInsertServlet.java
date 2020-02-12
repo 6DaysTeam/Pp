@@ -55,7 +55,6 @@ public class BoardInsertServlet extends HttpServlet {
 		);
 				
 		
-		int btype = Integer.parseInt(mrequest.getParameter("type"));
 		String title = mrequest.getParameter("title");
 		String writer = mrequest.getParameter("writer");
 		String content = mrequest.getParameter("content");
@@ -87,7 +86,6 @@ public class BoardInsertServlet extends HttpServlet {
 		
 		Board b = new Board();
 
-		b.setBtype(btype);
 		b.setBtitle(title);
 		b.setBdate(writeDate);
 		b.setBwriter(writer);

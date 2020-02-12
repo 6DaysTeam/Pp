@@ -25,7 +25,7 @@
 }
 #board-subject{
     float:left;
-    width:600px;
+    width:646px;
     height:20px;
     margin-left: 13px;
 
@@ -39,8 +39,8 @@
 
 }
 .board-type{
-	width:150px;
-    font-size:15px;
+    width: 68px;
+    font-size:16px;
     background-color: #f9f9f9;
     border-radius: 10px;
    

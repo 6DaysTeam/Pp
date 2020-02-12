@@ -43,7 +43,6 @@
 <!--    작성자 : 윤석훈
         작성일 : 2020-01-14
         내용 : 게시판 임시 제작 -->
-
         <div id="boardArea" style="background: white; height:650px;">
         <table class="table table-striped" id="listArea">
           <label id="g-title"> 공지사항</label>

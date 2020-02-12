@@ -7,7 +7,6 @@ public class Board implements Serializable {
 
 	private static final long serialVersionUID = -8935709964213018076L;
 	private int bno;						// 글번호
-	private int btype;						// 구분
 	private String btitle;					// 글제목
 	private String bwriter;					// 작성자
 	private Date bdate;						// 작성일
@@ -21,9 +20,8 @@ public class Board implements Serializable {
 	
 	
 
-	public Board(int btype, String btitle, String bwriter, Date bdate, String bcontent, String boardfile) {
+	public Board(String btitle, String bwriter, Date bdate, String bcontent, String boardfile) {
 		super();
-		this.btype = btype;
 		this.btitle = btitle;
 		this.bwriter = bwriter;
 		this.bdate = bdate;
@@ -33,11 +31,10 @@ public class Board implements Serializable {
 
 
 
-	public Board(int bno, int btype, String btitle, String bwriter, Date bdate, String bcontent, String boardfile,
+	public Board(int bno, String btitle, String bwriter, Date bdate, String bcontent, String boardfile,
 			int bcount, int bcomment, String status) {
 		super();
 		this.bno = bno;
-		this.btype = btype;
 		this.btitle = btitle;
 		this.bwriter = bwriter;
 		this.bdate = bdate;
@@ -54,14 +51,6 @@ public class Board implements Serializable {
 
 	public void setBno(int bno) {
 		this.bno = bno;
-	}
-
-	public int getBtype() {
-		return btype;
-	}
-
-	public void setBtype(int btype) {
-		this.btype = btype;
 	}
 
 	public String getBtitle() {
@@ -130,7 +119,7 @@ public class Board implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Board [bno=" + bno + ", btype=" + btype + ", btitle=" + btitle + ", bwriter=" + bwriter + ", bdate="
+		return "Board [bno=" + bno + ", btitle=" + btitle + ", bwriter=" + bwriter + ", bdate="
 				+ bdate + ", bcontent=" + bcontent + ", boardfile=" + boardfile + ", bcount=" + bcount + ", bcomment="
 				+ bcomment + ", status=" + status + "]";
 	}

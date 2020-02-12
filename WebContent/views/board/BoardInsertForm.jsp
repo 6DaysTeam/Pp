@@ -7,18 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link href="/6Days/resources/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet">
-	
-	<script src="/6Days/resources/js/jquery-3.4.1.min.js"></script>
-	<script src="/6Days/resources/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
-
-	<link href="/6Days/resources/dist/summernote.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
 	<link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
+    <script src="/6Days/resources/js/ckeditor/ckeditor.js"></script>
+    <script src="/6Days/resources/js/ckeditor/config.js"></script>
     <style>
+
     body{
-       font-family: 'Jua', sans-serif !important;
+       font-family: 'Jua', sans-serif;
     }
     
     #boardArea {
@@ -31,14 +26,16 @@
     text-align: center;
     margin: 0px auto;
 }
-
+	.cke_chrome {
+		margin-left : 13px !important;
+	}
     </style>
 
 </head>
 <body>
-<%-- <%@ include file="../common/header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <%@ include file="../common/left-sidebar.jsp" %>
-<%@ include file="../common/right-sidebar.jsp" %> --%>
+<%@ include file="../common/right-sidebar.jsp" %>
 
 <form action = "<%= request.getContextPath() %>/bInsert.bo" method="post" enctype="multipart/form-data">
 	<div id ="boardArea" style="background:white;">
@@ -59,6 +56,7 @@
                 <td class="board-value" colspan="3">
                 <input type="text" id="board-subject" name="title"></td>
               </tr>
+              
               <tr>
                 <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
@@ -80,7 +78,7 @@
               <tr id="boardcontent">
                 <td style="border-radius: 10px;">내용</td>
                 <td colspan="3" style="background : white;">
-                <TEXTAREA id="summernote" name="content" style="float:left;"></TEXTAREA></td>
+                <textarea id="ckeditor" name="content" style="float:left;"></TEXTAREA></td>
               </tr>
             </table>
           </div>
@@ -88,17 +86,11 @@
         </form>
         
         <script>
-        $(document).ready(function(){
-            $('#summernote').summernote({
-            width : 600,  
-            height : 300,
-            minHeight: null,
-            maxHeight : null,
-            focus : true,
-            lang : "ko-KR",
-            placeholder : '내용을 입력해주세요'
-             });
-        });
-            </script>
+        CKEDITOR.replace('ckeditor'
+                , {height: 300
+        		
+                 });
+
+        </script>
 	</body>
 </html>

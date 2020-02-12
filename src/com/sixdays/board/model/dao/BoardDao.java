@@ -48,7 +48,6 @@ public class BoardDao {
 				Board b = new Board();
 				
 				b.setBno(rset.getInt(1));
-				b.setBtype(rset.getInt("btype"));
 				b.setBtitle(rset.getString("btitle"));
 				b.setBwriter(rset.getString("bwriter"));
 				b.setBdate(rset.getDate("bdate"));
@@ -78,12 +77,11 @@ public class BoardDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, b.getBtype());
-			pstmt.setString(2, b.getBtitle());
-			pstmt.setString(3, b.getBcontent());
-			pstmt.setString(4, b.getBwriter());
-			pstmt.setString(5, b.getBoardfile());
-			pstmt.setDate(6, b.getBdate());
+			pstmt.setString(1, b.getBtitle());
+			pstmt.setString(2, b.getBcontent());
+			pstmt.setString(3, b.getBwriter());
+			pstmt.setString(4, b.getBoardfile());
+			pstmt.setDate(5, b.getBdate());
 			
 			result = pstmt.executeUpdate();
 			
@@ -115,7 +113,6 @@ public class BoardDao {
 				b = new Board();
 				
 				b.setBno(bno);
-				b.setBtype(rset.getInt("btype"));
 				b.setBtitle(rset.getString("btitle"));
 				b.setBdate(rset.getDate("bdate"));
 				b.setBwriter(rset.getString("bwriter"));
