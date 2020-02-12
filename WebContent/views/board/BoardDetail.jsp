@@ -39,7 +39,7 @@
             <table id="boardWrite"> 
               <tr>
                 <td class="board-type">구분</td>
-                <td class="board-value" colspan="3" style="margin-left:15px;"><%= b.getBtype() %>
+                <td class="board-value" colspan="3" style="margin-left:15px;">공지
                 </td>
               </tr>
               
@@ -49,19 +49,20 @@
                 <%= b.getBtitle() %></td>
               </tr>
               <tr>
-                <td class="board-type">작성일</td>
+                <td class="board-type">작성자</td>
+                <td class="board-value" style="width:265px;">
+                <%= b.getBwriter() %></td>
+                
+                <td class="board-type" style="width:136px;">작성일</td>
                 <td class="board-value" style="width:265px;">
                	<%= b.getBdate() %></td>
                	
-                <td class="board-type" style="width: 48px;">작성자</td>
-                <td class="board-value">
-                <%= b.getBwriter() %></td>
               </tr>
               <tr>
-                <td class="board-type">첨부파일</td>
+                <td class="board-type" style="border-bottom: 1px solid whitesmoke;">첨부파일</td>
                 
+                <td class="board-value" colspan="3" style="border-bottom: 1px solid whitesmoke;">
               <% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
-                <td class="board-value" colspan="3">
                 <a href="/6Days/bfdown.bo?path=<%=b.getBoardfile() %>"><%=b.getBoardfile() %> 
 							</a>
               <% } %>
@@ -69,11 +70,10 @@
               </tr>
             
               <tr style="height: 300px;">
-                <td class="board-type" style="border-radius: 10px;">내용</td>
-                <td colspan="3" style="float:left;">
-              	<%= b.getBcontent() %></td>
-              </tr>
-            </table>
+                <td class="board-type" style="margin-left: 10px; border-radius: 10px; font-size : 25px !important">내용</td>
+                <td colspan="3" style="float:left; border-style : none; font-size : 16px;">
+              	<%= b.getBcontent() %></td>            
+              </table>
           </div>
         </div>
 	</body>

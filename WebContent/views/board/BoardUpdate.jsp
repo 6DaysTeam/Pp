@@ -38,8 +38,7 @@
             <table id="boardWrite"> 
               <tr>
                 <td class="board-type">구분</td>
-                <td class="board-value" colspan="3" style="margin-left:15px;">
-                <%= b.getBtype() %>
+                <td class="board-value" colspan="3" style="margin-left:15px;">공지
                 </td>
               </tr>
               

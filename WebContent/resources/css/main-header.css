@@ -1,89 +1,65 @@
-
-/*<!--�옉�꽦�옄 : �씠�꽌�쁽,諛뺤＜�셿
-�옉�꽦�씪 : 2020.1.14 �떆�옉
-�궡�슜 : 硫붿씤 濡쒓퀬 �뵶�뵲�씪
-�닔�젙�씪 : 2020.02.10 �닔�젙
--->*/
 header{
-    line-height: 40px;
-    text-align: center;
-    align-content: center;
-}
+            line-height: 40px;
+            text-align: center;
+            align-content: center;
+        }
 
-.top-btn{
-    width: 40px;
-    margin: 10px;
-}
+        .top-btn{
+            width: 40px;
+            margin: 10px;
+        }
 
-#top{
-	border: 1px solid ligh
-}
+        .center{
+            display:inline-block;
+        }
+        
+        #logo{  /*배너로고*/
+            width: 150px;
+            margin: 10px;
+            margin-right: 360px;
+            display: inline-block;
+            margin-left: -250px;
 
-.center{
-    display:inline-block;
-}
-
-#logo{  /*諛곕꼫濡쒓퀬*/
-    width: 150px;
-    margin: 10px;
-    margin-right: 360px;
-    display: inline-block;
-    margin-left: -250px;
-
-}
+        }
 
 
-#headersearch{
-    display: inline-block;
-    margin-top: 19px;
-    margin-left: -200px;
-    position: absolute;
-}
+        #headersearch{
+            display: inline-block;
+            margin-top: 19px;
+            margin-left: -200px;
+            position: absolute;
+        }
 
-#searchInput{
-    height: 25px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-}
+        #searchInput{
+            height: 25px;
+            border-radius: 5px;
+            border: 1px solid lightgray;
+        }
 
-#searchBtn{
-    position: absolute;
-    top: 5px;
-    height: 28px;
-    margin-left: 1px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    background-color: white;
+        #searchBtn{
+            
+        }
 
-}
+        #loca{
+            display: inline-block;
+            margin-right: 5px;
 
-#searchImg{
-    height: 15px;
-    border-radius: 5px;
-    margin-top: 2px;
-    
-}
+        }
 
-#loca{
-    display: inline-block;
-    margin-right: 5px;
-
-}
-
-#mg{
-    display: inline-block;
-    margin-right: 5px;
+        #mg{
+            display: inline-block;
+            margin-right: 5px;
 
 
-}
+        }
 
-#myp{
-    display: inline-block;
-    margin-right: 5px;
+        #myp{
+            display: inline-block;
+            margin-right: 5px;
 
 
-}
-
-#Infcontent{
-    margin-top: 4%;
-}
+        }
+        
+        #Infcontent{
+        	margin-top: 4%;
+        }

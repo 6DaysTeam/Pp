@@ -16,7 +16,7 @@
 }
 
 #Infcontent {
-    margin-top : 0%;
+    margin-top : 5%;
     margin-left: 20%;
     width : 900px;
     height: 500px;
@@ -25,23 +25,11 @@
     margin : auto;
     background-color: white;
     padding-top: 15px;
-    position: absolute;
     top: 10%;
     left : 20%;
-    z-index: -5;
 }
 
-#Infmenu{   /*위쪽 메뉴바 */
-    z-index: 0;
-    margin-top: -15px;
-    margin-left:0;
-    width: 900px;
-    height:35px;
-    border-radius: 10px;
-    background-color: white;
-}
-
-#Infclosebtn{   /*close 버튼*/
+#Infclosebtn{
     position: absolute;
     z-index: 5;
     font-size: 20px;
@@ -53,21 +41,25 @@
     right: -1px;
     top: -1px;
     }   
-#Infleft {      /*왼쪽 빈공간 전체*/
+#Infleft {
     width: 60%;
     display: inline-block;
-    height: 80%;
+    height: 100%;
     float: left;
+   /*  background: lightblue; */
 }
 
-#Infadd {      /*사진 넣는 곳*/
+#Infadd {
     font-size: 25px;
     text-align: center;
+    width: auto;
+    height: 484px;
+
 }
 
-#Infright {     /*오른쪽 빈공간 전체*/
+#Infright { 
     width: 40%;
-    height: 94%;
+    height: 90%;
     /* background: lightgreen; */
     display: inline-block;
     float: right;
@@ -76,74 +68,25 @@
 
 }
 
-
-#Infcomment {       /*comment 창*/
+#Infcomment {
     margin: 1% 5%;
     width: 90%;
-    height: 45%;
+    height: 99%;
     border: none;
     resize: none;
-    font-size: 18px;
-    padding: 5px;
-    vertical-align: top;
-    background-color: whitesmoke;
-    border-radius: 5px;
-}
-
-#Infhashtag{        /*해시태그창*/
-    margin: 1% 5%;
-    width: 90%;
-    height: 35%;
-    border: none;
-    resize: none;
-    font-size: 18px;
-    padding: 5px;
-    text-align: justify;
-    background-color: whitesmoke;
-    border-radius: 5px;
-}
-
-#filebox{
-    
-    margin-left: 20%;
-    cursor: pointer;
-    border-radius: 10px;
-    background-color: #004f82;
-    color: white;
-    text-align: center;
-}
-
-#filebox label{
-    display: inline-block;
-    line-height: normal;
-    cursor: pointer;
-    border-radius: 10px;
-    text-align: center;
-    padding: 3px; 
     font-size: 25px;
+    padding: 5px;
+    text-align: left;
+    background-color: rgb(187, 184, 184);
+    border-radius: 10px;
 }
 
-#filebox input[type="file"]{
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-}
-
-#Infupload{
-    font-family: 'Jua', sans-serif;
-    border-radius: 10px; /*성공*/
-    background-color: #2f7a95;
-    border: none; /*성공*/
-    color: white; /*성공*/
-    cursor: pointer; /*성공*/
-    bottom: 0;
-    margin-left: 45%; /*성공*/
-    font-size: 25px;  /*성공*/
-    width: 50%;  /*성공*/
-    height: 8%; /*성공*/
+#Infupload {
+    margin: 0.9% 5%;
+    border-radius: 10px;
+    width: 30%;
+    height: 7%;
+    background: #0d52ec;
+    color: whitesmoke;
+    cursor: pointer;
 }

@@ -47,13 +47,11 @@
         <table class="table table-striped" id="listArea">
           <label id="g-title"> 공지사항</label>
             <tr>
-                <th style="width:30px;">번호</th>
-                <th style="width:40px;">구분</th>
-                <th style="width:400px; text-align: center">제목</th>
-                <th style="text-align:center; width:100px;">작성자</th>
-                <th style="text-align:center; width:100px;">작성일</th>
+                <th style="width:70px;">번호</th>
+                <th style="width:430px; text-align: center">제목</th>
+                <th style="text-align:center; width:160px;">작성자</th>
+                <th style="text-align:center; width:130px;">작성일</th>
                 <th style="width:70px;" >조회수</th>
-                <th style="text-align:center;width:70px;">삭제여부</th>
             </tr>
         </thead>
         <tbody>
@@ -62,12 +60,10 @@
         %>
 		<tr>
         <td><%= b.getBno() %></td>
-        <td><%= b.getBtype() %></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
         <td><%= b.getBdate() %></td>
         <td><%= b.getBcount() %></td>
-        <td><%= b.getStatus() %></td>
         </tr>
         <% } %>
         </tbody>

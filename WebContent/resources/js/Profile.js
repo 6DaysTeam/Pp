@@ -31,16 +31,12 @@
 //         내용 : 프로필 세팅 변경 모달 온오프 기능-->
             function profileModalOpen(){
                 var ulr = $(this).attr("src");
-                $('#nameSetModal').css("display",'none');
                 $("#profileModal").attr("src",ulr);
                 $("#profileModal").show();
-                $('#nameSetModal').css("display",'none');
-                $('#comentSetModal').css("display",'none');
             }
 
             function profileModalClose(){
                 $('#profileModal').css("display",'none');
-                $('#comentSetModal').css("display",'none');
             }
 
 // <!--    작성자 : 박주완
@@ -101,36 +97,3 @@
                 name.innerHTML = " ";
                 name.innerHTML += resetname.value;
             }
-
-
-
-
-/*<!--  작성자 : 박주완
-        작성일 : 2020-02-011
-        내용 : 사용자화면 게시글 클릭시 확대되는 창 내부 사진 좌우 슬라이드 쿼리문 -->*/
-
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
-        }

@@ -6,12 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+	<link href="/6Days/resources/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet">
+	
+	<script src="/6Days/resources/js/jquery-3.4.1.min.js"></script>
+	<script src="/6Days/resources/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+
+	<link href="/6Days/resources/dist/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
 	<link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
     <style>
     body{
-       font-family: 'Jua', sans-serif;
-
+       font-family: 'Jua', sans-serif !important;
     }
+    
     #boardArea {
     width: 918px;
     height: 100%;
@@ -22,24 +31,26 @@
     text-align: center;
     margin: 0px auto;
 }
+
     </style>
+
 </head>
 <body>
-<%@ include file="../common/header.jsp" %>
+<%-- <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/left-sidebar.jsp" %>
-<%@ include file="../common/right-sidebar.jsp" %>
+<%@ include file="../common/right-sidebar.jsp" %> --%>
 
 <form action = "<%= request.getContextPath() %>/bInsert.bo" method="post" enctype="multipart/form-data">
 	<div id ="boardArea" style="background:white;">
-      <label id="board-title">게시물 작성</label>
-            <input type="reset" class="board-button" onclick="location.href='selectList.bo'" value="취소" >
+	      <label id="board-title">게시물 작성</label>
+            <input type="reset" class="board-button" onclick="location.href='/6Days/selectList.bo'" value="취소" >
             <input type="submit" class="board-button" onclick="location.href='selectList.bo'" value="작성">
           <div id="board-area">
             <table id="boardWrite"> 
               <tr>
                 <td class="board-type">구분</td>
                 <td class="board-value" colspan="3" style="float: left; margin-left:15px;">
-                <input type="text" name="type" />
+                <label>공지</label>
                 </td>
               </tr>
               
@@ -49,30 +60,45 @@
                 <input type="text" id="board-subject" name="title"></td>
               </tr>
               <tr>
-                <td class="board-type">작성일</td>
+                <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
-                <input type="date" name="date"></td>
+                <input type ="text" name="writer" style="float: left;
+    margin-left: 13px; height: 20px;"></td>
                 
-                <td class="board-type" style="width: 48px;">작성자</td>
-                <td class="board-value">
-                <input type = "text" name="writer"></td>
+                <td class="board-type" style="width:121px; visibility: hidden;">작성일</td>
+                <td class="board-value" style="width:265px; border-style: none;height: 20px;">
+                <input type="hidden" name="date"></td>
+                
               </tr>
               <tr>
                 <td class="board-type">첨부파일</td>
                 <td class="board-value" colspan="3" >
-                <input type="file" name="boardfile" id="boardfile" style="float:left; margin-left:5px;">
+                <input type="file" name="boardfile" id="boardfile" style="float:left; margin-left:13px; ">
                 </td>
 
               </tr>
               <tr id="boardcontent">
                 <td style="border-radius: 10px;">내용</td>
-                <td colspan="3">
-                <TEXTAREA name="content" style="height:220px; width:600px; resize:none; float:left; ">
-                </TEXTAREA></td>
+                <td colspan="3" style="background : white;">
+                <TEXTAREA id="summernote" name="content" style="float:left;"></TEXTAREA></td>
               </tr>
             </table>
           </div>
         </div>
         </form>
+        
+        <script>
+        $(document).ready(function(){
+            $('#summernote').summernote({
+            width : 600,  
+            height : 300,
+            minHeight: null,
+            maxHeight : null,
+            focus : true,
+            lang : "ko-KR",
+            placeholder : '내용을 입력해주세요'
+             });
+        });
+            </script>
 	</body>
 </html>
