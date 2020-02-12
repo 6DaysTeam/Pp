@@ -23,7 +23,7 @@
         <div id="idregister">
             <label>아이디</label><br><br>
           
-            <input type="text" id="idok" class="redata" name="uesrId" placeholder="아이디"/>
+            <input type="text" id="idok" class="redata" name="uesrId" placeholder="아이디" onchange="change();"/>
              <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
             <br><br>
         </div>
@@ -31,19 +31,19 @@
         <div id="pwd">
 		 <label >비밀번호</label><br><br>
             <input type="password" id="pwd1" name="password2" class="redata" placeholder="비밀번호(8~16자)"/><br><br>
-            <input type="password" id="pwd2" name="password" class="redata" placeholder="비밀번호 재입력"/><br>
+            <input type="password" id="pwd2" name="password" class="redata" placeholder="비밀번호 재입력" onchange="change();"/><br>
             <label id="pwdresult" style="font-size:xx-small;"></label><br><br>
             <label>닉네임</label><br><br>
-            <input type="text" name="userName" class="redata" placeholder="닉네임을 입력해주세요."/><br><br>
+            <input type="text" id="nickname" name="userName" class="redata" placeholder="닉네임을 입력해주세요." onchange="change();"/><br><br>
         </div>
           <div id="email">
             <label>이메일</label><br><br>
-            <input type="text" class="redata" name="email" placeholder="이메일을 입력해주세요."/>
+            <input type="text" id="email1" class="redata" name="email" placeholder="이메일을 입력해주세요." onchange="change();"/>
             <br><br>
         </div>
         <div id="phone">
             <label>전화번호</label><br><br>
-            <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호" maxlength="13"/>
+            <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호" maxlength="13" onchange="change();"/>
 
             <button id="authbtn">인증번호 받기</button><br><br>
             <input type="text" id="authtext" placeholder="인증번호를 입력하세요.">&nbsp&nbsp<button style="float:none; cursor: pointer; background: rgb(15, 76, 129); 
@@ -52,18 +52,60 @@
         <div id="gender">
             <br>
             <label>성별</label><br><br>
-            <input type="radio" name="gender" id="man" value="M"/><label for="man" style="font-size:12px">남자</label>&nbsp;
-            <input type="radio" name="gender" id="woman" value="F"/><label for="woman" style="font-size:12px">여자</label>
+            <input type="radio" name="gender" id="man" value="M" onchange="change();"/><label for="man" style="font-size:12px" >남자</label>&nbsp;
+            <input type="radio" name="gender" id="woman" value="F" onchange="change();"/><label for="woman" style="font-size:12px">여자</label>
         </div><br><br>
         <div id="introduction">
             <label>소개</label><br><br>
             <input type="text" class="redata" name="comment" placeholder="소개를 입력해주세요"/><br><br><br>
         </div>
         <div id="rebtn">
-            <button id="registerbtn" onclick="return insertMember();">가입</button>
+            <button id="registerbtn" onclick="return insertMember();" >가입</button>
         </div>
 	</div>
     </form>
+    <script>
+    
+    
+    
+    var result1 = document.getElementById("idok");
+    var result2 = document.getElementById("pwd2");
+    var result3 = document.getElementById("nickname");
+    var result4 = document.getElementById("email1");
+    var result5 = document.getElementById("auth");
+    var result6 = document.getElementById("man");
+    var result7 = document.getElementById("woman");
+    
+	var button = document.getElementById('registerbtn');
+    
+	
+	window.onload = function(){
+		
+		button.disabled = true;
+		button.style.opacity = 0.2;
+		button.style.cursor = 'not-allowed';
+	
+	}
+	
+	function change(){
+		
+		if(result1.value != "" && result2.value != "" && result3.value != "" && result4.value != "" && result5.value != "" && (result6.checked || result7.checked) )
+		{
+			button.disabled = false;
+			button.style.opacity = 1;
+			button.style.cursor = 'pointer';
+	
+		}else{
+			button.disabled = true;
+			button.style.opacity = 0.2;
+			button.style.cursor = 'not-allowed';
+		}
+
+	
+	}
+
+    
+    </script>
     
     <script>
 	$('#idokbtn').click(function(){

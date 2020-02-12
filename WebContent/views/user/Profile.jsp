@@ -6,9 +6,9 @@
         <meta charset="UTF-8">
         <title>profile</title>
         
-	<%@ include file="../common/header.jsp" %>
-	<%@ include file="../common/left-sidebar.jsp" %>
-	<%@ include file="../common/right-sidebar.jsp" %>
+	<%@ include file="/views/common/header.jsp" %>
+	<%@ include file="/views/common/left-sidebar.jsp" %>
+	<%@ include file="/views/common/right-sidebar.jsp" %>
 	
 	
         <script src="/6Days/resources/js/Profile.js"></script>

@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import static com.sixdays.common.JDBCTemplate.*;
 
+import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
@@ -109,5 +110,48 @@ public class userMemberDao {
 		}
 		return m;
 	}
-
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 10.
+	 * 가입정보확인(로그인)
+	 * @param con
+	 * @param m
+	 * @return
+	 * @throws MemberException 
+	 */
+	public userMember selectMember(Connection con, userMember m) throws MemberException {
+		userMember result = null; // 결과를 담을 객체
+		PreparedStatement pstmt = null;
+		ResultSet rset = null; // Select의 결과를 담을 객체
+		
+		try {
+			String sql = prop.getProperty("selectMember");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserpwd());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = new userMember();
+				
+				result.setUserId(rset.getString("USERID"));
+				result.setUserpwd(rset.getString("USERPWD"));
+				result.setUserName(rset.getString("USERNAME"));
+				result.setEmail(rset.getString("EMAIL"));
+				result.setPhone(rset.getString("PHONE"));
+				result.setGender(rset.getString("GENDER"));
+				result.setMycomment(rset.getString("MYCOMMENT"));
+			}	
+		}catch(Exception e) {
+			//e.printStackTrace();
+			
+			throw new MemberException(e.getMessage());
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
 }

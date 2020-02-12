@@ -9,6 +9,7 @@ import static com.sixdays.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 
 import com.sixdays.userMember.model.dao.userMemberDao;
+import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
@@ -44,6 +45,27 @@ public class userMemberService {
 		close(con);
 		
 		return m;
+	}
+	
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 10.
+	 * 가입정보확인(로그인)
+	 * @param m
+	 * @return
+	 * @throws MemberException 
+	 */
+	public userMember selectMember(userMember m) throws MemberException {
+		con = getConnection();
+		
+		userMember result = mDao.selectMember(con,m);
+		
+		close(con);
+		
+		if(result == null) {
+			throw new MemberException("아이디나 비밀번호가 올바르지 않습니다.");
+		}
+		return result;
 	}
 
 

@@ -42,7 +42,12 @@ public class userMember implements Serializable{
 		this.userId = userId;
 	}
 
-
+	// 로그인용 생성자(userId, userPwd)
+	public userMember(String userId, String userPwd) {
+		super();
+		this.userId = userId;
+		this.userpwd = userPwd;
+	}
 
 	public userMember(String userId, String userpwd, String userName, String email, String phone, String gender,
 			String mycomment) {
