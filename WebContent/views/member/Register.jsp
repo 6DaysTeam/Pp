@@ -81,6 +81,7 @@
 	
 	window.onload = function(){
 		
+		
 		button.disabled = true;
 		button.style.opacity = 0.2;
 		button.style.cursor = 'not-allowed';

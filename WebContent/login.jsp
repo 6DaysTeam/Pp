@@ -16,7 +16,7 @@
     <script language="javascript" type="text/javascript">  
         // 로그인&비밀번호 찾기 popup띄우기
         var popupX = (window.screen.width / 2) - (500 / 2); 
-        var popupY= (window.screen.height / 2) - (600 / 2); 
+        var popupY= (window.screen.height / 2) - (600 / 2);  
         function winOpenPwd(url){
             window.open(url, '',
             'width=500, height=600,  left='+ popupX + ', top='+ popupY,
@@ -36,7 +36,7 @@
          <form id="loginForm" action="/6Days/login.me" method="post">	
             <img src="/6Days/resources/images/main.png" width="30%" height="30px" style="margin-left: 10%; margin-top: 12%;"><br><br>
             <input type="text" id="textbox" name="userId" placeholder="아이디"/><br><br>
-            <input type="password" id="textbox" name="userPwd" placeholder="비밀번호" /><br><br><br>
+            <input type="password" id="textbox" name="password" placeholder="비밀번호" /><br><br><br>
             <button id="loginbtn"onclick='login();'>로그인</button><br><br>
          </form>  
              <table id="tbl">

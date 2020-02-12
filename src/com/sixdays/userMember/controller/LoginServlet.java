@@ -35,12 +35,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 인코딩
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 				String userId = request.getParameter("userId");
-				String userPwd = request.getParameter("userPwd");
+				String userPwd = request.getParameter("password");
 				
-				System.out.println(userId);
-				System.out.println(userPwd);
 				
 				userMember m = new userMember(userId,userPwd);
 				
@@ -55,21 +54,26 @@ public class LoginServlet extends HttpServlet {
 					
 					session.setAttribute("member", m);
 					
+					session.setAttribute("userId", userId);
+					
+					
 					response.sendRedirect("main.jsp");
+					
+					
 				
 				}catch(MemberException e) { // 로그인 실패
 	
 					PrintWriter out = response.getWriter();
 					
 					out.println("<script language='javascript'>");
-					out.println("alert('ㅎㅇ')");
+					out.println("alert('아이디 / 비밀번호를 다시 확인해주세요.')");
 					out.println("location.href='login.jsp'");
 					out.println("</script>");
 					out.flush();
 					out.close();
 					request.setAttribute("msg", "회원 로그인 실패!");
 					request.setAttribute("exception", e);
-					request.getRequestDispatcher("login.jsp").forward(request, response);
+					request.getRequestDispatcher("login.jsp");
 
 				}
 	}
