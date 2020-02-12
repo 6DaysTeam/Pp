@@ -34,7 +34,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 인코딩
-		
+		response.setContentType("text/html; charset=UTF-8");
+
 				String userId = request.getParameter("userId");
 				String userPwd = request.getParameter("userPwd");
 				
@@ -57,6 +58,15 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("main.jsp");
 				
 				}catch(MemberException e) { // 로그인 실패
+	
+					PrintWriter out = response.getWriter();
+					
+					out.println("<script language='javascript'>");
+					out.println("alert('ㅎㅇ')");
+					out.println("location.href='login.jsp'");
+					out.println("</script>");
+					out.flush();
+					out.close();
 					request.setAttribute("msg", "회원 로그인 실패!");
 					request.setAttribute("exception", e);
 					request.getRequestDispatcher("login.jsp").forward(request, response);
