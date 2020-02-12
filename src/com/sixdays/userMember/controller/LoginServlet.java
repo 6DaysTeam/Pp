@@ -1,6 +1,8 @@
 package com.sixdays.userMember.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,7 +59,6 @@ public class LoginServlet extends HttpServlet {
 				}catch(MemberException e) { // 로그인 실패
 					request.setAttribute("msg", "회원 로그인 실패!");
 					request.setAttribute("exception", e);
-					
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 
 				}

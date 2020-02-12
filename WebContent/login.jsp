@@ -48,9 +48,12 @@
     </div>
     
     </div>
-	<% } %>
+	<% }else{ %>
+
+	<%} %>
 	<script>
 		function login(){
+			
 			$('#loginForm').submit;
 		}
 		

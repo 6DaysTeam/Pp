@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="top">
-        <img src="/6Days/resources/images/logoletter.png" style="padding-top: 7%; width: 170px; height: 50px;">
+        <img src="/6Days/resources/images/logoletter.png" onclick="location.href='/6Days/login.jsp'" style="padding-top: 7%; width: 170px; height: 50px;">
     </div>
     <form id="joinForm" action="${pageContext.request.contextPath}/mInsert.me" method="post">
          <div id="registerpage">
