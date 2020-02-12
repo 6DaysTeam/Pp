@@ -11,6 +11,10 @@
     <script src="/6Days/resources/js/jquery-ui-1.11.4.custom.min.js"></script>
     <script src="/6Days/resources/js/Right_sidebar.js"></script>
     <script src="/6Days/resources/js/Infadd.js"></script>
+    
+    <script src="https://unpkg.com/vue@2.6.6/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/6Days/resources/css/sidebar.css">
     <link rel="stylesheet" href="/6Days/resources/css/Right_sidebar.css">
@@ -53,42 +57,56 @@
    	 	내용 : 게시물 업로드
   	 	수정일 : 2020.02.10
 			-->
-		<form>
-        <div id="Infmodal">
-            <div id="Infcontent">
-                <div id="Infmenu">
-                    <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
-                    <button id="Infclosebtn" onclick="Infclose();">X</button>
-                </div>
-                <hr>
-                <div id="Infleft">
-                    <div id="Infadd">
-                        Drop image !! 여기다가 사진넣는다. 
-                        <form id="form1" runat="server">
-                            <img id="blah" src="#" alt="your image" />
-                        </form>
+		   <form>
+                <div id="Infmodal">
+                    <div id="Infcontent">
+                        <div id="Infmenu">
+                            <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
+                            <button id="Infclosebtn" onclick="Infclose();">X</button>
+                        </div>
+                        <hr>
+                        <div id="Infleft" style="overflow: auto;" >
+                                <input type="file" id='uploadFile' multiple='multiple'> <br/>
+                                <table class="table" style="width: 100%; height: 100%;">
+                                   <tr  v-for="item in fileList">
+                                    <td align="center"><img v-bind:src="item.url" style="height:480px; width:480px;"/></td>
+                                   </tr>
+ 
                         
+                                </table>
+								<!-- 
+                                <input type="file" id="uploadFile" multiple='multiple' onchange="changeValue(this)"/>
+                                <button type="button" id="btn-upload">
+                                    사진/동영상
+                                    <img src="/6Days/resources/icon/photo.png"style="width: 12%; height=12%;">
+                                </button> -->
+
+
+                                
+                            <!-- <div id="filebox" style="position: absolute; bottom: 10px; width: 30%; height: 8%;">
+                                    <img src="/6Days/resources/icon/photo.png"style="width: 12%; height=12%;">
+                                    <label for="file_upload">사진/동영상</label>
+                                    <input type="file" id="uploadFile" multiple='multiple'>
+                            </div>
+                                 -->
+                            
+                        </div>         
+
+
+                        <div id="Infright">
+                            <textarea id="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
+                            <textarea id="Infhashtag" placeholder="#태그"></textarea>
+                            <button id="Infupload" onclick="">업로드</button>
+                        </div>
+                        
+                        <div>
+                            
+                            
+                        </div>
                         
                     </div>
                 </div>
-                <div id="Infright">
-                    <textarea id="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
-                    <textarea id="Infhashtag" placeholder="#태그"></textarea>
-                    <button id="Infupload" onclick="">업로드</button>
-                </div>
-                
-                <div>
-                    <div id="filebox" style="position: absolute; bottom: 10px; width: 30%; height: 8%;">
-                        <img src="../resources/images/photo.png"style="width: 12%; height=12%;">
-                        <label for="file_upload">사진/동영상</label>
-                        <input type="file" id="file_upload">
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </div>
-    </form>
+            </form>
         </div>
     </header>
 </body>
@@ -163,14 +181,30 @@ function uploadFiles(e) {
 		
 	}
 	
-	function in_photo(){
-		var frm = document.frm1;
-		
-		if(frm.photo1.value)
-			//업로드 양식의 이미지 경로를 이밎 뷰어창에 할당합니다. 
-			document.img1.src=frm.photo1.value;
-	}
+	   var uploadApp = new Vue({
+           el: '#Infleft',
+           data:{
+               fileList:[]
+           }
+       })
+       $("#uploadFile").change(function(event){
+           console.log($(this)[0].files);
+           var files=$(this)[0].files;
+           uploadApp.fileList =[];
 
+           $.each(files,function(i,item){
+               var fileReader = new FileReader();
+               fileReader.onload=function(e){
+                   var img ={
+                       url:e.target.result,
+                       name:item.name,
+                       // size:item.size
+                   };
+                   uploadApp.fileList.push(img);
+               }
+               fileReader.readAsDataURL(item);
+           });
+       });
 
 
 </script>
