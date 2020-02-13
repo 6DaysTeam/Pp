@@ -1,5 +1,15 @@
+<%@page import="com.sixdays.userMember.model.vo.userMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" session="false"%>
+    
+    <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함
+    
+    HttpSession session = request.getSession();
+ 
+    
+   userMember m = (userMember)session.getAttribute("member");
+    
+	%>
 <!DOCTYPE html>
 <html>
 <head>

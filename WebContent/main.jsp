@@ -1,15 +1,8 @@
 <%@page import="com.sixdays.userMember.model.vo.userMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="false" %>
+    pageEncoding="UTF-8"  %>
     
     
-    <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함
-    
-    HttpSession session = request.getSession(false);
-    
-    
-    
-	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +22,7 @@
         내용 : 메인화면 컨텐츠섹션 수정 -->
         <div id="contentArea">  <!--컨텐츠가 출력될 중앙 영역 (길이값 무한대) -->
             <div id="content">  <!--실제 컨텐츠 각각의 영역 -->
-            <%-- <label><%= session.getAttribute("userId") %></label> --%>
+     <label><%= m.getUserId()%></label>
                 <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
                     <img id="showUserProfileImg" src="/6Days/resources/maruta/profileimg.JPG">  <!--유저 프로필 이미지 불러오기-->
                     <p id="showUserName">Juwan_p.193</p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
