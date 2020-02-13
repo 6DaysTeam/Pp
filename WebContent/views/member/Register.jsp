@@ -39,15 +39,15 @@
           <div id="email">
             <label>이메일</label><br><br>
             <input type="text" id="email1" class="redata" name="email" placeholder="이메일을 입력해주세요." onchange="change(); emailCheck();"/>
+             <button id="authbtn" onclick="return test();">인증번호 받기</button>
             <br><br>
         </div>
         <div id="phone">
             <label>전화번호</label><br><br>
             <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호" maxlength="13" onchange="change(); phoneCheck();"/>
-
-            <button id="authbtn" onclick="return test();">인증번호 받기</button><br><br>
-            <input type="text" id="authtext" placeholder="인증번호를 입력하세요.">&nbsp&nbsp<button style="float:none; cursor: pointer; background: rgb(15, 76, 129); 
-    color:white; border: 0px; width: 80px; height: 30px;" >확인</button>
+            <!-- <input type="text" id="authtext" placeholder="인증번호를 입력하세요.">&nbsp&nbsp -->
+            <!-- <button style="float:none; cursor: pointer; background: rgb(15, 76, 129); 
+    		color:white; border: 0px; width: 80px; height: 30px;" >확인</button> -->
         </div>
         <div id="gender">
             <br>
