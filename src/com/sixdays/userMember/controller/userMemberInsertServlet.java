@@ -36,7 +36,7 @@ public class userMemberInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			//1. 인코딩 레츠기릿 
 
-		String userId = request.getParameter("uesrId");
+		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");  
 		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");

@@ -1,6 +1,7 @@
 package com.sixdays.userMember.model.service;
 
 
+
 import static com.sixdays.common.JDBCTemplate.close;
 import static com.sixdays.common.JDBCTemplate.commit;
 import static com.sixdays.common.JDBCTemplate.getConnection;
@@ -36,16 +37,6 @@ public class userMemberService {
 		
 	}
 
-	public userMember repectMember(String userId) {
-		con = getConnection();
-		
-		userMemberDao dao = new userMemberDao();
-		userMember m  = dao.repectMember(con,userId);
-		
-		close(con);
-		
-		return m;
-	}
 	
 	/**
 	 * 작성자  : 신지영
@@ -65,6 +56,17 @@ public class userMemberService {
 		if(result == null) {
 			throw new MemberException("아이디나 비밀번호가 올바르지 않습니다.");
 		}
+		return result;
+	}
+
+	public int idDupCheck(String id) {
+		
+		Connection con = getConnection();
+		
+		int result = mDao.idDupCheck(con,id);
+		
+		close(con);
+		
 		return result;
 	}
 

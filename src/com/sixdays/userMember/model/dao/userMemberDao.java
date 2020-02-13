@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-
 import static com.sixdays.common.JDBCTemplate.*;
 
 import com.sixdays.userMember.model.exception.MemberException;
@@ -78,38 +77,7 @@ public class userMemberDao {
 				return result;
 	}
 
-	public userMember repectMember(Connection con, String userId) {
-		userMember m = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		
-		try {
-			String sql = prop.getProperty("repeatMember");
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				m = new userMember();
-				m.setEmail(rset.getString("EMAIL"));
-				m.setGender(rset.getString("GENDER"));
-				m.setMycomment(rset.getString("MYCOMMENT"));
-				m.setPhone(rset.getString("PHONE"));
-				m.setUserId(rset.getString("USERID"));
-				m.setUserName(rset.getString("USERNAME"));
-				m.setUserpwd(rset.getString("USERPWD"));
-			}
 
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-			close(rset);
-		}
-		return m;
-	}
 	/**
 	 * 작성자  : 신지영
 	 * 작성일 : 2020. 2. 10.
@@ -153,5 +121,44 @@ public class userMemberDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	/**
+	 * 작성자  : 윤석훈
+	 * 작성일 : 2020. 2. 13.
+	 * 중복확인
+	 * @param con
+	 * @param id
+	 * @return
+	 */
+	public int idDupCheck(Connection con, String id) {
+		int result = -1;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("idDupCheck");
+		
+		
+		try {
+			pstmt = con.prepareStatement(sql);			
+			pstmt.setString(1, id);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				//-1:에러!
+				// 0: id 중복사용자 없음
+				// 1: id를 누군가 사용중
+				result = rset.getInt(1);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+	return result;
 	}
 }

@@ -23,7 +23,7 @@
         <div id="idregister">
             <label>아이디</label><br><br>
           
-            <input type="text" id="idok" class="redata" name="uesrId" placeholder="아이디" onchange="change();"/>
+            <input type="text" id="idok" class="redata" name="userId" placeholder="아이디" onchange="change();"/>
              <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
             <br><br>
         </div>
@@ -66,7 +66,7 @@
     </form>
     <script>
     
-    
+    var idCheck = 0; //아이디 중복확인
     
     var result1 = document.getElementById("idok");
     var result2 = document.getElementById("pwd2");
@@ -76,7 +76,7 @@
     var result6 = document.getElementById("man");
     var result7 = document.getElementById("woman");
     
-	var button = document.getElementById('registerbtn');
+	var button = document.getElementById('registerbtn'); //값이 입력되지 않으면 안보이고 클릭되지 않게 로직 처리
     
 	
 	window.onload = function(){
@@ -89,6 +89,8 @@
 	}
 	
 	function change(){
+		
+		idCheck = '0';
 		
 		if(result1.value != "" && result2.value != "" && result3.value != "" && result4.value != "" && result5.value != "" && (result6.checked || result7.checked) )
 		{
@@ -104,48 +106,48 @@
 
 	
 	}
-
+	
     
-    </script>
     
-    <script>
-	$('#idokbtn').click(function(){
-		
+    $("#idokbtn").click(function(){
 		var user_id = $('#idok').val();
 		$.ajax({
-			url:"/6Days/user.rc",
-			type:"get",
-			data:{
-				name:$('#idok').val()
-			},
-			success : function(data) {
-				console.log("중복체크 : " + data);							
+			url:"/6Days/idDup.me",
+			type:"post",
+			data:{userId: $('#idok').val()},
+			success:function(data){
 				
-				if (data == 1) {
-					
-					$("#id_check").text("사용중인 아이디입니다 :p");
-					$("#id_check").css("color", "red");
-					$("#registerbtn").attr("disabled", true);
-				} else if(data == 0 && user_id!=""){
-					
-					$("#id_check").text("사용 가능한  아이디입니다 :p");
-					$("#id_check").css("color", "green");
-					$("#registerbtn").attr("disabled", false);
-					
-				} else if(user_id == ""){
-					
-					$('#id_check').text('아이디를 입력해주세요 :)');
-					$('#id_check').css('color', 'red');
-					$("#registerbtn").attr("disabled", true);				
-						
-					}
-					
 				
-			}, error : function() {
-					console.log("실패");
+				if(data =='ok' && user_id != ""){
+					alert('사용 가능한 아이디입니다.');
+					idCheck = '1';
+					
+				}else if(data == 'no'){
+					alert('이미 사용중인 아이디입니다.');
+					$('#userId').select();
+					idCheck = '0';
+
+				}else if(user_id == ""){
+					alert('아이디를 입력해주세요.');
+					$('#userId').select();
+					idCheck = '0';
+				}
+			},error:function(){
+				console.log("Error 입니다.");
 			}
 		});
-		});
+	});
+    
+	function insertMember(){
+		if(idCheck == '1'){
+			alert("회원가입이 완료되었습니다.");
+			return true;
+		
+		}else{
+			alert("아이디 중복확인을 확인해주세요.");
+			return false;
+		}
+	}
 </script>
 	
 	<script>
