@@ -27,7 +27,7 @@
             <div class="sidebar-content">
                 <p onclick="location.href='/6Days/selectList.bo'" style="cursor: pointer;">공지사항</p>
                 <br>
-                <p onclick="location.href='QnAlist.html'" style="cursor: pointer;">Q & A</p>
+                <p onclick="location.href='/6Days/selectList.qo'" style="cursor: pointer;">Q & A</p>
                 <br>
                 <p onclick="location.href=''" style="cursor: pointer;">둘러보기</p>
                 <br>
