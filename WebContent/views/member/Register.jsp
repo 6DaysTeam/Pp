@@ -23,7 +23,7 @@
         <div id="idregister">
             <label>아이디</label><br><br>
           
-            <input type="text" id="idok" class="redata" name="userId" placeholder="아이디" onchange="change();"/>
+            <input type="text" id="idok" class="redata" name="userId" placeholder="아이디" onchange="change(); check();"/>
              <input type="button" id="idokbtn" onSubmit="return false" value="중복확인">
             <br><br>
         </div>
@@ -88,9 +88,13 @@
 	
 	}
 	
+	function check(){
+		idCheck = 0;
+	}
+	
 	function change(){
 		
-		idCheck = '0';
+	
 		
 		if(result1.value != "" && result2.value != "" && result3.value != "" && result4.value != "" && result5.value != "" && (result6.checked || result7.checked) )
 		{
@@ -124,12 +128,12 @@
 					
 				}else if(data == 'no'){
 					alert('이미 사용중인 아이디입니다.');
-					$('#userId').select();
+					$('#idok').select();
 					idCheck = '0';
 
 				}else if(user_id == ""){
 					alert('아이디를 입력해주세요.');
-					$('#userId').select();
+					$('#idok').select();
 					idCheck = '0';
 				}
 			},error:function(){
@@ -163,6 +167,7 @@
         });      
     });
     </script>
+    
     <script>
         $('#auth').keydown(function(event) {
         var key = event.charCode || event.keyCode || 0;
