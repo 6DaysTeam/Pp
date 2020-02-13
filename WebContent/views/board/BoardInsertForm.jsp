@@ -54,14 +54,14 @@
               <tr>
                 <td class="board-type">제목</td>
                 <td class="board-value" colspan="3">
-                <input type="text" id="board-subject" name="title"></td>
+                <input type="text" id="board-subject" name="title" ></td>
               </tr>
               
               <tr>
                 <td class="board-type">작성자</td>
-                <td class="board-value" style="width:265px;">
-                <input type ="text" name="writer" style="float: left;
-    margin-left: 13px; height: 20px;"></td>
+                <td class="board-value" style="width:265px;" >
+                <input name="writer" style="float: left;
+   				 margin-left: 13px; height: 20px;" value="<%=m.getUserId() %>" readonly/></td>
                 
                 <td class="board-type" style="width:121px; visibility: hidden;">작성일</td>
                 <td class="board-value" style="width:265px; border-style: none;height: 20px;">

@@ -19,7 +19,7 @@
         <img src="/6Days/resources/images/logoletter.png" onclick="location.href='/6Days/login.jsp'" style="padding-top: 7%; width: 170px; height: 50px;">
     </div>
     <form id="joinForm" action="${pageContext.request.contextPath}/mInsert.me" method="post">
-         <div id="registerpage">
+         <div id="registerpage"> 
         <div id="idregister">
             <label>아이디</label><br><br>
           
@@ -39,7 +39,7 @@
           <div id="email">
             <label>이메일</label><br><br>
             <input type="text" id="email1" class="redata" name="email" placeholder="이메일을 입력해주세요." onchange="change(); emailCheck();"/>
-             <button id="authbtn" onclick="return test();">인증번호 받기</button>
+             <input type="button" id="authbtn" onSubmit="return false" value="인증번호받기">
             <br><br>
         </div>
         <div id="phone">

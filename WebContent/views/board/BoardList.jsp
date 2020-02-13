@@ -47,6 +47,7 @@
         <table class="table table-striped" id="listArea">
           <label id="g-title"> 공지사항</label>
             <tr>
+            	
                 <th style="width:70px;">번호</th>
                 <th style="width:430px; text-align: center">제목</th>
                 <th style="text-align:center; width:160px;">작성자</th>
@@ -59,6 +60,7 @@
         	for(Board b : list) {
         %>
 		<tr>
+
         <td><%= b.getBno() %></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
@@ -70,8 +72,11 @@
     </table>
 
     <hr/>
+
+    <% if(m.getUserId().equals("admin")){ %>
     <a class="btn btn-default pull-right" 
         onclick="location.href='/6Days/views/board/BoardInsertForm.jsp'">글쓰기</a>
+    <% } %>
     <div class="text-center">
         <ul class="pagination" style="margin:0px 0px 7px 0px;">
             <li><a href="#"></a></li>

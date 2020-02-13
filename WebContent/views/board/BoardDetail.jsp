@@ -38,12 +38,14 @@
 	<div id ="boardArea" style="background:white;">
       <label id="board-title">공지사항 내용</label>
             <input type="reset" class="board-button" onclick="location.href='selectList.bo'" value="뒤로" >
+      <% if(m.getUserId().equals("admin")) {%>
             <input type="submit" class="board-button" onclick="location.href='bUpdateView.bo?bno=<%=b.getBno()%>'" value="수정">
+      <%} %>   
           <div id="board-area">
             <table id="boardWrite"> 
               <tr>
                 <td class="board-type">구분</td>
-                <td class="board-value" colspan="3" style="margin-left:15px;">공지
+                <td class="board-value" colspan="3" style="float:left; margin-left:15px;">공지
                 </td>
               </tr>
               

@@ -3,6 +3,10 @@ package com.sixdays.board.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ * @author Seokhun
+ *
+ */
 public class Board implements Serializable {
 
 	private static final long serialVersionUID = -8935709964213018076L;
@@ -15,6 +19,7 @@ public class Board implements Serializable {
 	private int bcount;						// 조회수
 	private int bcomment;					// 댓글수
 	private String status;					// 삭제여부
+	private int rownum;						// 글순서
 
 	public Board() {}
 	
@@ -116,6 +121,19 @@ public class Board implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	
+	public int getRownum() {
+		return rownum;
+	}
+
+
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+
 
 	@Override
 	public String toString() {
