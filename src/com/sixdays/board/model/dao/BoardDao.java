@@ -52,7 +52,6 @@ public class BoardDao {
 				b.setBwriter(rset.getString("bwriter"));
 				b.setBdate(rset.getDate("bdate"));
 				b.setBcount(rset.getInt("bcount"));
-				b.setStatus(rset.getString("status"));
 				
 				list.add(b);
 			
