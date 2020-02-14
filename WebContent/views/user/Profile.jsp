@@ -27,13 +27,13 @@
             <div id="show-profile">
                 <!-- <img id="profilebackgound" src="../resources/icon/profilebackground.JPG"> -->
                 <div id="profileimgbox">
-                    <img id="profileimg"src="/6Days/resources/maruta/profileimg.JPG" onclick="profileModalOpen();" >
+                    <img id="profileimg"src="<%=m.getProimg() %>" onclick="profileModalOpen();" >
                 </div>
 
                     <div id="profilename">
-                        <label id="name" class="profile">Juwan_P</label>
+                        <label id="name" class="profile"><%=m.getUserName() %></label>
                         <hr style="margin-top: -5px; margin-bottom: 5px;">
-                        <label id="memo" class="profile">메모</label>
+                        <label id="memo" class="profile"><%=m.getMycomment() %></label>
                     </div>
                     <div id="profileright">
                         <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" >프로필 편집</button><br>
@@ -205,40 +205,6 @@
             </div>                  
         </div> -->
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--    작성자 : 박주완
         작성일 : 2020-01-14
         내용 : 계정설정 및 보안 신고 메뉴화면 (세팅버튼 클릭시) -->
@@ -289,7 +255,7 @@
                 <p style="font-size: 25px;">프로필 편집</p><hr>
                 <p onclick="nameSetopen();">닉네임 변경</p><hr>
                 <p onclick="comentsetopen();">코멘트 변경</p><hr>
-                <p style="color: royalblue;">프로필 사진 바꾸기</p><hr>
+                <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
                 <p style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
                 <p style="color: red;">현재 프로필 사진 삭제</p><hr>
                 <p style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
@@ -299,30 +265,59 @@
 <!--    작성자 : 박주완
         작성일 : 2020-01-16
         내용 : 코멘트 변경 모달 화면-->
+    <form id="commentupdateForm" action="/6Days/coUpdate.me" method="post">
         <div id="comentSetModal">
             <div id="comentSet">
                 <p>변경할 코멘트</p><hr>
-                <textarea id="comenttextarea"></textarea><br>
+                <textarea id="comenttextarea" name="mycomment"></textarea><br>
                 <P onclick="comentInput();" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
                 <p onclick="comentsetclose();">닫기</p>
             </div>
         </div>
-
+	</form>
 <!--    작성자 : 박주완
         작성일 : 2020-01-16
         내용 : 닉네임 변경 모달 화면-->
+    <form id="nameupdateForm" action="/6Days/unUpdate.me" method="post">
         <div id="nameSetModal">
             <div id="nameSet">
                 <p>변경할 닉네임</p><hr>
-                <input type="text" id="nametextarea"><br>
+                <input type="text" id="nametextarea" name="userName"><br>
                 <P onclick="nameInput();" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
                 <p onclick="nameSetclose();">닫기</p>
             </div>
         </div>
-
+    </form>
+        
+<!--    작성자 : 신지영
+        작성일 : 2020-02-13
+        내용 : 프로필사진 변경 모달 화면-->
+    <form id="proImgupdateForm" action="/6Days/proimage.me" method="post">
+		<div id="proImgModal">
+			<div id="proImgSet">
+				<p>프로필 사진</p>
+				<input type="file" id="proimgarea" name="proimg"><br><br>
+				<p onclick="profileInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+				<p onclick="profileSetclose();">닫기</p>
+			</div>
+		</div>
+    </form>
     
+    <script>
+    function nameInput() {
+		document.getElementById("nameupdateForm").submit();
+    	//location.href ="/6Days/mUpdate.me"
+    }
     
+    function comentInput(){
+    	document.getElementById("commentupdateForm").submit();
+    }
     
+    function profileInput(){
+    	document.getElementById("proImgupdateForm").submit();
+    }
+    
+    </script>
     
 </body>
 </html>

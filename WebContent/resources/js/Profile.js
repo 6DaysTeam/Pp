@@ -97,3 +97,16 @@
                 name.innerHTML = " ";
                 name.innerHTML += resetname.value;
             }
+            
+         // <!--     작성자 : 신지영
+//          작성일 : 2020-02-13
+//          내용 : 프로필 사진 변경 함수-->
+            function proImgChange(){
+                var url = $(this).attr("src");
+                $("#proImgModal").attr("src",url);
+                $("#proImgModal").show();
+            }
+
+            function profileSetclose(){
+                $('#proImgModal').css("display",'none');
+            }

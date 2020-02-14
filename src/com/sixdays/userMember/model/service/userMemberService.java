@@ -69,6 +69,48 @@ public class userMemberService {
 		
 		return result;
 	}
+	
+public int nameUpdateMember(userMember m) throws MemberException {
+		
+		con = getConnection();
+		
+		int result = mDao.nameUpdateMember(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
+	public int commentUpdateMember(userMember m) throws MemberException {
+		con = getConnection();
+		
+		int result = mDao.commentUpdateMember(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
+	public int updateProImg(userMember m){
+		con = getConnection();
+		
+		int result = mDao.updateProImg(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 
 
 

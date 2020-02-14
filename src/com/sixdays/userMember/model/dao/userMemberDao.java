@@ -161,4 +161,104 @@ public class userMemberDao {
 		}
 	return result;
 	}
+	
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 12.
+	 * 닉네임 변경
+	 * @param con
+	 * @param m
+	 * @return
+	 * @throws MemberException
+	 */
+	public int nameUpdateMember(Connection con, userMember m) throws MemberException {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("nameupMember");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserName());
+			pstmt.setString(2, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 12.
+	 * 코멘트 변경
+	 * @param con
+	 * @param m
+	 * @return
+	 * @throws MemberException 
+	 */
+	public int commentUpdateMember(Connection con, userMember m) throws MemberException {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("commentupMember");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getMycomment());
+			pstmt.setString(2, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 13.
+	 * 프로필 사진 변경
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public int updateProImg(Connection con, userMember m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String sql = prop.getProperty("updateProImg");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getProimg());
+			pstmt.setString(2, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	
+	}
 }
