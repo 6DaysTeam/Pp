@@ -240,7 +240,6 @@ String result = request.getParameter("result");
          return false;
          
       }else if(emailck.value != '1'){
-    	  alert(emailck.value);
     	  alert("이메일 인증을 확인해주세요.");
     	  
     	  return false;
