@@ -41,15 +41,11 @@ String result = request.getParameter("result");
           <div id="email">
             <label>이메일</label><br><br>
             <input type="text" id="email1" class="redata" name="email1" placeholder="이메일을 입력해주세요." onchange="change(); emailCheck();"/>
-            <input type="button" id="authbtn" onclick="pop_up(); test1();"  value="인증번호받기">
+            <input type="button" id="authbtn" onclick="pop_up();"  value="인증번호받기">
              
             <br><br>
         </div>
-       <script>
-             function test1(){
-                console.log(result);
-             }
-       </script>
+
         <div id="phone">
             <label>전화번호</label><br><br>
             <input type="text" id="auth" class="redata" name="phone" placeholder="전화번호" maxlength="13" onchange="change(); phoneCheck();"/>
@@ -72,6 +68,7 @@ String result = request.getParameter("result");
         </div>
    </div>
     </form>
+    <input type="hidden" id="emailck" >
     <script>
     
     var idCheck = 0; //아이디 중복확인
@@ -80,11 +77,11 @@ String result = request.getParameter("result");
     var result2 = document.getElementById("pwd2");
     var result3 = document.getElementById("nickname");
     var result4 = document.getElementById("email1");
-    var result4_1=document.getElementBtId()
+    
     var result5 = document.getElementById("auth");
     var result6 = document.getElementById("man");
     var result7 = document.getElementById("woman");
-    
+    var emailck = document.getElementById("emailck");
    var button = document.getElementById('registerbtn'); //값이 입력되지 않으면 안보이고 클릭되지 않게 로직 처리
     
    
@@ -231,18 +228,26 @@ String result = request.getParameter("result");
    });
     
    function insertMember(){
-
+		
       
-      if(idCheck == '1'){
+      if(idCheck == '1'&& emailck.value =='1'){
          alert("회원가입이 완료되었습니다.");
          return true;
       
-      }else if(idCheck == '0'){
+      }else if(idCheck != '1' ){
          alert("아이디 중복확인을 확인해주세요.");
          
          return false;
          
-      }
+      }else if(emailck.value != '1'){
+    	  alert(emailck.value);
+    	  alert("이메일 인증을 확인해주세요.");
+    	  
+    	  return false;
+      }else {
+    	  alert("확인");
+    	  
+      }      
             
    }
    

@@ -19,6 +19,7 @@
     <input type="submit" value="확인" onclick="confirm();" 
             style="width: 70px; height: 40px; background-color: whitesmoke; border: none;
             font-size: 20px; font-family: 'Jua', sans-serif;" >
+     <input type="hidden" id="mailvalue" value=1>
     </center>
     
     <br><br>
@@ -29,19 +30,16 @@
            var check= document.getElementById("email1").value; //text값 불러오기 
            var temp = "${temp}"; 
            
-           var reult = 0;  //0이면 미완료, 1이면 완료
+/*            var result = 0;  //0이면 미완료, 1이면 완료 */
            
            if(temp == check){
               alert("이메일 인증 완료 ! ");
-              result=1;
+              opener.document.getElementById("emailck").value = document.getElementById("mailvalue").value;
               window.close();
            }else{
               alert("인증번호 다시 입력 ");
-              result=0;
+              
            }
-           
-           
-           <a href="Register.jsp?name=result " >
            }
     </script>
 
