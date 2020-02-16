@@ -12,10 +12,10 @@ public class QnAService {
 	
 	private QnADao qDao = new QnADao();
 	
-	public ArrayList<QnA> selectList() {
+	public ArrayList<QnA> selectList(int currentPage, int limit) {
 		Connection con = getConnection();
 		
-		ArrayList<QnA> list = qDao.selectList(con);
+		ArrayList<QnA> list = qDao.selectList(con,currentPage, limit);
 		
 		close(con);
 		return list;
@@ -84,6 +84,13 @@ public class QnAService {
 		close(con);
 		
 		return result;
+	}
+
+	public int getListCount() {
+		Connection con = getConnection();
+		int listCount = qDao.getListCount(con);
+		
+		return listCount;
 	}
 }
 

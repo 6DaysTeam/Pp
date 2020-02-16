@@ -9,8 +9,10 @@ public class QnA implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4926833931113015975L;
+	
+	private int rnum;
 	private int qno;
-	private int qtype;
+	private String qtype;
 	private String qtitle;
 	private String qwriter;
 	private String qcontent;
@@ -24,7 +26,7 @@ public class QnA implements Serializable {
 	
 	
 
-	public QnA(int qno, int qtype, String qtitle, String qwriter, String qcontent, Date qdate, String qnafile) {
+	public QnA(int qno, String qtype, String qtitle, String qwriter, String qcontent, Date qdate, String qnafile) {
 		super();
 		this.qno = qno;
 		this.qtype = qtype;
@@ -37,7 +39,7 @@ public class QnA implements Serializable {
 
 
 
-	public QnA(int qno, int qtype, String qtitle, String qwriter, String qcontent, Date qdate, int qcount, int qcomment,
+	public QnA(int qno, String qtype, String qtitle, String qwriter, String qcontent, Date qdate, int qcount, int qcomment,
 			String qnafile, String status) {
 		super();
 		this.qno = qno;
@@ -52,6 +54,19 @@ public class QnA implements Serializable {
 		this.status = status;
 	}
 
+	
+	public int getRnum() {
+		return rnum;
+	}
+
+
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
+
+
 	public int getQno() {
 		return qno;
 	}
@@ -60,11 +75,11 @@ public class QnA implements Serializable {
 		this.qno = qno;
 	}
 
-	public int getQtype() {
+	public String getQtype() {
 		return qtype;
 	}
 
-	public void setQtype(int qtype) {
+	public void setQtype(String qtype) {
 		this.qtype = qtype;
 	}
 

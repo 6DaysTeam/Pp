@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/login.jsp=UTF-8
+encoding//src/config/QnA-query.properties=UTF-8
 encoding//src/config/board-query.properties=UTF-8
 encoding//src/config/member-query.properties=UTF-8
 encoding/<project>=UTF-8

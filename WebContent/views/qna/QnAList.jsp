@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.sixdays.qna.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sixdays.qna.model.vo.*, com.sixdays.board.model.vo.*"%>
     
 <%
     	ArrayList<QnA> list = (ArrayList<QnA>)request.getAttribute("list");
+		PageInfo pi = (PageInfo)request.getAttribute("pi");
+		int listCount = pi.getListCount();
+		int currentPage = pi.getCurrentPage();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
     %>
 <!DOCTYPE html>
 <html>
@@ -61,7 +67,8 @@
         	for(QnA q : list) {
         %>
 		<tr>
-        <td><%= q.getQno() %></td>
+		 <input type="hidden" value="<%= q.getQno() %>">
+        <td><%= q.getRnum() %></td>
         <td><%= q.getQtype() %></td>
         <td><%= q.getQtitle() %></td>
         <td><%= q.getQwriter() %></td>
@@ -76,7 +83,34 @@
     <hr/>
     <a class="btn btn-default pull-right" 
         onclick="location.href='/6Days/views/qna/QnAInsertForm.jsp'">글쓰기</a>
-    <div class="text-center">
+        
+        <%-- 페이지 처리 --%>
+		<div class="text-center" align="center">
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=1'"><<</button>
+			<%  if(currentPage <= 1){  %>
+			<button disabled><</button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage - 1 %>'"><</button>
+			<%  } %>
+			
+			<% for(int p = startPage; p <= endPage; p++){
+					if(p == currentPage){	
+			%>
+				<button disabled><%= p %></button>
+			<%      }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= p %>'"><%= p %></button>
+			<%      } %>
+			<% } %>
+				
+			<%  if(currentPage >= maxPage){  %>
+			<button disabled>></button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage + 1 %>'">></button>
+			<%  } %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= maxPage %>'">>></button>
+			
+		</div> 
+  <!--   <div class="text-center">
         <ul class="pagination" style="margin:0px 0px 7px 0px;">
             <li><a href="#"></a></li>
             <li><a href="#"></a></li>
@@ -89,7 +123,7 @@
             <li><a href="#">>></a></li>
 
         </ul>
-    </div>
+    </div> -->
     <input type="text" placeholder="검색할 내용을 입력하세요" style="width:300px; margin-left:-80px;">
     <a class="btn btn-default" style="font-size: 18px;">검색</a>
 </div>
@@ -103,7 +137,7 @@
 				$(this).parent().css({"background":"whitesmoke"});
 			}).click(function(){
 				//console.log($(this).parent().children().eq(0).text());
-				var qno = $(this).parent().children().eq(0).text();
+				var qno = $(this).parent().find('input').val();
 				location.href="<%=request.getContextPath()%>/qSelectOne.qo?qno=" + qno;
 			});
 		});

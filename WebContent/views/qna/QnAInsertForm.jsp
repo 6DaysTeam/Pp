@@ -48,8 +48,8 @@
                 <td class="board-type">구분</td>
                 <td class="board-value" colspan="3" style="float: left; margin-left:15px;">
                 <select name="qtype">
-                	<option value="0">공개</option>
-                	<option value="1">비공개</option>
+                	<option value="공개">공개</option>
+                	<option value="비공개">비공개</option>
                 </select>
                 
                 </td>
@@ -64,8 +64,8 @@
               <tr>
                 <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
-                <input type ="text" name="qwriter" style="float: left;
-    margin-left: 13px; height: 20px;"></td>
+                <input name="qwriter" style="float: left;
+   				 margin-left: 13px; height: 20px;" value="<%= m.getUserId() %>" readonly/></td>
                 
                 <td class="board-type" style="width:121px; visibility: hidden;">작성일</td>
                 <td class="board-value" style="width:265px; border-style: none;height: 20px;">
@@ -75,7 +75,7 @@
               <tr>
                 <td class="board-type">첨부파일</td>
                 <td class="board-value" colspan="3" >
-                <input type="file" name="qnafile" id="boardfile" style="float:left; margin-left:13px; ">
+                <input type="file" name="qnafile" id="qnafile" style="float:left; margin-left:13px; ">
                 </td>
 
               </tr>

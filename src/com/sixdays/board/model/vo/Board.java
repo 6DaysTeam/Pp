@@ -10,6 +10,8 @@ import java.sql.Date;
 public class Board implements Serializable {
 
 	private static final long serialVersionUID = -8935709964213018076L;
+	
+	private int rnum;
 	private int bno;						// 글번호
 	private String btitle;					// 글제목
 	private String bwriter;					// 작성자
@@ -50,6 +52,14 @@ public class Board implements Serializable {
 		this.status = status;
 	}
 
+	public int getRnum() {
+		return rnum;
+	}
+	
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	
 	public int getBno() {
 		return bno;
 	}

@@ -57,7 +57,7 @@
               <tr>
                 <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
-                <%= b.getBwriter() %></td>
+                <%= m.getUserId() %></td>
                 
                 <td class="board-type" style="width: 63px;">작성일</td>
                 <td class="board-value" style="width:265px;">

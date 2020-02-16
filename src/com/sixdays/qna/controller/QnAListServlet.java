@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sixdays.board.model.vo.PageInfo;
 import com.sixdays.qna.model.service.QnAService;
 import com.sixdays.qna.model.vo.QnA;
 
@@ -31,17 +32,52 @@ public class QnAListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<QnA> list = new ArrayList<>();
+		ArrayList<QnA> list = null;
 		
 		QnAService qs = new QnAService();
 		
-		list = qs.selectList(); 
+		int startPage;
+		
+		int endPage;
+		
+		int maxPage;
+		
+		int currentPage;
+		
+		int limit;
+		
+		currentPage = 1;
+		
+		limit = 10;
+		
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		int listCount = qs.getListCount();
+		
+		System.out.println("총 페이지 갯수 : " + listCount);
+		
+		maxPage = (int)((double)listCount / limit + 0.9);
+		
+		startPage = ((int)((double)currentPage / limit + 0.9)-1) * limit + 1;
+		
+		endPage = startPage + limit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		list = qs.selectList(currentPage, limit); 
 		
 		String page = "";
 		
 		if(list != null) {
 			page = "views/qna/QnAList.jsp";
 			request.setAttribute("list", list);
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			request.setAttribute("pi", pi);
 		} else {
 			page = "";
 			request.setAttribute("msg", "QnA 목록 불러오기 에러!");

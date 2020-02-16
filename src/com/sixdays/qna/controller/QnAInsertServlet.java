@@ -54,7 +54,7 @@ public class QnAInsertServlet extends HttpServlet {
 									new DefaultFileRenamePolicy()
 		);
 				
-		int type = Integer.parseInt(mrequest.getParameter("qtype"));
+		String type = mrequest.getParameter("qtype");
 		String title = mrequest.getParameter("qtitle");
 		String writer = mrequest.getParameter("qwriter");
 		String content = mrequest.getParameter("qcontent");

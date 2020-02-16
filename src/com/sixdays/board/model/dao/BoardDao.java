@@ -30,25 +30,31 @@ public class BoardDao {
 		}
 	}
 
-	public ArrayList<Board> selectList(Connection con) {
-		ArrayList<Board> list = new ArrayList<>();
-		Statement stmt = null;
+	public ArrayList<Board> selectList(Connection con, int currentPage, int limit) {
+		ArrayList<Board> list = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectList");
 		
 		try {
-			stmt = con.createStatement();
+			pstmt = con.prepareStatement(sql);
 			
-			rset = stmt.executeQuery(sql);
+			int startRow = (currentPage-1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<>();
 			
 			while(rset.next()) {
 				Board b = new Board();
 				
-
-				b.setBno(rset.getInt(1));
+				b.setRnum(rset.getInt("rnum"));
+				b.setBno(rset.getInt("bno"));
 				b.setBtitle(rset.getString("btitle"));
 				b.setBwriter(rset.getString("bwriter"));
 				b.setBdate(rset.getDate("bdate"));
@@ -62,7 +68,7 @@ public class BoardDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		return list;
 	}
@@ -82,7 +88,7 @@ public class BoardDao {
 			pstmt.setString(3, b.getBwriter());
 			pstmt.setString(4, b.getBoardfile());
 			pstmt.setDate(5, b.getBdate());
-			
+
 			result = pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -197,6 +203,31 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int getListCount(Connection con) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
+	
 	}
 
 	

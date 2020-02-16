@@ -43,7 +43,7 @@
             <table id="boardWrite"> 
               <tr>
                 <td class="board-type">구분</td>
-                <td class="board-value" colspan="3" style="margin-left:15px;"><%= q.getQtype() %>
+                <td class="board-value" colspan="3" style="float : left; margin-left:15px;"><%= q.getQtype() %>
                 </td>
               </tr>
               
@@ -55,7 +55,7 @@
               <tr>
                 <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
-                <%= q.getQwriter() %></td>
+                <%= m.getUserId() %></td>
                 
                 <td class="board-type" style="width: 63px;">작성일</td>
                 <td class="board-value" style="width:265px;">

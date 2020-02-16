@@ -17,10 +17,10 @@ public class BoardService {
 	 * 공지사항 목록 불러오기
 	 * @return
 	 */
-	public ArrayList<Board> selectList() {
+	public ArrayList<Board> selectList(int currentPage, int limit) {
 		Connection con = getConnection();
 		
-		ArrayList<Board> list = bDao.selectList(con);
+		ArrayList<Board> list = bDao.selectList(con,currentPage, limit);
 		
 		close(con);
 		return list;
@@ -95,4 +95,12 @@ public class BoardService {
 		return result;
 	}
 
+
+	public int getListCount() {
+		Connection con = getConnection();
+		int listCount = bDao.getListCount(con);
+		
+		return listCount;
+	}
 }
+

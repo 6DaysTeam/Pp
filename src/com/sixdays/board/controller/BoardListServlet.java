@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.board.model.service.BoardService;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.board.model.vo.PageInfo;
 
 /**
  * Servlet implementation class NoticeListServlet
@@ -31,17 +32,54 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Board> list = new ArrayList<>();
+		ArrayList<Board> list = null;
 		
 		BoardService bs = new BoardService();
 		
-		list = bs.selectList();
+		int startPage;
+		
+		int endPage;
+		
+		int maxPage;
+		
+		int currentPage;
+		
+		int limit;
+		
+		currentPage = 1;
+		
+		limit = 10;
+		
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		int listCount = bs.getListCount();
+		
+		System.out.println("총 페이지 갯수 : " + listCount);
+		
+		maxPage = (int)((double)listCount / limit + 0.9);
+		
+		startPage = ((int)((double)currentPage / limit + 0.9)-1) * limit + 1;
+		
+		endPage = startPage + limit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		
+		list = bs.selectList(currentPage, limit);
 		
 		String page = "";
 		
 		if(list != null) {
 			page = "views/board/BoardList.jsp";
 			request.setAttribute("list", list);
+			
+			PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+			
+			request.setAttribute("pi", pi);
 		} else {
 			page = "";
 			request.setAttribute("msg", "공지사항 목록 불러오기 에러!");

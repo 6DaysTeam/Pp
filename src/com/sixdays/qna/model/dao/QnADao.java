@@ -29,25 +29,32 @@ public class QnADao {
 		}
 	}
 
-	public ArrayList<QnA> selectList(Connection con) {
-		ArrayList<QnA> list = new ArrayList<>();
-		Statement stmt = null;
+	public ArrayList<QnA> selectList(Connection con, int currentPage, int limit) {
+		ArrayList<QnA> list = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectList");
 		
 		try {
-			stmt = con.createStatement();
+			pstmt = con.prepareStatement(sql);
 			
-			rset = stmt.executeQuery(sql);
+			int startRow = (currentPage-1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<>();
 			
 			while(rset.next()) {
 				QnA q = new QnA();
 				
-				q.setQno(rset.getInt(1));
-				q.setQtype(rset.getInt("qtype"));
+				q.setRnum(rset.getInt("rnum"));
+				q.setQno(rset.getInt("qno"));
+				q.setQtype(rset.getString("qtype"));
 				q.setQtitle(rset.getString("qtitle"));
 				q.setQwriter(rset.getString("qwriter"));
 				q.setQdate(rset.getDate("qdate"));
@@ -60,7 +67,7 @@ public class QnADao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		return list;
 	}
@@ -76,14 +83,13 @@ public class QnADao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, q.getQtype());
+			pstmt.setString(1, q.getQtype());
 			pstmt.setString(2, q.getQtitle());
 			pstmt.setString(3, q.getQcontent());
 			pstmt.setString(4, q.getQwriter());
 			pstmt.setString(5, q.getQnafile());
-			
+
 			result = pstmt.executeUpdate();
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -112,7 +118,7 @@ public class QnADao {
 				q = new QnA();
 				
 				q.setQno(qno);
-				q.setQtype(rset.getInt("qtype"));
+				q.setQtype(rset.getString("qtype"));
 				q.setQtitle(rset.getString("qtitle"));
 				q.setQwriter(rset.getString("qwriter"));
 				q.setQcontent(rset.getString("qcontent"));
@@ -163,11 +169,11 @@ public class QnADao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, q.getQtype());
+			pstmt.setString(1, q.getQtype());
 			pstmt.setString(2, q.getQtitle());
 			pstmt.setString(3, q.getQnafile());
 			pstmt.setString(4, q.getQcontent());
-			pstmt.setInt(5,q.getQno());
+			pstmt.setInt(5, q.getQno());
 			
 			result = pstmt.executeUpdate();
 			
@@ -198,6 +204,30 @@ public class QnADao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int getListCount(Connection con) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
 	}
 
 }

@@ -30,7 +30,7 @@ public class QnAUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int qtype = Integer.parseInt(request.getParameter("qtype"));
+		String qtype = request.getParameter("qtype");
 		String qtitle = request.getParameter("qtitle");
 		String qcontent = request.getParameter("qcontent");
 		int qno = Integer.parseInt(request.getParameter("qno"));

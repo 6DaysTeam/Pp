@@ -2,7 +2,13 @@
     pageEncoding="UTF-8" import="java.util.*,com.sixdays.board.model.vo.*"%>
     
 <%
-    	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+		ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
+		PageInfo pi = (PageInfo)request.getAttribute("pi");
+		int listCount = pi.getListCount();
+		int currentPage = pi.getCurrentPage();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
     %>
 <!DOCTYPE html>
 <html>
@@ -45,6 +51,7 @@
         내용 : 게시판 임시 제작 -->
         <div id="boardArea" style="background: white; height:650px;">
         <table class="table table-striped" id="listArea">
+         <thead>
           <label id="g-title"> 공지사항</label>
             <tr>
             	
@@ -60,8 +67,8 @@
         	for(Board b : list) {
         %>
 		<tr>
-
-        <td><%= b.getBno() %></td>
+        <input type="hidden" value="<%= b.getBno() %>">
+        <td><%= b.getRnum() %></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
         <td><%= b.getBdate() %></td>
@@ -77,20 +84,35 @@
     <a class="btn btn-default pull-right" 
         onclick="location.href='/6Days/views/board/BoardInsertForm.jsp'">글쓰기</a>
     <% } %>
-    <div class="text-center">
-        <ul class="pagination" style="margin:0px 0px 7px 0px;">
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">></a></li>
-            <li><a href="#">>></a></li>
+    
+    <%-- 페이지 처리 --%>
+		<div class="text-center" align="center">
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
+			<%  if(currentPage <= 1){  %>
+			<button disabled><</button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
+			<%  } %>
+			
+			<% for(int p = startPage; p <= endPage; p++){
+					if(p == currentPage){	
+			%>
+				<button disabled><%= p %></button>
+			<%      }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= p %>'"><%= p %></button>
+			<%      } %>
+			<% } %>
+				
+			<%  if(currentPage >= maxPage){  %>
+			<button disabled>></button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+			<%  } %>
+			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
+			
+		</div> 
+		
 
-        </ul>
-    </div>
     <input type="text" placeholder="검색할 내용을 입력하세요" style="width:300px; margin-left:-80px;">
     <a class="btn btn-default" style="font-size: 18px;">검색</a>
 </div>
@@ -103,8 +125,8 @@
 			}).mouseout(function(){
 				$(this).parent().css({"background":"whitesmoke"});
 			}).click(function(){
-				//console.log($(this).parent().children().eq(0).text());
-				var bno = $(this).parent().children().eq(0).text();
+				/* console.log($(this).parent().find('input').val()); */
+				var bno = $(this).parent().find('input').val();
 				location.href="<%=request.getContextPath()%>/bSelectOne.bo?bno=" + bno;
 			});
 		});
