@@ -259,7 +259,8 @@
                 <p onclick="comentsetopen();">코멘트 변경</p><hr>
                 <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
                 <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
-                <p style="color: red;">현재 프로필 사진 삭제</p><hr>
+                <form id="proImgDeleteForm" name=proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
+                <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr></form>
                 <p style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
                 <p onclick="profileModalClose();">닫기</p>
         </div>
@@ -334,6 +335,9 @@
     }
     function probackInput(){
     	document.getElementById("proBackupdateForm").submit();
+    }
+    function proImgDelete(){
+    	document.getElementById("proImgDeleteForm").submit();
     }
     
     
