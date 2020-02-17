@@ -1,9 +1,11 @@
 package com.sixdays.userMember.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +35,7 @@ public class userSearchSerlvet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 인코딩
+		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		//2. 변수저장
 		String phone = request.getParameter("inputPh");
@@ -49,12 +52,26 @@ public class userSearchSerlvet extends HttpServlet {
 		//4. 뷰처리
 		
 		if(member != null) {
+			request.setAttribute("member", member);
 			RequestDispatcher rd = request.getRequestDispatcher("/views/member/IdSearchOK.jsp");
 			rd.forward(request, response);
 			System.out.println("if member : " + member);
+			
 		}else {
 			request.setAttribute("msg","정확한 정보를 입력해 주세요.");
 			System.out.println("else member : " + member);
+			
+			
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+
+			PrintWriter out = response.getWriter();
+
+			out.println("<script>alert('없는 사용자정보 입니다.'); location.href='/6Days/views/member/IdSearch.jsp';</script>"); 
+			out.close();
+
+
+			
 		}
 	}
 

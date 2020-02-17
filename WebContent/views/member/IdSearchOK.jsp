@@ -1,5 +1,11 @@
+<%@page import="com.sixdays.userMember.model.vo.userMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+   <%
+    userMember m =(userMember)request.getAttribute("member");
+    
+   %>
 
 <!DOCTYPE html>
 <html>
@@ -49,10 +55,10 @@
                         <!-- 전체확인 리스트를 위한 라디오 버튼 -> 클릭시 전체확인 allResult 보여줌-->
                         <input type="radio" name="idlist" id="radioId" value="">
                         <!-- 찾은 아이디 -->
-                        <label for="id">tes***</label>
+                        <label for="id" ><%=m.getUserId()%></label>
                     </div>
                     <!-- 가입일 -->
-                    <div class="date">2020-01-14 가입</div>
+                    <div class="date"></div>
                 </li>
             </ul>
             <span class="notiText">개인정보 보호를 위해 아이디 뒷자리를 ***로 표시합니다.</span>

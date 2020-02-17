@@ -275,7 +275,7 @@ public class userMemberDao {
 		userMember m = null;
 		
 		try {
-			String sql = prop.getProperty("searchIdPHONE");
+			String sql = prop.getProperty("searchId");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, phone);
 			pstmt.setString(2, email);

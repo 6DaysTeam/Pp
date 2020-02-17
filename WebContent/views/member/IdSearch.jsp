@@ -53,7 +53,7 @@
                                 <div class="styleInut">
                                     <!-- 휴대폰 번호 입력 받기 inputBox -->
                                     <input id="inputPhone" name="inputPh" type="text" class="iInput"
-                                           placeholder="휴대폰번호 " maxlength="13">
+                                           placeholder="휴대폰번호 (-포함)" maxlength="13">
                                         <!-- inputBox에 입력받은 값 리셋 버튼 -->
                                         <span id="inputPhoneClear" class="delBtn" style="display: none;"></span>
                                         <!-- 에러 메세지
@@ -62,7 +62,8 @@
                             </div>
                             <!-- 휴대폰 번호로 찾기 확인 버튼 -->
                             <div class="btnArea">
-                                <button type="submit" id="idPhoneSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
+                            <!-- type="submit" -->
+                                <button  id="idPhoneSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
                             </div>
                         </div>
                     </li>
@@ -76,35 +77,11 @@
                                     <!-- 이메일 입력 받기 inputBox -->
                                     <input name="inputEmail" id="inputEmail" type="text"
                                         class="eInput" placeholder="이메일">
-                                    <!-- inputBox에 입력받은 값 리셋 버튼 -->
-                                    <span id="inputEmailClear" class="delBtn" style="display: none;"></span>
-                                    <!-- 이메일 선택 selectBox -->
-                                    <!-- <div class="customSelect">
-                                        <select class="newSelect" name="memEmail2" id="memEmail2" onchange="chkMemEmail();">
-                                            <option value="etc">직접입력</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                            <option value="chol.com">chol.com</option>
-                                            <option value="hanmail.net">hanmail.net</option>
-                                            <option value="empal.com">empal.com</option>
-                                            <option value="freechal.com">freechal.com</option>
-                                            <option value="hanafos.com">hanafos.com</option>
-                                            <option value="hanmail.net">hanmail.net</option>
-                                            <option value="hanmir.com">hanmir.com</option>
-                                            <option value="hotmail.com">hotmail.com</option>
-                                            <option value="korea.com">korea.com</option>
-                                            <option value="nate.com">nate.com</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                        </select>
-                                        <div class="newSelect">직접입력</div>
-                                    </div> -->
-                                    <!-- 에러 메시지 -->
-                                    <p class="error" id="errorEmail" style="display: none;"></p>
                                 </div>
                             </div>
                                 <!-- 이메일로 찾기 확인 버튼 -->
                                 <div class="btnArea">
-                                    <button id="idEmailSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
+                                    <button type="submit" id="idEmailSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
                                 </div> 
                             </div>
                         </li>   

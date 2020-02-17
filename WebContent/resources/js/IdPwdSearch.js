@@ -68,7 +68,7 @@ $(function() {
             $('#inputEmailClear').css('display','none');
             $('#inputEmail').val('').focus();
             $('#errorEmail').css('display','none');
-            alert("입력된 이메일 체크합니다.");
+            
         }
     });
 });
@@ -84,6 +84,6 @@ $(function() {
 //로그인 버튼 링크
 function openerLogin(){
     if (window.opener && !window.opener.closed) //부모창이 존재하고 닫혀있지 않을때
-    window.opener.location.href = "../Login.html"; // 부모창에서 이동할 주소
+    window.opener.location.href = "/6Days/login.jsp"; // 부모창에서 이동할 주소
     window.close();
 }
