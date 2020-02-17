@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.sixdays.userMember.model.vo.userMember" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,6 @@
     <head>
         <meta charset="UTF-8">
         <title>profile</title>
-        
 	<%@ include file="/views/common/header.jsp" %>
 	<%@ include file="/views/common/left-sidebar.jsp" %>
 	<%@ include file="/views/common/right-sidebar.jsp" %>
@@ -31,7 +31,11 @@
                 <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px;
                 height: 280px;" >
                 <div id="profileimgbox">
-                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+                <% if(m.getProimg() != null){ %>
+                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();">
+                <% }else{  %>
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/image2.gif" onclick="profileModalOpen();">
+                <%} %>
                 </div>
 
                     <div id="profilename">
@@ -259,7 +263,7 @@
                 <p onclick="comentsetopen();">코멘트 변경</p><hr>
                 <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
                 <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
-                <form id="proImgDeleteForm" name=proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
+                <form id="proImgDeleteForm" name="proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
                 <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr></form>
                 <p style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
                 <p onclick="profileModalClose();">닫기</p>
