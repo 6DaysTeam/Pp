@@ -129,6 +129,26 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		
 		return m;
 	}
+	
+	/**
+	 * 작성자 : 박주완
+	 * 작성일 : 2020-02-17
+	 * 내용 : 비밀번호 찾기 서비스 
+	 * @param AuthenticationKey 
+	 */
+	public int userPwdSearch(String eamil, String AuthenticationKey) {
+		con = getConnection();
+		userMemberDao dao = new userMemberDao();
+		int result = dao.userPwdSearch(con, eamil, AuthenticationKey);
+		System.out.println(result);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+	
+		return result;
+	}
 
 
 	

@@ -42,7 +42,8 @@
                 </div>
             <div class="idsearchWrap">        
             <div class="resultBox">
-                <h4>비밀번호 찾기 결과</h4>
+                <h4>  비밀번호 찾기 결과</h4>
+          
             <ul>
                 <li>
                     <!-- 찾은 비밀번호 결과 보여주기 -->
@@ -50,32 +51,22 @@
                         <!-- 전체확인 리스트를 위한 라디오 버튼 -> 클릭시 전체확인 allResult 보여줌-->
                         <input type="radio" name="idlist" id="radioId" value="">
                         <!-- 찾은 비밀번호 -->
-                        <label for="id">tes****</label>
+                        <label for="id">인증하신 메일로</label><br>
+                        <label for="id"> 임시비밀번호가 발송되었습니다.</label>
                     </div>
                     <!-- 가입일 -->
-                    <div class="date">2020-01-14 가입</div>
-                </li>
+                    <div class="date">가입일 : 2020-01-14</div>
+                </li>                
             </ul>
-            <span class="notiText">개인정보 보호를 위해 비밀번호 뒷자리를 ***로 표시합니다.</span>
+                   
+            <span class="notiText">  로그인 후 반드시 비밀번호를 변경해주시기 바랍니다.</span>
             <!-- 로그인 버튼 -> 클릭시 로그인 화면으로 이동 -->
             <div class="btnArea">
                 <button type="button" class="btnRed" id="btnRed" onclick="openerLogin();">로그인</button>
             </div>
-        </div>
-        <!-- 라디오버튼 클릭시 펼쳐짐 -->    
-        <div class="allResult">
-                <h4>비밀번호 전체 확인하기</h4>
-                <ul>
+        </div>   
+         <hr>     
 
-                <li>
-                    <span>등록된 이메일로 확인</span>
-                    <p class="myinfo">
-                        tes******@test.com
-                        <button type="button" onclick="location.href='PwdEmailSend.html'">비밀번호 발송</button>
-                    </p>
-                </li>
-            </ul>
-                <span class="blNotiText">* 회원정보 상에 등록되어있는 이메일로 전체 비밀번호 정보가 발송됩니다.</span>
             </div>
         </div>
     </div>

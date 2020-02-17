@@ -70,7 +70,7 @@
                     <div class="date">가입일 : <%=m.getEnrolldate() %></div>
                 </li>
             </ul>
-            <span class="notiText">개인정보 보호를 위해 아이디 뒷자리를 ***로 표시합니다.</span>
+            <span class="notiText">개인정보 보호를 위해 아이디 일부를 **로 표시합니다.</span>
             <!-- 로그인 버튼 -> 클릭시 로그인 화면으로 이동 -->
             <div class="btnArea">
                 <button type="button" class="btnRed" id="btnRed" onclick="openerLogin();">로그인</button>

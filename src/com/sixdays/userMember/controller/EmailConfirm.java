@@ -91,7 +91,7 @@ public class EmailConfirm extends HttpServlet {
             }
         }
         String AuthenticationKey = temp.toString();
-        System.out.println(AuthenticationKey);
+        System.out.println("인증번호 값 " + AuthenticationKey);
         
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             protected javax.mail.PasswordAuthentication getPasswordAuthentication() {

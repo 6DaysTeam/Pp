@@ -5,16 +5,16 @@
    * 수정일 : 2020.02.10
 */
 
-$(function() {
-    //초기 상태 설정
-    $('.inputEnter').slideUp();
-
-    $('.title').click(function() {
-
-        $('.typeList').attr('class','typeList current');
-        
-        $('.inputEnter').slideToggle(1000,function() {
-            //alert('슬라이드 토글 확인');
-        });
-    })
-});
+//$(function() {
+//    //초기 상태 설정
+//    $('.inputEnter').slideUp();
+//
+//    $('.title').click(function() {
+//
+//        $('.typeList').attr('class','typeList current');
+//        
+//        $('.inputEnter').slideToggle(1000,function() {
+//            //alert('슬라이드 토글 확인');
+//        });
+//    })
+//});

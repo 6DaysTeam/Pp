@@ -267,7 +267,7 @@ public class userMemberDao {
 	/**
 	 * 작성자  : 박주완
 	 * 작성일 : 2020. 2. 17.
-	 * 내용 : 아이디,비밀번호찾기
+	 * 내용 : 아이디 찾기
 	 */
 	public userMember userSearch(Connection con,String phone,String email) {
 		PreparedStatement pstmt= null;
@@ -297,6 +297,37 @@ public class userMemberDao {
 		
 		return m;
 	}
+	
+	/**
+	 * 작성자  : 박주완
+	 * 작성일 : 2020. 2. 17.
+	 * 내용 : 비밀번호찾기 임시비밀번호 발급 후 DB업데이트
+	 * @param authenticationKey 
+	 */
+	public int userPwdSearch(Connection con, String email, String authenticationKey) {
+		PreparedStatement pstmt= null;
+		userMember m = null;
+		int result = 0;
+		try {
+			String sql = prop.getProperty("searchPwd");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, authenticationKey);
+			pstmt.setString(2, email);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
 	/**
 	 * 작성자  : 신지영
 	 * 작성일 : 2020. 2. 16.
@@ -361,4 +392,6 @@ public class userMemberDao {
 		
 		return result;
 	}
+
+
 }
