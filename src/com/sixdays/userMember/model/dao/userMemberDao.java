@@ -329,4 +329,36 @@ public class userMemberDao {
 		
 		return result;
 	}
+
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 17.
+	  * 프로필 배경 사진 삭제 변경
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public int deleteProImg(Connection con, userMember m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("deleteProImg");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			//pstmt.setString(1, m.getProback());
+			pstmt.setString(1, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
