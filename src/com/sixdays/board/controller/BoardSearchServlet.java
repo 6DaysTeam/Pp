@@ -57,7 +57,8 @@ public class BoardSearchServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		int listCount = bs.getListSubCount(keyword);
+		int listCount = bs.getListSubCount(category, keyword);
+		
 		
 		System.out.println("listcount :" + listCount);
 		
