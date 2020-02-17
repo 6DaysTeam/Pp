@@ -112,6 +112,27 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		return result;
 	}
 
+	/**
+	 * 작성자 : 박주완
+	 * 작성일 : 2020-02-17
+	 * 내용 : 아이디 찾기 서비스
+	 */
+	public userMember userSearch(String phone, String email) {
+		con = getConnection();
+		userMemberDao dao = new userMemberDao();
+		userMember m = dao.userSearch(con, phone, email);
+		System.out.println("서비스  m: " + m);
+
+		
+		close(con);
+		System.out.println("Member : "+ m);
+		
+		return m;
+	}
+
+
+	
+
 
 
 }

@@ -261,4 +261,38 @@ public class userMemberDao {
 		return result;
 	
 	}
+	
+	
+	/**
+	 * 작성자  : 박주완
+	 * 작성일 : 2020. 2. 17.
+	 * 내용 : 아이디,비밀번호찾기
+	 */
+	public userMember userSearch(Connection con,String phone,String email) {
+		PreparedStatement pstmt= null;
+		ResultSet rset = null;
+		userMember m = null;
+		
+		try {
+			String sql = prop.getProperty("searchIdPHONE");
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			pstmt.setString(2, email);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+					m = new userMember();
+					m.setUserId(rset.getString("userId"));
+					System.out.println("userId : "+ m);
+			}
+			
+			
+		} catch (Exception e) {
+			
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return m;
+	}
 }

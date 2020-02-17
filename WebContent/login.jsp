@@ -16,7 +16,7 @@
     <script language="javascript" type="text/javascript">  
         // 로그인&비밀번호 찾기 popup띄우기
         var popupX = (window.screen.width / 2) - (500 / 2); 
-        var popupY= (window.screen.height / 2) - (600 / 2);  
+        var popupY= (window.screen.height / 2) - (600 / 2);    
         function winOpenPwd(url){
             window.open(url, '',
             'width=500, height=600,  left='+ popupX + ', top='+ popupY,

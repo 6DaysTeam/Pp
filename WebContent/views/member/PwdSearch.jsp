@@ -59,7 +59,7 @@
                             </div>
                             <!-- 휴대폰 번호로 찾기 확인 버튼 -->
                             <div class="btnArea">
-                                <button type="submit" id="idPhoneSearch" class="btnRed" onclick="location.href='PwdSearchOk.html'">확인</button>
+                                <button type="submit" id="idPhoneSearch" class="btnRed" onclick="location.href='PwdSearchOK.jsp'">확인</button>
                             </div>
                         </div>
                     </li>

@@ -20,13 +20,13 @@
 
    <body>
 
-<!-- 작성자 : 국영미
+<!-- 작성자 : 박주완
    * 작성일 : 2020.01.14
    * 내용 : 아이디 찾기
    * 수정일 : 
 -->
 <!-- 아이디 찾기 전체 div-->
-<form>
+<form id="userSearch" action="${pageContext.request.contextPath}/search.me" >
 <div id="idContents" class="center">
     <!-- <form action="" method="POST" onsubmit="return validate();"> -->
         <div id="searchWrap">
@@ -53,7 +53,7 @@
                                 <div class="styleInut">
                                     <!-- 휴대폰 번호 입력 받기 inputBox -->
                                     <input id="inputPhone" name="inputPh" type="text" class="iInput"
-                                           placeholder="휴대폰번호 (-없이 입력)" maxlength="13">
+                                           placeholder="휴대폰번호 " maxlength="13">
                                         <!-- inputBox에 입력받은 값 리셋 버튼 -->
                                         <span id="inputPhoneClear" class="delBtn" style="display: none;"></span>
                                         <!-- 에러 메세지
@@ -62,7 +62,7 @@
                             </div>
                             <!-- 휴대폰 번호로 찾기 확인 버튼 -->
                             <div class="btnArea">
-                                <button type="submit" id="idPhoneSearch" class="btnRed" onclick="location.href='IdSearchOk.html'">확인</button>
+                                <button type="submit" id="idPhoneSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
                             </div>
                         </div>
                     </li>
@@ -104,7 +104,7 @@
                             </div>
                                 <!-- 이메일로 찾기 확인 버튼 -->
                                 <div class="btnArea">
-                                    <button id="idEmailSearch" class="btnRed">확인</button>
+                                    <button id="idEmailSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
                                 </div> 
                             </div>
                         </li>   
