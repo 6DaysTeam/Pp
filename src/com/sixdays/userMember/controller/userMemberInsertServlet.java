@@ -39,7 +39,7 @@ public class userMemberInsertServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");  
 		String userName = request.getParameter("userName");
-		String email = request.getParameter("email");
+		String email = request.getParameter("email1");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String comment = request.getParameter("comment");
