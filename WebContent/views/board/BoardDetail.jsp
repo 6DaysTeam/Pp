@@ -1,15 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.sixdays.board.model.vo.*, java.util.*" %>
 <%
-	Board b = (Board)request.getAttribute("board");
+   Board b = (Board)request.getAttribute("board");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
+   <link rel="stylesheet" href ="/6Days/resources/css/boardWrite.css">
+    <script src="/6Days/resources/js/ckeditor/ckeditor.js"></script>
+    <script src="/6Days/resources/js/ckeditor/readonly.js"></script>
     <style>
+    #cke_1_bottom {
+    display:none;
+    }
+    
+    #cke_1_top{
+    display:none;
+    
+    }
     body{
        font-family: 'Jua', sans-serif;
 
@@ -35,7 +45,7 @@
 <%@ include file="../common/left-sidebar.jsp" %>
 <%@ include file="../common/right-sidebar.jsp" %>
 
-	<div id ="boardArea" style="background:white;">
+   <div id ="boardArea" style="background:white;">
       <label id="board-title">공지사항 내용</label>
             <input type="reset" class="board-button" onclick="location.href='selectList.bo'" value="뒤로" >
       <% if(m.getUserId().equals("admin")) {%>
@@ -61,8 +71,8 @@
                 
                 <td class="board-type" style="width: 63px;">작성일</td>
                 <td class="board-value" style="width:265px;">
-               	<%= b.getBdate() %></td>
-               	
+                  <%= b.getBdate() %></td>
+                  
               </tr>
               <tr>
                 <td class="board-type" style="border-bottom: 1px solid whitesmoke;">첨부파일</td>
@@ -70,17 +80,30 @@
                 <td class="board-value" colspan="3" style="border-bottom: 1px solid whitesmoke;">
               <% if(b.getBoardfile() != null && b.getBoardfile().length() > 0) { %>
                 <a href="/6Days/bfdown.bo?path=<%=b.getBoardfile() %>"><%=b.getBoardfile() %> 
-							</a>
+                     </a>
               <% } %>
                 </td>
               </tr>
-            
+             
               <tr style="height: 300px;">
                 <td class="board-type" style="margin-left: 10px; border-radius: 10px; font-size : 25px !important">내용</td>
-                <td colspan="3" style="float:left; border-style : none; font-size : 16px;">
-              	<%= b.getBcontent() %></td>            
-              </table>
+          <td colspan='3'>
+             <textarea id="ckeditor" name="content" style="float:left;"><%= b.getBcontent() %></textarea>
+             <%-- <div style="overflow-y:auto;  height:300px; width:663px"><%= b.getBcontent() %></div> --%>
+          </td>
           </div>
         </div>
-	</body>
+        
+         <script>
+           CKEDITOR.replace('ckeditor'
+                , {height: 300,
+                readOnly:true
+                
+
+                
+                 }
+                );
+
+        </script>
+   </body>
 </html>

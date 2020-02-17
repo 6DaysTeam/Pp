@@ -228,7 +228,7 @@ String result = request.getParameter("result");
    });
     
    function insertMember(){
-		
+      
       
       if(idCheck == '1'&& emailck.value =='1'){
          alert("회원가입이 완료되었습니다.");
@@ -240,12 +240,12 @@ String result = request.getParameter("result");
          return false;
          
       }else if(emailck.value != '1'){
-    	  alert("이메일 인증을 확인해주세요.");
-    	  
-    	  return false;
+         alert("이메일 인증을 확인해주세요.");
+         
+         return false;
       }else {
-    	  alert("확인");
-    	  
+         alert("확인");
+         
       }      
             
    }
@@ -295,21 +295,21 @@ String result = request.getParameter("result");
 //           var url = '/'+ document.getElementById('email1').value;
          var url = '/6Days/econfirm.me?email1='+ document.getElementById('email1').value;
          
-         w = 500; //팝업창의 너비
-         h = 400; //팝업창의 높이
+         w = 300; //팝업창의 너비
+         h = 220; //팝업창의 높이
          //중앙위치 구해오기
          LeftPosition=(screen.width-w)/2;
          TopPosition=(screen.height-h)/2; 
-         
+          
                      
-         window.open(url,'이메일인증',"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
+         window.open(url,'이메일인증',"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+',status=no,location=no');
 
         
 //           location.href="/6Days/mInsert.me";
            
         }
         </script>
-        
+         
 <!-- 만약 인증번호를 받지않게 된다면 가입완료 안되게  -->
         <script>
         
