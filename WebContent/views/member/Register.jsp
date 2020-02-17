@@ -270,7 +270,7 @@ String result = request.getParameter("result");
     </script>
     
     <script>
-        $('#auth').keydown(function(event) { //비밀번호 체크
+        $('#auth').keydown(function(event) { //전화번호 체크
         var key = event.charCode || event.keyCode || 0;
         $text = $(this);
         if (key !== 8 && key !== 9) {

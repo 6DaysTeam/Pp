@@ -45,7 +45,6 @@ public class BoardDao {
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
-			
 			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<>();
@@ -72,7 +71,15 @@ public class BoardDao {
 		}
 		return list;
 	}
+	
+	
 
+	/**
+	 * 공지사항 추가
+	 * @param con
+	 * @param b
+	 * @return
+	 */
 	public int insertBoard(Connection con, Board b) {
 		int result = 0;
 		
@@ -99,6 +106,12 @@ public class BoardDao {
 		return result;
 	}
 
+	/** 
+	 * 공지사항 세부내용
+	 * @param con
+	 * @param bno
+	 * @return
+	 */
 	public Board selectOne(Connection con, int bno) {
 		Board b = null;
 		
@@ -136,8 +149,12 @@ public class BoardDao {
 			return b;
 		}
 
-	
-	
+	/**
+	 * 공지사항 조회수
+	 * @param con
+	 * @param bno
+	 * @return
+	 */
 	public int updateReadCount(Connection con, int bno) {
 		int result = 0;
 		
@@ -159,6 +176,11 @@ public class BoardDao {
 		return result;
 	}
 
+	/** 공지사항 수정
+	 * @param con
+	 * @param b
+	 * @return
+	 */
 	public int updateBoard(Connection con, Board b) {
 		int result = 0;
 		
@@ -184,6 +206,12 @@ public class BoardDao {
 		return result;
 	}
 
+	/**
+	 * 공지수항 삭제
+	 * @param con
+	 * @param bno
+	 * @return
+	 */
 	public int deleteBoard(Connection con, int bno) {
 		int result = 0;
 		
@@ -205,6 +233,11 @@ public class BoardDao {
 		return result;
 	}
 
+	/**
+	 * 공지사항 카운트
+	 * @param con
+	 * @return
+	 */
 	public int getListCount(Connection con) {
 		int listCount = 0;
 		Statement stmt = null;
@@ -227,9 +260,96 @@ public class BoardDao {
 			close(stmt);
 		}
 		return listCount;
-	
+	}
+
+
+
+
+	/**
+	 * 공지사항 검색
+	 * @param con
+	 * @param category
+	 * @param keyword
+	 * @return
+	 */
+	public ArrayList<Board> searchBoard(Connection con, String category, String keyword, int currentPage, int limit) {
+		ArrayList<Board> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch(category) {
+		case "title" :
+			sql = prop.getProperty("searchTitleBoard");
+			break;
+		case "writer" :
+			sql = prop.getProperty("searchWriterBoard");
+			break;
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage-1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Board>();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				
+				b.setBno(rset.getInt("bno"));
+				b.setBtitle(rset.getString("btitle"));
+				b.setBcontent(rset.getString("bcontent"));
+				b.setBwriter(rset.getString("bwriter"));
+				b.setBcount(rset.getInt("bcount"));
+				b.setBdate(rset.getDate("bdate"));
+				System.out.println(b);
+				list.add(b);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int getListSubCount(Connection con, String keyword) {
+	      int listCount = 0;
+	      
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("listTitleCount");
+	      
+	      try {
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setString(1, keyword);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         if(rset.next()) {
+	            listCount = rset.getInt(1);
+	         }
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      return listCount;
 	}
 
 	
-
+	
 }

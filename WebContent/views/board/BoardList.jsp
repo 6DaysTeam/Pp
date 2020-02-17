@@ -1,3 +1,4 @@
+<%@page import="com.sixdays.board.model.service.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sixdays.board.model.vo.*"%>
     
@@ -9,6 +10,13 @@
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
+		
+		BoardService bs = new BoardService();
+		int Rnumber = bs.getListCount();
+		
+		String category = (String)request.getAttribute("category");
+		String keyword = (String)request.getAttribute("keyword");
+		System.out.println(Rnumber);
     %>
 <!DOCTYPE html>
 <html>
@@ -68,7 +76,7 @@
         %>
 		<tr>
         <input type="hidden" value="<%= b.getBno() %>">
-        <td><%= b.getRnum() %></td>
+        <td><%= Rnumber - b.getRnum() + 1 %></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
         <td><%= b.getBdate() %></td>
@@ -78,46 +86,63 @@
         </tbody>
     </table>
 
-    <hr/>
-
-    <% if(m.getUserId().equals("admin")){ %>
-    <a class="btn btn-default pull-right" 
-        onclick="location.href='/6Days/views/board/BoardInsertForm.jsp'">글쓰기</a>
-    <% } %>
-    
-    <%-- 페이지 처리 --%>
-		<div class="text-center" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
-			<%  if(currentPage <= 1){  %>
-			<button disabled><</button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
-			<%  } %>
-			
-			<% for(int p = startPage; p <= endPage; p++){
-					if(p == currentPage){	
-			%>
-				<button disabled><%= p %></button>
-			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= p %>'"><%= p %></button>
-			<%      } %>
-			<% } %>
-				
-			<%  if(currentPage >= maxPage){  %>
-			<button disabled>></button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
-			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
-			
-		</div> 
+		   <hr/>
 		
+		   <% if(m.getUserId().equals("admin")){ %>
+		   <a class="btn btn-default pull-right" 
+		       onclick="location.href='/6Days/views/board/BoardInsertForm.jsp'">글쓰기</a>
+		   <% } %>
+    
+	    <%-- 페이지 처리 --%>
+			<div class="text-center" align="center">
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
+				<%  if(currentPage <= 1){  %>
+				<button disabled><</button>
+				<%  } else if(category==null&&keyword==null){ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
+				<%  } else{%>
+					<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%=currentPage - 1 %>&con=<%=category%>&keyword=<%=keyword%>'"><</button>
+				<%}%>
+				
+				<% for(int p = startPage; p <= endPage; p++){
+						if(p == currentPage){	
+				%>
+					<button disabled><%= p %></button>
+				<%      }else if(category == null && keyword == null){%>
+					<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= p %>'"><%= p %></button>
+				<%}else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= p %>&keyword=<%=keyword%>&con=<%=category%>'"><%=p %></button>				
+				<%      } %>
+				<% } %>
+					
+				<%  if(currentPage >= maxPage){ %>
+				<button disabled>></button>
+				<%  }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+				<%  } %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
+				
+			</div>
 
-    <input type="text" placeholder="검색할 내용을 입력하세요" style="width:300px; margin-left:-80px;">
-    <a class="btn btn-default" style="font-size: 18px;">검색</a>
-</div>
+			<div class="searchArea" align="center" style="margin-top: 10px;
+    padding-left: 75px;">
+				<select id="searchCondition" name="searchCondition" style="display: inline-block;
+    height: 25px;">
+					<option value="">---</option>
+					<option value="writer">작성자</option>
+					<option value="title">제목</option>
+				</select>
 
-<script>  
+    	<input type="text" id="keyword" placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
+    	
+    	<a class="btn btn-defalut" 
+    	onclick="location.href='<%=request.getContextPath()%>/bSearch.bo?con='+$('#searchCondition').val()+'&keyword='+$('#keyword').val()" 
+    	style="cursor: pointer; display: inline-block; font-size: 18px; margin: 5px 0 0 5px;">검색 </a>
+		</div>
+
+	</div>
+	
+	<script>  
 		$(function(){
 			
 			$("#listArea td").mouseenter(function(){
@@ -130,6 +155,7 @@
 				location.href="<%=request.getContextPath()%>/bSelectOne.bo?bno=" + bno;
 			});
 		});
+		
 </script>
 
 </body>
