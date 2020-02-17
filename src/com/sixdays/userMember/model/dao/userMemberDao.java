@@ -49,32 +49,32 @@ public class userMemberDao {
 	 */
 	public int insertMember(Connection con, userMember m) {
 		// 결과 확인을 위한 변수 result 생성
-				int result = 0;
-				
-				PreparedStatement pstmt = null;
-				
-				try {
-					String sql = prop.getProperty("insertMember");
-					
-					pstmt = con.prepareStatement(sql);
-					
-					pstmt.setString(1, m.getUserId());
-					pstmt.setString(2, m.getUserpwd());
-					pstmt.setString(3, m.getUserName());
-					pstmt.setString(4, m.getEmail());
-					pstmt.setString(5, m.getPhone());
-					pstmt.setString(6, m.getGender());
-					pstmt.setString(7, m.getMycomment());
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("insertMember");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserpwd());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getPhone());
+			pstmt.setString(6, m.getGender());
+			pstmt.setString(7, m.getMycomment());
 
-					
-					result = pstmt.executeUpdate();
-					
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}finally {
-					close(pstmt);
-				}
-				return result;
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 
@@ -111,6 +111,8 @@ public class userMemberDao {
 				result.setPhone(rset.getString("PHONE"));
 				result.setGender(rset.getString("GENDER"));
 				result.setMycomment(rset.getString("MYCOMMENT"));
+				result.setProimg(rset.getString("PROIMG"));
+				result.setProback(rset.getString("PROBACK"));
 			}	
 		}catch(Exception e) {
 			//e.printStackTrace();
@@ -230,18 +232,17 @@ public class userMemberDao {
 
 	/**
 	 * 작성자  : 신지영
-	 * 작성일 : 2020. 2. 13.
+	 * 작성일 : 2020. 2. 16.
 	 * 프로필 사진 변경
 	 * @param con
 	 * @param m
 	 * @return
 	 */
-	public int updateProImg(Connection con, userMember m) {
+	public int updateProImg(Connection con, userMember m) throws MemberException{
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		try {
-			
 			String sql = prop.getProperty("updateProImg");
 			
 			pstmt = con.prepareStatement(sql);
@@ -260,5 +261,38 @@ public class userMemberDao {
 		
 		return result;
 	
+	}
+
+	/**
+	 * 작성자  : 신지영
+	 * 작성일 : 2020. 2. 16.
+	  * 프로필 배경 사진 변경
+	 * @param con
+	 * @param m
+	 * @return
+	 * @throws MemberException
+	 */
+	public int updateProBack(Connection con, userMember m) throws MemberException{
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("updateProBack");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getProback());
+			pstmt.setString(2, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }

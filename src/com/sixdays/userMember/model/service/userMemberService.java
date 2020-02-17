@@ -99,7 +99,7 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		
 	}
 
-	public int updateProImg(userMember m){
+	public int updateProImg(userMember m) throws MemberException{
 		con = getConnection();
 		
 		int result = mDao.updateProImg(con,m);
@@ -111,7 +111,18 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		
 		return result;
 	}
-
-
+	
+	public int updateProBack(userMember m) throws MemberException{
+		con = getConnection();
+		
+		int result = mDao.updateProBack(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 
 }

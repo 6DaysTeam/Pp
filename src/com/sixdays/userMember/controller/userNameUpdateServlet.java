@@ -37,7 +37,7 @@ public class userNameUpdateServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		try {
+		
 		userMember m = (userMember)session.getAttribute("member");
 		
 		m.setUserName(username);
@@ -45,7 +45,7 @@ public class userNameUpdateServlet extends HttpServlet {
 		System.out.println("변경한 회원 정보 확인 :" + m);
 		
 		userMemberService ms = new userMemberService();
-		System.out.println("체크");
+		try {
 			ms.nameUpdateMember(m);
 			System.out.println("회원 정보 수정 완료!");
 			
@@ -58,8 +58,6 @@ public class userNameUpdateServlet extends HttpServlet {
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 	}

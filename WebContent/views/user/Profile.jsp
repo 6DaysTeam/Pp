@@ -1,3 +1,6 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,9 +28,10 @@
     <div id="container">
         <div id="profile" class="profile">
             <div id="show-profile">
-                <!-- <img id="profilebackgound" src="../resources/icon/profilebackground.JPG"> -->
+                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px;
+                height: 280px;" >
                 <div id="profileimgbox">
-                    <img id="profileimg"src="<%=m.getProimg() %>" onclick="profileModalOpen();" >
+                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
                 </div>
 
                     <div id="profilename">
@@ -45,9 +49,7 @@
                         <label id="following" class="profile">팔로우</label>
                         <span>104</span><span>   </span><br>    
                     </div>
-
-
-
+                 </div>
             </div>
             <hr style="margin: 8px 0px 8px 0px; width: 850px;">
             
@@ -256,7 +258,7 @@
                 <p onclick="nameSetopen();">닉네임 변경</p><hr>
                 <p onclick="comentsetopen();">코멘트 변경</p><hr>
                 <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
-                <p style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
+                <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
                 <p style="color: red;">현재 프로필 사진 삭제</p><hr>
                 <p style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
                 <p onclick="profileModalClose();">닫기</p>
@@ -292,16 +294,30 @@
 <!--    작성자 : 신지영
         작성일 : 2020-02-13
         내용 : 프로필사진 변경 모달 화면-->
-    <form id="proImgupdateForm" action="/6Days/proimage.me" method="post">
+    <form id="proImgupdateForm" action="/6Days/proimage.me" method="post"  enctype="multipart/form-data">
 		<div id="proImgModal">
 			<div id="proImgSet">
 				<p>프로필 사진</p>
 				<input type="file" id="proimgarea" name="proimg"><br><br>
-				<p onclick="profileInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-				<p onclick="profileSetclose();">닫기</p>
+				<p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+				<p onclick="proimgSetclose();">닫기</p>
 			</div>
 		</div>
     </form>
+    
+  <!--   <!--    작성자 : 신지영
+        작성일 : 2020-02-16
+        내용 : 프로필사진 변경 모달 화면-->
+    <form id="proBackupdateForm" action="/6Days/proback.me" method="post"  enctype="multipart/form-data">
+		<div id="proBackModal">
+			<div id="proBackSet">
+				<p>프로필 사진</p>
+				<input type="file" id="probackarea" name="proback"><br><br>
+				<p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+				<p onclick="probackSetclose();">닫기</p>
+			</div>
+		</div>
+    </form> -->
     
     <script>
     function nameInput() {
@@ -313,9 +329,13 @@
     	document.getElementById("commentupdateForm").submit();
     }
     
-    function profileInput(){
+    function proimgInput(){
     	document.getElementById("proImgupdateForm").submit();
     }
+    function probackInput(){
+    	document.getElementById("proBackupdateForm").submit();
+    }
+    
     
     </script>
     

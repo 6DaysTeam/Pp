@@ -107,6 +107,19 @@
                 $("#proImgModal").show();
             }
 
-            function profileSetclose(){
+            function proimgSetclose(){
                 $('#proImgModal').css("display",'none');
+            }
+            
+            // <!--     작성자 : 신지영
+//          작성일 : 2020-02-16
+//          내용 : 프로필배경 사진 변경 함수-->
+            function proBackChange(){
+                var url = $(this).attr("src");
+                $("#proBackModal").attr("src",url);
+                $("#proBackModal").show();
+            }
+
+            function probackSetclose(){
+                $('#proBackModal').css("display",'none');
             }
