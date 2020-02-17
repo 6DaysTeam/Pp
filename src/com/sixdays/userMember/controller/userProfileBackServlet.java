@@ -1,9 +1,6 @@
 package com.sixdays.userMember.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,16 +17,16 @@ import com.sixdays.userMember.model.service.userMemberService;
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
- * Servlet implementation class userProfileImageSercvlet
+ * Servlet implementation class userProfileUpdateServlet
  */
-@WebServlet("/proimage.me")
-public class userProfileImageServlet extends HttpServlet {
+@WebServlet("/proback.me")
+public class userProfileBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public userProfileImageServlet() {
+    public userProfileBackServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +35,7 @@ public class userProfileImageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		int maxSize = 1024*1024*10;
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
@@ -46,32 +44,32 @@ public class userProfileImageServlet extends HttpServlet {
 		}
 		
 		String root = request.getServletContext().getRealPath("/");
-		System.out.println("root : " + root);
-
-		String savePath = root + "resources/proimgUploadFiles";
 		
+		String savePath = root + "resources/probackUploadFiles";
+
 		MultipartRequest mrequest = new MultipartRequest(
 										request, 
 										savePath, 
 										maxSize,	
 										"UTF-8",	
-										new DefaultFileRenamePolicy()			
+										new DefaultFileRenamePolicy()
+												
 				);
 		
-		String proimg = mrequest.getFilesystemName("proimg");
+		String proback = mrequest.getFilesystemName("proback");
 		
 		HttpSession session = request.getSession(false);
 		
 		
 		userMember m = (userMember)session.getAttribute("member");
 		
-		m.setProimg(proimg);
+		m.setProback(proback);
 		
 		System.out.println("변경한 회원 정보 확인 :" + m);
 		
 		userMemberService ms = new userMemberService();
 		try {
-			ms.updateProImg(m);
+			ms.updateProBack(m);
 			System.out.println("회원 정보 수정 완료!");
 			
 			response.sendRedirect("/6Days/views/user/Profile.jsp");
@@ -84,10 +82,6 @@ public class userProfileImageServlet extends HttpServlet {
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		
 		}
-		
-		
-	
-		
 	}
 
 	/**

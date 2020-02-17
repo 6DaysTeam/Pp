@@ -34,9 +34,9 @@ public class userCommentUpdateServlet extends HttpServlet {
 		// 회원 정보
 		String mycomment = request.getParameter("mycomment");
 		
-HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);
 		
-		try {
+	
 		userMember m = (userMember)session.getAttribute("member");
 		
 		m.setMycomment(mycomment);
@@ -44,7 +44,8 @@ HttpSession session = request.getSession(false);
 		System.out.println("변경한 회원 정보 확인 :" + m);
 		
 		userMemberService ms = new userMemberService();
-		System.out.println("체크");
+		
+		try {
 			ms.commentUpdateMember(m);
 			System.out.println("회원 정보 수정 완료!");
 			
@@ -57,9 +58,9 @@ HttpSession session = request.getSession(false);
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
+		
+		
 	}
 
 	/**
