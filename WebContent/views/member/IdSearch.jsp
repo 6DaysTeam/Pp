@@ -63,7 +63,7 @@
                             <!-- 휴대폰 번호로 찾기 확인 버튼 -->
                             <div class="btnArea">
                             <!-- type="submit" -->
-                                <button  id="idPhoneSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
+                                <button type="submit"  id="idPhoneSearch" class="btnRed" onclick="location.href='search.me'">확인</button>
                             </div>
                         </div>
                     </li>
@@ -75,8 +75,7 @@
                             <div class="inputBox">
                                 <div class="styleInut">
                                     <!-- 이메일 입력 받기 inputBox -->
-                                    <input name="inputEmail" id="inputEmail" type="text"
-                                        class="eInput" placeholder="이메일">
+                                    <input id="inputEmail" name="inputEmail" type="text" class="eInput" placeholder="이메일">
                                 </div>
                             </div>
                                 <!-- 이메일로 찾기 확인 버튼 -->

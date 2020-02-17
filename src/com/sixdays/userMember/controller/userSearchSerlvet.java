@@ -15,9 +15,11 @@ import com.sixdays.userMember.model.dao.userMemberDao;
 import com.sixdays.userMember.model.service.userMemberService;
 import com.sixdays.userMember.model.vo.userMember;
 
-/**
- * Servlet implementation class userSearchSerlvet
- */
+//<!-- 작성자 : 박주완
+//* 작성일 : 2020.01.14
+//* 내용 : 아이디 찾기 결과
+//* 수정일 : 
+//-->
 @WebServlet("/search.me")
 public class userSearchSerlvet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -54,22 +54,22 @@ $(function() {
         //Email 정규식 - 이메일 유효성 검사
         var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]?)*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]?)*\.[a-zA-Z]{2,3}$/i;
 
-        if(!regExp.test($('#inputEmail').val())) {
-            $('#inputEmailClear').css('display','none');
-            $('#inputEmail').val('');
-            $('#errorEmail').html("이메일 형식에 어긋납니다").css('display','block');
-            $('#inputEmail').focus();
-        }else if($('#inputEmail').val() == null ||
-                 $('#inputEmail').val() == '' ||
-                 $('#inputEmail').attr('placeholer')) {
-                 $('#errorEmail').html("이메일을 입력해주세요.").css('display','block');
-                 $('#inputEmail').focus();
-        }else{
-            $('#inputEmailClear').css('display','none');
-            $('#inputEmail').val('').focus();
-            $('#errorEmail').css('display','none');
-            
-        }
+//        if(!regExp.test($('#inputEmail').val())) {
+//            $('#inputEmailClear').css('display','none');
+//            $('#inputEmail').val('');
+//            $('#errorEmail').html("이메일 형식에 어긋납니다").css('display','block');
+//            $('#inputEmail').focus();
+//        }else if($('#inputEmail').val() == null ||
+//                 $('#inputEmail').val() == '' ||
+//                 $('#inputEmail').attr('placeholer')) {
+//                 $('#errorEmail').html("이메일을 입력해주세요.").css('display','block');
+//                 $('#inputEmail').focus();
+//        }else{
+//            $('#inputEmailClear').css('display','none');
+//            $('#inputEmail').val('').focus();
+//           $('#errorEmail').css('display','none');
+//            
+//        }
     });
 });
 
@@ -87,3 +87,4 @@ function openerLogin(){
     window.opener.location.href = "/6Days/login.jsp"; // 부모창에서 이동할 주소
     window.close();
 }
+ 

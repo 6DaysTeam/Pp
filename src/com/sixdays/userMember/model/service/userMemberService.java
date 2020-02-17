@@ -122,7 +122,7 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		userMemberDao dao = new userMemberDao();
 		userMember m = dao.userSearch(con, phone, email);
 		System.out.println("서비스  m: " + m);
-
+		
 		
 		close(con);
 		System.out.println("Member : "+ m);

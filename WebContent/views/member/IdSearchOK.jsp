@@ -4,7 +4,16 @@
     
    <%
     userMember m =(userMember)request.getAttribute("member");
+    String id1 = m.getUserId();
+
+	StringBuilder id2 = new StringBuilder(id1);
+	id2.setCharAt(2, '*');
+	id2.setCharAt(3, '*');
+
+	System.out.println("보호된 유저 ID : "+ id2);
     
+		
+		
    %>
 
 <!DOCTYPE html>
@@ -55,10 +64,10 @@
                         <!-- 전체확인 리스트를 위한 라디오 버튼 -> 클릭시 전체확인 allResult 보여줌-->
                         <input type="radio" name="idlist" id="radioId" value="">
                         <!-- 찾은 아이디 -->
-                        <label for="id" ><%=m.getUserId()%></label>
+                        <label for="id"><%=id2%></label>
                     </div>
                     <!-- 가입일 -->
-                    <div class="date"></div>
+                    <div class="date">가입일 : <%=m.getEnrolldate() %></div>
                 </li>
             </ul>
             <span class="notiText">개인정보 보호를 위해 아이디 뒷자리를 ***로 표시합니다.</span>
@@ -71,5 +80,16 @@
     </div>
     </form>
 </div>
+
+<script>
+var result = document.getElementById('idsearch').value;
+
+
+window.open = function(){
+	
+var change_name = replaceAt(result, 1, '*');
+}
+
+</script>
 </body>
 </html>

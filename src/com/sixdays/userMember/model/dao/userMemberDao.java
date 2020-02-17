@@ -283,6 +283,7 @@ public class userMemberDao {
 			while(rset.next()) {
 					m = new userMember();
 					m.setUserId(rset.getString("userId"));
+					m.setEnrolldate(rset.getDate("enrolldate"));
 					System.out.println("userId : "+ m);
 			}
 			
