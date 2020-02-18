@@ -124,8 +124,20 @@
 
         </ul>
     </div> -->
-    <input type="text" placeholder="검색할 내용을 입력하세요" style="width:300px; margin-left:-80px;">
-    <a class="btn btn-default" style="font-size: 18px;">검색</a>
+    <div class="searchArea" align="center" style="margin-top: 10px;
+    padding-left: 75px;">
+				<select id="searchCondition" name="searchCondition" style="display: inline-block;
+    height: 25px;">
+					<option value="">---</option>
+					<option value="writer">작성자</option>
+					<option value="title">제목</option>
+				</select>
+    
+    <input type="text" id="keyword" placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
+    <a class="btn btn-defalut" 
+    	onclick="location.href='<%=request.getContextPath()%>/qSearch.qo?category='+$('#searchCondition').val()+'&keyword='+$('#keyword').val()" 
+    	style="cursor: pointer; display: inline-block; font-size: 18px; margin: 5px 0 0 5px;">검색 </a>
+	</div>
 </div>
 
 <script>  

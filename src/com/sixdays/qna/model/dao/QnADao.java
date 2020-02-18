@@ -230,4 +230,96 @@ public class QnADao {
 		return listCount;
 	}
 
+	public ArrayList<QnA> searchQnA(Connection con, String category, String keyword, int currentPage, int limit) {
+		ArrayList<QnA> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch(category) {
+		case "title" :
+			sql = prop.getProperty("searchTitleQnA");
+			break;
+		case "writer" :
+			sql = prop.getProperty("searchWriterQnA");
+			break;
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (currentPage-1) * limit + 1;
+			int endRow = startRow + limit - 1;
+			
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, endRow);
+			pstmt.setInt(3, startRow);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<QnA>();
+			
+			while(rset.next()) {
+				QnA q = new QnA();
+				
+				q.setRnum(rset.getInt("rnum"));
+				q.setQno(rset.getInt("qno"));
+				q.setQtype(rset.getString("qtype"));
+				q.setQtitle(rset.getString("qtitle"));
+				q.setQwriter(rset.getString("qwriter"));
+				q.setQdate(rset.getDate("qdate"));
+				q.setQcount(rset.getInt("qcount"));
+				q.setQcomment(rset.getInt("qcomment"));
+				
+				list.add(q);
+				System.out.println(q);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int getListSubCount(Connection con, String category, String keyword) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = null;
+		
+		switch(category) {
+		case "title" :
+			sql = prop.getProperty("listTitleCount");
+			break;
+		case "writer" :
+			sql = prop.getProperty("listWriterCount");
+			break;
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setString(1, keyword);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         if(rset.next()) {
+	            listCount = rset.getInt(1);
+	         }
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return listCount;
+	}
+
 }

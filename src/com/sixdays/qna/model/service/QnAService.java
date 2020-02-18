@@ -90,6 +90,29 @@ public class QnAService {
 		Connection con = getConnection();
 		int listCount = qDao.getListCount(con);
 		
+		close(con);
+		return listCount;
+	}
+
+	public ArrayList<QnA> searchQnA(String category, String keyword, int currentPage, int limit) {
+		Connection con = getConnection();
+		
+		ArrayList<QnA> list = null;
+		
+		if(category.length() > 0) {
+			list = qDao.searchQnA(con, category, keyword, currentPage, limit);
+		}
+		close(con);
+		return list;
+	}
+
+	public int getListSubCount(String category, String keyword) {
+		Connection con = getConnection();
+		
+		int listCount = qDao.getListSubCount(con, category, keyword);
+		
+		close(con);
+		
 		return listCount;
 	}
 }
