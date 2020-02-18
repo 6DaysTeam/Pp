@@ -33,6 +33,15 @@
     <link rel="stylesheet" href = "/6Days/resources/css/MainContact.css">
     <link rel="stylesheet" href = "/6Days/resources/css/Scrollbar.css">
     <link rel="stylesheet" href = "/6Days/resources/css/main-header.css">
+
+<style>
+	#titleImgArea,#contentImgArea1,#contentImgArea2,#contentImgArea3
+	,#contentImgArea4,#contentImgArea5{
+	vertical-align:middel;
+	cursor:pointer;
+	border:2px dashed darkgray;
+}
+</style>
 </head>
 
 <body>
@@ -43,7 +52,7 @@
     수정일 : 
 	-->
     <header>
-        <div id="top1" class="top">
+        <div id="top" class="top">
             <img id="logo" src="/6Days/resources/icon/logoletter.png" onclick="location.href='/6Days/main.jsp'">
 
 
@@ -67,58 +76,92 @@
    	 	내용 : 게시물 업로드
   	 	수정일 : 2020.02.10
 			-->
-		   <form>
-                <div id="Infmodal">
-                    <div id="Infcontent">
-                        <div id="Infmenu">
-                            <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
-                            <button id="Infclosebtn" onclick="Infclose();">X</button>
-                        </div>
-                        <hr>
-                        <div id="Infleft" style="overflow: auto;" >
-                                <input type="file" id='uploadFile' multiple='multiple'> <br/>
-                                <table class="table" style="width: 100%; height: 100%;">
-                                   <tr  v-for="item in fileList">
-                                    <td align="center"><img v-bind:src="item.url" style="height:480px; width:480px;"/></td>
-                                   </tr>
- 
-                        
-                                </table>
-								<!-- 
-                                <input type="file" id="uploadFile" multiple='multiple' onchange="changeValue(this)"/>
-                                <button type="button" id="btn-upload">
-                                    사진/동영상
-                                    <img src="/6Days/resources/icon/photo.png"style="width: 12%; height=12%;">
-                                </button> -->
-
-
-                                
-                            <!-- <div id="filebox" style="position: absolute; bottom: 10px; width: 30%; height: 8%;">
-                                    <img src="/6Days/resources/icon/photo.png"style="width: 12%; height=12%;">
-                                    <label for="file_upload">사진/동영상</label>
-                                    <input type="file" id="uploadFile" multiple='multiple'>
-                            </div>
-                                 -->
-                            
-                        </div>         
-
-
-                        <div id="Infright">
-                            <textarea id="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
-                            <textarea id="Infhashtag" placeholder="#태그"></textarea>
-                            <button id="Infupload" onclick="">업로드</button>
-                        </div>
-                        
-                        <div>
-                            
-                            
-                        </div>
-                        
-                    </div>
+   <form action="/6Days/pbInsert.bo" method="POST" enctype="multipart/form-data">
+       <div id="Infmodal">
+           <div id="Infcontent">
+               <div id="Infmenu">
+                   <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
+                   <button id="Infclosebtn" onclick="Infclose();">X</button>
+               </div>
+               <hr>
+               <div id="Infleft">
+               	<table align="center" style="width:100%; height:100%;">
+               		<tr>
+               			<td>
+               				<div id="titleImgArea" style="width:170px; height:180px;">
+               					<img id="titleImg">
+               				</div>
+               			</td>
+               			<td>
+               				<div id="contentImgArea1" style=" width:170px; height:180px;">
+               					<img id="contentImg1">
+               				</div>
+               			</td>
+               			<td>
+               				<div id="contentImgArea2" style=" width:170px; height:180px;">
+               					<img id="contentImg2">
+               				</div>
+               			</td>
+               		</tr>
+               		
+               		
+               		<tr>
+               			<td>
+               				<div id="contentImgArea3" style=" width:170px; height:180px;">
+               					<img id="contentImg3">
+               				</div>
+               			</td>
+               			<td>
+               				<div id="contentImgArea4" style=" width:170px; height:180px;">
+               					<img id="contentImg4">
+               				</div>
+               			</td>
+               			<td>
+               				<div id="contentImgArea5" style=" width:170px; height:180px; !important">
+               					<img id="contentImg5">
+               				</div>
+               			</td>
+               		</tr>
+               	</table>
+               	<div class="fileArea" id="fileArea">
+		      		<input type="file" id="thumbnailImg1"
+		      				name="thumbnailImg1" onchange="loadImg(this, 1);" />
+		      				
+		      		<input type="file" id="thumbnailImg2"
+		      				name="thumbnailImg2" onchange="loadImg(this, 2);" />
+		      				
+		      		<input type="file" id="thumbnailImg3"
+		      				name="thumbnailImg3" onchange="loadImg(this, 3);" />
+		      				
+		      		<input type="file" id="thumbnailImg4"
+		      				name="thumbnailImg4" onchange="loadImg(this, 4);" />
+		      				
+		      		<input type="file" id="thumbnailImg5"
+		      				name="thumbnailImg5" onchange="loadImg(this, 5);" />
+		      				
+		      		<input type="file" id="thumbnailImg6"
+		      				name="thumbnailImg6" onchange="loadImg(this, 6);" />
+		      	</div>
+               	
+               	
+               </div>      
+                      							
+               <div id="Infright">
+                   <textarea id="Infcomment" name="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
+                   <textarea id="Infhashtag" name="Infhashtag" placeholder="#태그"></textarea>
+                   <button id="Infupload" name="Infupload" onclick="">업로드</button>
                 </div>
-            </form>
+                
+                <div>
+                    
+                    
+                </div>
+                
+            </div>
         </div>
-    </header>
+    </form>
+</div>
+  </header>
 </body>
 <script>
 $('#Infadd')
@@ -191,7 +234,7 @@ function uploadFiles(e) {
 		
 	}
 	
-	   var uploadApp = new Vue({
+	   /* var uploadApp = new Vue({
            el: '#Infleft',
            data:{
                fileList:[]
@@ -214,8 +257,64 @@ function uploadFiles(e) {
                }
                fileReader.readAsDataURL(item);
            });
-       });
+       }); */
 
+</script>
+<script>
+//사진 게시판 미리보기 기능 지원 스크립트
+$(function(){
+	$('#fileArea').hide();
+	
+	$('#titleImgArea').click(() => {
+		$('#thumbnailImg1').click();
+	});
+	
+	$('#contentImgArea1').click(() => {
+		$('#thumbnailImg2').click();
+	});
+	
+	$('#contentImgArea2').click(() => {
+		$('#thumbnailImg3').click();
+	});
 
+	$('#contentImgArea3').click(() => {
+		$('#thumbnailImg4').click();
+	});
+	
+	$('#contentImgArea4').click(() => {
+		$('#thumbnailImg5').click();
+	});
+	
+	$('#contentImgArea5').click(() => {
+		$('#thumbnailImg6').click();
+	});
+});
+
+function loadImg(value, num){
+	
+	if(value.files && value.files[0])  {
+		
+		var reader = new FileReader();
+		
+		reader.onload = function(e){
+			
+			switch(num) {
+			case 1 : $('#titleImg').attr('src', e.target.result);
+				break;
+			case 2 : $('#contentImg1').attr('src', e.target.result);
+				break;
+			case 3 : $('#contentImg2').attr('src', e.target.result);
+				break;
+			case 4 : $('#contentImg3').attr('src', e.target.result);
+				break;
+			case 5 : $('#contentImg4').attr('src', e.target.result);
+				break;
+			case 6 : $('#contentImg5').attr('src', e.target.result);
+				break;
+			}
+		}
+		reader.readAsDataURL(value.files[0]);
+	}
+}
 </script>
 </html>
