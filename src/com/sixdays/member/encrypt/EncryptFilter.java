@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class EncryptFilter
  */
-@WebFilter({ "/login.me", "/mInsert.me", "/mUpdate.me", "/PwdSearch.me" })
+@WebFilter({ "/login.me", "/mInsert.me", "/mUpdate.me", "/PwdSearch.me","/change.me" })
 public class EncryptFilter implements Filter {
 
     /**

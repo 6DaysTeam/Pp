@@ -198,4 +198,46 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		return result;
 		
 	}
+
+
+	/**
+	 * 작성자 : 윤석훈
+	 * 작성일 : 2020-02-18
+	 * 내용 : 개인정보 변경 
+	 * @param changeMember 
+	 */
+	public int changeMember(userMember m) {
+		
+		con = getConnection();
+		
+		int result = mDao.changeMember(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
+	/**
+	 * 작성자 : 윤석훈
+	 * 작성일 : 2020-02-18
+	 * 내용 : 비밀번호 일치여부확인 
+	 * @param pwdchk 
+	 */
+
+	public userMember pwdchk(userMember m) {
+		con = getConnection();
+		
+		userMember result = mDao.pwdchk(con,m);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
 }
