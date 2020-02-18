@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sixdays.userMember.model.vo.*"%>
+    
+<%
+		/* ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
+		PageInfo pi = (PageInfo)request.getAttribute("pi");
+		int listCount = pi.getListCount();
+		int currentPage = pi.getCurrentPage();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
+		
+		BoardService bs = new BoardService();
+		int Rnumber = bs.getListCount();
+		
+		String category = (String)request.getAttribute("category");
+		String keyword = (String)request.getAttribute("keyword");
+		System.out.println(Rnumber); */
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,6 +45,7 @@
   </head>
 
 <body>
+<%@ include file="../common/header.jsp" %> 
     <!-- 헤더 -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -96,88 +114,19 @@
                   </tr>
               </thead>
               <tbody>
+                <%
+        	/* 	for(Board b : list) { */
+        		%>
                 <tr style="cursor: pointer;">
                     <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">9</td class="next">
-                    <td class="next">pigplus3</tdㅍ>
-                    <td class="next">it_seohyun</td class="next">
-                    <td class="next">5</td class="next">
-                    <td class="next">102</td class="next">
-                    <td class="next">2020.01.21</td class="next">
-                </tr>
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">8</td class="next">
-                    <td class="next">tlsrudtjq</td class="next">
-                    <td class="next">ks_shin</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">2020.01.15</td class="next">
-                </tr>
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">7</td class="next">
-                    <td class="next">faker</td class="next">
-                    <td class="next">fakerzzang</td class="next">
-                    <td class="next">5</td class="next">
-                    <td class="next">100K</td class="next">
-                    <td class="next">2020.01.01</td class="next">
-                </tr>
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">6</td class="next">
-                    <td class="next">korea</td class="next">
-                    <td class="next">hwan_12</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">10</td class="next">
-                    <td class="next">2020.01.15</td class="next">
-
-                </tr>
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td class="next">
-                    <td class="next">5</td class="next">
-                    <td class="next">korea</td class="next">
-                    <td class="next">hwan_12</td class="next">
-                    <td class="next">1</td>
-                    <td class="next">10</tdㅍ>
-                    <td class="next">2020.01.15</td class="next">
-                </tr>
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">4</td class="next">
-                    <td class="next">korea</td class="next">
-                    <td class="next">hwan_12</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">10</td class="next">
-                    <td class="next">2020.01.15</td class="next">
-                </tr> 
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">3</td class="next">
-                    <td class="next">korea</td class="next">
-                    <td class="next">hwan_12</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">10</td class="next">
-                    <td class="next">2020.01.15</td class="next">
-                </tr> 
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next">2</td class="next">
-                    <td class="next">korea</td class="next">
-                    <td class="next">hwan_12</td class="next">
-                    <td class="next">1</td class="next">
-                    <td class="next">10</td class="next">
-                    <td class="next">2020.01.15</td class="next">
-                </tr> 
-                <tr style="cursor: pointer;">
-                    <td><input type="checkbox" class="chkbox"></td>
-                    <td>1</td>
-                    <td>korea</td>
-                    <td>hwan_12</td>
-                    <td>1</td>
-                    <td>10</td>
-                    <td>2020.01.15</td>
-                </tr>    
+                    <td class="next"><%=m.getOtype() %></td class="next">
+                    <td class="next"><%=m.getUserId() %></tdㅍ>
+                    <td class="next"><%=m.getUserName() %></td class="next">
+                    <td class="next"><%=m.getProimg() %></td class="next">
+                    <td class="next"><%=m.getProback() %></td class="next">
+                    <td class="next"><%=m.getEnrolldate() %></td class="next">
+                </tr>        
+           <%--       <% } %>    --%>
               </tbody>
             </table>
           </div>

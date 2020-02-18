@@ -25,7 +25,7 @@
 		내용 : 좌측 메뉴바 -->
         <aside class="sidebar" style="line-height:15px;">
             <div class="sidebar-content">
-                <p onclick="location.href='/6Days/selectList.bo'" style="cursor: pointer;">공지사항</p>
+                <p id="btn1" onclick="location.href='/6Days/selectList.bo'" style="cursor: pointer;">공지사항</p>
                 <br>
                 <p onclick="location.href='/6Days/selectList.qo'" style="cursor: pointer;">Q & A</p>
                 <br>
@@ -33,25 +33,26 @@
                 <br>
                 <p onclick="location.href='/6Days/view/Profile.html'" style="cursor: pointer;">내 프로필</p>
 
-                <input type="text" list="menusearch" style="position:absolute; top:300px; left:-11px; width:185px; height:22px; margin-top: 5.5%; " placeholder="검색 내용을 입력하세요.">
+                <span>
+                <input id="menusearch1" type="text" list="menusearch"  placeholder="검색 내용을 입력하세요.">
                 <datalist id="menusearch" style="width:1000px;">
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                 </datalist>
-                <span><img src="/6Days/resources/images/search.png" style="position:absolute; width:28px; height:28px; top:300px; right:-28px; margin-top: 5.5%;"></span>
-                
-                <div style="height:28%;"></div>
+                	<img id="menusearchBtn" src="/6Days/resources/images/search.png" >
+                </span>
+
 
                 <span id="footer" style="font-size:12px; text-align:left;">
-                CopyRight Six Days Company<br>
-                박주완    윤석훈    신경섭<br>
-                    이서현    신지영<br>
-                Tel : 010-1234-5678 <br>
-                Email : ABCD @ gmail.com
+					CopyRight Six Days Company<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;박주완    윤석훈    신경섭<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이서현    신지영<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;Tel : 010-1234-5678 <br>
+					Email : Team6Days@gmail.com
                 </span>
-                <p onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
+                <p id="adminMenuBtn" onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
             </div>
             <button><span class="sidebar-btn">메뉴</span></button>
         </aside>

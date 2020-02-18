@@ -67,7 +67,7 @@
             
 
 
-            <img id="loca" class="top-btn" src="/6Days/resources/icon/UPloadbtn.png"  title="게시글추가" onclick="Infopen();" style="margin-left: 11%;">
+            <img id="loca" class="top-btn" src="/6Days/resources/icon/UPloadbtn.png"  title="게시글추가" onclick="Infopen();" style="margin-left: 265px;">
             <img id="mg" class="top-btn" src="/6Days/resources/icon/4.png" title="마이페이지" onclick="location.href='/6Days/views/user/Profile.jsp'">
             <img id="myp" class="top-btn" src="/6Days/resources/icon/outbtn.png" title="로그아웃" onclick="logout();">
             
