@@ -33,7 +33,6 @@ public class QnAListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<QnA> list = null;
-		
 		QnAService qs = new QnAService();
 		
 		int startPage;

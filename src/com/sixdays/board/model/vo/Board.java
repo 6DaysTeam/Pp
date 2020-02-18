@@ -147,9 +147,9 @@ public class Board implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Board [bno=" + bno + ", btitle=" + btitle + ", bwriter=" + bwriter + ", bdate="
+		return "Board [rnum=" + rnum + ", bno=" + bno + ", btitle=" + btitle + ", bwriter=" + bwriter + ", bdate="
 				+ bdate + ", bcontent=" + bcontent + ", boardfile=" + boardfile + ", bcount=" + bcount + ", bcomment="
-				+ bcomment + ", status=" + status + "]";
+				+ bcomment + ", status=" + status + ", rownum=" + rownum + "]";
 	}
 
 	
