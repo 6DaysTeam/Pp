@@ -48,6 +48,16 @@ public class userMember implements Serializable{
 		this.userId = userId;
 		this.userpwd = userPwd;
 	}
+	
+	public userMember(String userId, String userpwd, String email, String phone) {
+		super();
+		this.userId = userId;
+		this.userpwd = userpwd;
+		this.email = email;
+		this.phone = phone;
+	}
+
+
 
 	public userMember(String userId, String userpwd, String userName, String email, String phone, String gender,
 			String mycomment) {
