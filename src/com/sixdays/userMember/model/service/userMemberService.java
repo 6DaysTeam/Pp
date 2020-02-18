@@ -239,5 +239,21 @@ public int nameUpdateMember(userMember m) throws MemberException {
 	}
 
 
+	public int memberOut(userMember m) {
+		
+		con = getConnection();
+		
+		int result = mDao.memberOut(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
+
 
 }

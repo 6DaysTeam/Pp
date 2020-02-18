@@ -180,7 +180,7 @@
         <div id="setting">
             <div id="settinglist">
                 <div>
-                    <p class="settingitem" align="center" onclick="location.href='Update.html'">개인정보 변경</p>
+                    <p class="settingitem" align="center" onclick="location.href='/6Days/views/member/Update.jsp'">개인정보 변경</p>
                     <hr>
                     <p class="settingitem" align="center" onclick="location.href='Pwdupdate.html'">비밀번호 변경</p>
                     <hr>
