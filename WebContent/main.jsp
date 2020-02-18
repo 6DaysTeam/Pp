@@ -27,7 +27,7 @@
                     <p id="showUserName">Juwan_p.193</p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
-                <div id="contentMemo">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
+                <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
                     카페에서는 제발 조용히 통화하고 남에게 피해를 주지 맙시다.
                 </div>
                 <div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
@@ -68,10 +68,10 @@
 
                 <div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
                     <img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" onclick="like();" >
-                    <div style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
-                    <div style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
+                    <div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
+                    <div name="likecount" style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
                     <div style="font-size: 16px; color: gray; float: left; margin: 0;"> '명이 Like합니다.</div>
-                    <div style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
+                    <div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
 
                 </div>
                 <div id="contentComent"">
@@ -82,6 +82,7 @@
                     nobie : 왜일까요?? 누가 이걸 확인하고 무슨태그 쓸지 정해주면 좋겠어요<br>
                     nobie : 태그안에 대댓글 쓰기 버튼이랑 삭제 버튼같은걸 넣어야하거든요.<br>
                     nobie : 아 그리고 메인 컨텐츠에서 사용할 폰트 구함@@@@@@@@추천좀.<br>
+                    nobie : 2020-01-15<br>
                     <p style="font-size: 13px; color: gray; float: left;">1시간전</p>
                 </div>
                 <hr style="margin: 5px;">
@@ -114,7 +115,7 @@
         내용 : 클릭시 변하는 스마일아이콘 -->
         <script>
 
-        var slideIndex = 1;
+
         var result= 1;
         function like(){
             if(result==1){
@@ -153,7 +154,7 @@
 /*<!--  작성자 : 박주완
         작성일 : 2020-02-03
         내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->*/
-
+        var slideIndex = 1;
         showSlides(slideIndex);
 
         function plusSlides(n) {

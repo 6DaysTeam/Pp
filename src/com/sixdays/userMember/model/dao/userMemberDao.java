@@ -430,6 +430,120 @@ public class userMemberDao {
 		
 		return result;
 	}
+	/**
+	 * 작성자  : 윤석훈
+	 * 작성일 : 2020. 2. 18.
+	 * 개인정보 변경 
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public int changeMember(Connection con, userMember m) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("chahgeMember");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			//pstmt.setString(1, m.getProback());
+			pstmt.setString(1, m.getUserpwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	/**
+	 * 작성자  : 윤석훈
+	 * 작성일 : 2020. 2. 18.
+	 * 비밀번호 확인
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public userMember pwdchk(Connection con, userMember m) {
+		userMember result = null; // 결과를 담을 객체
+		PreparedStatement pstmt = null;
+		ResultSet rset = null; // Select의 결과를 담을 객체
+		
+		try {
+			String sql = prop.getProperty("pwdchk");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserpwd());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = new userMember();
+				
+				result.setUserId(rset.getString("USERID"));
+				result.setUserpwd(rset.getString("USERPWD"));
+				result.setUserName(rset.getString("USERNAME"));
+				result.setEmail(rset.getString("EMAIL"));
+				result.setPhone(rset.getString("PHONE"));
+				result.setGender(rset.getString("GENDER"));
+				result.setMycomment(rset.getString("MYCOMMENT"));
+				result.setProimg(rset.getString("PROIMG"));
+				result.setProback(rset.getString("PROBACK"));
+			}	
+		}catch(Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * 작성자  : 윤석훈
+	 * 작성일 : 2020. 2. 18.
+	 * 회원탈퇴
+	 * @param con
+	 * @param m
+	 * @return
+	 */
+	public int memberOut(Connection con, userMember m) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("memberOut");
+			
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, m.getUserId());
+
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 
 }

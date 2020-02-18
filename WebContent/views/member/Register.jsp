@@ -145,7 +145,7 @@ String result = request.getParameter("result");
    
    function pwdCheck(){ //패스워드 유효성 검사
       
-   var passRule = /^[A-Za-z0-9]{8,16}$/;//숫자와 문자 포함 형태의 6~12자리 이내의 암호 정규식
+   var passRule = /^[A-Za-z0-9]{8,16}$/;//숫자와 문자 포함 형태의 8~16자리 이내의 암호 정규식
    
    var pwd = document.getElementById("pwd1");
    

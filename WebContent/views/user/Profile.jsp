@@ -9,11 +9,11 @@
     <head>
         <meta charset="UTF-8">
         <title>profile</title>
-	<%@ include file="/views/common/header.jsp" %>
-	<%@ include file="/views/common/left-sidebar.jsp" %>
-	<%@ include file="/views/common/right-sidebar.jsp" %>
-	
-	
+   <%@ include file="/views/common/header.jsp" %>
+   <%@ include file="/views/common/left-sidebar.jsp" %>
+   <%@ include file="/views/common/right-sidebar.jsp" %>
+   
+   
         <script src="/6Days/resources/js/Profile.js"></script>
         <link rel="stylesheet" href="/6Days/resources/css/profile.css">
 
@@ -31,15 +31,15 @@
               <% if(m.getProback() != null) {%>
                 <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
                 <%}else{ %>
-                <img id="profilebackgound" src="/6Days/resources/proimgUploadFiles/proback.png" style="width: 850px; height: 280px;">
+                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/proback.png" style="width: 850px; height: 280px;">
                <%} %>
 
                 <div id="profileimgbox">
-                <% if(m.getProimg() != null) {%>
-                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
-               <%}else{ %>
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
-               <%} %>
+				<% if(m.getProimg() != null) {%>
+				     <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+				<%}else{ %>
+					 <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
+				<%} %>
                 </div>
 
                     <div id="profilename">
@@ -57,25 +57,36 @@
                         <label id="following" class="profile">팔로우</label>
                         <span>104</span><span>   </span><br>    
                     </div>
-                 </div>
+                </div>
+                
+                
             </div>
-            <hr style="margin: 8px 0px 8px 0px; width: 850px;">
+            
+            
+            
+            <hr id="hr1">
             
 
             <div id="postlist">
                 <table align="center">
                     <tr>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy3.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy8.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy7.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy5.JPG" onclick="modalOpen();"></td>
                     </tr>
                     <tr>
                         <td><img class="post" src="/6Days/resources/maruta/dummy4.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy6.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy3.JPG" onclick="modalOpen();"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
                     </tr>
                 </table>
             </div>
         </div>
-    </div>
+ 
 
 
 <!--    작성자 : 박주완
@@ -87,69 +98,52 @@
                 <div id="modalpost">
                     <div id="modalimg" class="slideshow-container" >
                         <div class="mySlides fade" style="display: block;">
-                            <div class="numbertext">1 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
+                            <div class="numbertext">1 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.JPG" >
                         </div>
                         
                         <div class="mySlides fade">
-                            <div class="numbertext">2 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
+                            <div class="numbertext">2 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.JPG" >
                         </div>
                         
                         <div class="mySlides fade">
-                            <div class="numbertext">3 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
+                            <div class="numbertext">3 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.JPG" >
                         </div>
             
                         <div class="mySlides fade">
-                            <div class="numbertext">4 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
+                            <div class="numbertext">4 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.JPG" >
                         </div>
 
                         <div class="mySlides fade">
-                            <div class="numbertext">5 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.jpg" style="width:100%;">
+                            <div class="numbertext">5 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" >
                         </div>
 
                         <div class="mySlides fade">
-                            <div class="numbertext">6 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.jpg" style="width:100%;">
+                            <div class="numbertext">6 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" >
                         </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">7 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">8 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">9 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy9.jpg" style="width:100%;">
-                        </div>
-
-
-                        
                         <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
                         <a class="next" onclick="plusSlides(1);">&#10095;</a>
-            
-                        </div>
-            
-                        <div style="text-align:center">
+                        
+                        
+                        
+                        <div id="dotbox" style="text-align:center">
                             <span class="dot" onclick="currentSlide(1);"></span> 
                             <span class="dot" onclick="currentSlide(2);"></span> 
                             <span class="dot" onclick="currentSlide(3);"></span> 
                             <span class="dot" onclick="currentSlide(4);"></span>
                             <span class="dot" onclick="currentSlide(5);"></span> 
                             <span class="dot" onclick="currentSlide(6);"></span> 
-                            <span class="dot" onclick="currentSlide(7);"></span> 
-                            <span class="dot" onclick="currentSlide(8);"></span> 
-                            <span class="dot" onclick="currentSlide(9);"></span> 
-                        </div>                  
-                    </div>
+                        </div>      
+                        
+                                    
+                   </div>
+            
+               </div>
 
 
 
@@ -178,50 +172,15 @@
                             
                 </div>
             </div>
-        </div>
-
-
-        <!-- <div class="slideshow-container" >
-            <div class="mySlides fade" style="display: block;">
-                <div class="numbertext">1 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
-            </div>
-            
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
-            </div>
-            
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">4 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
-            </div>
-            
-            <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
-            <a class="next" onclick="plusSlides(1);">&#10095;</a>
-
-            </div>
-
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1);"></span> 
-                <span class="dot" onclick="currentSlide(2);"></span> 
-                <span class="dot" onclick="currentSlide(3);"></span> 
-                <span class="dot" onclick="currentSlide(4);"></span> 
-            </div>                  
-        </div> -->
         
+
 <!--    작성자 : 박주완
         작성일 : 2020-01-14
         내용 : 계정설정 및 보안 신고 메뉴화면 (세팅버튼 클릭시) -->
         <div id="setting">
             <div id="settinglist">
                 <div>
-                    <p class="settingitem" align="center" onclick="location.href='Update.html'">개인정보 변경</p>
+                    <p class="settingitem" align="center" onclick="location.href='/6Days/views/member/Update.jsp'">개인정보 변경</p>
                     <hr>
                     <p class="settingitem" align="center" onclick="location.href='Pwdupdate.html'">비밀번호 변경</p>
                     <hr>
@@ -286,7 +245,7 @@
                 <p onclick="comentsetclose();">닫기</p>
             </div>
         </div>
-	</form>
+   </form>
 <!--    작성자 : 박주완
         작성일 : 2020-01-16
         내용 : 닉네임 변경 모달 화면-->
@@ -305,31 +264,89 @@
         작성일 : 2020-02-13
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proImgupdateForm" action="/6Days/proimage.me" method="post"  enctype="multipart/form-data">
-		<div id="proImgModal">
-			<div id="proImgSet">
-				<p>프로필 사진</p>
-				<input type="file" id="proimgarea" name="proimg"><br><br>
-				<p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-				<p onclick="proimgSetclose();">닫기</p>
-			</div>
-		</div>
+      <div id="proImgModal">
+         <div id="proImgSet">
+            <p>프로필 사진</p>
+            <input type="file" id="proimgarea" name="proimg"><br><br>
+            <p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+            <p onclick="proimgSetclose();">닫기</p>
+         </div>
+      </div>
     </form>
     
   <!--   <!--    작성자 : 신지영
         작성일 : 2020-02-16
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proBackupdateForm" action="/6Days/proback.me" method="post"  enctype="multipart/form-data">
-		<div id="proBackModal">
-			<div id="proBackSet">
-				<p>프로필 사진</p>
-				<input type="file" id="probackarea" name="proback"><br><br>
-				<p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-				<p onclick="probackSetclose();">닫기</p>
-			</div>
-		</div>
+      <div id="proBackModal">
+         <div id="proBackSet">
+            <p>프로필 사진</p>
+            <input type="file" id="probackarea" name="proback"><br><br>
+            <p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+            <p onclick="probackSetclose();">닫기</p>
+         </div>
+      </div>
     </form> -->
     
+    
+    
+    
     <script>
+    
+    /*<!--  작성자 : 박주완
+    작성일 : 2020-02-03
+    내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->*/
+/*     var plusSlides = 1; */
+    var slideIndex = 1;
+
+
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+
+
+// <!--    작성자 : 박주완
+//     작성일 : 2020-02-04
+//     내용 : 포스트 [...]버튼 클릭시 모달창 온오프 코드-->
+        function postModalOpen(){
+            var ulr = $(this).attr("src");
+            $("#postModal").attr("src",ulr);
+            $("#postModal").show();
+        }
+
+        function postModalClose(){
+            $('#postModal').css("display",'none');
+        }
+
+    
+    
+    
+ /*    -----------------------------------------------------------------------     */
+    
+    
+    
     var username = document.getElementById('nametextarea');
     var comment = document.getElementById('comenttextarea');
     var proimage = document.getElementById('proimgarea');
@@ -337,44 +354,50 @@
 
     
     function nameInput(){
-    	if(username.value != ""){
-    		document.getElementById("nameupdateForm").submit();
-    	}else{
-    		alert("닉네임을 입력해주세요.");  		
-    	}
+       if(username.value != ""){
+          document.getElementById("nameupdateForm").submit();
+       }else{
+          alert("닉네임을 입력해주세요.");        
+       }
     }
     
     function comentInput(){
-    	if(comment.value != ""){
-    	document.getElementById("commentupdateForm").submit();
-    	}else if(comment.value == ""){
-		comment.value = " ";
-    	document.getElementById("commentupdateForm").submit();
-    		
-    	} 
+       if(comment.value != ""){
+       document.getElementById("commentupdateForm").submit();
+       }else if(comment.value == ""){
+          comment.value = " ";
+       document.getElementById("commentupdateForm").submit();
+      
+          
+       } 
     }
     
     function proimgInput(){
-    	if(proimage.value != ""){
-    		document.getElementById("proImgupdateForm").submit();
-    	}else{
-    		alert("선택된 사진이 없습니다.");
-    	}
+       if(proimage.value != ""){
+          document.getElementById("proImgupdateForm").submit();
+       }else{
+          alert("선택된 사진이 없습니다.");
+       }
     }
     function probackInput(){
-    	if(proback.value != ""){
-    	document.getElementById("proBackupdateForm").submit();
-    	}else{
-    		alert("선택된 사진이 없습니다.");
-    	}
+       if(proback.value != ""){
+       document.getElementById("proBackupdateForm").submit();
+       }else{
+          alert("선택된 사진이 없습니다.");
+       }
     }
     function proImgDelete(){
-    	document.getElementById("proImgDeleteForm").submit();
+       document.getElementById("proImgDeleteForm").submit();
     }
     function proBackDelete(){
-    	document.getElementById("proBackDeleteForm").submit();
+       document.getElementById("proBackDeleteForm").submit();
     }
     
+    
+    
+    
+    
+
     
     </script>
     

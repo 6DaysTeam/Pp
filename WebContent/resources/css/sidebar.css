@@ -1,3 +1,5 @@
+
+
 html {
     font-family: "Helvetica",Dotum,Arial,Verdana,sans-serif;
     font-size: 13px;
@@ -5,7 +7,7 @@ html {
 body {
     background-color: #555;
 }
-button {
+button { 
     outline: none;
 }
 button .sidebar-btn {
@@ -21,13 +23,16 @@ button .sidebar-btn {
     top: 0;
     left: -285px;
     z-index: 9999;
-   margin-top: 70px;
+    margin-top: 66px;
 }
 .sidebar > .sidebar-content {
     position: absolute;
     top: 20px;
-    left: 90px;
+    left: 86px;
     color: #fff;
+    height: 100%;
+    background: none;
+    margin-top: -87px;
 }
 .sidebar button {
     background-color: #222;
@@ -39,7 +44,7 @@ button .sidebar-btn {
     height: 38px;
     line-height: 38px;
     text-align: center;
-    margin-left: 16px;
+    margin-left: 14px;
     padding: 0;
     border: none;
     border-radius: 10px;
@@ -50,3 +55,44 @@ button .sidebar-btn {
     text-align: center;
 
 }
+
+
+
+/* 	작성자 : 박주완
+	작성일 : 2020-02-18
+	내용 : 버튼들 위치 수정 */
+#btn1{
+	margin-top: 100px;
+}
+
+#adminMenuBtn{
+	bottom: 10px;
+	position: absolute;
+    left: 30px;
+}
+
+#menusearch1{
+	width:170px; 
+	height:22px;
+
+}
+
+#footer{
+	bottom: 64px;
+    position: absolute;
+    left: 0px;
+    width: 200px;
+}
+
+#menusearchBtn{
+    position: absolute;
+    width: 25px;
+    height: 27px;
+    top: 376px;
+    border-radius: 2px;
+    left: 166px;
+
+}
+
+
+

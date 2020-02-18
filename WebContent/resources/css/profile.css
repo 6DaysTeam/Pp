@@ -1,6 +1,9 @@
-/* <!-- 작성자 : 박주완
-        작성일 : 2020-01-17
-        내용 : 사용자 프로필 화면 css--> */                
+/* <!--     �옉�꽦�옄 : 諛뺤＜�셿
+			 �옉�꽦�씪 : 2020-01-09
+			 �궡�슜 : �쑀�� �봽濡쒗븘 �솕硫� 
+			 �닔�젙�씪 : 2020-02-18
+			 �닔�젙�궡�슜 : css�닔�젙 
+			 -->        */      
             
             body{
                 font-family: 'Jua', sans-serif;
@@ -11,16 +14,17 @@
                 height: 100%;
                 text-align: center;
                 position: absolute;
+                left: 0px;
             }
 
             #profile{
                 width: 850px;
-                height: 100%;
+                height: 280px;
                 padding: 10px;
-                padding-top: 80px;
-                margin-left: -100px;
+                padding-top: 25px;
                 border: none;
                 display: inline-block;
+                margin-bottom: 0px;
             }
 
             .post{
@@ -28,43 +32,68 @@
                 margin: 7px;
             }
 
-            #profileimg{
-                border-radius: 100%;
-                width: 170px;
-                float: left;
-                padding: 5px;
-                text-align: center;
-            }
 
             #show-profile{
                 width: 850px;
                 height: 280px;
+                border-radius: 9px;
+                position: absolute;
+                background: none;
+            }
+            
+            #profilebackgound{
+                width: 850px;
+                height: 280px;
                 background-color: lightgrey;
                 border-radius: 9px;
-                /* background-image: url(../images/image.gif); */
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                background-position-x: center;
-                position: absolute;
+                display: inline-block;
+                position:absolute;
+				margin-left: -425px; 
+				z-index: -1;
                 
+                -webkit-box-shadow: 0 5px 10px -6px #222;
+                -moz-box-shadow: 0 5px 10px -6px #222;
+                box-shadow: 0 5px 10px -6px #222;
             }
-
             
+
             #profileimgbox{
                 width: 170px;
-                height: 170px;
+                height: 165px;
+                border-radius: 100%;
                 float: left;
                 margin-top: 110px;
                 margin-left: 60px;  
-                border-radius: 15px;
-				
+                text-align: center;
+                background-color: white;
+                box-shadow: 1px 3px 6px 0px #222;
+
             }
+            
+           
+            #profileimg{
+                border-radius: 100%;
+                width: 160px;
+                height: 155px;
+                float: left;
+                padding: 5px;
+                text-align: center;
+                display: inline-block;
+            }
+            
 
             .profile{
                 font-size: 25px;
                 margin: 10px;
                 margin-top: 1px;
+
             }
+
+			#hr1{
+			 margin: 0px 0px 5px 0px; 
+			 width: 850px;
+			 display: inline-block;
+			 }
 
             #settingimg{
                 width: 50px;
@@ -83,7 +112,6 @@
                 text-align: left;
                 padding-left: 10px;
                 color: white;
-                
             }
 
             #name{
@@ -140,7 +168,7 @@
 
 
 
-             /* 여기서부터 모달창 */
+             /* 占쎈연疫꿸퀣苑뚪겫占쏙옙苑� 筌뤴뫀�뼎筌∽옙 */
 
             #modal{
                 display: none;
@@ -164,7 +192,24 @@
                 display: inline-block;
             }
 
+			.contentimgs{
+				width: auto;
+                height: 500px;
+                float: left;
+			 
+			}
+			
+			#dotbox{
+				position: absolute;
+                background-color: rgba(0,0,0,0.4);
+				bottom: 0px;
+				left: 200px;
+				
+			
+			}
+
             #modalimg{
+            
                 height: 500px;
                 float: left;
             }
@@ -426,10 +471,6 @@
                 height: 25px;
                 width: 230px;
             }
-
-
-
-
 
 
 
