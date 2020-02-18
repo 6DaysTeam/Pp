@@ -149,15 +149,26 @@
 
 
 
+<!-- 	작성자 : 박주완
+		수정알 : 2020-02-18
+		내용 : 게시물 부분 수정 -->
+<!-- 	***************************** 컨탠츠 클릭시 나타나는 모달창 영역 ****************************** -->
+
                     <div id="coments">
                         <div id="userprofilshow">
-                            [사진]
-                            Juwan_P
-                        </div><hr style="margin: 5px;">
+                        	<div id="profileIMG2">
+								<% if(m.getProimg() != null) {%>
+								     <img id="profileimg2" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+								<%}else{ %>
+									 <img id="profileimg2" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
+								<%} %>
+								<label id="name2" class="profile"><%=m.getUserName() %></label>
+							</div>
                         <div id="innercoment">
-                            <div class="coments">댓글1</div><br>
-                            <div class="coments">댓글2</div><br>
-                            <div class="coments">댓글3</div><br>
+                            <div id="ment" class="coments">게시글내용들어갈 자리. 님덜 부산가면 요트 꼭타셈 ㄹㅇ 개꿀잼 인생의 추억 짱짱</div>
+                        </div>
+                        <div id="tagbox">
+                            <div id="tag" class="tag">태그 들어갈 자리. #광안리#부산#해운대#데이트#1주년#난멋져#뇌바사삭</div>
                         </div>
                         <div><hr style="margin: 5px;">
                             <button style="font-size: 15px; float: left; border: none; border-radius: 10px; background-color: pink; margin-top: 4px; margin-right: 6px;">좋아요</button>
@@ -169,7 +180,8 @@
                             <button onclick="" id="comentsend" style="margin-top: -5px; font-size: 15px; background-color: royalblue; border: none; border-radius: 5px; height: 28px;">게시</button>
                         </div>
                     </div>
-                            
+                    
+ <!-- 	***************************** 모달창 영역 끝 ****************************** -->     
                 </div>
             </div>
         

@@ -157,11 +157,16 @@
             }
 
             #userprofilshow{
-                background-color: whitesmoke;
-                border: none;
-                width: 300px;
-                height: 50px;
-                
+			    background-color: white;
+			    border: 1px solid lightgrey;
+			    width: 110%;
+			    height: 37px;
+			    margin-left: -1px;
+			    margin-top: 0px;
+			    text-align: left;
+			    padding: 3px;
+			    padding-top: 5px;
+			    box-shadow: 0 2px 3px -6px #222;
 
             }
 
@@ -185,58 +190,81 @@
             }
 
             #modalcontent{
-                width: 900px;
-                height: 500px;
-                font-size: 25px;
-                margin-top: 4%;
-                display: inline-block;
+			    width: 970px;
+			    height: 620px;
+			    font-size: 25px;
+			    margin-top: 5%;
+			    display: inline-block;
             }
 
 			.contentimgs{
-				width: auto;
-                height: 500px;
-                float: left;
-			 
-			}
+			    height: 620px;
+			    float: right;
+			    width: auto;
+			 }
 			
+
 			#dotbox{
-				position: absolute;
-                background-color: rgba(0,0,0,0.4);
-				bottom: 0px;
-				left: 200px;
-				
+			    position: absolute;
+			    /* background-color: rgba(0,0,0,0.4); */
+			    bottom: 0px;
+			    left: 248px;
 			
 			}
 
             #modalimg{
-            
-                height: 500px;
-                float: left;
+				height: 620px;
+			    width: auto;
+			    float: left;
+			    text-align: center;
             }
 
             #coments{
-                background-color: white;
-                width: 300px;
-                height: 460px;
-                float: left;
-                padding: 20px;
-                overflow: hidden;
+			    background-color: white;
+			    width: 350px;
+			    height: 620px;
+			    float: left;
+			    padding: 0;
+			    overflow: hidden;
             }
             .coments{
                 float: left;
             }
-
+            
+		/* 게시물 내용글 들어갈 자리 */
             #innercoment{
-                height: 280px;
+				height: auto;
+				max-height:150px;
+				font-size: 15px;
+				text-align: left;
             }
-
+            
+            #ment{
+				padding: 5px;
+            }
+            
+		/* 태그들어갈 자리 */
+            #tagbox{
+            	height: auto;
+            	max-height:150px;
+				font-size: 15px;
+				text-align: left;
+            }
+            
+		/* 모달 닫기 버튼*/
             #closebtn{
-                margin-left: 1050px;
-                width: 40px;
-                height: 40px;
-                background-color: transparent;
-                border: 1px solid transparent;
-                font-size: 45px;
+				position: absolute;
+				width: 25px;
+				height: 24px;
+				z-index: 10;
+				font-size: 19px;
+				margin-left: 461px;
+				margin-top: -2px;
+				opacity: 100%;
+				color: white;
+				border-radius: 5px;
+				border: none;
+				background-color: black;
             }
 
             #comentarea{
@@ -473,7 +501,21 @@
             }
 
 
-
+			#profileimg2{
+			    border-radius: 100%;
+			    width: 33px;
+			    height: 31px;
+			    float: left;
+			    padding: 5px;
+			    text-align: center;
+			    display: inline-block;
+			    margin-top: -3px;
+			}
+			
+			#name2{
+				font-size: 16px;
+			
+			}
 
 
 
