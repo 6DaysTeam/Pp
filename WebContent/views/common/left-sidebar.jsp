@@ -47,9 +47,9 @@
 
                 <span id="footer" style="font-size:12px; text-align:left;">
 					CopyRight Six Days Company<br>
-						박주완    윤석훈    신경섭<br>
-						이서현    신지영<br>
-					Tel : 010-1234-5678 <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;박주완    윤석훈    신경섭<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이서현    신지영<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;Tel : 010-1234-5678 <br>
 					Email : Team6Days@gmail.com
                 </span>
                 <p id="adminMenuBtn" onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
