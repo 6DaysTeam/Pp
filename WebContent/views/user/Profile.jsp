@@ -295,7 +295,7 @@
             <div id="nameSet">
                 <p>변경할 닉네임</p><hr>
                 <input type="text" id="nametextarea" name="userName"><br>
-                <P onclick="nameInput();" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
+                <P onclick="nameInput();" id="namebtn" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
                 <p onclick="nameSetclose();">닫기</p>
             </div>
         </div>
@@ -330,9 +330,14 @@
     </form> -->
     
     <script>
+    var username = document.getElementById('nametextarea');
+   
     function nameInput() {
-		document.getElementById("nameupdateForm").submit();
-    	//location.href ="/6Days/mUpdate.me"
+    	if(username.value != ""){
+    		document.getElementById("nameupdateForm").submit() 	
+    	}else{
+    		alert("닉네임을 입력해주세요.");  		
+    	}
     }
     
     function comentInput(){

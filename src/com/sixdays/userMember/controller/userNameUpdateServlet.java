@@ -56,7 +56,7 @@ public class userNameUpdateServlet extends HttpServlet {
 			request.setAttribute("msg", "회원정보 수정 중 에러 발생!");
 			request.setAttribute("exception", e);
 			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/userNameErrorPage.jsp").forward(request, response);
 		
 		}
 		

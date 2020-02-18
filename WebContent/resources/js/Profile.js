@@ -88,15 +88,15 @@
                 $('#nameSetModal').css("display",'none');
             }
     
-// <!--    작성자 : 박주완
-//         작성일 : 2020-01-16
-//         내용 : 닉네임 변경 함수-->
-            function nameInput() {
-                var name = document.getElementById('name');
-                var resetname = document.getElementById("nametextarea");
-                name.innerHTML = " ";
-                name.innerHTML += resetname.value;
-            }
+//// <!--    작성자 : 박주완
+////         작성일 : 2020-01-16
+////         내용 : 닉네임 변경 함수-->
+//            function nameInput() {
+//                var name = document.getElementById('name');
+//                var resetname = document.getElementById("nametextarea");
+//                name.innerHTML = " ";
+//                name.innerHTML += resetname.value;
+//            }
             
          // <!--     작성자 : 신지영
 //          작성일 : 2020-02-13
