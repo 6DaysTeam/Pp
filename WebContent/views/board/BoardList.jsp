@@ -12,11 +12,9 @@
 		int endPage = pi.getEndPage();
 		
 		BoardService bs = new BoardService();
-		int Rnumber = bs.getListCount();
 		
 		String category = (String)request.getAttribute("category");
 		String keyword = (String)request.getAttribute("keyword");
-		System.out.println(Rnumber);
     %>
 <!DOCTYPE html>
 <html>
@@ -60,7 +58,7 @@
         <div id="boardArea" style="background: white; height:650px;">
         <table class="table table-striped" id="listArea">
          <thead>
-          <label id="g-title"> 공지사항</label>
+          <label id="g-title" onclick="location.href='/6Days/selectList.bo'" style="cursor : pointer;"> 공지사항</label>
             <tr>
             	
                 <th style="width:70px;">번호</th>
@@ -76,7 +74,7 @@
         %>
 		<tr>
         <input type="hidden" value="<%= b.getBno() %>">
-        <td><%= b.getRnum() %></td>
+        <td><%= b.getRnum()%></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
         <td><%= b.getBdate() %></td>
@@ -95,7 +93,10 @@
     
 	    <%-- 페이지 처리 --%>
 			<div class="text-center" align="center">
+			<% if (category == null && keyword == null) { %>
 				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
+				<% } %>
+				
 				<%  if(currentPage <= 1){  %>
 				<button disabled><</button>
 				<%  } else if(category == null && keyword == null){ %>
@@ -118,23 +119,31 @@
 				<%  if(currentPage >= maxPage){ %>
 				<button disabled>></button>
 				<%  }else if(category == null && keyword == null){%>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>&con=<%=category%>&keyword=<%=keyword%>'">></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
 				<%  }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= maxPage %>&con=<%=category%>&keyword=<%=keyword%>'">>></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= currentPage + 1 %>&con=<%=category%>&keyword=<%=keyword%>'">></button>
 				<%  } %>
+				
+				<% if (category == null && keyword == null) { %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
+				<% } %>
+	
 				
 			</div>
 
 			<div class="searchArea" align="center" style="margin-top: 10px;
     padding-left: 75px;">
-				<select id="searchCondition" name="searchCondition" style="display: inline-block;
+				<select id="searchCondition" name="category" style="display: inline-block;
     height: 25px;">
-					<option value="">---</option>
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
+					<option value="writer" id="writer">작성자</option>
+					<option value="title" id="title">제목</option>
 				</select>
 
+    	<% if(keyword != null) {%>
+    		<input type="text" id="keyword" name="keyword" value='<%=keyword %>' placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
+   		<%}else{%>
     	<input type="text" id="keyword" placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
+   		<%} %>
     	
     	<a class="btn btn-defalut" 
     	onclick="location.href='<%=request.getContextPath()%>/bSearch.bo?con='+$('#searchCondition').val()+'&keyword='+$('#keyword').val()" 
@@ -144,6 +153,17 @@
 	</div>
 	
 	<script>  
+		$(document).ready(function(){
+		
+			  $("#title").each(function(){
+		
+			    if($("#title").val()=="${category}"){
+			      $("#title").attr("selected","selected"); 
+			    }
+			  });
+			});
+	
+	
 		$(function(){
 			
 			$("#listArea td").mouseenter(function(){
@@ -153,11 +173,10 @@
 			}).click(function(){
 				/* console.log($(this).parent().find('input').val()); */
 				var bno = $(this).parent().find('input').val();
-				location.href="<%=request.getContextPath()%>/bSelectOne.bo?bno=" + bno;
+				location.href="<%= request.getContextPath() %>/bSelectOne.bo?bno=" + bno;
 			});
 		});
-		
+				
 </script>
-
 </body>
 </html>

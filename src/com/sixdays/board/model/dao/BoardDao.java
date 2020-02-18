@@ -43,6 +43,9 @@ public class BoardDao {
 			int startRow = (currentPage-1) * limit + 1;
 			int endRow = startRow + limit - 1;
 			
+			System.out.println("strat : "+startRow);
+			System.out.println("strat : "+endRow);
+			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
 			rset = pstmt.executeQuery();
@@ -69,6 +72,8 @@ public class BoardDao {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println("list : "+list);
 		return list;
 	}
 	

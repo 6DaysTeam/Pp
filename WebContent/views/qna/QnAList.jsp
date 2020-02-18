@@ -9,6 +9,9 @@
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
+		
+		String category = (String)request.getAttribute("category");
+		String keyword = (String)request.getAttribute("keyword");
     %>
 <!DOCTYPE html>
 <html>
@@ -51,7 +54,7 @@
         내용 : 게시판 임시 제작 -->
         <div id="boardArea" style="background: white; height:650px;">
         <table class="table table-striped" id="listArea">
-          <label id="g-title">QnA</label>
+          <label id="g-title" onclick="location.href='/6Days/selectList.qo'" style="cursor : pointer;">QnA</label>
             <tr>
                 <th style="width:70px;">번호</th>
                 <th style="width:70px;">구분</th>
@@ -62,12 +65,16 @@
                 <th style="width:70px;">댓글수</th>
             </tr>
         </thead>
-        <tbody>
+       <tbody>
         <%
-        	for(QnA q : list) {
+           for(QnA q : list) {
+        
+        if(m.getUserId().equals("admin") || q.getQwriter().equals(m.getUserId())){
+           
         %>
-		<tr>
-		 <input type="hidden" value="<%= q.getQno() %>">
+        
+      <tr>
+       <input type="hidden" value="<%= q.getQno() %>">
         <td><%= q.getRnum() %></td>
         <td><%= q.getQtype() %></td>
         <td><%= q.getQtitle() %></td>
@@ -76,7 +83,21 @@
         <td><%= q.getQcount() %></td>
         <td><%= q.getQcomment() %></td>
         </tr>
-        <% } %>
+        <% 
+        }else if(!m.getUserId().equals("admin") &&q.getQtype().equals("공개")){
+        %>
+        <tr>
+       <input type="hidden" value="<%= q.getQno() %>">
+        <td><%= q.getRnum() %></td>
+        <td><%= q.getQtype() %></td>
+        <td><%= q.getQtitle() %></td>
+        <td><%= q.getQwriter() %></td>
+        <td><%= q.getQdate() %></td>
+        <td><%= q.getQcount() %></td>
+        <td><%= q.getQcomment() %></td>
+        </tr>
+        <% }
+         }%>
         </tbody>
     </table>
 
@@ -86,28 +107,40 @@
         
         <%-- 페이지 처리 --%>
 		<div class="text-center" align="center">
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=1'"><<</button>
-			<%  if(currentPage <= 1){  %>
-			<button disabled><</button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage - 1 %>'"><</button>
-			<%  } %>
+			<% if (category == null && keyword == null) { %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=1'"><<</button>
+				<% } %>
 			
-			<% for(int p = startPage; p <= endPage; p++){
-					if(p == currentPage){	
-			%>
-				<button disabled><%= p %></button>
-			<%      }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= p %>'"><%= p %></button>
-			<%      } %>
-			<% } %>
+				<%  if(currentPage <= 1){  %>
+				<button disabled><</button>
+				<%  } else if(category == null && keyword == null){ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage - 1 %>'"><</button>
+				<%  } else{%>
+					<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%=currentPage - 1 %>&category=<%=category%>&keyword=<%=keyword%>'"><</button>
+				<%}%>
 				
-			<%  if(currentPage >= maxPage){  %>
-			<button disabled>></button>
-			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage + 1 %>'">></button>
-			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= maxPage %>'">>></button>
+				<% for(int p = startPage; p <= endPage; p++){
+						if(p == currentPage){	
+				%>
+					<button disabled><%= p %></button>
+				<%  }else if(category == null && keyword == null){%>
+					<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= p %>'"><%= p %></button>
+				<% }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= p %>&category=<%=category%>&keyword=<%=keyword%>'"><%=p %></button>				
+				<%      } %>
+				<% } %>
+					
+				<%  if(currentPage >= maxPage){ %>
+				<button disabled>></button>
+				<%  }else if(category == null && keyword == null){%>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage + 1 %>'">></button>
+				<%  }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= currentPage + 1 %>&category=<%=category%>&keyword=<%=keyword%>'">></button>
+				<%  } %>
+				
+				<% if (category == null && keyword == null) { %>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= maxPage %>'">>></button>
+				<% } %>
 			
 		</div> 
   <!--   <div class="text-center">
@@ -124,23 +157,37 @@
 
         </ul>
     </div> -->
-    <div class="searchArea" align="center" style="margin-top: 10px;
-    padding-left: 75px;">
-				<select id="searchCondition" name="searchCondition" style="display: inline-block;
-    height: 25px;">
-					<option value="">---</option>
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
-				</select>
-    
+    <div class="searchArea" align="center" style="margin-top: 10px; padding-left:75px;"> 
+				<select id="searchCondition" name="category" style="display: inline-block;
+    height:25px;">
+    	    <option value="writer" id="writer">작성자</option>
+		    <option value="title" id="title">제목</option>
+		</select>
+		
+        <% if(keyword != null) {%>
+    <input type="text" id="keyword" name="keyword" value='<%=keyword %>' placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
+   <%}else{%>
     <input type="text" id="keyword" placeholder="검색할 내용을 입력하세요" style="line-height: 20px; width: 300px; display: inline-block;">
-    <a class="btn btn-defalut" 
-    	onclick="location.href='<%=request.getContextPath()%>/qSearch.qo?category='+$('#searchCondition').val()+'&keyword='+$('#keyword').val()" 
+   <%} %>
+    <a class="btn btn-defalut"  id="btntest"
+    	onclick="location.href='<%=request.getContextPath()%>/qSearch.qo?category='+$('#searchCondition').val()+'&keyword='+$('#keyword').val();"
     	style="cursor: pointer; display: inline-block; font-size: 18px; margin: 5px 0 0 5px;">검색 </a>
 	</div>
 </div>
 
 <script>  
+
+	$(document).ready(function(){
+
+	  $("#title").each(function(){
+
+	    if($("#title").val()=="${category}"){
+	      $("#title").attr("selected","selected"); 
+	    }
+	  });
+	});
+
+	
 		$(function(){
 			
 			$("#listArea td").mouseenter(function(){
@@ -153,6 +200,8 @@
 				location.href="<%=request.getContextPath()%>/qSelectOne.qo?qno=" + qno;
 			});
 		});
+		
+	
 </script>
 
 </body>
