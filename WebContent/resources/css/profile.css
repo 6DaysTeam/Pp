@@ -191,7 +191,24 @@
                 display: inline-block;
             }
 
+			.contentimgs{
+				width: auto;
+                height: 500px;
+                float: left;
+			
+			}
+			
+			#dotbox{
+				position: absolute;
+                background-color: rgba(0,0,0,0.4);
+				bottom: 0px;
+				left: 200px;
+				
+			
+			}
+
             #modalimg{
+            
                 height: 500px;
                 float: left;
             }

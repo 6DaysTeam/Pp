@@ -70,17 +70,23 @@
             <div id="postlist">
                 <table align="center">
                     <tr>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy3.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy8.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy7.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy5.JPG" onclick="modalOpen();"></td>
                     </tr>
                     <tr>
                         <td><img class="post" src="/6Days/resources/maruta/dummy4.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy6.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy3.JPG" onclick="modalOpen();"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
+                        <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
                     </tr>
                 </table>
             </div>
         </div>
-    </div>
+ 
 
 
 <!--    작성자 : 박주완
@@ -92,69 +98,52 @@
                 <div id="modalpost">
                     <div id="modalimg" class="slideshow-container" >
                         <div class="mySlides fade" style="display: block;">
-                            <div class="numbertext">1 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
+                            <div class="numbertext">1 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.JPG" >
                         </div>
                         
                         <div class="mySlides fade">
-                            <div class="numbertext">2 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
+                            <div class="numbertext">2 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.JPG" >
                         </div>
                         
                         <div class="mySlides fade">
-                            <div class="numbertext">3 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
+                            <div class="numbertext">3 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.JPG" >
                         </div>
             
                         <div class="mySlides fade">
-                            <div class="numbertext">4 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
+                            <div class="numbertext">4 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.JPG" >
                         </div>
 
                         <div class="mySlides fade">
-                            <div class="numbertext">5 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.jpg" style="width:100%;">
+                            <div class="numbertext">5 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" >
                         </div>
 
                         <div class="mySlides fade">
-                            <div class="numbertext">6 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.jpg" style="width:100%;">
+                            <div class="numbertext">6 / 6</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" >
                         </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">7 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">8 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">9 / 9</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy9.jpg" style="width:100%;">
-                        </div>
-
-
-                        
                         <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
                         <a class="next" onclick="plusSlides(1);">&#10095;</a>
-            
-                        </div>
-            
-                        <div style="text-align:center">
+                        
+                        
+                        
+                        <div id="dotbox" style="text-align:center">
                             <span class="dot" onclick="currentSlide(1);"></span> 
                             <span class="dot" onclick="currentSlide(2);"></span> 
                             <span class="dot" onclick="currentSlide(3);"></span> 
                             <span class="dot" onclick="currentSlide(4);"></span>
                             <span class="dot" onclick="currentSlide(5);"></span> 
                             <span class="dot" onclick="currentSlide(6);"></span> 
-                            <span class="dot" onclick="currentSlide(7);"></span> 
-                            <span class="dot" onclick="currentSlide(8);"></span> 
-                            <span class="dot" onclick="currentSlide(9);"></span> 
-                        </div>                  
-                    </div>
+                        </div>      
+                        
+                                    
+                   </div>
+            
+               </div>
 
 
 
@@ -183,43 +172,8 @@
                             
                 </div>
             </div>
-        </div>
-
-
-        <!-- <div class="slideshow-container" >
-            <div class="mySlides fade" style="display: block;">
-                <div class="numbertext">1 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
-            </div>
-            
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
-            </div>
-            
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">4 / 4</div>
-                <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
-            </div>
-            
-            <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
-            <a class="next" onclick="plusSlides(1);">&#10095;</a>
-
-            </div>
-
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1);"></span> 
-                <span class="dot" onclick="currentSlide(2);"></span> 
-                <span class="dot" onclick="currentSlide(3);"></span> 
-                <span class="dot" onclick="currentSlide(4);"></span> 
-            </div>                  
-        </div> -->
         
+
 <!--    작성자 : 박주완
         작성일 : 2020-01-14
         내용 : 계정설정 및 보안 신고 메뉴화면 (세팅버튼 클릭시) -->
@@ -334,7 +288,65 @@
       </div>
     </form> -->
     
+    
+    
+    
     <script>
+    
+    /*<!--  작성자 : 박주완
+    작성일 : 2020-02-03
+    내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->*/
+/*     var plusSlides = 1; */
+    var slideIndex = 1;
+
+
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+
+
+// <!--    작성자 : 박주완
+//     작성일 : 2020-02-04
+//     내용 : 포스트 [...]버튼 클릭시 모달창 온오프 코드-->
+        function postModalOpen(){
+            var ulr = $(this).attr("src");
+            $("#postModal").attr("src",ulr);
+            $("#postModal").show();
+        }
+
+        function postModalClose(){
+            $('#postModal').css("display",'none');
+        }
+
+    
+    
+    
+ /*    -----------------------------------------------------------------------     */
+    
+    
+    
     var username = document.getElementById('nametextarea');
     var comment = document.getElementById('comenttextarea');
     var proimage = document.getElementById('proimgarea');
@@ -381,6 +393,11 @@
        document.getElementById("proBackDeleteForm").submit();
     }
     
+    
+    
+    
+    
+
     
     </script>
     
