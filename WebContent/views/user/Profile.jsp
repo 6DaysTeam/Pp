@@ -331,24 +331,42 @@
     
     <script>
     var username = document.getElementById('nametextarea');
-   
-    function nameInput() {
+    var comment = document.getElementById('comenttextarea');
+    var proimage = document.getElementById('proimgarea');
+    var proback = document.getElementById('probackarea');
+
+    
+    function nameInput(){
     	if(username.value != ""){
-    		document.getElementById("nameupdateForm").submit() 	
+    		document.getElementById("nameupdateForm").submit();
     	}else{
     		alert("닉네임을 입력해주세요.");  		
     	}
     }
     
     function comentInput(){
+    	if(comment.value != ""){
     	document.getElementById("commentupdateForm").submit();
+    	}else if(comment.value == ""){
+		comment.value = " ";
+    	document.getElementById("commentupdateForm").submit();
+    		
+    	} 
     }
     
     function proimgInput(){
-    	document.getElementById("proImgupdateForm").submit();
+    	if(proimage.value != ""){
+    		document.getElementById("proImgupdateForm").submit();
+    	}else{
+    		alert("선택된 사진이 없습니다.");
+    	}
     }
     function probackInput(){
+    	if(proback.value != ""){
     	document.getElementById("proBackupdateForm").submit();
+    	}else{
+    		alert("선택된 사진이 없습니다.");
+    	}
     }
     function proImgDelete(){
     	document.getElementById("proImgDeleteForm").submit();
