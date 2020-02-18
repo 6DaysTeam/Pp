@@ -31,7 +31,7 @@
               <% if(m.getProback() != null) {%>
                 <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
                 <%}else{ %>
-                <img id="profilebackgound" src="/6Days/resources/proimgUploadFiles/proback.png" style="width: 850px; height: 280px;">
+                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/proback.png" style="width: 850px; height: 280px;">
                <%} %>
 
                 <div id="profileimgbox">
