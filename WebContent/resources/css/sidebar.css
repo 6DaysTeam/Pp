@@ -5,7 +5,7 @@ html {
 body {
     background-color: #555;
 }
-button {
+button { 
     outline: none;
 }
 button .sidebar-btn {
