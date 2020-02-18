@@ -290,12 +290,14 @@ String result = request.getParameter("result");
      <script>
        
         function pop_up(){      //이메일 인증 팝업창 뜨게 하기 
-           alert("이메일을 확인해주세요.");
+          if(result4.value == ""){
            
+           alert("이메일을 확인해주세요.");
+          }else{
 //           var url = '/'+ document.getElementById('email1').value;
          var url = '/6Days/econfirm.me?email1='+ document.getElementById('email1').value;
          
-         w = 300; //팝업창의 너비
+         w = 460; //팝업창의 너비
          h = 220; //팝업창의 높이
          //중앙위치 구해오기
          LeftPosition=(screen.width-w)/2;
@@ -306,7 +308,7 @@ String result = request.getParameter("result");
 
         
 //           location.href="/6Days/mInsert.me";
-           
+          }
         }
         </script>
          
