@@ -40,6 +40,7 @@
 	vertical-align:middel;
 	cursor:pointer;
 	border:2px dashed darkgray;
+	disaply:table-cell;
 }
 </style>
 </head>
@@ -89,17 +90,17 @@
                		<tr>
                			<td>
                				<div id="titleImgArea" style="width:170px; height:180px;">
-               					<img id="titleImg">
+               					<img id="titleImg" width="170" height="180">
                				</div>
                			</td>
                			<td>
                				<div id="contentImgArea1" style=" width:170px; height:180px;">
-               					<img id="contentImg1">
+               					<img id="contentImg1" width="170" height="180">
                				</div>
                			</td>
                			<td>
                				<div id="contentImgArea2" style=" width:170px; height:180px;">
-               					<img id="contentImg2">
+               					<img id="contentImg2" width="170" height="180">
                				</div>
                			</td>
                		</tr>
@@ -108,36 +109,36 @@
                		<tr>
                			<td>
                				<div id="contentImgArea3" style=" width:170px; height:180px;">
-               					<img id="contentImg3">
+               					<img id="contentImg3" width="170" height="180">
                				</div>
                			</td>
                			<td>
                				<div id="contentImgArea4" style=" width:170px; height:180px;">
-               					<img id="contentImg4">
+               					<img id="contentImg4" width="170" height="180">
                				</div>
                			</td>
                			<td>
                				<div id="contentImgArea5" style=" width:170px; height:180px; !important">
-               					<img id="contentImg5">
+               					<img id="contentImg5" width="170" height="180">
                				</div>
                			</td>
                		</tr>
                	</table>
                	<div class="fileArea" id="fileArea">
 		      		<input type="file" id="thumbnailImg1"
-		      				name="thumbnailImg1" onchange="loadImg(this, 1);" />
+		      				name="thumbnailImg1" accept="image/*,video/*" onchange="loadImg(this, 1);" />
 		      				
 		      		<input type="file" id="thumbnailImg2"
-		      				name="thumbnailImg2" onchange="loadImg(this, 2);" />
+		      				name="thumbnailImg2" accept="image/*,video/*" onchange="loadImg(this, 2);" />
 		      				
 		      		<input type="file" id="thumbnailImg3"
-		      				name="thumbnailImg3" onchange="loadImg(this, 3);" />
+		      				name="thumbnailImg3" accept="image/*,video/*" onchange="loadImg(this, 3);" />
 		      				
 		      		<input type="file" id="thumbnailImg4"
-		      				name="thumbnailImg4" onchange="loadImg(this, 4);" />
+		      				name="thumbnailImg4" accept="image/*,video/*" onchange="loadImg(this, 4);" />
 		      				
 		      		<input type="file" id="thumbnailImg5"
-		      				name="thumbnailImg5" onchange="loadImg(this, 5);" />
+		      				name="thumbnailImg5" accept="image/*,video/*" onchange="loadImg(this, 5);" />
 		      				
 		      		<input type="file" id="thumbnailImg6"
 		      				name="thumbnailImg6" onchange="loadImg(this, 6);" />
