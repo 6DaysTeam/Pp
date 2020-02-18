@@ -124,9 +124,7 @@ public class userPwdSearchSerlvet extends HttpServlet {
 
 					e1.printStackTrace();
 				}
-				
-				
-		        
+
 		        System.out.println("인증번호 값 " + password);
 		        
 		        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {

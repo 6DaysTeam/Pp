@@ -9,11 +9,11 @@
     <head>
         <meta charset="UTF-8">
         <title>profile</title>
-	<%@ include file="/views/common/header.jsp" %>
-	<%@ include file="/views/common/left-sidebar.jsp" %>
-	<%@ include file="/views/common/right-sidebar.jsp" %>
-	
-	
+   <%@ include file="/views/common/header.jsp" %>
+   <%@ include file="/views/common/left-sidebar.jsp" %>
+   <%@ include file="/views/common/right-sidebar.jsp" %>
+   
+   
         <script src="/6Days/resources/js/Profile.js"></script>
         <link rel="stylesheet" href="/6Days/resources/css/profile.css">
 
@@ -35,11 +35,11 @@
                <%} %>
 
                 <div id="profileimgbox">
-                <% if(m.getProimg() != null) {%>
-                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
-               <%}else{ %>
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
-               <%} %>
+				<% if(m.getProimg() != null) {%>
+				     <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+				<%}else{ %>
+					 <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
+				<%} %>
                 </div>
 
                     <div id="profilename">
@@ -57,9 +57,14 @@
                         <label id="following" class="profile">팔로우</label>
                         <span>104</span><span>   </span><br>    
                     </div>
-                 </div>
+                </div>
+                
+                
             </div>
-            <hr style="margin: 8px 0px 8px 0px; width: 850px;">
+            
+            
+            
+            <hr id="hr1">
             
 
             <div id="postlist">
@@ -286,7 +291,7 @@
                 <p onclick="comentsetclose();">닫기</p>
             </div>
         </div>
-	</form>
+   </form>
 <!--    작성자 : 박주완
         작성일 : 2020-01-16
         내용 : 닉네임 변경 모달 화면-->
@@ -305,28 +310,28 @@
         작성일 : 2020-02-13
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proImgupdateForm" action="/6Days/proimage.me" method="post"  enctype="multipart/form-data">
-		<div id="proImgModal">
-			<div id="proImgSet">
-				<p>프로필 사진</p>
-				<input type="file" id="proimgarea" name="proimg"><br><br>
-				<p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-				<p onclick="proimgSetclose();">닫기</p>
-			</div>
-		</div>
+      <div id="proImgModal">
+         <div id="proImgSet">
+            <p>프로필 사진</p>
+            <input type="file" id="proimgarea" name="proimg"><br><br>
+            <p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+            <p onclick="proimgSetclose();">닫기</p>
+         </div>
+      </div>
     </form>
     
   <!--   <!--    작성자 : 신지영
         작성일 : 2020-02-16
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proBackupdateForm" action="/6Days/proback.me" method="post"  enctype="multipart/form-data">
-		<div id="proBackModal">
-			<div id="proBackSet">
-				<p>프로필 사진</p>
-				<input type="file" id="probackarea" name="proback"><br><br>
-				<p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-				<p onclick="probackSetclose();">닫기</p>
-			</div>
-		</div>
+      <div id="proBackModal">
+         <div id="proBackSet">
+            <p>프로필 사진</p>
+            <input type="file" id="probackarea" name="proback"><br><br>
+            <p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
+            <p onclick="probackSetclose();">닫기</p>
+         </div>
+      </div>
     </form> -->
     
     <script>
@@ -337,42 +342,43 @@
 
     
     function nameInput(){
-    	if(username.value != ""){
-    		document.getElementById("nameupdateForm").submit();
-    	}else{
-    		alert("닉네임을 입력해주세요.");  		
-    	}
+       if(username.value != ""){
+          document.getElementById("nameupdateForm").submit();
+       }else{
+          alert("닉네임을 입력해주세요.");        
+       }
     }
     
     function comentInput(){
-    	if(comment.value != ""){
-    	document.getElementById("commentupdateForm").submit();
-    	}else if(comment.value == ""){
-		comment.value = " ";
-    	document.getElementById("commentupdateForm").submit();
-    		
-    	} 
+       if(comment.value != ""){
+       document.getElementById("commentupdateForm").submit();
+       }else if(comment.value == ""){
+          comment.value = " ";
+       document.getElementById("commentupdateForm").submit();
+      
+          
+       } 
     }
     
     function proimgInput(){
-    	if(proimage.value != ""){
-    		document.getElementById("proImgupdateForm").submit();
-    	}else{
-    		alert("선택된 사진이 없습니다.");
-    	}
+       if(proimage.value != ""){
+          document.getElementById("proImgupdateForm").submit();
+       }else{
+          alert("선택된 사진이 없습니다.");
+       }
     }
     function probackInput(){
-    	if(proback.value != ""){
-    	document.getElementById("proBackupdateForm").submit();
-    	}else{
-    		alert("선택된 사진이 없습니다.");
-    	}
+       if(proback.value != ""){
+       document.getElementById("proBackupdateForm").submit();
+       }else{
+          alert("선택된 사진이 없습니다.");
+       }
     }
     function proImgDelete(){
-    	document.getElementById("proImgDeleteForm").submit();
+       document.getElementById("proImgDeleteForm").submit();
     }
     function proBackDelete(){
-    	document.getElementById("proBackDeleteForm").submit();
+       document.getElementById("proBackDeleteForm").submit();
     }
     
     
