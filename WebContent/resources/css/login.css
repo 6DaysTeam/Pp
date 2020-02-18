@@ -19,7 +19,9 @@
     height:450px;
     border: 1px solid lightgray;
     float: right;
-    border-radius: 27.5px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -6px #222;
+    
 }
 #register:hover {
 text-decoration: underline;
@@ -39,6 +41,8 @@ text-decoration: underline;
     border-color:  rgb(15, 76, 129);
     color:white;
     border-style: none;
+    border-radius: 2px;
+    box-shadow: 0 5px 6px -6px #222;
 }
 #register{  
     border:0; 
@@ -49,10 +53,13 @@ text-decoration: underline;
 }
 
 #textbox{
+	padding-left: 10px;
     margin-left: 10%; 
-    width: 380px; 
+    width: 370px; 
     height: 45px; 
     border: 1px solid lightgray;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px -6px #222;
 }
 #tbl{
     margin-left: 10%; 
