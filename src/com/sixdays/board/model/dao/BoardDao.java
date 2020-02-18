@@ -305,6 +305,7 @@ public class BoardDao {
 			while(rset.next()) {
 				Board b = new Board();
 				
+				b.setRnum(rset.getInt("rnum"));
 				b.setBno(rset.getInt("bno"));
 				b.setBtitle(rset.getString("btitle"));
 				b.setBcontent(rset.getString("bcontent"));
@@ -323,13 +324,22 @@ public class BoardDao {
 		return list;
 	}
 
-	public int getListSubCount(Connection con, String keyword) {
+	public int getListSubCount(Connection con, String category, String keyword) {
 	      int listCount = 0;
 	      
 	      PreparedStatement pstmt = null;
 	      ResultSet rset = null;
+	     
+	      String sql = null;
 	      
-	      String sql = prop.getProperty("listTitleCount");
+	      switch(category) {
+	      case "title" :
+				sql = prop.getProperty("listTitleCount");
+				break;
+		  case "writer" :
+				sql = prop.getProperty("listWriterCount");
+				break;
+	      }
 	      
 	      try {
 	         pstmt = con.prepareStatement(sql);

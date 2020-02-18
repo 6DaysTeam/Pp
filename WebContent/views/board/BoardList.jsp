@@ -76,7 +76,7 @@
         %>
 		<tr>
         <input type="hidden" value="<%= b.getBno() %>">
-        <td><%= Rnumber - b.getRnum() + 1 %></td>
+        <td><%= b.getRnum() %></td>
         <td><%= b.getBtitle() %></td>
         <td><%= b.getBwriter() %></td>
         <td><%= b.getBdate() %></td>
@@ -98,7 +98,7 @@
 				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=1'"><<</button>
 				<%  if(currentPage <= 1){  %>
 				<button disabled><</button>
-				<%  } else if(category==null&&keyword==null){ %>
+				<%  } else if(category == null && keyword == null){ %>
 				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage - 1 %>'"><</button>
 				<%  } else{%>
 					<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%=currentPage - 1 %>&con=<%=category%>&keyword=<%=keyword%>'"><</button>
@@ -108,19 +108,20 @@
 						if(p == currentPage){	
 				%>
 					<button disabled><%= p %></button>
-				<%      }else if(category == null && keyword == null){%>
+				<%  }else if(category == null && keyword == null){%>
 					<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= p %>'"><%= p %></button>
-				<%}else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= p %>&keyword=<%=keyword%>&con=<%=category%>'"><%=p %></button>				
+				<% }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= p %>&con=<%=category%>&keyword=<%=keyword%>'"><%=p %></button>				
 				<%      } %>
 				<% } %>
 					
 				<%  if(currentPage >= maxPage){ %>
 				<button disabled>></button>
+				<%  }else if(category == null && keyword == null){%>
+				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>&con=<%=category%>&keyword=<%=keyword%>'">></button>
 				<%  }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage + 1 %>'">></button>
+				<button onclick="location.href='<%= request.getContextPath() %>/bSearch.bo?currentPage=<%= maxPage %>&con=<%=category%>&keyword=<%=keyword%>'">>></button>
 				<%  } %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.bo?currentPage=<%= maxPage %>'">>></button>
 				
 			</div>
 

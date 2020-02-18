@@ -28,14 +28,18 @@
     <div id="container">
         <div id="profile" class="profile">
             <div id="show-profile">
-                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px;
-                height: 280px;" >
+              <% if(m.getProback() != null) {%>
+                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
+                <%}else{ %>
+                <img id="profilebackgound" src="/6Days/resources/proimgUploadFiles/proback.png" style="width: 850px; height: 280px;">
+               <%} %>
+
                 <div id="profileimgbox">
-                <% if(m.getProimg() != null){ %>
-                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();">
-                <% }else{  %>
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/image2.gif" onclick="profileModalOpen();">
-                <%} %>
+                <% if(m.getProimg() != null) {%>
+                    <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+               <%}else{ %>
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
+               <%} %>
                 </div>
 
                     <div id="profilename">
@@ -265,7 +269,8 @@
                 <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
                 <form id="proImgDeleteForm" name="proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
                 <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr></form>
-                <p style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
+                <form id="proBackDeleteForm" name="proback" action="/6Days/pbackDelete.me" method="post" enctype="multipart/form-data">
+                <p onclick="proBackDelete();" style="color: red;">현재 프로필 배경 사진 삭제</p><hr></form>
                 <p onclick="profileModalClose();">닫기</p>
         </div>
 
@@ -290,7 +295,7 @@
             <div id="nameSet">
                 <p>변경할 닉네임</p><hr>
                 <input type="text" id="nametextarea" name="userName"><br>
-                <P onclick="nameInput();" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
+                <P onclick="nameInput();" id="namebtn" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
                 <p onclick="nameSetclose();">닫기</p>
             </div>
         </div>
@@ -325,9 +330,14 @@
     </form> -->
     
     <script>
+    var username = document.getElementById('nametextarea');
+   
     function nameInput() {
-		document.getElementById("nameupdateForm").submit();
-    	//location.href ="/6Days/mUpdate.me"
+    	if(username.value != ""){
+    		document.getElementById("nameupdateForm").submit() 	
+    	}else{
+    		alert("닉네임을 입력해주세요.");  		
+    	}
     }
     
     function comentInput(){
@@ -342,6 +352,9 @@
     }
     function proImgDelete(){
     	document.getElementById("proImgDeleteForm").submit();
+    }
+    function proBackDelete(){
+    	document.getElementById("proBackDeleteForm").submit();
     }
     
     

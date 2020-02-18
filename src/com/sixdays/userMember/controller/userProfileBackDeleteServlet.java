@@ -8,21 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.service.userMemberService;
 import com.sixdays.userMember.model.vo.userMember;
 
 /**
- * Servlet implementation class userMemberUpdateServlet
+ * Servlet implementation class userProfileImageDeleteServlet
  */
-@WebServlet("/unUpdate.me")
-public class userNameUpdateServlet extends HttpServlet {
+@WebServlet("/pbackDelete.me")
+public class userProfileBackDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public userNameUpdateServlet() {
+    public userProfileBackDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +35,40 @@ public class userNameUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 회원 정보 
-		String username = request.getParameter("userName");
+		int maxSize = 1024*1024*10;
 		
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		
+		String root = request.getServletContext().getRealPath("/");
+		System.out.println("root : " + root);
+
+		String savePath = root + "resources/probackUploadFiles";
+		
+		MultipartRequest mrequest = new MultipartRequest(
+										request, 
+										savePath, 
+										maxSize,	
+										"UTF-8",	
+										new DefaultFileRenamePolicy()			
+				);
+		
+		String proback = mrequest.getFilesystemName("proback");
 		
 		HttpSession session = request.getSession(false);
 		
 		
 		userMember m = (userMember)session.getAttribute("member");
 		
-		m.setUserName(username);
+		m.setProback(proback);
 		
 		System.out.println("변경한 회원 정보 확인 :" + m);
 		
 		userMemberService ms = new userMemberService();
 		try {
-			ms.nameUpdateMember(m);
+			ms.deleteProBack(m);
 			System.out.println("회원 정보 수정 완료!");
 			
 			response.sendRedirect("/6Days/views/user/Profile.jsp");
@@ -56,10 +78,9 @@ public class userNameUpdateServlet extends HttpServlet {
 			request.setAttribute("msg", "회원정보 수정 중 에러 발생!");
 			request.setAttribute("exception", e);
 			
-			request.getRequestDispatcher("views/common/userNameErrorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		
 		}
-		
 	}
 
 	/**

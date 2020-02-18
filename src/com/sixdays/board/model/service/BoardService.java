@@ -154,12 +154,13 @@ public class BoardService {
 		return list;
 	}
 
-	public int getListSubCount(String keyword) {
+	public int getListSubCount(String category, String keyword) {
 		Connection con = getConnection();
 		
-		int listCount = bDao.getListSubCount(con, keyword);
+		int listCount = bDao.getListSubCount(con, category, keyword);
 		
 		close(con);
+		
 		return listCount;
 	}
 }

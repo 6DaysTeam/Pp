@@ -184,4 +184,18 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		return result;
 		
 	}
+	
+	public int deleteProBack(userMember m) throws MemberException{
+		con = getConnection();
+		
+		int result = mDao.deleteProBack(con,m);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
 }
