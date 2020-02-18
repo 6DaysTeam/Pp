@@ -304,7 +304,7 @@ public class userMemberDao {
 	 * 내용 : 비밀번호찾기 임시비밀번호 발급 후 DB업데이트
 	 * @param authenticationKey 
 	 */
-	public int userPwdSearch(Connection con, String email, String authenticationKey) {
+	public int userPwdSearch(Connection con,String id, String email, String authenticationKey) {
 		PreparedStatement pstmt= null;
 		userMember m = null;
 		int result = 0;
@@ -315,6 +315,12 @@ public class userMemberDao {
 			
 			pstmt.setString(1, authenticationKey);
 			pstmt.setString(2, email);
+			pstmt.setString(3, id);
+			System.out.println("------------DAO------------");
+			System.out.println("입력받은 아이디 : "+ id);
+			System.out.println("입력받은 이메일 : "+ email);
+			System.out.println("변경할 임시 비밀번호 : "+ authenticationKey);
+			System.out.println("------------DAO END------------");
 			
 			result = pstmt.executeUpdate();
 			

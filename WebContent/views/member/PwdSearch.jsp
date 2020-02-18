@@ -44,13 +44,16 @@
                 <ul>
                     <!-- 등록된 비밀번호 찾기 -->
                     <li class="typeList">
-                        <div class="title" id="titleID">등록된 Email로 비밀번호 찾기</div>
+                        <div class="title" id="titleID">등록된 아이디, Email로 비밀번호 찾기</div>
                         <!-- 등록된 에미일 찾기 입력  -->
                         <div class="inputEnter" id="divPhone">
                             <div class="inputBox">
                                 <div class="styleInut">
-                                    <!-- 아이디 입력 받기 inputBox -->
-                                    <input id="inputPhone" name="inputEmail" type="text" class="iInput"
+                                    <!-- 아이디,이메일 입력 받기 inputBox -->
+                                    <input id="inputId" name="inputId" type="text" class="iInput"
+                                           placeholder="아이디 입력">
+                                           <br>
+                                    <input id="inputEmail" name="inputEmail" type="text" class="iInput"
                                            placeholder="Email 입력">
                                 </div>
                             </div>

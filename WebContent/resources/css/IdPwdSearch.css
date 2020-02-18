@@ -554,6 +554,7 @@ ul .options {
     font-size: 15px;
     color: #202020;
     border-radius: 10px;
+    margin-top: 15px;
 }
 
 .eInput {
@@ -594,6 +595,8 @@ ul .options {
   font-size: 13px;
   color: #ef3e42;
 }
+
+
 
 .contentsWrap .typeList .error {
   padding-left: 10px;

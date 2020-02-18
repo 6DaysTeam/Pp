@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class EncryptFilter
  */
-@WebFilter({ "/login.me", "/mInsert.me", "/mUpdate.me" })
+@WebFilter({ "/login.me", "/mInsert.me", "/mUpdate.me", "/PwdSearch.me" })
 public class EncryptFilter implements Filter {
 
     /**
@@ -34,6 +34,10 @@ public class EncryptFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		// 필터 동작 확인 
+		System.out.println("**************************  필터 동작   **************************");
+		
 		// 서블릿 동작하기 전
 		HttpServletRequest req = (HttpServletRequest)request;
 		

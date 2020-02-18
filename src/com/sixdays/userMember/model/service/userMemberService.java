@@ -136,10 +136,10 @@ public int nameUpdateMember(userMember m) throws MemberException {
 	 * 내용 : 비밀번호 찾기 서비스 
 	 * @param AuthenticationKey 
 	 */
-	public int userPwdSearch(String eamil, String AuthenticationKey) {
+	public int userPwdSearch(String id,String eamil, String AuthenticationKey) {
 		con = getConnection();
 		userMemberDao dao = new userMemberDao();
-		int result = dao.userPwdSearch(con, eamil, AuthenticationKey);
+		int result = dao.userPwdSearch(con, id, eamil, AuthenticationKey);
 		System.out.println(result);
 		
 		if(result > 0) commit(con);

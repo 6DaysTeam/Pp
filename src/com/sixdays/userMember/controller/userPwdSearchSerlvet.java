@@ -5,10 +5,15 @@ import static com.sixdays.common.JDBCTemplate.rollback;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
 import java.util.Properties;
 import java.util.Random;
 
 import java.net.PasswordAuthentication;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -53,9 +58,16 @@ public class userPwdSearchSerlvet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 	    //2. 변수저장  
+		String id = request.getParameter("inputId");
 		String email = request.getParameter("inputEmail");
 	    
 		//3. 비즈니스 로직 
+		
+		/**
+		 * 작성자: 박주완
+		 * 작성일 : 2020-02-18
+		 * 내용 : 인증된 이메일로 임시 비밀번호(랜덤)값 전송 후 해당 값 암호화 후 DB에 업데이트.
+		 */
 			userMemberService ms = new userMemberService();
 				
 			    System.out.println("@@@@@" +email);
@@ -98,8 +110,24 @@ public class userPwdSearchSerlvet extends HttpServlet {
 		                break;
 		            }
 		        }
-		        String AuthenticationKey = temp.toString();
-		        System.out.println("인증번호 값 " + AuthenticationKey);
+		        String password = temp.toString();
+		        
+		        MessageDigest md;
+		        
+		        // 생성된 임시 비밀번호 암호화 
+				try {
+					md = MessageDigest.getInstance("SHA-512");
+					byte[] bytes = password.getBytes(Charset.forName("UTF-8"));
+					md.update(bytes);
+					password = Base64.getEncoder().encodeToString(md.digest());
+				} catch (NoSuchAlgorithmException e1) {
+
+					e1.printStackTrace();
+				}
+				
+				
+		        
+		        System.out.println("인증번호 값 " + password);
 		        
 		        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 		            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -108,46 +136,53 @@ public class userPwdSearchSerlvet extends HttpServlet {
 		        });
 		        
 		        // db까지 출장 ㄱ 비밀번호 업데이트 때리고 옴 ㅇㅇ
-		        ms.userPwdSearch(email, AuthenticationKey);
 
 				
 		        
 		        
+		        int result = ms.userPwdSearch(id ,email, password);
 		        
-		        
-		        
-		        
-		        //email 전송
-		        try {
-		            MimeMessage msg = new MimeMessage(session);
-		            msg.setFrom(new InternetAddress(m_user, "6DAYS TEAM"));
-		            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-		            
-		            //메일 제목
-		            msg.setSubject("<6DAYS>이메일 인증");
-		            //메일 내용
-		            msg.setText("안녕하세요 6DAYS입니다. \n 임시 비밀번호는"+temp + "입니다.");
-		            
-		            Transport.send(msg);
-		            System.out.println("이메일 전송");
-		            
-		        }catch (Exception e) {
-		            e.printStackTrace();
+		        if(result >0) {
+		        	 //email 전송
+			        try {
+			            MimeMessage msg = new MimeMessage(session);
+			            msg.setFrom(new InternetAddress(m_user, "6DAYS TEAM"));
+			            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+			            
+			            //메일 제목
+			            msg.setSubject("<6DAYS>이메일 인증");
+			            //메일 내용
+			            msg.setText("안녕하세요 6DAYS입니다. \n 임시 비밀번호는"+temp + "입니다.");
+			            
+			            Transport.send(msg);
+			            System.out.println("이메일 전송");
+						
+			        }catch (Exception e) {
+			            e.printStackTrace();
+			        }
+			        HttpSession saveKey = request.getSession();
+			        saveKey.setAttribute("password", password);
+
+			        //인증번호 받은것 팝업창으로 옮기는 작업
+			        
+			        request.setAttribute("temp", temp);
+			                 //데이터의 이름      넘길데이터
+
+			        System.out.println("임시비밀번호 발급 완료!!");
+					
+			        
+			        RequestDispatcher rd = request.getRequestDispatcher("/views/member/PwdSearchOK.jsp");
+					rd.forward(request, response);
+		        }else {
+		        	RequestDispatcher rd = request.getRequestDispatcher("/views/member/PwdSearch.jsp");
+					PrintWriter out = response.getWriter();
+
+					out.println("<script>alert('존재하지 않는 사용자정보 입니다.'); location.href='/6Days/views/member/IdSearch.jsp';</script>"); 
+					out.close();
 		        }
-		        HttpSession saveKey = request.getSession();
-		        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+		        
 
-		        //인증번호 받은것 팝업창으로 옮기는 작업
-		        
-		        request.setAttribute("temp", temp);
-		                 //데이터의 이름      넘길데이터
 
-		        
-		        
-				RequestDispatcher rd = request.getRequestDispatcher("/views/member/PwdSearchOK.jsp");
-				rd.forward(request, response);
-		        System.out.println("임시비밀번호 발급 완료!!");
-				
 				
 
 	     
