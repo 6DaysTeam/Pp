@@ -41,7 +41,7 @@
            <form action="/6Days/change.me" method="post">
       <div id="updatepage" style="background: white;">
               
-         <input type="button" id="deletebtn"  onSubmit="return false" value="회원탈퇴">
+         <input type="button" id="deletebtn"  value="회원탈퇴">
         <div id="idupdate">
            <h1 style="text-align:center">개인 정보 변경</h1>
             <label>아이디</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -262,8 +262,7 @@
      });
     
  $("#deletebtn").click(function(){ //비밀번호 확인
-	if(result =='1'){
-	 confirm("회원 탈퇴하시겠습니까?");
+	if(result =='1' && confirm("회원 탈퇴하시겠습니까?")){
 	
         $.ajax({
            url:"/6Days/deleteMember.me",
@@ -272,11 +271,13 @@
            success:function(data){
 			
      		alert("정상적으로 탈퇴되었습니다.");
+     		location.href="/6Days/login.jsp";
+     		
            },error:function(){
               console.log("Error 입니다.");
            }
         });
-	}else{
+	}else if(result =='0'){
 		alert("현재 비밀번호를 확인해주세요.")
 	}
      });

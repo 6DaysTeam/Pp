@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.sixdays.userMember.model.service.userMemberService;
+import com.sixdays.userMember.model.vo.userMember;
 
 /**
  * Servlet implementation class userMemberOut
@@ -26,8 +30,23 @@ public class userMemberOut extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userid= request.getParameter("userid");
+		String userId= request.getParameter("userid");
 		
+		userMember m = new userMember(userId);
+		
+		userMemberService ms = new userMemberService();
+
+		HttpSession session = request.getSession(false);
+		try {
+			ms.memberOut(m);
+			System.out.println("회원탈퇴 성공");
+			
+			session.invalidate();
+			response.sendRedirect("/6Days/login.jsp");
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
