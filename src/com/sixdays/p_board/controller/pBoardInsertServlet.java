@@ -59,6 +59,7 @@ public class pBoardInsertServlet extends HttpServlet {
 		
 		// -- 파일 업로드 로직 실시 --//
 		//기본 전송값 처리
+		String pbwriter=mrequest.getParameter("userId");
 		String photo1 = mrequest.getFilesystemName("thumbnailImg1");
 		String photo2 = mrequest.getFilesystemName("thumbnailImg2");
 		String photo3 = mrequest.getFilesystemName("thumbnailImg3");
@@ -71,6 +72,7 @@ public class pBoardInsertServlet extends HttpServlet {
 		
 		//전송된 파일 VO에 담아서 서비스로 보내기
 		p_Board pb = new p_Board();		
+		pb.setPbwriter(pbwriter);
 		pb.setPhoto1(photo1);
 		pb.setPhoto2(photo2);
 		pb.setPhoto3(photo3);
@@ -87,8 +89,11 @@ public class pBoardInsertServlet extends HttpServlet {
 		
 		if(result>0) {
 			System.out.println("사진 업로드 완료");
+			response.sendRedirect("main.jsp");
+			
 		}else {
 			request.setAttribute("msg", "사진 게시판 작성 실패!");
+			
 		}
 	}
 

@@ -63,7 +63,6 @@
 	  수정일 : -->
             <div id="headersearch" >
                  <input id="searchInput" type="text" placeholder="검색어를 입력해주세요.">
-			     <button id="searchBtn">검색</button>
             </div>
             
 
@@ -124,24 +123,28 @@
                			</td>
                		</tr>
                	</table>
+               	
+               	<input type="hidden" name="userId" value="<%=m.getUserId() %>">
+               	
+               	
                	<div class="fileArea" id="fileArea">
 		      		<input type="file" id="thumbnailImg1"
-		      				name="thumbnailImg1" accept="image/*,video/*" onchange="loadImg(this, 1);" />
+		      				name="thumbnailImg1" accept="image/*" onchange="loadImg(this, 1);" />
 		      				
 		      		<input type="file" id="thumbnailImg2"
-		      				name="thumbnailImg2" accept="image/*,video/*" onchange="loadImg(this, 2);" />
+		      				name="thumbnailImg2" accept="image/*" onchange="loadImg(this, 2);" />
 		      				
 		      		<input type="file" id="thumbnailImg3"
-		      				name="thumbnailImg3" accept="image/*,video/*" onchange="loadImg(this, 3);" />
+		      				name="thumbnailImg3" accept="image/*" onchange="loadImg(this, 3);" />
 		      				
 		      		<input type="file" id="thumbnailImg4"
-		      				name="thumbnailImg4" accept="image/*,video/*" onchange="loadImg(this, 4);" />
+		      				name="thumbnailImg4" accept="image/*" onchange="loadImg(this, 4);" />
 		      				
 		      		<input type="file" id="thumbnailImg5"
-		      				name="thumbnailImg5" accept="image/*,video/*" onchange="loadImg(this, 5);" />
+		      				name="thumbnailImg5" accept="image/*" onchange="loadImg(this, 5);" />
 		      				
 		      		<input type="file" id="thumbnailImg6"
-		      				name="thumbnailImg6" onchange="loadImg(this, 6);" />
+		      				name="thumbnailImg6" accept="image/*" onchange="loadImg(this, 6);" />
 		      	</div>
                	
                	
@@ -266,9 +269,16 @@ function uploadFiles(e) {
 $(function(){
 	$('#fileArea').hide();
 	
-	$('#titleImgArea').click(() => {
-		$('#thumbnailImg1').click();
-	});
+/* 	if(!$('#thumbnailImg1').value){
+		alert("대표이미지를 첨부해주세요!");
+		
+	}else{
+ */		
+		$('#titleImgArea').click(() => {
+			$('#thumbnailImg1').click();
+			
+		});
+
 	
 	$('#contentImgArea1').click(() => {
 		$('#thumbnailImg2').click();
@@ -317,5 +327,8 @@ function loadImg(value, num){
 		reader.readAsDataURL(value.files[0]);
 	}
 }
+
+//메인이미지 첨부 안했을시 alert 창 띄우기
+
 </script>
 </html>

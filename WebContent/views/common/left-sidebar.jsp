@@ -41,7 +41,6 @@
                     <option>프로필수정</option>
                     <option>프로필수정</option>
                 </datalist>
-                	<img id="menusearchBtn" src="/6Days/resources/images/search.png" >
                 </span>
 
 
