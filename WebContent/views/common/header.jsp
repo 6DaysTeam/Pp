@@ -63,7 +63,6 @@
 	  수정일 : -->
             <div id="headersearch" >
                  <input id="searchInput" type="text" placeholder="검색어를 입력해주세요.">
-			     <button id="searchBtn">검색</button>
             </div>
             
 
