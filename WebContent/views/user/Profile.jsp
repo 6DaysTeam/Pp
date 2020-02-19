@@ -206,9 +206,10 @@
                         </div>
                     </div>
                     
- <!-- 	***************************** 모달창 영역 끝 ****************************** -->     
                 </div>
             </div>
+         </div>
+ <!-- 	***************************** 모달창 영역 끝 ****************************** -->     
         
 
 <!--    작성자 : 박주완
@@ -268,6 +269,7 @@
                 <form id="proBackDeleteForm" name="proback" action="/6Days/pbackDelete.me" method="post" enctype="multipart/form-data">
                 <p onclick="proBackDelete();" style="color: red;">현재 프로필 배경 사진 삭제</p><hr></form>
                 <p onclick="profileModalClose();">닫기</p>
+        </div>
         </div>
 
 <!--    작성자 : 박주완
