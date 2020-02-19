@@ -1,6 +1,7 @@
 package com.sixdays.qna.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.qna.model.service.QnAService;
 import com.sixdays.qna.model.vo.QnA;
+import com.sixdays.qnacomment.model.service.QnACommentService;
+import com.sixdays.qnacomment.model.vo.QnAComment;
 
 /**
  * Servlet implementation class QnASelectOneServlet
@@ -36,11 +39,13 @@ public class QnASelectOneServlet extends HttpServlet {
 		
 		QnA q = qs.selectOne(qno);
 		
+		ArrayList<QnAComment> clist = new QnACommentService().selectList(qno);
 		String page = "";
 		
 		if(q != null) {
 			page = "views/qna/QnADetail.jsp";
 			request.setAttribute("qna", q);
+			request.setAttribute("clist", clist);
 		} else {
 			request.setAttribute("msg", "공지사항 상세보기 실패");
 		}
