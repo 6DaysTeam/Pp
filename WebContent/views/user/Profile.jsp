@@ -4,6 +4,11 @@
 <%@page import="com.sixdays.userMember.model.vo.userMember" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%
+	// 사진 게시글 리스트 가져오기
+	ArrayList<p_Board> list
+	 = (ArrayList<p_Board>)request.getAttribute("list");
+%> --%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -66,9 +71,13 @@
             
             <hr id="hr1">
             
-
+<!--    작성자 : 박주완,이서현
+        작성일 : 2020-01-09
+        내용 : 유저 프로필 화면
+	수정일 : 2020-02-19   
+-->
             <div id="postlist">
-                <table align="center">
+                <!-- <table align="center">
                     <tr>
                         <td><img class="post" src="/6Days/resources/maruta/dummy8.JPG" onclick="modalOpen();"></td>
                         <td><img class="post" src="/6Days/resources/maruta/dummy7.JPG" onclick="modalOpen();"></td>
@@ -83,10 +92,26 @@
                         <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
                         <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
                     </tr>
-                </table>
+                </table> -->
+                <% for(p_Board pb : list) { %>
+				<div class="thumb-list" align="center">
+					<div>
+						<input type="hidden" value="<%= pb.getBno() %>">
+						<img src="/6Days/resources/pboardUploadFiles<%= pb.getBoardfile() %>" 
+						     width="200px" height="150px" onclick="modalOpen();">
+					</div>
+				</div>
+				<% } %>
             </div>
         </div>
- 
+ 		<%-- <script>
+ 			$(function(){
+ 				$('.thumb-list').click(function(){
+					var bno = $(this).children().children().eq(0).val();
+					location.href = "<%=request.getContextPath()%>/selectOne.tn?bno=" + bno;
+				});
+ 			})
+ 		</script> --%>
 
 
 <!--    작성자 : 박주완
@@ -404,10 +429,6 @@
     function proBackDelete(){
        document.getElementById("proBackDeleteForm").submit();
     }
-    
-    
-    
-    
     
 
     
