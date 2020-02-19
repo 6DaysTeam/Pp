@@ -125,14 +125,16 @@
               </tr>
               
               <tr>
-              	<td colspan="2"><textarea id="innerCoemnts" readonly><%=qco.getCcontent() %></textarea></td>
+              	<td colspan="2"><textarea id="innerComments" readonly="readonly"><%=qco.getCcontent() %></textarea></td>
               </tr>
               
 			  <tr>
 				  <td id="btns000">
 				  <% if(m.getUserId().equals(qco.getCwriter())) { %>
 					<button style="float:right"onclick="deleteReply(this);">삭제</button>
-					<button style="float:right"onclick="updateReply(this);">수정</button>
+					<button class="updatebtn" style="float:right" onclick="updateReply(this);">수정</button>
+					<button class="updateConfirm" style="float:right; display:none;" onclick="updateConfirm(this);">수정완료</button>
+					
 				  <% } else if(qco.getClevel() < 3) { %>
 					<input type="hidden" name="cwriter" value="<%=qco.getCwriter()%>"/>
 					<input type="hidden" name="refcno" value="<%= qco.getCno() %>" />
@@ -164,9 +166,9 @@
         <script>
     	function updateReply(obj) {
     		// 현재 위치와 가장 근접한 textarea 접근하기
-    		$(obj).parent().parent().next().find('textarea')
-    		.removeAttr('readonly');
-    		
+
+    		$(obj).parent().parent().next().find('textarea').removeAttr('readonly');
+    		console.log($(obj).parent().parent().next().find('textarea').val());
     		// 수정 완료 버튼을 화면 보이게 하기
     		$(obj).siblings('.updateConfirm').css('display','inline');
     		
