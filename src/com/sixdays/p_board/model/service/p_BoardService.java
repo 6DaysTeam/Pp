@@ -51,6 +51,17 @@ private pBoardDao pbDao = new pBoardDao();
       return list;
    }
 
+
+    public ArrayList<p_Board> allList() {
+    Connection con = getConnection();
+    
+    ArrayList<p_Board> list = pbDao.allList(con);
+    		
+    close(con);
+    
+	return list;
+}
+
    
 
 }

@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("member", m);
 					
 					
-					response.sendRedirect("main.jsp");
+					response.sendRedirect("main.me");
 					
 					
 					

@@ -124,6 +124,46 @@ public class pBoardDao {
       return list;
    }
 
+		public ArrayList<p_Board> allList(Connection con) {
+			 ArrayList<p_Board> list = null;
+		     PreparedStatement pstmt = null;
+		     ResultSet rset = null;
+		     
+		     String sql = prop.getProperty("selectAll");
+		   try {
+			   pstmt = con.prepareStatement(sql);
+			   rset = pstmt.executeQuery();
+			   
+			   
+		       list = new ArrayList<>();
+		       while(rset.next()) {
+		            p_Board pb= new p_Board();
+		            
+		            pb.setPbno(rset.getInt("PBNO"));
+		            pb.setPbwriter(rset.getString("PBWRITER"));
+		            pb.setPbdate(rset.getDate("PBDATE"));
+		            pb.setPcontent(rset.getString("PCONTENT"));
+		            pb.setPhoto1(rset.getString("PHOTO1"));
+		            pb.setPhoto2(rset.getString("PHOTO2"));
+		            pb.setPhoto3(rset.getString("PHOTO3"));
+		            pb.setPhoto4(rset.getString("PHOTO4"));
+		            pb.setPhoto5(rset.getString("PHOTO5"));
+		            pb.setPhoto6(rset.getString("PHOTO6"));
+		            
+		            list.add(pb);
+		         
+		         }
+		       
+		     }catch(SQLException e) {
+		    	 e.printStackTrace();
+		     }finally {
+		    	 close(rset);
+		    	 close(pstmt);
+		     }
+		   
+			return list;				
+		}
+
 
    
    

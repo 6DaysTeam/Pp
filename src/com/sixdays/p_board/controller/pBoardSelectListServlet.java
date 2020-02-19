@@ -34,24 +34,18 @@ public class pBoardSelectListServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       ArrayList<p_Board> list = null;
-      System.out.println("123");
       String userid = request.getParameter("userId");
       p_BoardService pb = new p_BoardService();
-      System.out.println("userid : @@@" + userid);
       list =pb.selectList(userid);
       
-      // ver.2 : list 확인용 소스 코드
-      System.out.println("list : " + list);
-      // System.out.println("list size : " + list.size());
+
       
       String page = "";
       
       if(list != null) {
          
          page = "/views/user/Profile.jsp";
-         request.setAttribute("list", list);
-         System.out.println("list@@@ : " + list);
-         
+
       } else {
          
          System.out.println("마이 페이지 조회 실패!");

@@ -54,7 +54,7 @@
 	-->
     <header>
         <div id="top1" class="top">
-            <img id="logo" src="/6Days/resources/icon/logoletter.png" onclick="location.href='/6Days/main.jsp'">
+            <img id="logo" src="/6Days/resources/icon/logoletter.png" onclick="location.href='/main.me'">
 
 
 <!--  작성자 : 윤석훈

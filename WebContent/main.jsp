@@ -1,7 +1,12 @@
+<%@page import="com.sixdays.p_board.model.vo.p_Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.sixdays.userMember.model.vo.userMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  %>
-    
+  
+<%
+	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
+%>
     
 <!DOCTYPE html>
 <html>
@@ -20,49 +25,55 @@
         작성일 : 2020-01-14
         수정일 : 2020-01-17
         내용 : 메인화면 컨텐츠섹션 수정 -->
+        
         <div id="contentArea">  <!--컨텐츠가 출력될 중앙 영역 (길이값 무한대) -->
+        <table align="center">
+        <% for(p_Board pb : list) { %>
+        	<tr><td>
             <div id="content">  <!--실제 컨텐츠 각각의 영역 -->
                 <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
-                    <img id="showUserProfileImg" src="/6Days/resources/maruta/profileimg.JPG">  <!--유저 프로필 이미지 불러오기-->
-                    <p id="showUserName">Juwan_p.193</p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
+                    <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=m.getProimg()%>">  <!--유저 프로필 이미지 불러오기-->
+                    <p id="showUserName"><%= pb.getPbwriter() %></p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
-                    카페에서는 제발 조용히 통화하고 남에게 피해를 주지 맙시다.
+				<%= pb.getPcontent() %>
                 </div>
                 <div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
                     <div class="slideshow-container" >
                     <div class="mySlides fade" style="display: block;">
-                        <div class="numbertext">1 / 4</div>
-                        <img class="contentimgs" src="/6Days/resources/maruta/dummy1.JPG" style="width:100%;">
+                        <div class="numbertext"></div>
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" style="width:100%;">
                     </div>
-                    
+                    <% if(pb.getPhoto2()!=null){ %>
                     <div class="mySlides fade">
-                        <div class="numbertext">2 / 4</div>
-                        <img class="contentimgs" src="/6Days/resources/maruta/dummy2.JPG" style="width:100%;">
+                        <div class="numbertext"></div>
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto2() %>"  style="width:100%;">
                     </div>
-                    
+                    <% } %>
+                     <% if(pb.getPhoto3()!=null){ %>
                     <div class="mySlides fade">
-                        <div class="numbertext">3 / 4</div>
-                        <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" style="width:100%;">
+                        <div class="numbertext"></div>
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto3() %>"  style="width:100%;">
                     </div>
-
+					<% } %>
+					 <% if(pb.getPhoto4()!=null){ %>
                     <div class="mySlides fade">
-                        <div class="numbertext">4 / 4</div>
-                        <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" style="width:100%;">
+                        <div class="numbertext"></div>
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto4() %>" style="width:100%;">
                     </div>
-                    
+                    <% } %>
                     <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
                     <a class="next" onclick="plusSlides(1);">&#10095;</a>
 
                     </div>
 
-                    <div style="text-align:center">
+             <!--        <div style="text-align:center">
                         <span class="dot" onclick="currentSlide(1);"></span> 
                         <span class="dot" onclick="currentSlide(2);"></span> 
                         <span class="dot" onclick="currentSlide(3);"></span> 
                         <span class="dot" onclick="currentSlide(4);"></span> 
-                    </div>                  
+                    </div>   -->                
                 </div>
 
 
@@ -89,6 +100,10 @@
                     <input id="sendcoment" type="text" placeholder="댓글달기..." style="width: 85%;">
                     <input type="button" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0;"  value="확인">
             </div>
+            <br><br><br><br><br>
+            </td></tr>
+           <%} %>
+          </table>
         </div>
 
 <!--    작성자 : 박주완
@@ -196,7 +211,7 @@
             }
 
         </script>
-
+	
 
 </body>
 </html>
