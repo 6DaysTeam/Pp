@@ -202,19 +202,31 @@
 								<label id="name2" class="profile"><%=m.getUserName() %></label>
 							</div>
                         <div id="innercoment">
-                            <div id="ment" class="coments">게시글내용들어갈 자리. 님덜 부산가면 요트 꼭타셈 ㄹㅇ 개꿀잼 인생의 추억 짱짱</div>
+                            <span id="ment" class="coments">게시글내용들어갈 자리. 님덜 부산가면 요트 꼭타셈 ㄹㅇ 개꿀잼 인생의 추억 짱짱</span>
+                            <span id="tag" class="tag">태그 들어갈 자리. #광안리#부산#해운대#데이트#1주년#난멋져#뇌바사삭</span>
+<!--                  *******************************   여기서부터 댓글 들어갈 자리!!   *******************************  -->
+
+
+
+
+
+
+
+<!--                  *******************************   여기서까지 댓글   *******************************  -->
                         </div>
-                        <div id="tagbox">
-                            <div id="tag" class="tag">태그 들어갈 자리. #광안리#부산#해운대#데이트#1주년#난멋져#뇌바사삭</div>
-                        </div>
-                        <div><hr style="margin: 5px;">
-                            <button style="font-size: 15px; float: left; border: none; border-radius: 10px; background-color: pink; margin-top: 4px; margin-right: 6px;">좋아요</button>
-                            <p style="font-size: 12px; margin-left: 10px;">sakun 님외 2.1k명이 좋아합니다.</p>
-                            <p style="font-size: 10px; margin-left: 10px;">1월 13일</p>          
-                        </div><hr style="margin: 5px;">
+
+		                <div id="toolsbox"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
+		                    <img id="whitesmile"  src="/6Days/resources/icon/whitesmile.png" onclick="like();" >
+		                    <div id="likerUsersName" name="likerUsersName" >좋아요 </div>
+		                    <div id="likeCount" name="likeCount" >214</div>
+		                    <div id="likeMent" >개</div>
+		                    <div id="comentsCount" name="comentsCount" > 댓글 12</div>
+		                    <div id="postmakeDate">2020년 02월 19일</div>
+		                </div>
+
                         <div id="comentarea">
-                            <input type="text" id="comentinput" style="border-radius: 5px; border: 0.5px solid lightgray; background-color: whitesmoke; padding: 2px;">
-                            <button onclick="" id="comentsend" style="margin-top: -5px; font-size: 15px; background-color: royalblue; border: none; border-radius: 5px; height: 28px;">게시</button>
+                            <input type="text" id="comentinput" placeholder="댓글 달기..." >
+                            <button onclick="" id="comentsend">게시</button>
                         </div>
                     </div>
                     
@@ -339,7 +351,7 @@
       </div>
     </form>
     
-    
+    </div>
     
     
     <script>

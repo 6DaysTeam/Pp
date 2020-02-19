@@ -156,17 +156,16 @@
             }
 
             #userprofilshow{
-			    background-color: white;
-			    border: 1px solid lightgrey;
-			    width: 110%;
-			    height: 37px;
-			    margin-left: -1px;
-			    margin-top: 0px;
-			    text-align: left;
-			    padding: 3px;
-			    padding-top: 5px;
-			    box-shadow: 0 2px 3px -6px #222;
-
+				background-color: white;
+			    border: 1px solid #efefef;
+				width: 110%;
+				height: 45px;
+				margin-left: -1px;
+				margin-top: 0px;
+				text-align: left;
+				padding: 3px;
+				padding-top: 16px;
+				box-shadow: 0 4px 5px -6px #222;
             }
 
 
@@ -174,7 +173,7 @@
 
              /* 占쎈연疫꿸퀣苑뚪겫占쏙옙苑� 筌뤴뫀�뼎筌∽옙 */
 
-            #modal{
+			 #modal{
                 display: none;
                 position: fixed;
                 z-index: 10; 
@@ -189,17 +188,20 @@
             }
 
             #modalcontent{
-			    width: 970px;
+			    width: 1000px;
 			    height: 620px;
 			    font-size: 25px;
 			    margin-top: 5%;
 			    display: inline-block;
+			    text-align: center;
             }
-
 			.contentimgs{
-			    height: 620px;
 			    float: right;
+			    height: 620px;
 			    width: auto;
+			    max-width: 649px;
+			   	max-height: 620px;
+			   	min-height: 620px;
 			 }
 			
 
@@ -219,12 +221,13 @@
             }
 
             #coments{
-			    background-color: white;
+				background-color: white;
 			    width: 350px;
 			    height: 620px;
 			    float: left;
 			    padding: 0;
 			    overflow: hidden;
+			    text-align: center;
             }
             .coments{
                 float: left;
@@ -232,55 +235,137 @@
             
 		/* 게시물 내용글 들어갈 자리 */
             #innercoment{
-				height: auto;
-				max-height:150px;
-				font-size: 15px;
-				text-align: left;
+				height: 420px;
+			    max-height: 420px;
+			    font-size: 15px;
+			    text-align: left;
+			    display: inline-block;
+			    width: 329px;
+			    margin-top: 15px;
+			    padding: 10px;
+			    overflow:scroll;
+			    overflow-x:hidden; 
+			    
             }
             
             #ment{
 				padding: 5px;
             }
+
             
-		/* 태그들어갈 자리 */
-            #tagbox{
-            	height: auto;
-            	max-height:150px;
-				font-size: 15px;
-				text-align: left;
+            #toolsbox{
+			   display: inline-block;
+			   width: 350px;
+			   /* background: yellow; */
+			   margin-left: -5px;
+			   padding: 5px;
+			   padding-left: 10px;
+			   -moz-box-shadow: 0 5px 10px -6px #222;
+			   box-shadow: 0 4px 5px -6px #222;
+			   border: 1px solid #efefef;
             }
+            
+            #whitesmile{
+	             width: 50px; 
+	             height: 50px; 
+	             float: left; 
+	             margin: 0; 
+	             margin-top: -2%; 
+	             margin-left: -1%;
+            }
+            
+            #likerUsersName{
+			    font-size: 15px;
+			    color: gray;
+			    float: left;
+			    margin-left: 50px;
+			    margin-top: 7px;
+			    position: absolute;
+            }
+            
+            #likeCount{
+            	font-size: 14px; 
+            	color: black; 
+            	float: left; 
+				margin-left: 92px;
+			    margin-top: 7px;
+			    position: absolute;
+            }
+            
+            #likeMent{
+            	font-size: 12px; 
+            	color: gray; 
+            	float: left; 
+    			margin-left: 118px;
+			    margin-top: 7px;
+			    position: absolute;
+            }
+            
+            #comentsCount{
+            	font-size: 12px; 
+            	color: gray; 
+            	float: right; 
+            	margin: 0; 
+            	margin-right: 15px;
+            }
+            
+            #postmakeDate{
+				font-size: 12px;
+			    color: gray;
+			    float: right;
+			    /* margin-right: 32px; */
+			    position: absolute;
+   				margin-left: 51px;
+			    margin-top: 25px;
+            }
+            
+            
             
 		/* 모달 닫기 버튼*/
             #closebtn{
-		    position: absolute;
-		    width: 25px;
-		    height: 24px;
-		    z-index: 10;
-		    font-size: 19px;
-		    margin-left: 349px;
-		    margin-top: -6px;
-		    opacity: 100%;
-		    color: white;
-		    border-radius: 5px;
-		    border: none;
-		    background-color: black;
+				position: absolute;
+			    width: 25px;
+			    height: 24px;
+			    z-index: 10;
+			    font-size: 19px;
+			    margin-left: 486px;
+			    margin-top: 0px;
+			    opacity: 100%;
+			    color: white;
+			    border-radius: 5px;
+			    border: none;
+			    background-color: black;
             }
 
             #comentarea{
-                margin-top: 10px;
+			    /* background: yellow; */
+			    border: 1px solid #efefef;
+			    height: 32px;
+			    padding: 8px;
+			    margin-left: -5px;
+			    padding-left: 10px;
+			    display: inline-block;
+			    width: 350px;
+			    bottom: 10px;
+			    margin-top: -9px;
             }
 
             #comentinput{
-                width: 245px;
-                height: 25px;
-                float: left;
+				width: 280px;
+			    height: 29px;
+			    float: left;
+			    border: none;
+			    background: none;
+			    font-size: 13px;
             }
 
             #comentsend{
-                height: 25px;
-                background-color: lightslategray;
-                border: 0px;
-                font-size:18px;
+			    font-family: 'Jua', sans-serif;
+			    height: 25px;
+			    font-size: 20px;
+			    background: none;
+			    border: none;
+			    color: rgb(15, 76, 129);
             }
 
             #setting{
