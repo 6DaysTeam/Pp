@@ -124,6 +124,10 @@
                			</td>
                		</tr>
                	</table>
+               	
+               	<input type="hidden" name="userId" value="<%=m.getUserId() %>">
+               	
+               	
                	<div class="fileArea" id="fileArea">
 		      		<input type="file" id="thumbnailImg1"
 		      				name="thumbnailImg1" accept="image/*,video/*" onchange="loadImg(this, 1);" />
@@ -316,6 +320,13 @@ function loadImg(value, num){
 		}
 		reader.readAsDataURL(value.files[0]);
 	}
+}
+
+//메인이미지 첨부 안했을시 alert 창 띄우기
+var fileCheck = document.getElementById("thumbnailImg1").value();
+if(!fileCheck){
+    alert("이미지를 첨부해주세요 ! ");
+    return false;
 }
 </script>
 </html>

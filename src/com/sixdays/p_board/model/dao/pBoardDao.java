@@ -41,21 +41,22 @@ public class pBoardDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
+		
 		String sql = prop.getProperty("insertpBoard");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			
 			
-//			pstmt.setString(1, pb.getPbwriter());
-			pstmt.setString(1, pb.getPhoto1());
-			pstmt.setString(2, pb.getPhoto2());
-			pstmt.setString(3, pb.getPhoto3());
-			pstmt.setString(4, pb.getPhoto4());
-			pstmt.setString(5, pb.getPhoto5());
-			pstmt.setString(6, pb.getPhoto6());
-			pstmt.setString(7, pb.getPcontent());
-			pstmt.setString(8, pb.getHashtag());
+			pstmt.setString(1, pb.getPbwriter());
+			pstmt.setString(2, pb.getPhoto1());
+			pstmt.setString(3, pb.getPhoto2());
+			pstmt.setString(4, pb.getPhoto3());
+			pstmt.setString(5, pb.getPhoto4());
+			pstmt.setString(6, pb.getPhoto5());
+			pstmt.setString(7, pb.getPhoto6());
+			pstmt.setString(8, pb.getPcontent());
+			pstmt.setString(9, pb.getHashtag());
 			
 			System.out.println(sql);
 			System.out.println(pb);
