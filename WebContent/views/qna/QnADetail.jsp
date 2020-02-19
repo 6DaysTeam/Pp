@@ -105,41 +105,60 @@
            <% if(clist != null) { %>
            		<% for(QnAComment qco : clist) {
            			%>
-              <table style="margin-left:3.8%">
+  
+ <!-- ************************************************************************************************ -->          			
+           <div id="coment00">			
+              <table>
               <tr>
-             <td rowspan="2" width="20%"><%= m.getProimg() %></td>
-             <td width="60%" style="text-align:left"><%=m.getUserId() %></td>
-             <td width="20%" style="text-align:right"><%= q.getQdate()  %></td>
+	             <td id="pofileimgbox0001" rowspan="2">
+	                <div id="profileimg000">
+						<% if(m.getProimg() != null) {%>
+						     <img id="profileimg00" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>">
+						<%}else{ %>
+							 <img id="profileimg00" src="/6Days/resources/proimgUploadFiles/proimg.png" >
+						<%} %>
+	                </div>
+	             </td>
+	             
+	             <td id="userIdText" ><%=qco.getCwriter() %></td>
+	             <td id="comentsInsertDate"><%= q.getQdate()  %></td>
               </tr>
+              
               <tr>
-              <td colspan="2"><textarea style="width:565px; height: 70px; resize:none" readonly><%=qco.getCcontent() %></textarea></td>
+              	<td colspan="2"><textarea id="innerCoemnts" readonly><%=qco.getCcontent() %></textarea></td>
               </tr>
+              
 			  <tr>
-			  <td></td>
-			  <td></td>
-			  <td>
-			  <% if(m.getUserId().equals(qco.getCwriter())) { %>
-			  <button style="float:right"onclick="deleteReply(this);">삭제</button>
-			  <button style="float:right"onclick="updateReply(this);">수정</button>
-			  <% } else if(qco.getClevel() < 3) { %>
-			  <input type="hidden" name="cwriter" value="<%=m.getUserId()%>"/>
-						<input type="hidden" name="refcno" value="<%= qco.getCno() %>" />
-						<input type="hidden" name="clevel" value="<%=qco.getClevel() %>" />
-						<button type="button" class="insertBtn" 
-							 onclick="reComment(this);">댓글 달기</button>&nbsp;&nbsp;
-							 
-						<button type="button" class="insertConfirm"
-							onclick="reConfirm(this);"
-							style="display:none;" >댓글 추가 완료</button> 
-							
-					<% } else {%>
-						<span> 마지막 레벨입니다.</span>
-					<% } %>
-				<% } %>
-				<% } %>
-			  </td>
+				  <td id="btns000">
+				  <% if(m.getUserId().equals(qco.getCwriter())) { %>
+					<button style="float:right"onclick="deleteReply(this);">삭제</button>
+					<button style="float:right"onclick="updateReply(this);">수정</button>
+				  <% } else if(qco.getClevel() < 3) { %>
+					<input type="hidden" name="cwriter" value="<%=qco.getCwriter()%>"/>
+					<input type="hidden" name="refcno" value="<%= qco.getCno() %>" />
+					<input type="hidden" name="clevel" value="<%=qco.getClevel() %>" />
+							<button type="button" class="insertBtn" onclick="reComment(this);">
+								댓글 달기
+							</button>&nbsp;&nbsp;
+								 
+							<button type="button" class="insertConfirm" onclick="reConfirm(this);" style="display:none;" >
+								댓글 추가 완료
+							</button> 
+								
+				  <% } else {%>
+							<span> 마지막 레벨입니다.</span>
+				  <% } %>
+				  
+				  </td>
 			  </tr>
               </table>
+           </div>   
+			<% } %>
+			
+		<% } %>
+<!-- ************************************************************************************************ -->
+              
+              
           </div>
         </div>
         <script>

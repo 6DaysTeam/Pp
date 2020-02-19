@@ -72,36 +72,34 @@
             <img id="mg" class="top-btn" src="/6Days/resources/icon/4.png" title="마이페이지" onclick="myPage();">
             <img id="myp" class="top-btn" src="/6Days/resources/icon/outbtn.png" title="로그아웃" onclick="logout();">
             
-<!--    작성자 : 이서현, 신경섭 
+<!--    작성자 : 이서현, 신경섭 , 박주완
   		작성일 : 2020.1.14 시작
    	 	내용 : 게시물 업로드  
-  	 	수정일 : 2020.02.10
+  	 	수정일 : 2020.02.19
 			-->
-   <form action="/6Days/pbInsert.bo" method="POST" enctype="multipart/form-data">
-    	<input type="hidden" id="userId" name="userId" value="<%=m.getUserId() %>">
+     <form action="/6Days/pbInsert.bo" method="POST" enctype="multipart/form-data">
        <div id="Infmodal">
            <div id="Infcontent">
                <div id="Infmenu">
-                   <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
-                   <button id="Infclosebtn" onclick="return Infclose();">X</button>
+                   <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드<button id="Infclosebtn" onclick="Infclose();">X</button></label>
                </div>
-               <hr>
+               <hr style="width: 650px; float: left;">
                <div id="Infleft">
-               	<table align="center" style="width:100%; height:100%;">
+               	<table style="text-align: center; width:100%; height:100%;">
                		<tr>
                			<td>
-               				<div id="titleImgArea" style="width:170px; height:180px;">
-               					<img id="titleImg" width="170" height="180">
+               				<div id="titleImgArea" class="ImgArea0">
+               					<img id="titleImg" class="titleImg0">
                				</div>
                			</td>
                			<td>
-               				<div id="contentImgArea1" style=" width:170px; height:180px;">
-               					<img id="contentImg1" width="170" height="180">
+               				<div id="contentImgArea1" class="ImgArea0">
+               					<img id="contentImg1" class="titleImg0" >
                				</div>
                			</td>
                			<td>
-               				<div id="contentImgArea2" style=" width:170px; height:180px;">
-               					<img id="contentImg2" width="170" height="180">
+               				<div id="contentImgArea2" class="ImgArea0">
+               					<img id="contentImg2" class="titleImg0">
                				</div>
                			</td>
                		</tr>
@@ -109,26 +107,27 @@
                		
                		<tr>
                			<td>
-               				<div id="contentImgArea3" style=" width:170px; height:180px;">
-               					<img id="contentImg3" width="170" height="180">
+               				<div id="contentImgArea3" class="ImgArea0">
+               					<img id="contentImg3" class="titleImg0" >
                				</div>
                			</td>
                			<td>
-               				<div id="contentImgArea4" style=" width:170px; height:180px;">
-               					<img id="contentImg4" width="170" height="180">
+               				<div id="contentImgArea4" class="ImgArea0">
+               					<img id="contentImg4" class="titleImg0" >
                				</div>
                			</td>
                			<td>
-               				<div id="contentImgArea5" style=" width:170px; height:180px; !important">
-               					<img id="contentImg5" width="170" height="180">
+               				<div id="contentImgArea5" class="ImgArea0" style="!important">
+               					<img id="contentImg5" class="titleImg0">
                				</div>
                			</td>
                		</tr>
                	</table>
                	
-            
+               	<input type="hidden" name="userId" value="<%=m.getUserId() %>">
+
+
                	
-             
                	
                	<div class="fileArea" id="fileArea">
 		      		<input type="file" id="thumbnailImg1"
@@ -152,11 +151,25 @@
                	
                	
                </div>      
+  
+                <div id="userinfo">
+	                <div id="userimgbox">
+						<% if(m.getProimg() != null) {%>
+						     <img id="userimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+						<%}else{ %>
+							 <img id="userimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
+						<%} %>
+	                </div>
+	                <div id="userName0">
+                    	<label id="username" class="profile"><%=m.getUserName() %></label>            
+	                </div>
+                </div>                      
+                      
                       							
                <div id="Infright">
                    <textarea id="Infcomment" name="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
                    <textarea id="Infhashtag" name="Infhashtag" placeholder="#태그"></textarea>
-                   <button id="Infupload" name="Infupload" onclick="Nofile();">업로드</button>
+                   <button id="Infupload" name="Infupload" onclick="">올리기</button>
                 </div>
                 
                 <div>

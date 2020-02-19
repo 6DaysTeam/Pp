@@ -252,18 +252,18 @@
             
 		/* 모달 닫기 버튼*/
             #closebtn{
-				position: absolute;
-				width: 25px;
-				height: 24px;
-				z-index: 10;
-				font-size: 19px;
-				margin-left: 461px;
-				margin-top: -2px;
-				opacity: 100%;
-				color: white;
-				border-radius: 5px;
-				border: none;
-				background-color: black;
+		    position: absolute;
+		    width: 25px;
+		    height: 24px;
+		    z-index: 10;
+		    font-size: 19px;
+		    margin-left: 349px;
+		    margin-top: -6px;
+		    opacity: 100%;
+		    color: white;
+		    border-radius: 5px;
+		    border: none;
+		    background-color: black;
             }
 
             #comentarea{
