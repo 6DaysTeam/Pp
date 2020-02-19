@@ -40,11 +40,8 @@ public class CommentInsertServlet extends HttpServlet {
 		String date = request.getParameter("cdate");
 
 		Date cdate = null;
-		System.out.println(date.isEmpty());
-//		if(date != "" && date != null) {
-		if(!date.isEmpty()) {
+		if(date != "" && date != null) {
 			// 날짜가 들어왔을 때
-			System.out.println("날짜 : " + date);
 			// 2020-01-30 --> 2020, 1, 30
 			String[] dateArr = date.split("-");
 			int[] intArr = new int[dateArr.length];
@@ -54,12 +51,11 @@ public class CommentInsertServlet extends HttpServlet {
 				intArr[i] = Integer.parseInt(dateArr[i]);
 			}
 			cdate = new Date(new GregorianCalendar(intArr[0], intArr[1]-1, intArr[2]).getTimeInMillis());
-			System.out.println("cdate :" + cdate);
 		} else {
 			// 날짜가 들어오지 않으면
 			cdate = new Date(new GregorianCalendar().getTimeInMillis());
 		}
-		
+				
 		QnAComment qco = new QnAComment(qno, ccontent, cwriter, refcno, clevel, cdate);
 		
 		int result = new QnACommentService().insertComment(qco);
