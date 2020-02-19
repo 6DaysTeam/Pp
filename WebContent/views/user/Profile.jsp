@@ -1,14 +1,17 @@
+<%@page import="javax.crypto.interfaces.PBEKey"%>
+<%@page import="com.sixdays.p_board.model.vo.p_Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.sixdays.userMember.model.vo.userMember" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%
+<%
 	// 사진 게시글 리스트 가져오기
-	ArrayList<p_Board> list
-	 = (ArrayList<p_Board>)request.getAttribute("list");
-%> --%>
+    ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
+	p_Board pba = new p_Board();
+%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -26,6 +29,7 @@
     
     <body>
 
+<input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 
 <!--    작성자 : 박주완
         작성일 : 2020-01-09
@@ -75,7 +79,7 @@
         작성일 : 2020-01-09
         내용 : 유저 프로필 화면
 	수정일 : 2020-02-19   
--->
+-->			
             <div id="postlist">
                 <!-- <table align="center">
                     <tr>
@@ -93,16 +97,19 @@
                         <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
                     </tr>
                 </table> -->
+                <table align="center" style="width: 900px;">
+                <tr>
                 <% for(p_Board pb : list) { %>
-				<div class="thumb-list" align="center">
-					<div>
-						<input type="hidden" value="<%= pb.getBno() %>">
-						<img src="/6Days/resources/pboardUploadFiles<%= pb.getBoardfile() %>" 
-						     width="200px" height="150px" onclick="modalOpen();">
-					</div>
-				</div>
+				
+				<td style="display: inline-block; float:left; margin-left:2%">		
+						<input type="hidden" value="<%= pb.getPbno()%>">
+						<img src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
+						     width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
+				
+				</td>
 				<% } %>
-            </div>
+				</tr>
+            	</table>
         </div>
  		<%-- <script>
  			$(function(){
@@ -325,7 +332,7 @@
             <p onclick="probackSetclose();">닫기</p>
          </div>
       </div>
-    </form> -->
+    </form>
     
     
     
@@ -433,7 +440,6 @@
     }
     
 
-    
     </script>
     
 </body>

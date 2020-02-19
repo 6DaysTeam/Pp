@@ -46,7 +46,7 @@
 </head>
 
 <body>
-
+  
 <!--작성자 : 이서현,박주완
     작성일 : 2020.1.14 시작
     내용 : 메인 로고 딴따라
@@ -65,23 +65,25 @@
                  <input id="searchInput" type="text" placeholder="검색어를 입력해주세요.">
             </div>
             
+               	<input type="hidden" id="userId" name="userId" value="<%=m.getUserId() %>">
 
 
             <img id="loca" class="top-btn" src="/6Days/resources/icon/UPloadbtn.png"  title="게시글추가" onclick="Infopen();" style="margin-left: 265px;">
-            <img id="mg" class="top-btn" src="/6Days/resources/icon/4.png" title="마이페이지" onclick="location.href='/6Days/views/user/Profile.jsp'">
+            <img id="mg" class="top-btn" src="/6Days/resources/icon/4.png" title="마이페이지" onclick="myPage();">
             <img id="myp" class="top-btn" src="/6Days/resources/icon/outbtn.png" title="로그아웃" onclick="logout();">
             
 <!--    작성자 : 이서현, 신경섭 
   		작성일 : 2020.1.14 시작
-   	 	내용 : 게시물 업로드
+   	 	내용 : 게시물 업로드  
   	 	수정일 : 2020.02.10
 			-->
    <form action="/6Days/pbInsert.bo" method="POST" enctype="multipart/form-data">
+    	<input type="hidden" id="userId" name="userId" value="<%=m.getUserId() %>">
        <div id="Infmodal">
            <div id="Infcontent">
                <div id="Infmenu">
                    <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드</label>
-                   <button id="Infclosebtn" onclick="Infclose();">X</button>
+                   <button id="Infclosebtn" onclick="return Infclose();">X</button>
                </div>
                <hr>
                <div id="Infleft">
@@ -124,8 +126,9 @@
                		</tr>
                	</table>
                	
-               	<input type="hidden" name="userId" value="<%=m.getUserId() %>">
+            
                	
+             
                	
                	<div class="fileArea" id="fileArea">
 		      		<input type="file" id="thumbnailImg1"
@@ -289,9 +292,9 @@ $(function(){
 	});
 
 	$('#contentImgArea3').click(() => {
-		$('#thumbnailImg4').click();
+		$('#thumbnailImg4').click(); 
 	});
-	
+	 
 	$('#contentImgArea4').click(() => {
 		$('#thumbnailImg5').click();
 	});
@@ -330,5 +333,15 @@ function loadImg(value, num){
 
 //메인이미지 첨부 안했을시 alert 창 띄우기
 
+</script>
+<script>
+function myPage(){
+		
+
+		var userId= document.getElementById('userId').value;
+		location.href="/6Days/pbSelect.bo?userId="+ userId;
+		
+	
+}
 </script>
 </html>

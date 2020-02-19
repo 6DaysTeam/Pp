@@ -69,6 +69,7 @@ public class pBoardInsertServlet extends HttpServlet {
 		String pcontent = mrequest.getParameter("Infcomment");
 		String hashtag = mrequest.getParameter("Infhashtag");
 		
+		System.out.println("인서트의 id : " + pbwriter);
 		
 		//전송된 파일 VO에 담아서 서비스로 보내기
 		p_Board pb = new p_Board();		
