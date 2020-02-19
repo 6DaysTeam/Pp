@@ -55,7 +55,7 @@
 <!--    작성자 : 윤석훈
         작성일 : 2020-01-14
         내용 : 게시판 임시 제작 -->
-        <div id="boardArea" style="background: white; height:650px;">
+        <div id="boardArea" style="background: white; height:700px;">
         <table class="table table-striped" id="listArea">
          <thead>
           <label id="g-title" onclick="location.href='/6Days/selectList.bo'" style="cursor : pointer;"> 공지사항</label>
