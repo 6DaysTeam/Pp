@@ -272,17 +272,18 @@ function uploadFiles(e) {
 $(function(){
 	$('#fileArea').hide();
 	
-/* 	if(!$('#thumbnailImg1').value){
+/*  	if(!$('#thumbnailImg1').value){
 		alert("대표이미지를 첨부해주세요!");
 		
-	}else{
- */		
-		$('#titleImgArea').click(() => {
-			$('#thumbnailImg1').click();
-			
-		});
+	}else{ */
+		
+		
+	$('#titleImgArea').click(() => {
+		$('#thumbnailImg1').click();
+		
+	});
 
-	
+		
 	$('#contentImgArea1').click(() => {
 		$('#thumbnailImg2').click();
 	});

@@ -99,7 +99,10 @@
                 </table> -->
                 <table align="center" style="width: 900px;">
                 <tr>
-                <% for(p_Board pb : list) { %>
+                <% for(p_Board pb : list) {
+                	if(pb.getPhoto1() != null){
+                	
+                	%>
 				
 				<td style="display: inline-block; float:left; margin-left:2%">		
 						<input type="hidden" value="<%= pb.getPbno()%>">
@@ -107,7 +110,9 @@
 						     width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
 				
 				</td>
-				<% } %>
+				<% 
+                	}
+                	} %>
 				</tr>
             	</table>
         </div>
