@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.sixdays.qna.model.vo.*, java.util.*" %>
+    pageEncoding="UTF-8" import="com.sixdays.qna.model.vo.*, java.util.*, com.sixdays.qnacomment.model.vo.*" %>
 <%
-	QnA q= (QnA)request.getAttribute("qna");
+	QnA q = (QnA)request.getAttribute("qna");
+	/* QnAComment qc = (QnAComment)request.getAttribute("qnacomment"); */
+	ArrayList<QnAComment> clist = (ArrayList<QnAComment>)request.getAttribute("clist");
+	System.out.println(clist);
 %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +37,7 @@
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/left-sidebar.jsp" %>
 <%@ include file="../common/right-sidebar.jsp" %>
-
+	<% if(m != null) { %>
 	<div id ="boardArea" style="background:white;">
       <label id="board-title">QnA 내용</label>
             <input type="reset" class="board-button" onclick="location.href='selectList.qo'" value="뒤로" >
@@ -81,34 +84,161 @@
               	<%= q.getQcontent() %></td>            
               </table><br><br>
               
+              <form action="InsertComment.qo" method="post">
+              		<input type="hidden" name="cwriter" value="<%=m.getUserId()%>"/>
+					<input type="hidden" name="qno" value="<%=q.getQno() %>" />
+					<input type="hidden" name="refcno" value="0" />
+					<input type="hidden" name="clevel" value="1" />
+              		
               <table style="margin-left:3.8%">
               <tr>
               	<td colspan="3" style="float:left">댓글작성</td>
               	
               </tr>
               <tr>
-              	<td colspan="3"><textarea style="width: 700px; height: 40px; resize:none;" placeholder="댓글 입력란 입니다"></textarea><td>
-              	<td width="60px"><button onclick="return false" style="margin-left: -40%; width:60px; height:46px; margin-bottom: 10%;">작성</button>
+              	<td colspan="3"><textarea name ="ccontent" style="width: 700px; height: 40px; resize:none;" placeholder="댓글 입력란 입니다"></textarea><td>
+              	<td width="60px"><button type="submit" style="margin-left: -40%; width:60px; height:46px; margin-bottom: 10%;">작성</button>
               </tr>
               <tr><td colspan="3"><hr></td><tr>
+              </table>
+              </form>
+           <% if(clist != null) { %>
+           		<% for(QnAComment qco : clist) {
+           			%>
+              <table style="margin-left:3.8%">
               <tr>
-             <td rowspan="2" width="20%">프로필이미지</td>
-             <td width="60%" style="text-align:left"> 작성자</td>
-             <td  width="20%" style="text-align:right">작성일</td>
+             <td rowspan="2" width="20%"><%= m.getProimg() %></td>
+             <td width="60%" style="text-align:left"><%=m.getUserId() %></td>
+             <td width="20%" style="text-align:right"><%= q.getQdate()  %></td>
               </tr>
               <tr>
-              <td colspan="2"><textarea  style="width:565px; height: 70px; resize:none" readonly></textarea></td>
+              <td colspan="2"><textarea style="width:565px; height: 70px; resize:none" readonly><%=qco.getCcontent() %></textarea></td>
               </tr>
 			  <tr>
 			  <td></td>
 			  <td></td>
 			  <td>
-			  <button style="float:right"onclick="return false">삭제</button>
-			  <button style="float:right"onclick="return false">수정</button>
+			  <% if(m.getUserId().equals(qco.getCwriter())) { %>
+			  <button style="float:right"onclick="deleteReply(this);">삭제</button>
+			  <button style="float:right"onclick="updateReply(this);">수정</button>
+			  <% } else if(qco.getClevel() < 3) { %>
+			  <input type="hidden" name="cwriter" value="<%=m.getUserId()%>"/>
+						<input type="hidden" name="refcno" value="<%= qco.getCno() %>" />
+						<input type="hidden" name="clevel" value="<%=qco.getClevel() %>" />
+						<button type="button" class="insertBtn" 
+							 onclick="reComment(this);">댓글 달기</button>&nbsp;&nbsp;
+							 
+						<button type="button" class="insertConfirm"
+							onclick="reConfirm(this);"
+							style="display:none;" >댓글 추가 완료</button> 
+							
+					<% } else {%>
+						<span> 마지막 레벨입니다.</span>
+					<% } %>
+				<% } %>
+				<% } %>
 			  </td>
 			  </tr>
               </table>
           </div>
         </div>
+        <script>
+    	function updateReply(obj) {
+    		// 현재 위치와 가장 근접한 textarea 접근하기
+    		$(obj).parent().parent().next().find('textarea')
+    		.removeAttr('readonly');
+    		
+    		// 수정 완료 버튼을 화면 보이게 하기
+    		$(obj).siblings('.updateConfirm').css('display','inline');
+    		
+    		// 수정하기 버튼 숨기기
+    		$(obj).css('display', 'none');
+    	}
+    	
+    	function updateConfirm(obj) {
+    		// 댓글의 내용 가져오기
+    		var content
+    		  = $(obj).parent().parent().next().find('textarea').val();
+    		
+    		// 댓글의 번호 가져오기
+    		var cno = $(obj).siblings('input').val();
+    		
+    		// 게시글 번호 가져오기
+    		var bno = '<%=q.getQno()%>';
+    		
+    		location.href="/myWeb/updateComment.bo?"
+    				 +"cno="+cno+"&bno="+bno+"&content="+content;
+    	}
+    	
+    	function deleteReply(obj) {
+    		// 댓글의 번호 가져오기
+    		var cno = $(obj).siblings('input').val();
+    		
+    		// 게시글 번호 가져오기
+    		var bno = '<%=q.getQno()%>';
+    		
+    		location.href="/myWeb/deleteComment.bo"
+    		+"?cno="+cno+"&bno="+bno;
+    	}
+    	
+    	function reComment(obj){
+    		// 추가 완료 버튼을 화면 보이게 하기
+    		$(obj).siblings('.insertConfirm').css('display','inline');
+    		
+    		// 클릭한 버튼 숨기기
+    		$(obj).css('display', 'none');
+    		
+    		// 내용 입력 공간 만들기
+    		var htmlForm = 
+    			'<tr class="comment"><td></td>'
+    				+'<td colspan="3" style="background : transparent;">'
+    					+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
+    				+ '</td>'
+    			+ '</tr>';
+    		
+    		$(obj).parents('table').append(htmlForm);
+    		
+    	}
+    	
+    	function reConfirm(obj) {
+    		// 댓글의 내용 가져오기
+    		
+    		// 참조할 댓글의 번호 가져오기
+    		var refcno = $(obj).siblings('input[name="refcno"]').val();
+    		var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
+    		
+    		// console.log(refcno + " : " + level);
+    		
+    		// 게시글 번호 가져오기
+    		var bno = '<%=q.getQno()%>';
+    		
+    		var parent = $(obj).parent();
+    		var grandparent = parent.parent();
+    		var siblingsTR = grandparent.siblings().last();
+    		
+    		var content = siblingsTR.find('textarea').val();
+    		
+    		// console.log(parent.html());
+    		// console.log(grandparent.html());
+    		// console.log(siblingsTR.html());
+    		
+    		// console.log(content);
+
+    		// writer, replyContent
+    		// bno, refcno, clevel
+    		
+    		location.href='/6Days/insertComment.qo'
+    		           + '?writer=<%= m.getUserId() %>' 
+    		           + '&replyContent=' + content
+    		           + '&bno=' + bno
+    		           + '&refcno=' + refcno
+    		           + '&clevel=' + level;
+    	}
+    	</script>
+    	<% } else {
+    		request.setAttribute("msg", "회원만 가능한 서비스 입니다.");
+    		request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
+    	}
+    	%>
 	</body>
 </html>
