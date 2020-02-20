@@ -38,7 +38,12 @@
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
-				<%= pb.getPcontent() %>
+				<%= pb.getPcontent()%>
+				<br><br><br>
+				<%= pb.getHashtag()%>
+				
+				<br><br>
+
                 </div>
                 <div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
                     <div class="slideshow-container" >
@@ -77,6 +82,13 @@
                         <span class="dot" onclick="currentSlide(4);"></span> 
                     </div>              
                 </div>
+
+
+
+
+
+
+
 
 
                 <div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->

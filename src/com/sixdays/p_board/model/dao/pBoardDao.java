@@ -124,6 +124,11 @@ public class pBoardDao {
       return list;
    }
 
+	/**
+	 * 메인 사진 전체조회창
+	 * @param con
+	 * @return
+	 */
 		public ArrayList<p_Board> allList(Connection con) {
 			 ArrayList<p_Board> list = null;
 		     PreparedStatement pstmt = null;
@@ -151,6 +156,7 @@ public class pBoardDao {
 		            pb.setPhoto6(rset.getString("PHOTO6"));
 		            pb.setPnickname(rset.getString("USERNAME"));
 		            pb.setPproimg(rset.getString("PROIMG"));
+		            pb.setHashtag(rset.getString("HASHTAG"));
 		            
 		            list.add(pb);
 		         

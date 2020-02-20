@@ -169,7 +169,7 @@
                <div id="Infright">
                    <textarea id="Infcomment" name="Infcomment" placeholder="오늘 하루를 기록해 보세요"></textarea>
                    <textarea id="Infhashtag" name="Infhashtag" placeholder="#태그"></textarea>
-                   <button id="Infupload" name="Infupload" onclick="">올리기</button>
+                   <button id="Infupload" name="Infupload" onclick="return up()">올리기</button>
                 </div>
                 
                 <div>
@@ -285,11 +285,6 @@ function uploadFiles(e) {
 $(function(){
 	$('#fileArea').hide();
 	
-/*  	if(!$('#thumbnailImg1').value){
-		alert("대표이미지를 첨부해주세요!");
-		
-	}else{ */
-		
 		
 	$('#titleImgArea').click(() => {
 		$('#thumbnailImg1').click();
@@ -317,15 +312,6 @@ $(function(){
 		$('#thumbnailImg6').click();
 	});
 });
-
-function Nofile(){
-	if(!$('#thumbnailImg1').value){
-		alert("대표이미지를 첨부해주세요!");
-		alert("#thumnailImg1");
-	}else{
-		alert("사진 업로드 완료 ! ");
-	}
-}
 
 function loadImg(value, num){
 	
@@ -358,13 +344,15 @@ function loadImg(value, num){
 
 </script>
 <script>
-function myPage(){
-		
-
-		var userId= document.getElementById('userId').value;
-		location.href="/6Days/pbSelect.bo?userId="+ userId;
-		
+function up(){
+	console.log(document.getElementById('thumbnailImg1').src);
 	
+	if(document.getElementById('titleImg').src == ""){
+		alert('첫번째 이미지를 넣어주세요 ! ');
+		return false;
+	}else if(document.getElementById('titleImg').src != ""){
+		return true;
+	}
 }
 </script>
 </html>

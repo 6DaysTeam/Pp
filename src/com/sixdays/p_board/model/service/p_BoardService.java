@@ -14,13 +14,7 @@ public class p_BoardService {
 private pBoardDao pbDao = new pBoardDao();
    
 
-   /**
-    * 게시글 목록 조회
-    * @param currentPage
-    * @param limit
-    * @return
-    */
-
+ 
 
    /**
     * 게시글 추가
@@ -40,6 +34,12 @@ private pBoardDao pbDao = new pBoardDao();
       return result;
    }
 
+   /**
+    * 게시글 목록 조회
+    * @param currentPage
+    * @param limit
+    * @return
+    */
 
    public ArrayList<p_Board> selectList(String userId) {
 	      Connection con = getConnection();
@@ -51,6 +51,10 @@ private pBoardDao pbDao = new pBoardDao();
 	      return list;
 	   }
 
+    /**
+     * 게시글 목록 전체 조회
+     * @return
+     */
     public ArrayList<p_Board> allList() {
     Connection con = getConnection();
     
