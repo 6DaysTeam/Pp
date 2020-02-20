@@ -6,6 +6,7 @@
   
 <%
 	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
+	int result = 1;
 %>
     
 <!DOCTYPE html>
@@ -45,13 +46,14 @@
                         <div class="numbertext"></div>
                         <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" style="width:100%;">
                     </div>
-                    <% if(pb.getPhoto2()!=null){ %>
+                 <% if(pb.getPhoto2() != null){ %> 
                     <div class="mySlides fade">
                         <div class="numbertext"></div>
                         <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto2() %>"  style="width:100%;">
+                  
                     </div>
-                    <% } %>
-                     <% if(pb.getPhoto3()!=null){ %>
+                    <% } %> 
+					<% if(pb.getPhoto3()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext"></div>
                         <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto3() %>"  style="width:100%;">
@@ -166,18 +168,20 @@
             } */
 
 
-   <!--  작성자 : 박주완
+/*    <!--  작성자 : 박주완
         작성일 : 2020-02-03
-        내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->
-   /*      var slideIndex = 1;
+        내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  --> */
+         var slideIndex = 1;
         showSlides(slideIndex);
+        
 
         function plusSlides(n) {
-            showSlides(slideIndex += n);
+            showSlides(slideIndex += n); 
         }
 
         function currentSlide(n) {
             showSlides(slideIndex = n);
+            
         }
 
         function showSlides(n) {
@@ -192,7 +196,7 @@
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex-1].style.display = "block";  
+            slides[slideIndex-1].style.display = "block";   
             dots[slideIndex-1].className += " active";
         } 
 

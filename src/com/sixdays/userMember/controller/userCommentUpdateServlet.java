@@ -33,6 +33,7 @@ public class userCommentUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 회원 정보
 		String mycomment = request.getParameter("mycomment");
+		String userid = request.getParameter("userid0");
 		
 		HttpSession session = request.getSession(false);
 		
@@ -49,7 +50,8 @@ public class userCommentUpdateServlet extends HttpServlet {
 			ms.commentUpdateMember(m);
 			System.out.println("회원 정보 수정 완료!");
 			
-			response.sendRedirect("/6Days/views/user/Profile.jsp");
+
+			response.sendRedirect("/6Days/pbSelect.bo?userId="+ userid);
 			
 		} catch (MemberException e) {
 			e.printStackTrace();

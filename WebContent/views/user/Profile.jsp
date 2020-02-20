@@ -31,6 +31,7 @@
 
 <input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 
+
 <!--    작성자 : 박주완
         작성일 : 2020-01-09
         내용 : 유저 프로필 화면 -->
@@ -284,9 +285,13 @@
                 <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
                 <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
                 <form id="proImgDeleteForm" name="proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
-                <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr></form>
+                <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr>
+                <input type="hidden" id="userid4" name="userid4" value="<%=m.getUserId() %>">
+                </form>
                 <form id="proBackDeleteForm" name="proback" action="/6Days/pbackDelete.me" method="post" enctype="multipart/form-data">
-                <p onclick="proBackDelete();" style="color: red;">현재 프로필 배경 사진 삭제</p><hr></form>
+                <p onclick="proBackDelete();" style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
+                <input type="hidden" id="userid5" name="userid5" value="<%=m.getUserId() %>">
+                </form>
                 <p onclick="profileModalClose();">닫기</p>
         </div>
         </div>
@@ -295,6 +300,7 @@
         작성일 : 2020-01-16
         내용 : 코멘트 변경 모달 화면-->
     <form id="commentupdateForm" action="/6Days/coUpdate.me" method="post">
+     <input type="hidden" id="userid0" name="userid0" value="<%=m.getUserId() %>">
         <div id="comentSetModal">
             <div id="comentSet">
                 <p>변경할 코멘트</p><hr>
@@ -308,6 +314,7 @@
         작성일 : 2020-01-16
         내용 : 닉네임 변경 모달 화면-->
     <form id="nameupdateForm" action="/6Days/unUpdate.me" method="post">
+     <input type="hidden" id="userid1" name="userid1" value="<%=m.getUserId() %>">
         <div id="nameSetModal">
             <div id="nameSet">
                 <p>변경할 닉네임</p><hr>
@@ -322,6 +329,7 @@
         작성일 : 2020-02-13
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proImgupdateForm" action="/6Days/proimage.me" method="post"  enctype="multipart/form-data">
+     <input type="hidden" id="userid2"name="userid2" value="<%=m.getUserId() %>">
       <div id="proImgModal">
          <div id="proImgSet">
             <p>프로필 사진</p>
@@ -336,6 +344,7 @@
         작성일 : 2020-02-16
         내용 : 프로필사진 변경 모달 화면-->
     <form id="proBackupdateForm" action="/6Days/proback.me" method="post"  enctype="multipart/form-data">
+     <input type="hidden" id="userid3" name="userid3" value="<%=m.getUserId() %>">
       <div id="proBackModal">
          <div id="proBackSet">
             <p>프로필 사진</p>

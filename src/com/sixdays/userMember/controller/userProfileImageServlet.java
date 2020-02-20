@@ -40,6 +40,7 @@ public class userProfileImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int maxSize = 1024*1024*10;
 		
+		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
@@ -59,8 +60,9 @@ public class userProfileImageServlet extends HttpServlet {
 				);
 		
 		String proimg = mrequest.getFilesystemName("proimg");
-		
+		String userid = mrequest.getParameter("userid2");
 		HttpSession session = request.getSession(false);
+		System.out.println("userid : !!@!@!@" + userid);
 		
 		
 		userMember m = (userMember)session.getAttribute("member");
@@ -74,7 +76,9 @@ public class userProfileImageServlet extends HttpServlet {
 			ms.updateProImg(m);
 			System.out.println("회원 정보 수정 완료!");
 			
-			response.sendRedirect("/6Days/views/user/Profile.jsp");
+
+			response.sendRedirect("/6Days/pbSelect.bo?userId="+ userid);
+
 			
 		} catch (MemberException e) {
 			e.printStackTrace();

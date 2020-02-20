@@ -312,7 +312,7 @@ $(function(){
 	$('#contentImgArea4').click(() => {
 		$('#thumbnailImg5').click();
 	});
-	
+	 
 	$('#contentImgArea5').click(() => {
 		$('#thumbnailImg6').click();
 	});

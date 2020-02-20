@@ -33,7 +33,7 @@ public class userNameUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 회원 정보 
 		String username = request.getParameter("userName");
-		
+		String userid = request.getParameter("userid1");
 		
 		HttpSession session = request.getSession(false);
 		
@@ -49,7 +49,7 @@ public class userNameUpdateServlet extends HttpServlet {
 			ms.nameUpdateMember(m);
 			System.out.println("회원 정보 수정 완료!");
 			
-			response.sendRedirect("/6Days/views/user/Profile.jsp");
+			response.sendRedirect("/6Days/pbSelect.bo?userId="+ userid);
 			
 		} catch (MemberException e) {
 			e.printStackTrace();

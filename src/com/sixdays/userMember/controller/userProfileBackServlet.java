@@ -38,6 +38,8 @@ public class userProfileBackServlet extends HttpServlet {
 
 		int maxSize = 1024*1024*10;
 		
+
+		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "multipart를 통한 전송이 아닙니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
@@ -57,6 +59,7 @@ public class userProfileBackServlet extends HttpServlet {
 				);
 		
 		String proback = mrequest.getFilesystemName("proback");
+		String userid = mrequest.getParameter("userid3");
 		
 		HttpSession session = request.getSession(false);
 		
@@ -72,7 +75,7 @@ public class userProfileBackServlet extends HttpServlet {
 			ms.updateProBack(m);
 			System.out.println("회원 정보 수정 완료!");
 			
-			response.sendRedirect("/6Days/views/user/Profile.jsp");
+			response.sendRedirect("/6Days/pbSelect.bo?userId="+ userid);
 			
 		} catch (MemberException e) {
 			e.printStackTrace();

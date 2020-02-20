@@ -39,6 +39,7 @@
 </head>
 <body>
            <form action="/6Days/change.me" method="post">
+           <input type="hidden" name="userid" value="<%=m.getUserId() %>">
       <div id="updatepage" style="background: white;">
               
          <input type="button" id="deletebtn"  value="회원탈퇴">
