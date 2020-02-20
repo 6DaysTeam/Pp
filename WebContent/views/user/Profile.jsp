@@ -14,7 +14,7 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
+    <head> 
         <meta charset="UTF-8">
         <title>profile</title>
    <%@ include file="/views/common/header.jsp" %>

@@ -81,7 +81,7 @@
        <div id="Infmodal">
            <div id="Infcontent">
                <div id="Infmenu">
-                   <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드<button id="Infclosebtn" onclick="Infclose();">X</button></label>
+                   <label style="font-size: 1.8em; margin-top: 0;">&nbsp; &nbsp;게시글 업로드<button id="Infclosebtn" onclick="return Infclose();">X</button></label>
                </div>
                <hr style="width: 650px; float: left;">
                <div id="Infleft">
