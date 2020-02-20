@@ -51,6 +51,7 @@ public class adminDao {
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
+			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<>();
 			
