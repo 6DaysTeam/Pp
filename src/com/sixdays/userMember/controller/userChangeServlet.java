@@ -53,6 +53,7 @@ public class userChangeServlet extends HttpServlet {
 			ms.changeMember(m);
 			System.out.println("변경성공");
 			session.invalidate();
+			response.sendRedirect("login.jsp");
 			
 		}catch (Exception e) {
 			e.printStackTrace();

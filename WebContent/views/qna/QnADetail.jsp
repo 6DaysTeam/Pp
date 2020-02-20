@@ -112,11 +112,7 @@
               <tr>
 	             <td id="pofileimgbox0001" rowspan="2">
 	                <div id="profileimg000">
-						<% if(m.getProimg() != null) {%>
-						     <img id="profileimg00" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>">
-						<%}else{ %>
-							 <img id="profileimg00" src="/6Days/resources/proimgUploadFiles/proimg.png" >
-						<%} %>
+						     <img id="profileimg00" src="/6Days/resources/proimgUploadFiles/<%= qco.getCproimg() %>">
 	                </div>
 	             </td>
 	             

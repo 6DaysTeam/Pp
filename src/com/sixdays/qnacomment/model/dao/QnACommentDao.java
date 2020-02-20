@@ -63,6 +63,7 @@ public class QnACommentDao {
 				qco.setCwriter(rset.getString("CWRITER"));
 				qco.setRefcno(rset.getInt("REF_CNO"));
 				qco.setClevel(rset.getInt("CLEVEL"));
+				qco.setCproimg(rset.getString("PROIMG"));
 				
 				clist.add(qco);
 				

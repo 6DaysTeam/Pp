@@ -17,11 +17,42 @@ public class QnAComment implements Serializable {
 	private Date cdate;		 // 댓글작성일
 	private int refcno;		 // 댓글번호참조
 	private int clevel;		 // 댓글 레벨(대댓글)
+	private String cproimg; //이미지 추가
 	
 	
 	public QnAComment() {}
 	
 	
+
+	public String getCproimg() {
+		return cproimg;
+	}
+
+
+
+	public void setCproimg(String cproimg) {
+		this.cproimg = cproimg;
+	}
+
+
+
+	public QnAComment(int cno, int qno, String ccontent, String cwriter, Date cdate, int refcno, int clevel,
+			String cproimg) {
+		super();
+		this.cno = cno;
+		this.qno = qno;
+		this.ccontent = ccontent;
+		this.cwriter = cwriter;
+		this.cdate = cdate;
+		this.refcno = refcno;
+		this.clevel = clevel;
+		this.cproimg = cproimg;
+	}
+
+
+
+
+
 
 	public QnAComment(int qno, String ccontent, String cwriter, int refcno, int clevel, Date cdate) {
 		super();
