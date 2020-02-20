@@ -14,6 +14,7 @@ public class userManage {
 	private String mycomment;  	// 코멘트
 	private Date pdate;			// 작성일
 	private String pcontent;	// 게시글 내용
+	private int rownum;			// 글순서
 	
 	public userManage() {
 		super();
@@ -127,12 +128,23 @@ public class userManage {
 		this.proimg = proimg;
 	}
 
+	
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
 	@Override
 	public String toString() {
 		return "userManage [userId=" + userId + ", userName=" + userName + ", pCount=" + pCount + ", enrolldate="
 				+ enrolldate + ", delflag=" + delflag + ", proimg=" + proimg + ", email=" + email + ", mycomment="
-				+ mycomment + ", pdate=" + pdate + ", pcontent=" + pcontent + "]";
+				+ mycomment + ", pdate=" + pdate + ", pcontent=" + pcontent + ", rownum=" + rownum + "]";
 	}
+
+	
 
 	
 	
