@@ -14,9 +14,7 @@
 		adminService as = new adminService();
 		int Rnumber = as.getListCount();
 		
-		/* String category = (String)request.getAttribute("category");
-		String keyword = (String)request.getAttribute("keyword");
-		System.out.println(Rnumber);  */
+		
 %>
 <!DOCTYPE html>
 <html lang="en">

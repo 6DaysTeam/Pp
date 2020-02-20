@@ -46,6 +46,8 @@ public class adminDao {
 			int startRow = (currentPage-1) * limit + 1;
 			int endRow = startRow + limit - 1;
 			
+			
+			
 			System.out.println("strat : "+startRow);
 			System.out.println("strat : "+endRow);
 			
@@ -58,11 +60,12 @@ public class adminDao {
 			while(rset.next()) {
 				userManage u = new userManage();
 				
-				u.setUserId(rset.getString(1));
-				u.setUserName(rset.getString(2));
-				u.setpCount(rset.getInt(3));
-				u.setEnrolldate(rset.getDate(4));
-				u.setDelflag(rset.getString(5));
+				u.setRownum(rset.getInt(1));
+				u.setUserId(rset.getString(2));
+				u.setUserName(rset.getString(3));
+				u.setpCount(rset.getInt(4));
+				u.setEnrolldate(rset.getDate(5));
+				u.setDelflag(rset.getString(6));
 				
 				
 				list.add(u);
