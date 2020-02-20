@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.p_board.model.service.p_BoardService;
 import com.sixdays.p_board.model.vo.p_Board;
-import com.sixdays.userMember.model.service.userMemberService;
-import com.sixdays.userMember.model.vo.userMember;
 
 /**
  * Servlet implementation class pBoardSelectListServlet
@@ -45,7 +43,7 @@ public class pBoardSelectListServlet extends HttpServlet {
       if(list != null) {
          
          page = "/views/user/Profile.jsp";
-
+         request.setAttribute("list", list);
       } else {
          
          System.out.println("마이 페이지 조회 실패!");

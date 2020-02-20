@@ -129,40 +129,37 @@
 <!--    작성자 : 박주완
         작성일 : 2020-01-09
         내용 : 유저 게시물 클릭시 확대창 -->
+        
         <div id="modal">
             <div id="modalcontent">
                 <button id="closebtn" onclick="modalclose();">X</button>
                 <div id="modalpost">
+                <% for(p_Board pb : list) {
+                	int count = 2;
+                	String PhotoCk = "pb.getPhoto"+count+"()";
+                	%>
+                	<%= pb.getPcontent() %>  
+                
                     <div id="modalimg" class="slideshow-container" >
                         <div class="mySlides fade" style="display: block;">
-                            <div class="numbertext">1 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy8.JPG" >
-                        </div>
-                        
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy7.JPG" >
-                        </div>
-                        
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy6.JPG" >
-                        </div>
-            
-                        <div class="mySlides fade">
-                            <div class="numbertext">4 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy5.JPG" >
-                        </div>
+                            <div class="numbertext">1</div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/<%=pb.getPhoto1() %>" >
+                        </div>                    
 
-                        <div class="mySlides fade">
-                            <div class="numbertext">5 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy4.JPG" >
+                	<%
+                	if(PhotoCk != null){
+                		count++;
+                	
+                	%>              
+                        <div class="mySlides fade" style="display: block;">
+                            <div class="numbertext"><%=count %></div>
+                            <img class="contentimgs" src="/6Days/resources/maruta/<%=PhotoCk %>" >
                         </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">6 / 6</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/dummy3.JPG" >
-                        </div>
+      
+                 <% 
+                	}
+                	} %>
+                        
                         <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
                         <a class="next" onclick="plusSlides(1);">&#10095;</a>
                         
@@ -170,15 +167,11 @@
                         
                         <div id="dotbox" style="text-align:center">
                             <span class="dot" onclick="currentSlide(1);"></span> 
-                            <span class="dot" onclick="currentSlide(2);"></span> 
-                            <span class="dot" onclick="currentSlide(3);"></span> 
-                            <span class="dot" onclick="currentSlide(4);"></span>
-                            <span class="dot" onclick="currentSlide(5);"></span> 
-                            <span class="dot" onclick="currentSlide(6);"></span> 
                         </div>      
                         
                                     
                    </div>
+
             
                </div>
 
@@ -233,6 +226,8 @@
                 </div>
             </div>
          </div>
+         
+
  <!-- 	***************************** 모달창 영역 끝 ****************************** -->     
         
 

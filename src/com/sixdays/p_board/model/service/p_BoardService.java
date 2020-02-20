@@ -42,15 +42,14 @@ private pBoardDao pbDao = new pBoardDao();
 
 
    public ArrayList<p_Board> selectList(String userId) {
-      Connection con = getConnection();
-      
-      ArrayList<p_Board> list = pbDao.selectList(con, userId);
-      
-      close(con);
-      
-      return list;
-   }
-
+	      Connection con = getConnection();
+	      
+	      ArrayList<p_Board> list = pbDao.selectList(con, userId);
+	      
+	      close(con);
+	      
+	      return list;
+	   }
 
     public ArrayList<p_Board> allList() {
     Connection con = getConnection();
