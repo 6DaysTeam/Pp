@@ -1,8 +1,9 @@
+<%@page import="com.sixdays.admin.model.service.adminService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.sixdays.userMember.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sixdays.admin.model.vo.*,com.sixdays.board.model.vo.*"%>
     
 <%
-		/* ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list"); 
+		ArrayList<userManage> list = (ArrayList<userManage>)request.getAttribute("list"); 
 		PageInfo pi = (PageInfo)request.getAttribute("pi");
 		int listCount = pi.getListCount();
 		int currentPage = pi.getCurrentPage();
@@ -10,12 +11,12 @@
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
 		
-		BoardService bs = new BoardService();
-		int Rnumber = bs.getListCount();
+		adminService as = new adminService();
+		int Rnumber = as.getListCount();
 		
-		String category = (String)request.getAttribute("category");
+		/* String category = (String)request.getAttribute("category");
 		String keyword = (String)request.getAttribute("keyword");
-		System.out.println(Rnumber); */
+		System.out.println(Rnumber);  */
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>사용자 관리</title>
+    <script src="<%= request.getContextPath() %>/resources/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="/6Days/resources/css/bootstrap.css" rel="stylesheet">
 
@@ -44,8 +46,10 @@
     <![endif]-->
   </head>
 
-<body>
-<%@ include file="../common/header.jsp" %> 
+<body style="overflow-x: hidden">
+  	<%@ include file="../common/header.jsp" %> 
+   	<%@ include file="../common/left-sidebar.jsp" %> 
+  	<%@ include file="../common/right-sidebar.jsp" %> 
     <!-- 헤더 -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -75,7 +79,19 @@
       <!-- 왼쪽 메뉴바 -->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-3 col-md-2 sidebar">
+          <div class="col-sm-3 col-md-2 sidebar" style="position: fixed;
+													    top: 51px;
+													    bottom: 0;
+													    left: -5px;
+													    z-index: 1000;
+													    display: block;
+													    padding: 20px;
+													    overflow-x: hidden;
+													    overflow-y: auto;
+													    background-color: #f5f5f5;
+													    border-right: 1px solid #eee;
+													    margin-top: 2px;
+													    width: 250px;">
             <ul class="nav nav-sidebar">
               <li><a href="#"onclick="location.href='user_manage.jsp'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
               <li><a href="#"onclick="location.href='report.jsp'" id="color_change">신고사항</a></li>
@@ -100,33 +116,36 @@
             <button style="margin-left: 70%; width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
             background: white; border: 1px solid gray; border-radius: 5px; color: black;">삭제</button>
           </h2>
-          <div id ="checkAll" class="table-responsive">
+          <div id ="checkAll" class="table-responsive" style="margin-left: -2%; margin-top: -2%;">
             <table class="table table-striped" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
                 <thead>
                   <tr style="font-size: 13pt;">
                       <th style="width: 15%; text-align: center;"><input type="checkbox" class="checkAll"></th>
-                      <th style="width: 6%; text-align: center;">NO</th>
-                      <th style="width: 23%; text-align: center;">ID</th>
-                      <th style="width: 23%; text-align: center;">닉네임</th>
-                      <th style="width: 10%; text-align: center;">댓글수</th>
+                      <th style="width: 7%; text-align: center;">NO</th>
+                      <th style="width: 20%; text-align: center;">ID</th>
+                      <th style="width: 20%; text-align: center;">닉네임</th>        
                       <th style="width: 10%; text-align: center;">게시물수</th>
-                      <th style="width: 15%; text-align: center;">최근접속일</th>
+                      <th style="width: 20%; text-align: center;">가입일</th>
+                      <th style="width: 8%; text-align: center;">삭제여부</th>
                   </tr>
               </thead>
               <tbody>
-                <%
-        	/* 	for(Board b : list) { */
-        		%>
+              <%
+                int num = 0;
+        		for(userManage u : list) {
+        			num++;
+        	  %>
                 <tr style="cursor: pointer;">
                     <td><input type="checkbox" class="chkbox"></td>
-                    <td class="next"><%=m.getOtype() %></td class="next">
-                    <td class="next"><%=m.getUserId() %></tdㅍ>
-                    <td class="next"><%=m.getUserName() %></td class="next">
-                    <td class="next"><%=m.getProimg() %></td class="next">
-                    <td class="next"><%=m.getProback() %></td class="next">
-                    <td class="next"><%=m.getEnrolldate() %></td class="next">
+                    <td ><%=num%></td>
+                    <td ><%= u.getUserId() %></td>
+                    <td ><%= u.getUserName()%></td>
+                    <td ><%= u.getpCount()%></td>
+                    <td ><%= u.getEnrolldate()%></td>
+                    <td ><%= u.getDelflag()%></td>
+               
                 </tr>        
-           <%--       <% } %>    --%>
+                 <% } %>   
               </tbody>
             </table>
           </div>
@@ -134,7 +153,7 @@
     </div>
   
 
-    <div class="text-center" style="margin-right: -10%;">
+    <!-- <div class="text-center" style="margin-right: -10%;">
         <ul class="pagination">
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
@@ -142,7 +161,34 @@
             <li><a href="#">4</a></li>
             <li><a href="#">5</a></li>
       </ul>
-    </div>
+    </div> -->
+    
+    <%-- 페이지 처리 --%>
+		<div class="text-center" style="margin-right: -10%;">
+			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=1'"><<</button>
+			<%  if(currentPage <= 1){  %>
+			<button disabled><</button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%=currentPage - 1 %>'"><</button>
+			<%  } %>
+			
+			<% for(int p = startPage; p <= endPage; p++){
+					if(p == currentPage){	
+			%>
+				<button disabled><%= p %></button>
+			<%      }else{ %>
+				<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%= p %>'"><%= p %></button>
+			<%      } %>
+			<% } %>
+				
+			<%  if(currentPage >= maxPage){  %>
+			<button disabled>></button>
+			<%  }else{ %>
+			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%=currentPage + 1 %>'">></button>
+			<%  } %>
+			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%= maxPage %>'">>></button>
+			
+		</div>
   
      <!-- Bootstrap core JavaScript
     ================================================== -->
