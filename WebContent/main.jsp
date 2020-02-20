@@ -32,8 +32,8 @@
         	<tr><td>
             <div id="content">  <!--실제 컨텐츠 각각의 영역 -->
                 <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
-                    <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=m.getProimg()%>">  <!--유저 프로필 이미지 불러오기-->
-                    <p id="showUserName"><%= pb.getPbwriter() %></p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
+                    <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=pb.getPproimg()%>">  <!--유저 프로필 이미지 불러오기-->
+                    <p id="showUserName"><%= pb.getPnickname() %></p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
@@ -68,12 +68,12 @@
 
                     </div>
 
-             <!--        <div style="text-align:center">
+              <div style="text-align:center">
                         <span class="dot" onclick="currentSlide(1);"></span> 
                         <span class="dot" onclick="currentSlide(2);"></span> 
                         <span class="dot" onclick="currentSlide(3);"></span> 
                         <span class="dot" onclick="currentSlide(4);"></span> 
-                    </div>   -->                
+                    </div>              
                 </div>
 
 
@@ -166,10 +166,10 @@
             } */
 
 
-/*<!--  작성자 : 박주완
+   <!--  작성자 : 박주완
         작성일 : 2020-02-03
-        내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->*/
-        var slideIndex = 1;
+        내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->
+   /*      var slideIndex = 1;
         showSlides(slideIndex);
 
         function plusSlides(n) {
@@ -194,7 +194,7 @@
             }
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
-        }
+        } 
 
 
 // <!--    작성자 : 박주완

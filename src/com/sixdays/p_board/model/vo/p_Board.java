@@ -20,8 +20,30 @@ public class p_Board {
 	private String status;		//삭제여부
 	private String blockflag;	//정지유무
 	private String report_yn;	//신고유무
+	private String pnickname;   //닉네임
+	private String pproimg; //이미지
 	
 	
+	public String getPnickname() {
+		return pnickname;
+	}
+
+
+	public void setPnickname(String pnickname) {
+		this.pnickname = pnickname;
+	}
+
+
+	public String getPproimg() {
+		return pproimg;
+	}
+
+
+	public void setPproimg(String pproimg) {
+		this.pproimg = pproimg;
+	}
+
+
 	public p_Board() {
 		
 	}
@@ -39,6 +61,31 @@ public class p_Board {
 		this.photo6 = photo6;
 		this.pcontent = pcontent;
 		this.hashtag = hashtag;
+	}
+
+
+	public p_Board(int pbno, String pbwriter, Date pbdate, String photo1, String photo2, String photo3, String photo4,
+			String photo5, String photo6, String pcontent, String hashtag, int like_count, int pbcomment, String status,
+			String blockflag, String report_yn, String pnickname, String pproimg) {
+		super();
+		this.pbno = pbno;
+		this.pbwriter = pbwriter;
+		this.pbdate = pbdate;
+		this.photo1 = photo1;
+		this.photo2 = photo2;
+		this.photo3 = photo3;
+		this.photo4 = photo4;
+		this.photo5 = photo5;
+		this.photo6 = photo6;
+		this.pcontent = pcontent;
+		this.hashtag = hashtag;
+		this.like_count = like_count;
+		this.pbcomment = pbcomment;
+		this.status = status;
+		this.blockflag = blockflag;
+		this.report_yn = report_yn;
+		this.pnickname = pnickname;
+		this.pproimg = pproimg;
 	}
 
 

@@ -149,6 +149,8 @@ public class pBoardDao {
 		            pb.setPhoto4(rset.getString("PHOTO4"));
 		            pb.setPhoto5(rset.getString("PHOTO5"));
 		            pb.setPhoto6(rset.getString("PHOTO6"));
+		            pb.setPnickname(rset.getString("USERNAME"));
+		            pb.setPproimg(rset.getString("PROIMG"));
 		            
 		            list.add(pb);
 		         

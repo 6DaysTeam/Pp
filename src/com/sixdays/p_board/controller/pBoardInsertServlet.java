@@ -90,7 +90,7 @@ public class pBoardInsertServlet extends HttpServlet {
 		
 		if(result>0) {
 			System.out.println("사진 업로드 완료");
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("/6Days/main.me");
 			
 		}else {
 			request.setAttribute("msg", "사진 게시판 작성 실패!");
