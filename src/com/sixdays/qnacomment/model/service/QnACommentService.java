@@ -36,4 +36,46 @@ public class QnACommentService {
 		return result;
 	}
 
-}
+
+
+	public int updateComment(QnAComment qco) {
+		Connection con = getConnection();
+		
+		int result = qcDao.updateComment(con, qco);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+	public int updateComment2(int qno) {
+		Connection con = getConnection();
+		
+		int result = qcDao.updateComment2(con, qno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+	public int deleteComment(int cno) {
+		Connection con = getConnection();
+		
+		int result = qcDao.deleteComment(con, cno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		}
+	}
+

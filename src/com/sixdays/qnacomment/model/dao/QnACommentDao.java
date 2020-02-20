@@ -109,8 +109,77 @@ public class QnACommentDao {
 		return result;
 	}
 
+	public int updateComment(Connection con, QnAComment qco) {
 
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateComment");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setString(1, qco.getCcontent());
+			pstmt.setDate(2, qco.getCdate());
+			pstmt.setInt(3, qco.getCno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 
+	
+	}
+	
+	public int updateComment2(Connection con, int qno) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateComment2");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, qno);
+			pstmt.setInt(2, qno);
+				
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
-
+	public int deleteComment(Connection con, int cno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteComment");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, cno);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}	
+	
+	
 }

@@ -60,7 +60,7 @@
               <tr>
                 <td class="board-type">작성자</td>
                 <td class="board-value" style="width:265px;">
-                <%= m.getUserId() %></td>
+                <%= q.getQwriter() %></td>
                 
                 <td class="board-type" style="width: 63px;">작성일</td>
                 <td class="board-value" style="width:265px;">
@@ -127,32 +127,17 @@
 			  <tr>
 				  <td id="btns000">
 				  <% if(m.getUserId().equals(qco.getCwriter())) { %>
-					<button style="float:right"onclick="deleteReply(this);">삭제</button>
-					<button class="updatebtn" style="float:right" onclick="updateReply(this);">수정</button>
-					<button class="updateConfirm" style="float:right; display:none;" onclick="updateConfirm(this);">수정완료</button>
-					
-				  <% } else if(qco.getClevel() < 3) { %>
-					<input type="hidden" name="cwriter" value="<%=qco.getCwriter()%>"/>
-					<input type="hidden" name="refcno" value="<%= qco.getCno() %>" />
-					<input type="hidden" name="clevel" value="<%=qco.getClevel() %>" />
-							<button type="button" class="insertBtn" onclick="reComment(this);">
-								댓글 달기
-							</button>&nbsp;&nbsp;
-								 
-							<button type="button" class="insertConfirm" onclick="reConfirm(this);" style="display:none;" >
-								댓글 추가 완료
-							</button> 
-								
-				  <% } else {%>
-							<span> 마지막 레벨입니다.</span>
+					<input type="hidden" name ="cno" value="<%=qco.getCno()%>"/>
+					<button class="updatebtn" style="float:left;" onclick="updateReply(this);">수정</button>
+					<button class="updatedelete" style="float:right;" onclick="deleteReply(this);">삭제</button>
+					<button class="updateConfirm" style="float:left; display:none;" onclick="updateConfirm(this);">수정완료</button>
+					<button class="updateback" style="float:right; display:none;" onclick="updateback(this);">뒤로</button>
 				  <% } %>
-				  
 				  </td>
 			  </tr>
               </table>
            </div>   
-			<% } %>
-			
+			<% } %>	
 		<% } %>
 <!-- ************************************************************************************************ -->
               
@@ -160,31 +145,40 @@
           </div>
         </div>
         <script>
+        function updateback(obj) {
+    		$(obj).parent().parent().prev().find('textarea').attr('readonly');
+        	$(obj).css('display', 'none'); // 뒤로 가기 버튼 안보이게
+        	$(obj).siblings('.updateConfirm').css('display', 'none'); // 수정완료 버튼 숨기기
+        	
+        	$(obj).siblings('.updatebtn').css('display', 'inline');
+    		$(obj).siblings('.updatedelete').css('display', 'inline');
+    		
+        }
     	function updateReply(obj) {
     		// 현재 위치와 가장 근접한 textarea 접근하기
 
-    		$(obj).parent().parent().next().find('textarea').removeAttr('readonly');
-    		console.log($(obj).parent().parent().next().find('textarea').val());
+    		$(obj).parent().parent().prev().find('textarea').removeAttr('readonly');
     		// 수정 완료 버튼을 화면 보이게 하기
     		$(obj).siblings('.updateConfirm').css('display','inline');
+    		$(obj).siblings('.updateback').css('display','inline');
     		
     		// 수정하기 버튼 숨기기
     		$(obj).css('display', 'none');
+    		$(obj).siblings('.updatedelete').css('display', 'none');
     	}
     	
     	function updateConfirm(obj) {
     		// 댓글의 내용 가져오기
-    		var content
-    		  = $(obj).parent().parent().next().find('textarea').val();
+    		var ccontent
+    		  = $(obj).parent().parent().prev().find('textarea').val();
     		
     		// 댓글의 번호 가져오기
     		var cno = $(obj).siblings('input').val();
     		
     		// 게시글 번호 가져오기
-    		var bno = '<%=q.getQno()%>';
+    		var qno = '<%=q.getQno()%>';
     		
-    		location.href="/myWeb/updateComment.bo?"
-    				 +"cno="+cno+"&bno="+bno+"&content="+content;
+    		location.href="/6Days/UpdateComment.qo?cno="+cno+"&qno="+qno+"&ccontent="+ccontent;
     	}
     	
     	function deleteReply(obj) {
@@ -192,64 +186,9 @@
     		var cno = $(obj).siblings('input').val();
     		
     		// 게시글 번호 가져오기
-    		var bno = '<%=q.getQno()%>';
+    		var qno = '<%=q.getQno()%>';
     		
-    		location.href="/myWeb/deleteComment.bo"
-    		+"?cno="+cno+"&bno="+bno;
-    	}
-    	
-    	function reComment(obj){
-    		// 추가 완료 버튼을 화면 보이게 하기
-    		$(obj).siblings('.insertConfirm').css('display','inline');
-    		
-    		// 클릭한 버튼 숨기기
-    		$(obj).css('display', 'none');
-    		
-    		// 내용 입력 공간 만들기
-    		var htmlForm = 
-    			'<tr class="comment"><td></td>'
-    				+'<td colspan="3" style="background : transparent;">'
-    					+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
-    				+ '</td>'
-    			+ '</tr>';
-    		
-    		$(obj).parents('table').append(htmlForm);
-    		
-    	}
-    	
-    	function reConfirm(obj) {
-    		// 댓글의 내용 가져오기
-    		
-    		// 참조할 댓글의 번호 가져오기
-    		var refcno = $(obj).siblings('input[name="refcno"]').val();
-    		var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
-    		
-    		// console.log(refcno + " : " + level);
-    		
-    		// 게시글 번호 가져오기
-    		var bno = '<%=q.getQno()%>';
-    		
-    		var parent = $(obj).parent();
-    		var grandparent = parent.parent();
-    		var siblingsTR = grandparent.siblings().last();
-    		
-    		var content = siblingsTR.find('textarea').val();
-    		
-    		// console.log(parent.html());
-    		// console.log(grandparent.html());
-    		// console.log(siblingsTR.html());
-    		
-    		// console.log(content);
-
-    		// writer, replyContent
-    		// bno, refcno, clevel
-    		
-    		location.href='/6Days/insertComment.qo'
-    		           + '?writer=<%= m.getUserId() %>' 
-    		           + '&replyContent=' + content
-    		           + '&bno=' + bno
-    		           + '&refcno=' + refcno
-    		           + '&clevel=' + level;
+    		location.href="/6Days/DeleteComment.qo?cno="+cno+"&qno="+qno;
     	}
     	</script>
     	<% } else {

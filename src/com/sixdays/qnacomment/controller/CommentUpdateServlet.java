@@ -14,16 +14,16 @@ import com.sixdays.qnacomment.model.service.QnACommentService;
 import com.sixdays.qnacomment.model.vo.QnAComment;
 
 /**
- * Servlet implementation class CommentInsertServlet
+ * Servlet implementation class CommentUpdateServlet
  */
-@WebServlet("/InsertComment.qo")
-public class CommentInsertServlet extends HttpServlet {
+@WebServlet("/UpdateComment.qo")
+public class CommentUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentInsertServlet() {
+    public CommentUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +32,13 @@ public class CommentInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cwriter = request.getParameter("cwriter");
-		int qno = Integer.parseInt(request.getParameter("qno"));
 		String ccontent = request.getParameter("ccontent");
-		int refcno = Integer.parseInt(request.getParameter("refcno"));
-		int clevel = Integer.parseInt(request.getParameter("clevel"));
+		int qno = Integer.parseInt(request.getParameter("qno"));
+		int cno = Integer.parseInt(request.getParameter("cno"));
 		String date = request.getParameter("cdate");
-
+		
 		Date cdate = null;
+		
 		if(date != "" && date != null) {
 			// 날짜가 들어왔을 때
 			// 2020-01-30 --> 2020, 1, 30
@@ -55,19 +54,24 @@ public class CommentInsertServlet extends HttpServlet {
 			// 날짜가 들어오지 않으면
 			cdate = new Date(new GregorianCalendar().getTimeInMillis());
 		}
-				
-		QnAComment qco = new QnAComment(qno, ccontent, cwriter, refcno, clevel, cdate);
 		
-		int result = new QnACommentService().insertComment(qco);
+		QnAComment qco = new QnAComment();
+		
+		qco.setQno(qno);
+		qco.setCno(cno);
+		qco.setCcontent(ccontent);
+		qco.setCdate(cdate);
+		
+		System.out.println("qco : " + qco);
+		int result = new QnACommentService().updateComment(qco);
+		
 		if(result > 0) {
-			int result2 = new QnACommentService().updateComment2(qno);
 			
-			if(result2 >0) {
 			response.sendRedirect("qSelectOne.qo?qno=" + qno);
-			
 		} else {
-			request.setAttribute("msg", "댓글 작성 실패");
-		}}
+			request.setAttribute("msg", "댓글 수정 실패!");
+		
+		}
 	}
 
 	/**
