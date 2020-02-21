@@ -1,5 +1,9 @@
+<%@page import="com.sixdays.admin.model.vo.userManage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+  userManage u = (userManage)request.getAttribute("userManage");
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,17 +90,17 @@
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="/6Days/resources/images/profile1.PNG" style="width: 284px; height: 284px;" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="/6Days/resources/proimgUploadFiles/<%=u.getProimg() %>" style="width: 284px; height: 284px;" class="img-responsive" alt="Generic placeholder thumbnail">
             
               
               <span class="text-muted"></span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left; padding-right: 20px; margin-left: 50px;">
                 <br><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">ID</label> <label>abc123</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임</label> <label>에이비씨</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">이메일</label> <label>abc123@test.com</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">코멘트</label><label>안녕하세요^^</label>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">ID</label> <label><%=u.getUserId() %></label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임</label> <label><%=u.getUserName() %></label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">이메일</label> <label><%=u.getEmail() %></label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">코멘트</label><label><%=u.getMycomment() %></label>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder1"  style="text-align: left; width: 30%;">
               <!-- <br><br><br>
@@ -228,7 +232,7 @@
       //이벤트 제거
       $('#color_change').bind('click',function(){
           $(this).unbind('mouseenter').unbind('mouseleave').css({
-              'background':'rgb(15, 76, 129)',
+              'background': rgb(15, 76, 129),
               'color':'white'
           });
       });

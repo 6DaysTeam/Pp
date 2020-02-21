@@ -37,4 +37,13 @@ public class adminService {
 		return listCount;
 	}
 
+	public userManage selectOne(String userId) {
+		Connection con = getConnection();
+				
+		userManage u= aDao.selectOne(con, userId);	
+		
+		close(con);
+		return u;
+	}
+
 }
