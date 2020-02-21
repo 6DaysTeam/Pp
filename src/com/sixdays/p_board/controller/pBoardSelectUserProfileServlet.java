@@ -36,15 +36,15 @@ public class pBoardSelectUserProfileServlet extends HttpServlet {
 	      response.setContentType("application/json; charset=UTF-8");
 	      
 	      String pno = request.getParameter("pbno");
-	      String userid = request.getParameter("pWriter");
+	      String userid = request.getParameter("userid");
 	      
 	      System.out.println("유저프로필 서블릿 테스트 PNO 는 "+ pno+ "userId는 " + userid);
 	      
 	       p_BoardService pb = new p_BoardService();     
 	       p_Board pb2 = pb.selectOne(pno);
+	       ArrayList<p_Board> list = pb.selectList(userid);
 	       
-//	       ArrayList<p_Board> list = null;
-//	       list =pb.selectList(userid);
+
 	       
 
 	       /*/views/user/Profile.jsp*/
@@ -53,8 +53,8 @@ public class pBoardSelectUserProfileServlet extends HttpServlet {
 	      if(pb2 != null) {
 	         page = "/views/user/ProfilePeople.jsp";
 	         request.setAttribute("pb2", pb2);
+	         request.setAttribute("list", list);
 	         System.out.println("유저프로필 서블릿 성공");
-	         System.out.println("pb2: "+pb2);
 	      } else {
 	         request.setAttribute("msg", "유저프로필 상세보기 실패!");
 	         System.out.println("유저프로필 서블릿 에러");

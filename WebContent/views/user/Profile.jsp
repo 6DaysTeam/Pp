@@ -76,29 +76,26 @@
         <div id="postlist">
 
             <table align="center" style="width: 900px;" id="t1">
-            <tr>
-            <% for(p_Board pb : list) {
-               int pbno = pb.getPbno();
-               if(pb.getPhoto1() != null){
-               
-               %>
-        
-        <td style="display: inline-block; float:left; margin-left:2%">   
-              <input id="pbWriter" type="hidden" value="<%=pb.getPbwriter()%>">         
-              <input id="TEST" name="pbno95"  type="hidden" value="<%=pb.getPbno()%>"> 
-              <img  src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
-                   width="260px" height="260px" style="margin:7px" id="pushdata">
-
-        </td>    
-        <% 
-               }
-               
-               } 
-         %>
-        </tr>
+	            <tr>
+	            <% for(p_Board pb : list) {
+		               int pbno = pb.getPbno();
+		               if(pb.getPhoto1() != null){
+		               
+		               %>
+	        
+			        <td style="display: inline-block; float:left; margin-left:2%">   
+			              <input id="pbWriter" type="hidden" value="<%=pb.getPbwriter()%>">         
+			              <input id="TEST" name="pbno95"  type="hidden" value="<%=pb.getPbno()%>"> 
+			              <img  src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
+			                   width="260px" height="260px" style="margin:7px" id="pushdata">
+			
+			        </td>    
+		        <%	}
+		           } %>
+		        </tr>
            </table>
 
-    </div>
+    	</div>
         
 <!--         작성자 : 박주완
         작성일 : 2020-02-21
@@ -118,7 +115,7 @@
                    TopPosition=(screen.height-h)/2; 
                     
                                
-                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no');
+                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no,resizable=no');
                 
              });
           });

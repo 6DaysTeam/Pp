@@ -9,7 +9,7 @@
     pageEncoding="UTF-8"%>
 <%
 	// 사진 게시글 리스트 가져오기
-/*     ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list");  */
+    ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list");
 	p_Board pb = (p_Board)request.getAttribute("pb2");
 /* 	// 사진 게시글 리스트 가져오기
     ArrayList<p_Board> pblist = (ArrayList<p_Board>)request.getAttribute("list"); 
@@ -43,13 +43,13 @@
 		    margin-bottom: -13px;
 		}
 	</style>
-    
+    </head> 
     <body>
 
 <input type="hidden" id="userid" name="userid" value="<%=pb.getPbwriter()%>">
 <input type="hidden" id="ssionid" name="userid" value="<%=m.getUserId()%>">
-<% System.out.println("pb.getPbwriter : "+pb.getPbwriter()); %>
-<% System.out.println("m.getUserId : "+m.getUserId()); %>
+<% System.out.println("작성자아이디 : "+pb.getPbwriter()); %>
+<% System.out.println("세션아이디 : "+m.getUserId()); %>
             
 <!--    작성자 : 박주완,이서현
         작성일 : 2020-01-09
@@ -87,32 +87,33 @@
            
            
     <hr id="hr1">
-      <%--   <div id="postlist">
+    
+<!--     게시물 리스트뿌려주기 -->
+        <div id="postlist">
 
             <table align="center" style="width: 900px;" id="t1">
-            <tr>
-            <% for(p_Board pba : list) {
-               int pbno = pba.getPbno();
-               if(pba.getPhoto1() != null){
-               
-               %>
-        
-        <td style="display: inline-block; float:left; margin-left:2%">   
-              <input id="pbWriter" type="hidden" value="<%=pba.getPbwriter()%>">         
-              <input id="TEST" name="pbno95"  type="hidden" value="<%=pba.getPbno()%>"> 
-              <img  src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto1() %>" 
-                   width="260px" height="260px" style="margin:7px" id="pushdata">
-
-        </td>    
-        <% 
-               }
-               
-               } 
-         %>
-        </tr>
+	            <tr>
+	            <% for(p_Board pbo : list) {
+		               int pbno = pbo.getPbno();
+		               if(pbo.getPhoto1() != null){
+		               
+		               %>
+	        
+			        <td style="display: inline-block; float:left; margin-left:2%">   
+			              <input id="pbWriter" type="hidden" value="<%=pbo.getPbwriter()%>">         
+			              <input id="TEST" name="pbno95"  type="hidden" value="<%=pbo.getPbno()%>"> 
+			              <img  src="/6Days/resources/pboardUploadFiles/<%=pbo.getPhoto1() %>" 
+			                   width="260px" height="260px" style="margin:7px" id="pushdata">
+			
+			        </td>    
+		        <%	}
+		           } %>
+		        </tr>
            </table>
 
-    </div> --%>
+    	</div>
+  <!--     게시물 리스트뿌려주기 끝! -->
+  
       <script>
       	var ssionid = document.getElementById('ssionid').value;
       	var writer = document.getElementById('userid').value;
@@ -150,7 +151,7 @@
                    TopPosition=(screen.height-h)/2; 
                     
                                
-                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no');
+                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no,resizable=no');
                 
              });
           });

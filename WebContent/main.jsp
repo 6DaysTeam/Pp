@@ -35,6 +35,7 @@
                 <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
                     <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=pb.getPproimg()%>">  <!--유저 프로필 이미지 불러오기-->
                    <input type="hidden" name="pnosi" value="<%=pb.getPbno() %>">
+                   <input type="hidden" name="userid33" value="<%=pb.getPbwriter()%>">
                     <label id="showUserName"><%= pb.getPnickname() %></label>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
@@ -209,7 +210,7 @@
          $(function(){
              $('#pnocheck td label').click(function(){
                 var pnocheck = $(this);
-                location.href= "/6Days/userprofile.bo?pbno="+ $(this).parent().find('input[name=pnosi]').val();
+                location.href= "/6Days/userprofile.bo?pbno="+ $(this).parent().find('input[name=pnosi]').val() + "&userid="+$(this).parent().find('input[name=userid33]').val() ;
                 
                 
              });
