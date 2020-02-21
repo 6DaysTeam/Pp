@@ -1,17 +1,3 @@
-// <!--    작성자 : 박주완
-//         작성일 : 2020-01-09
-//         내용 : 유저 게시물 클릭시 확대창 쿼리문-->
-            function modalOpen(){
-                var ulr = $(this).attr("src");
-                $("#modalimg").attr("src", ulr);            
-                $('#modal').show();
-
-                
-            }
-
-            function modalclose(){
-                $('#modal').css("display","none");
-            }
 
 // <!--    작성자 : 박주완
 //         작성일 : 2020-01-14
