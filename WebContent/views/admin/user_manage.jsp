@@ -111,14 +111,13 @@
           </div>
 
           <h2 class="sub-header" style="margin-left: 19%; font-size: 35px;">사용자관리
-            <button style="margin-left: 70%; width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
-            background: white; border: 1px solid gray; border-radius: 5px; color: black;">삭제</button>
+           
           </h2>
           <div id ="checkAll" class="table-responsive" style="margin-left: -2%; margin-top: -2%;">
             <table class="table table-striped" id="mangelistArea" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
                 <thead>
                   <tr style="font-size: 13pt;">
-                      <th style="width: 15%; text-align: center;"><input type="checkbox" class="checkAll"></th>
+                     
                       <th style="width: 7%; text-align: center;">NO</th>
                       <th style="width: 20%; text-align: center;">ID</th>
                       <th style="width: 20%; text-align: center;">닉네임</th>        
@@ -135,7 +134,6 @@
         	  %>
                 <tr style="cursor: pointer;">
                 	<input type="hidden" value="<%= u.getUserId() %>">
-                    <td><input type="checkbox" class="chkbox"></td>
                     <td><%=num%></td>                
                     <td><%= u.getUserId() %></td>
                     <td ><%= u.getUserName()%></td>

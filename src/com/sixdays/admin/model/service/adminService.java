@@ -42,8 +42,24 @@ public class adminService {
 				
 		userManage u= aDao.selectOne(con, userId);	
 		
+//		userManage u2 = aDao.selectOne2(con, userId);
+		
+		System.out.println("www"+u);
+		
 		close(con);
 		return u;
+	}
+
+	public ArrayList<userManage> selectUserList(String userId) {
+
+		Connection con = getConnection();
+		
+		ArrayList<userManage> list = aDao.selectUserList(con,userId);
+		
+		close(con);
+		
+		
+		return list;
 	}
 
 }

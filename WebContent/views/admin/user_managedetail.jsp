@@ -1,8 +1,11 @@
+<%@page import="com.sixdays.p_board.model.vo.p_Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.sixdays.admin.model.vo.userManage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
   userManage u = (userManage)request.getAttribute("userManage");
+  ArrayList<userManage> list = (ArrayList<userManage>)request.getAttribute("list"); 
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +69,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#"onclick="location.href='user_manage.jsp'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
+            <li><a href="#"onclick="location.href='aManage.ad'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
             <li><a href="#"onclick="location.href='report.jsp'" id="color_change">신고사항</a></li>
             <li><a href="#"onmouseover="over(this)" id="color_change">페이지관리</a></li>
             <li><a href="#" onmouseover="over(this)" id="color_change">설정</a></li>
@@ -76,7 +79,7 @@
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href=" nm                                                                                                                                                                                                                                                                         ">More navigation</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
@@ -85,8 +88,16 @@
           </ul> -->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">사용자관리</h1>
-
+          <h1 class="page-header">사용자관리
+          <form id="delflagForm" method="post">
+          <input type="hidden" value="<%= u.getUserId() %>">
+           <button style="margin-left: 60%; width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
+            background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagN();">활성화</button>
+             <button style="width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
+            background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagY();">비활성화</button>
+            </form>
+            </h1>
+          
  
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -105,7 +116,7 @@
             <div class="col-xs-6 col-sm-3 placeholder1"  style="text-align: left; width: 30%;">
               <!-- <br><br><br>
               <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">정지사유</label>
-              <label>부적적할 홍보 게시물로 정지</label><br><br>
+              <label>부적적할 홍보 게시물로  정지</label><br><br>
               <span class="text-muted"></span> -->
               
               <!-- <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">정지유무</label><br><br>
@@ -135,60 +146,30 @@
                   </tr>
               </thead>
               <tbody>
+            <%
+                
+        		for(userManage u1 : list) {
+        			
+        	  %>
                 <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>#selfie #daily</td>
-                 
+                    <td><%=u1.getPdate() %></td>                                        
+                    <td><%=u1.getPcontent() %></td>
+                
                 </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>#럽스타그램</td>
-                  
-                </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>일상 온천에서</td>
-                  
-                </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>오예~~~~~~</td>
-                  
-                </tr>    
+              <% } %> 
               </tbody>
             </table>
           </div>
-          <h2 class="sub-header">접속일</h2>
+          <h2 class="sub-header">가입일</h2>
           <div class="table-responsive2">
             <table class="table table-striped2">
-              <thead>
+              
                 <tr>
-                    <th style="width: 40%;">작성일</th>
-                    <th style="width: 60%;">내용</th>
+                    <th style="width: 40%;">가일일</th>
+                    <th style="width: 60%;"><%=u.getEnrolldate() %></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td></td>
-                 
-                </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td> </td>
-                  
-                </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>  </td>
-                  
-                </tr>
-                <tr>
-                    <td>2020-01-21 02:07 오전</td>
-                    <td>  </td>
-                  
-                </tr>    
-              </tbody>
+             
             </table>
           </div>
         </div>
@@ -234,9 +215,22 @@
           $(this).unbind('mouseenter').unbind('mouseleave').css({
               'background': rgb(15, 76, 129),
               'color':'white'
-          });
-      });
-  });
+   		       });
+      		});
+  		});
+  		
+  		function delflagN(){
+  			<%
+  			
+  			%>
+  			
+			$("#delflagForm").attr("action","<%=request.getContextPath() %>/bUpdate.bo");
+		}
+		
+		function delflagY(){
+			// delete 는 예약어 이므로 deleteNotice 로 ...!
+			$("#delflagForm").attr("action","<%=request.getContextPath() %>/bDelete.bo");
+		}
     
     </script>
   </body>
