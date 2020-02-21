@@ -39,10 +39,10 @@
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
 				<%= pb.getPcontent()%>
-				<br><br><br>
+				<br>
 				<%= pb.getHashtag()%>
 				
-				<br><br>
+				<br>
 
                 </div>
                 <div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
@@ -128,6 +128,7 @@
                 <p style="color: red;">부적절한 게시물 신고</p><hr>
                 <p style="color: red;">팔로우 취소</p><hr>
                 <p onclick="postModalClose();">닫기</p>
+            </div>
         </div>
 
 <!--    작성자 : 박주완

@@ -75,37 +75,49 @@
                     <div id="modalimg" class="slideshow-container" >
                         <div class="mySlides fade" style="display: block;">
                             <div class="numbertext">1 / <%=count %></div>
+                            <div class="imgbox" >
                             <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto1() %>" >
+                            </div>
                         </div>                    
 
                      <% if(pba.getPhoto2()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext">2 / <%=count %></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto2() %>"  style="width:100%;">
+                        <div class="imgbox" >
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto2() %>" >
+                        </div>
                     </div>
                     <% } %> 
                      <% if(pba.getPhoto3()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext">3 / <%=count %></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto3() %>"  style="width:100%;">
+                        <div class="imgbox" >
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto3() %>">
+                        </div>
                     </div>
                <% } %>
                 <% if(pba.getPhoto4()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext">4 / <%=count %></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto4() %>" style="width:100%;">
+                        <div class="imgbox" >
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto4() %>" >
+                        </div>
                     </div>
                     <% } %>
                     <% if(pba.getPhoto5()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext">5 / <%=count %></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto5() %>" style="width:100%;">
+                        <div class="imgbox" >
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto5() %>">
+                        </div>
                     </div>
                     <% } %>
                     <% if(pba.getPhoto6()!=null){ %>
                     <div class="mySlides fade">
                         <div class="numbertext">6 / <%=count %></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto6() %>" style="width:100%;">
+                        <div class="imgbox" >
+                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto6() %>">
+                        </div>
                     </div>
                     <% } %>
                        
@@ -159,17 +171,9 @@
              }
              %>
              <input type="hidden" id="countDot" name="userid4" value="<%=count%>">          
-                        </div>      
-                        
-                                    
-                   </div>
-
-            
+                        </div>                                                                
+                   </div>           
                </div>
-
-
-
-
 
 
                     <div id="coments">
@@ -177,10 +181,14 @@
                            <div id="profileIMG2">
                              <img id="profileimg2" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%=pba.getPproimg() %>">
                         <label id="name2" class="profile"><%=pba.getPnickname() %></label>
+                        <p id="Settingbtn15" onclick="SettingMadalOpen15();">...</p>
                      </div>
                         <div id="innercoment">
-                            <span id="ment" class="coments"><%=pba.getPcontent() %></span>
-                            <span id="tag" class="tag"><%=pba.getHashtag() %></span>
+	                        <!-- 게시글내용, 해시태그 -->
+	                            <%=pba.getPcontent() %><br>
+	                            <%=pba.getHashtag() %>
+	                        
+
 <!--                  *******************************   여기서부터 댓글 들어갈 자리!!   *******************************  -->
 
 
@@ -212,7 +220,33 @@
 
          
 
- <!--    ***************************** 모달창 영역 끝 ****************************** -->     
+ <!--    ***************************** 모달창 영역 끝 ****************************** -->    
+ 
+<!--    작성자 : 박주완
+        작성일 : 2020-02-21
+        내용 : 포스트 [...] 버튼 클릭시 모달창 오픈 
+		----- 세션ID와 작성자 ID가 *같을 * 시에  -->
+        <div id="SettingMadal15">
+            <div id="Setting15">
+                <p style="color: red;">부적절한 게시물 신고</p><hr>
+                <p style="color: red;">게시글 삭제</p><hr>
+                <p onclick="SettingMadalClose15();">닫기</p>
+            </div>
+        </div>
+        
+        <!--    작성자 : 박주완
+        작성일 : 2020-02-21
+        내용 : 포스트 [...] 버튼 클릭시 모달창 오픈  
+        ----- 세션ID와 작성자 ID가 * 다를 *시에  -->
+        <div id="SettingMadal16">
+            <div id="Setting16">
+                <p style="color: red;">부적절한 게시물 신고</p><hr>
+                <p onclick="SettingMadalClose15();">닫기</p>
+            </div>
+        </div>
+ 		
+ 
+  
    <script >
           /*<!--  작성자 : 박주완
           작성일 : 2020-02-03
@@ -246,6 +280,35 @@
               slides[slideIndex-1].style.display = "block";  
               dots[slideIndex-1].className += " active";
           }
+          
+          
+          
+// <!--    작성자 : 박주완
+//        작성일 : 2020-02-21
+//        내용 : 게시물 ... 클릭시 나오는 삭제&신고 메뉴 모달 오픈 로직-->
+
+/*         var userId = "";
+			var pwriter = "";
+			var madalId = "";
+			
+       	   if(userId = pwriter){
+       		   madalId = "#SettingMadal15";
+       	   }else{
+       		   madalId = "#SettingMadal16";
+       	   } */
+       	   var madalId = "#SettingMadal15";
+        	   
+           function SettingMadalOpen15(){
+        	   
+               var ulr = $(this).attr("src");
+               $(madalId).attr("src",ulr);
+               $(madalId).show();
+           }
+
+           function SettingMadalClose15(){
+               $(madalId).css("display",'none');
+           }
+
 
     </script>
     

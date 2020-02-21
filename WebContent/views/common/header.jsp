@@ -57,7 +57,7 @@
             <img id="logo" src="/6Days/resources/icon/logoletter.png" onclick="location.href='/6Days/main.me'">
 
 
-<!--  작성자 : 윤석훈
+<!--  작성자 : 윤석훈,박주완
 	   작성일 : 2020.02.03 
 	   내용 : 검색창 구현
 	  수정일 : -->

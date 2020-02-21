@@ -142,15 +142,9 @@
                 <div>
                     <p class="settingitem" align="center" onclick="location.href='/6Days/views/member/Update.jsp'">개인정보 변경</p>
                     <hr>
-                    <p class="settingitem" align="center" onclick="location.href='Pwdupdate.html'">비밀번호 변경</p>
+                    <p class="settingitem" align="center" onclick="location.href='/6Days/selectList.qo'">문제 신고</p>
                     <hr>
-                    <p class="settingitem" align="center" onclick="PublicScopeModal();">공개 범위 및 보안</p>
-                    <hr>
-                    <P class="settingitem" align="center">로그인 활동</P>
-                    <hr>
-                    <p class="settingitem" align="center">문제 신고</p>
-                    <hr>
-                    <P class="settingitem" align="center">로그아웃</P>
+                    <P class="settingitem" align="center" onclick="logout();">로그아웃</P>
                     <hr>
                     <p class="settingitem" align="center" onclick="settinglistclose();">취소</p>
                 </div>
