@@ -39,10 +39,9 @@ public class pBoardSelectOneServlet extends HttpServlet {
       String pw = request.getParameter("pbWriter");
       
       
-      System.out.println("******* 셀릭트 원 서블릿 테스트  : PNO 는  "+ pno + "pw 는 "+ pw + " 입니다. *******");
        p_BoardService pb = new p_BoardService();
       
-       p_Board pb2 = pb.selectOne(pno,pw);
+       p_Board pb2 = pb.selectOne(pno);
        /*/views/user/Profile.jsp*/
       String page = "";
       
@@ -50,10 +49,8 @@ public class pBoardSelectOneServlet extends HttpServlet {
             page = "/views/user/Profiledetail.jsp";
          request.setAttribute("pb2", pb2);
          System.out.println("셀릭트 원 서블릿 성공");
-         System.out.println("pb2: "+pb2);
       } else {
          request.setAttribute("msg", "공지사항 상세보기 실패!");
-         System.out.println("셀릭트 원 서블릿 에러");
       }
       request.getRequestDispatcher(page).forward(request, response);
       

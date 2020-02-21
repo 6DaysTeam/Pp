@@ -24,6 +24,11 @@ public class p_Board {
 	private String pproimg; //이미지
 	
 	
+	private String mycomment;	//남에코멘트
+	private String proback;		//남의배경이미지
+	private String userName;	//딴놈닉네임
+	
+	
 	public String getPnickname() {
 		return pnickname;
 	}
@@ -110,6 +115,37 @@ public class p_Board {
 		this.blockflag = blockflag;
 		this.report_yn = report_yn;
 	}
+	
+	
+
+
+	public p_Board(int pbno, String pbwriter, Date pbdate, String photo1, String photo2, String photo3, String photo4,
+			String photo5, String photo6, String pcontent, String hashtag, int like_count, int pbcomment, String status,
+			String blockflag, String report_yn, String pnickname, String pproimg, String mycomment, String proback,
+			String userName) {
+		super();
+		this.pbno = pbno;
+		this.pbwriter = pbwriter;
+		this.pbdate = pbdate;
+		this.photo1 = photo1;
+		this.photo2 = photo2;
+		this.photo3 = photo3;
+		this.photo4 = photo4;
+		this.photo5 = photo5;
+		this.photo6 = photo6;
+		this.pcontent = pcontent;
+		this.hashtag = hashtag;
+		this.like_count = like_count;
+		this.pbcomment = pbcomment;
+		this.status = status;
+		this.blockflag = blockflag;
+		this.report_yn = report_yn;
+		this.pnickname = pnickname;
+		this.pproimg = pproimg;
+		this.mycomment = mycomment;
+		this.proback = proback;
+		this.userName = userName;
+	}
 
 
 	public int getPbno() {
@@ -129,6 +165,37 @@ public class p_Board {
 
 	public void setPbwriter(String pbwriter) {
 		this.pbwriter = pbwriter;
+	}
+	
+
+
+	public String getMycomment() {
+		return mycomment;
+	}
+
+
+	public void setMycomment(String mycomment) {
+		this.mycomment = mycomment;
+	}
+
+
+	public String getProback() {
+		return proback;
+	}
+
+
+	public void setProback(String proback) {
+		this.proback = proback;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 
@@ -278,7 +345,7 @@ public class p_Board {
 				+ ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", photo5=" + photo5
 				+ ", photo6=" + photo6 + ", pcontent=" + pcontent + ", hashtag=" + hashtag + ", like_count="
 				+ like_count + ", pbcomment=" + pbcomment + ", status=" + status + ", blockflag=" + blockflag
-				+ ", report_yn=" + report_yn + "]";
+				+ ", report_yn=" + report_yn + ",test=" + userName + "]";
 	}
 	
 	

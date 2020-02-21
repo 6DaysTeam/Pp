@@ -9,9 +9,8 @@
     pageEncoding="UTF-8"%>
 <%
 	// 사진 게시글 리스트 가져오기
-    ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
-	p_Board pba = new p_Board();
-	
+/*     ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list");  */
+	p_Board pb = (p_Board)request.getAttribute("pb2");
 /* 	// 사진 게시글 리스트 가져오기
     ArrayList<p_Board> pblist = (ArrayList<p_Board>)request.getAttribute("list"); 
  */	
@@ -34,8 +33,10 @@
     
     <body>
 
-<input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
-
+<input type="hidden" id="userid" name="userid" value="<%=pb.getPbwriter()%>">
+<input type="hidden" id="ssionid" name="userid" value="<%=m.getUserId()%>">
+<% System.out.println("pb.getPbwriter : "+pb.getPbwriter()); %>
+<% System.out.println("m.getUserId : "+m.getUserId()); %>
             
 <!--    작성자 : 박주완,이서현
         작성일 : 2020-01-09
@@ -45,19 +46,19 @@
    <div id="container">
        <div id="profile" class="profile">
            <div id="show-profile">
-               <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
+               <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= pb.getProback()%>" style="width: 850px; height: 280px;">
                <div id="profileimgbox">
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= pb.getPproimg() %>" onclick="profileModalOpen();" >
                </div>
 
                    <div id="profilename">
-                       <label id="name" class="profile"><%=m.getUserName() %></label>
+                       <label id="name" class="profile"><%=pb.getUserName()%></label>
                        <hr style="margin-top: -5px; margin-bottom: 5px;">
-                       <label id="memo" class="profile"><%=m.getMycomment() %></label>
+                       <label id="memo" class="profile"><%=pb.getMycomment() %></label>
                    </div>
                    <div id="profileright">
-                       <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" >프로필 편집</button><br>
-                       <button id="settingbtn" class="profile" onclick="settingbtn();">설정</button><br><br>
+                       <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" style="display: none;">프로필 편집</button><br>
+                       <button id="settingbtn" class="profile" onclick="settingbtn();" style="display: none;">설정</button><br><br>
                        <label id="postCount" class="profile">게시물</label>
                        <span>5</span><span>   </span><br>
                        <label id="followers" class="profile">팔로워</label>
@@ -73,20 +74,20 @@
            
            
     <hr id="hr1">
-        <div id="postlist">
+      <%--   <div id="postlist">
 
             <table align="center" style="width: 900px;" id="t1">
             <tr>
-            <% for(p_Board pb : list) {
-               int pbno = pb.getPbno();
-               if(pb.getPhoto1() != null){
+            <% for(p_Board pba : list) {
+               int pbno = pba.getPbno();
+               if(pba.getPhoto1() != null){
                
                %>
         
         <td style="display: inline-block; float:left; margin-left:2%">   
-              <input id="pbWriter" type="hidden" value="<%=pb.getPbwriter()%>">         
-              <input id="TEST" name="pbno95"  type="hidden" value="<%=pb.getPbno()%>"> 
-              <img  src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
+              <input id="pbWriter" type="hidden" value="<%=pba.getPbwriter()%>">         
+              <input id="TEST" name="pbno95"  type="hidden" value="<%=pba.getPbno()%>"> 
+              <img  src="/6Days/resources/pboardUploadFiles/<%=pba.getPhoto1() %>" 
                    width="260px" height="260px" style="margin:7px" id="pushdata">
 
         </td>    
@@ -98,8 +99,26 @@
         </tr>
            </table>
 
-    </div>
-        
+    </div> --%>
+      <script>
+      	var ssionid = document.getElementById('ssionid').value;
+      	var writer = document.getElementById('userid').value;
+      	
+      	var profileSetbtn00 = document.getElementById('profileSetbtn');
+      	var settingbtn00 = document.getElementById('settingbtn');
+      	
+      	if(ssionid == writer){
+      		profileSetbtn00.style.display = "block";  
+      		settingbtn00.style.display = "block";  
+      	}else{
+      		profileSetbtn00.style.display = "none";  
+      		settingbtn00.style.display = "none"; 
+      	}
+      
+      
+      </script>
+      
+               
 <!--         작성자 : 박주완
         작성일 : 2020-02-21
 	내용 : 게시물 이미지 클릭시 비동기방식으로 게시물 상세보기 팝업 오픈 -->
@@ -308,7 +327,12 @@
     }
     
 
-    </script>
-    
+    </script> 
+
+      
+
+
+
+
 </body>
 </html>

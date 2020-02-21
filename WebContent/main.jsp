@@ -28,13 +28,14 @@
         내용 : 메인화면 컨텐츠섹션 수정 -->
         
         <div id="contentArea">  <!--컨텐츠가 출력될 중앙 영역 (길이값 무한대) -->
-        <table align="center">
+        <table align="center" id="pnocheck">
         <% for(p_Board pb : list) { %>
         	<tr><td>
             <div id="content">  <!--실제 컨텐츠 각각의 영역 -->
                 <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
                     <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=pb.getPproimg()%>">  <!--유저 프로필 이미지 불러오기-->
-                    <p id="showUserName"><%= pb.getPnickname() %></p>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
+                   <input type="hidden" name="pnosi" value="<%=pb.getPbno() %>">
+                    <label id="showUserName"><%= pb.getPnickname() %></label>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
                     <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
@@ -228,6 +229,48 @@
             }
 
         </script>
+        
+        <!--         작성자 : 박주완
+        작성일 : 2020-02-21
+	내용 : 게시물 이미지 클릭시 비동기방식으로 게시물 상세보기 팝업 오픈 -->
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->              
+       <script> 
+          $(function(){
+             $('#t1 td img').click(function(){
+                var test = $(this);
+                var url = '/6Days/pSelectOne.bo?pbno='+ $(this).parent().find('input[name=pbno95]').val();//document.getElementById("TEST").value;
+                
+                  w = 980; //팝업창의 너비
+                   h = 630; //팝업창의 높이
+                   
+                   //중앙위치 구해오기
+                   LeftPosition=(screen.width-w)/2;
+                   TopPosition=(screen.height-h)/2; 
+                    
+                               
+                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no');
+                
+             });
+          });
+       
+         
+             
+         function modalclose(){
+             $('#modal').css("display","none");
+         }
+         
+         $(function(){
+             $('#pnocheck td label').click(function(){
+                var pnocheck = $(this);
+                location.href= "/6Days/userprofile.bo?pbno="+ $(this).parent().find('input[name=pnosi]').val();
+                
+                
+             });
+          });
+
+     	
+       </script>
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->     	
 	
 
 </body>

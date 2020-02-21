@@ -87,10 +87,10 @@ private pBoardDao pbDao = new pBoardDao();
      * @param pw
      * @return
      */
-    public p_Board selectOne(String pno,String pw) {
+    public p_Board selectOne(String pno) {
         Connection con = getConnection();
 
-        p_Board p = pbDao.selectOne(con, pno, pw);
+        p_Board p = pbDao.selectOne(con, pno);
         
         if(p != null) commit(con);      
         else rollback(con);
@@ -98,6 +98,20 @@ private pBoardDao pbDao = new pBoardDao();
         close(con);
         return p;
      }
+
+	public int deletepBoard(int pbno) {
+		Connection con = getConnection();
+		
+		int result = pbDao.deletepBoard(con, pbno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+
+	}
 
    
 

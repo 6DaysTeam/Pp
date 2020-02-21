@@ -225,7 +225,7 @@ public class pBoardDao {
      * 게시물 하나만 보는 모달창
      * @return
      */
-	public p_Board selectOne(Connection con, String pno, String pw) {
+	public p_Board selectOne(Connection con, String pno) {
         p_Board pb = null;
         
         PreparedStatement pstmt = null;
@@ -257,10 +257,12 @@ public class pBoardDao {
                  pb.setPnickname(rset.getString("USERNAME"));
                  pb.setPproimg(rset.getString("PROIMG"));
                  pb.setHashtag(rset.getString("HASHTAG"));
-                 System.out.println("***********사진하나 뽑아오기 ************");
+            	 pb.setMycomment(rset.getString("MYCOMMENT"));
+    			 pb.setProback(rset.getString("PROBACK"));
+    			 pb.setUserName(rset.getString("USERNAME"));
+                 
               }
            
-           System.out.println("p_board 확인 : " + pb);
            } catch(SQLException e) {
               e.printStackTrace();
            } finally {
@@ -269,6 +271,30 @@ public class pBoardDao {
            }
            return pb;
      }
+	
+	
+
+	public int deletepBoard(Connection con, int pbno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deletepBoard");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			System.out.println("DAO에서 삭제할 게시물 번호 : "+pbno);
+			pstmt.setInt(1, pbno);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 
    
    

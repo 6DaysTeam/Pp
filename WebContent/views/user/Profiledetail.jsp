@@ -229,7 +229,9 @@
         <div id="SettingMadal15">
             <div id="Setting15">
                 <p style="color: red;">부적절한 게시물 신고</p><hr>
-                <p style="color: red;">게시글 삭제</p><hr>
+                 <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
+                <p style="color: red;" onclick="deletepost(this)">게시글 삭제</p><hr>
+					
                 <p onclick="SettingMadalClose15();">닫기</p>
             </div>
         </div>
@@ -253,7 +255,7 @@
           내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  -->*/
       /*     var plusSlides = 1; */
           var slideIndex = 1;
-         var countCk = document.getElementById('countDot').value;
+          var countCk = document.getElementById('countDot').value;
 
           showSlides(slideIndex);
       
@@ -308,6 +310,25 @@
            function SettingMadalClose15(){
                $(madalId).css("display",'none');
            }
+           
+           
+           
+    /* 게시물 삭제 로직 */
+           
+            function deletepost(obj) {
+    		// 게시물 번호 가져오기
+    		var pbno = '<%=pba.getPbno()%>';
+    		
+    		location.href="/6Days//pdelete.bo?pbno="+pbno;
+    		
+    		opener.parent.location.reload();
+    		opener.parent.location.reload();
+ 
+    		window.close();
+    		
+    		
+    	}
+    	
 
 
     </script>
