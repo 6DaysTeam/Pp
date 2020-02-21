@@ -40,7 +40,7 @@ public class ManageSelectOneServlet extends HttpServlet {
 		userManage u = as.selectOne(userId);
 		
 		String page = "";
-		
+		 
 		if(u != null) {
 			page = "views/admin/user_managedetail.jsp";
 			request.setAttribute("userManage", u);

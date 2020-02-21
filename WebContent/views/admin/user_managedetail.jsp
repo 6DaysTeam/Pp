@@ -87,7 +87,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">사용자관리</h1>
 
-
+ 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="/6Days/resources/proimgUploadFiles/<%=u.getProimg() %>" style="width: 284px; height: 284px;" class="img-responsive" alt="Generic placeholder thumbnail">

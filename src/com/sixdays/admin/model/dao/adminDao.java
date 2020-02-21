@@ -129,7 +129,7 @@ public class adminDao {
 			pstmt.setString(1, userId);
 			
 			rset = pstmt.executeQuery();
-			
+			 
 			if(rset.next()) {
 				u = new userManage();
 				

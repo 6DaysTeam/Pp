@@ -27,7 +27,7 @@ public class adminService {
 		close(con);
 		return list;
 	}
-
+ 
 	public int getListCount() {
 		Connection con = getConnection();
 		int listCount = aDao.getListCount(con);

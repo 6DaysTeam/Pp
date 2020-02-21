@@ -188,7 +188,7 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
-  
+   
      <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

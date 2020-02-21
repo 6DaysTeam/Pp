@@ -42,7 +42,7 @@
                     <option>프로필수정</option>
                 </datalist>
                 </span>
-
+ 
 
                 <span id="footer" style="font-size:12px; text-align:left;">
 					CopyRight Six Days Company<br>
