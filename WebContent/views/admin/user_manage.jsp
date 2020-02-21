@@ -115,7 +115,7 @@
             background: white; border: 1px solid gray; border-radius: 5px; color: black;">삭제</button>
           </h2>
           <div id ="checkAll" class="table-responsive" style="margin-left: -2%; margin-top: -2%;">
-            <table class="table table-striped" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
+            <table class="table table-striped" id="mangelistArea" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
                 <thead>
                   <tr style="font-size: 13pt;">
                       <th style="width: 15%; text-align: center;"><input type="checkbox" class="checkAll"></th>
@@ -134,9 +134,10 @@
         			num++;
         	  %>
                 <tr style="cursor: pointer;">
+                	<input type="hidden" value="<%= u.getUserId() %>">
                     <td><input type="checkbox" class="chkbox"></td>
-                    <td ><%=num%></td>
-                    <td ><%= u.getUserId() %></td>
+                    <td><%=num%></td>                
+                    <td><%= u.getUserId() %></td>
                     <td ><%= u.getUserName()%></td>
                     <td ><%= u.getpCount()%></td>
                     <td ><%= u.getEnrolldate()%></td>
@@ -187,7 +188,7 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/aManage.ad?currentPage=<%= maxPage %>'">>></button>
 			
 		</div>
-  
+   
      <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -256,8 +257,13 @@
       };
 
       // td(class=next) 클릭시 페이지 이동
-      $(".next").click(function(){   
-        location.href='user_managedetail.jsp';
+      $("#mangelistArea td").click(function(){
+    	  
+    	 var userId = $(this).parent().find('input').val();
+    	 
+    	 console.log(userId);
+    	 
+       location.href="<%= request.getContextPath() %>/mSelectOne.ad?userId=" + userId;
       });
 
     </script>

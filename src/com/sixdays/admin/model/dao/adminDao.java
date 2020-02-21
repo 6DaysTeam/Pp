@@ -107,5 +107,48 @@ public class adminDao {
 		}
 		return listCount;
 	}
+
+	/**
+	 * 관리자(사용자 관리) 세부내용
+	 * @param con
+	 * @param userId
+	 * @return
+	 */
+	public userManage selectOne(Connection con, String userId) {
+		userManage u = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			 
+			if(rset.next()) {
+				u = new userManage();
+				
+				u.setUserId(userId);
+				u.setProimg(rset.getString("proimg"));
+				u.setUserName(rset.getString("userName"));
+				u.setEmail(rset.getString("email"));
+				u.setMycomment(rset.getString("mycomment"));
+			
+				}
+			
+			System.out.println("userManage 확인 : " + u);
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return u;
+	}
  
 }

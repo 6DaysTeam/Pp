@@ -29,7 +29,14 @@ public class userManage {
 		this.delflag = delflag;
 	}
 
-	
+	public userManage(String userId, String userName, String email, String mycomment) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.email = email;
+		this.mycomment = mycomment;
+	}
+
 
 	public userManage(String userId, String userName, int pCount, Date enrolldate, String delflag, String proimg,
 			String email, String mycomment, Date pdate, String pcontent) {
@@ -48,7 +55,7 @@ public class userManage {
 
 	public String getUserId() {
 		return userId;
-	}
+	} 
 
 	public void setUserId(String userId) {
 		this.userId = userId;

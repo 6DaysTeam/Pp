@@ -42,7 +42,7 @@
                     <option>프로필수정</option>
                 </datalist>
                 </span>
-
+ 
 
                 <span id="footer" style="font-size:12px; text-align:left;">
 					CopyRight Six Days Company<br>
@@ -51,7 +51,8 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;Tel : 010-1234-5678 <br>
 					Email : Team6Days@gmail.com
                 </span>
-                <p id="adminMenuBtn" onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
+               
+                <p id="adminMenuBtn" onclick="location.href='aManage.ad'" style="cursor: pointer;">관리자 화면</p>
             </div>
             <button><span class="sidebar-btn">메뉴</span></button>
         </aside>

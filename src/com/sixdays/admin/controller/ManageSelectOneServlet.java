@@ -7,10 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sixdays.admin.model.service.adminService;
+import com.sixdays.admin.model.vo.userManage;
+import com.sixdays.board.model.service.BoardService;
+import com.sixdays.board.model.vo.Board;
+
 /**
  * Servlet implementation class ManageSelectOneServlet
  */
-@WebServlet("/ManageSelectOneServlet")
+@WebServlet("/mSelectOne.ad")
 public class ManageSelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +31,23 @@ public class ManageSelectOneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String userId = request.getParameter("userId");
+		
+		System.out.println(userId);
+		
+		adminService as = new adminService();
+		
+		userManage u = as.selectOne(userId);
+		
+		String page = "";
+		 
+		if(u != null) {
+			page = "views/admin/user_managedetail.jsp";
+			request.setAttribute("userManage", u);
+		} else {
+			request.setAttribute("msg", "사용자 관리자 상세보기 실패!");
+		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

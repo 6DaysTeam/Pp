@@ -27,7 +27,7 @@ public class adminService {
 		close(con);
 		return list;
 	}
-
+ 
 	public int getListCount() {
 		Connection con = getConnection();
 		int listCount = aDao.getListCount(con);
@@ -35,6 +35,15 @@ public class adminService {
 		close(con);
 		
 		return listCount;
+	}
+
+	public userManage selectOne(String userId) {
+		Connection con = getConnection();
+				
+		userManage u= aDao.selectOne(con, userId);	
+		
+		close(con);
+		return u;
 	}
 
 }
