@@ -50,38 +50,13 @@
                     <div class="slideshow-container" >
                     <div class="mySlides fade" style="display: block;">
                         <div class="numbertext"></div>
+                        <input type="hidden" name="pnobar" value="<%=pb.getPbno() %>">
                         <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" style="width:100%;">
                     </div>
-                 <% if(pb.getPhoto2() != null){ %> 
-                    <div class="mySlides fade">
-                        <div class="numbertext"></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto2() %>"  style="width:100%;">
-                  
-                    </div>
-                    <% } %> 
-					<% if(pb.getPhoto3()!=null){ %>
-                    <div class="mySlides fade">
-                        <div class="numbertext"></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto3() %>"  style="width:100%;">
-                    </div>
-					<% } %>
-					 <% if(pb.getPhoto4()!=null){ %>
-                    <div class="mySlides fade">
-                        <div class="numbertext"></div>
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto4() %>" style="width:100%;">
-                    </div>
-                    <% } %>
-                    <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1);">&#10095;</a>
 
                     </div>
 
-              <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1);"></span> 
-                        <span class="dot" onclick="currentSlide(2);"></span> 
-                        <span class="dot" onclick="currentSlide(3);"></span> 
-                        <span class="dot" onclick="currentSlide(4);"></span> 
-                    </div>              
+          
                 </div>
 
 
@@ -185,35 +160,7 @@
 /*    <!--  작성자 : 박주완
         작성일 : 2020-02-03
         내용 : 사용자 게시물 좌우로 이미지 슬라이드쇼 쿼리문  --> */
-         var slideIndex = 1;
-        showSlides(slideIndex);
-        
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n); 
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-            
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";   
-            dots[slideIndex-1].className += " active";
-        } 
-
+      
 
 // <!--    작성자 : 박주완
 //         작성일 : 2020-02-04
@@ -236,11 +183,11 @@
 <!--********************************************** 게시물 상세보기 팝업  **********************************************-->              
        <script> 
           $(function(){
-             $('#t1 td img').click(function(){
+             $('#pnocheck td img').click(function(){
                 var test = $(this);
-                var url = '/6Days/pSelectOne.bo?pbno='+ $(this).parent().find('input[name=pbno95]').val();//document.getElementById("TEST").value;
-                
-                  w = 980; //팝업창의 너비
+                var url = "imageServlet.me?pbno="+ $(this).parent().find('input[name=pnobar]').val();
+                				 
+                  w = 630; //팝업창의 너비
                    h = 630; //팝업창의 높이
                    
                    //중앙위치 구해오기
