@@ -47,7 +47,7 @@
            <div id="show-profile">
                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
                <div id="profileimgbox">
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>">
                </div>
 
                    <div id="profilename">

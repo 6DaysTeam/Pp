@@ -28,8 +28,21 @@
    
         <script src="/6Days/resources/js/Profile.js"></script>
         <link rel="stylesheet" href="/6Days/resources/css/profile.css">
-
-
+	
+	<style type="text/css">
+		#settingbtn {
+		    font-family: 'Jua', sans-serif;
+		    font-size: 15px;
+		    width: 70px;
+		    height: 27px;
+		    border: none;
+		    border-radius: 10px;
+		    margin-left: 25px;
+		    opacity: 70%;
+		    margin-top: -21px;
+		    margin-bottom: -13px;
+		}
+	</style>
     
     <body>
 
@@ -48,7 +61,7 @@
            <div id="show-profile">
                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= pb.getProback()%>" style="width: 850px; height: 280px;">
                <div id="profileimgbox">
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= pb.getPproimg() %>" onclick="profileModalOpen();" >
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= pb.getPproimg() %>" >
                </div>
 
                    <div id="profilename">
