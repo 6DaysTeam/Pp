@@ -124,7 +124,7 @@
                       <th style="width: 20%; text-align: center;">닉네임</th>        
                       <th style="width: 10%; text-align: center;">게시물수</th>
                       <th style="width: 20%; text-align: center;">가입일</th>
-                      <th style="width: 8%; text-align: center;">삭제여부</th>
+                      <th style="width: 8%; text-align: center;">탈퇴여부</th>
                   </tr>
               </thead>
               <tbody>

@@ -91,7 +91,7 @@
               
               <span class="text-muted"></span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left; padding-right: 20px;">
+            <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left; padding-right: 20px; margin-left: 50px;">
                 <br><br><br>
                 <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">ID</label> <label>abc123</label><br><br>
                 <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임</label> <label>에이비씨</label><br><br>
@@ -113,10 +113,10 @@
               <button style="width: 60px;">확인</button>
               <span class="text-muted"></span> -->
               <br><br><br>
-              <label>      Comment </label> <br><br><br> 
+             <!--  <label>      Comment </label> <br><br><br> 
               <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">Fllowing &nbsp; &nbsp;&nbsp;&nbsp; 2.9K</label> 
               <br><br>
-              <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">Fllowers &nbsp;&nbsp;&nbsp;&nbsp; 2</label>
+              <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">Fllowers &nbsp;&nbsp;&nbsp;&nbsp; 2</label> -->
             </div>
           </div>
 
