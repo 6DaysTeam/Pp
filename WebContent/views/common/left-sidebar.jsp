@@ -29,7 +29,7 @@
                 <br>
                 <p onclick="location.href='/6Days/selectList.qo'" style="cursor: pointer;">Q & A</p>
                 <br>
-                <p onclick="location.href=''" style="cursor: pointer;">둘러보기</p>
+                <p onclick="location.href='/6Days/psurround.bo'" style="cursor: pointer;">둘러보기</p>
                 <br>
                 <p onclick="location.href='/6Days/view/Profile.html'" style="cursor: pointer;">내 프로필</p>
 
@@ -51,7 +51,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;Tel : 010-1234-5678 <br>
 					Email : Team6Days@gmail.com
                 </span>
-                <p id="adminMenuBtn" onclick="location.href='/6Days/aManage.ad'" style="cursor: pointer;">관리자 화면</p>
+                <p id="adminMenuBtn" onclick="location.href='/6Days/views/admin/user_manage.jsp'" style="cursor: pointer;">관리자 화면</p>
             </div>
             <button><span class="sidebar-btn">메뉴</span></button>
         </aside>

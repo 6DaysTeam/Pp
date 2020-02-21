@@ -64,6 +64,40 @@ private pBoardDao pbDao = new pBoardDao();
     
 	return list;
 }
+    
+    /**
+     * 게시글 전체 랜덤 둘러보기
+     * @return
+     */
+    public ArrayList<p_Board> surroundList(String userId) {
+    	  Connection con = getConnection();
+	      
+	      ArrayList<p_Board> list = pbDao.surroundList(con, userId);
+	      
+	      close(con);
+	      
+	      return list;
+	      
+	      
+}
+    
+    /**
+     * 게시물 하나만 보는 모달창
+     * @param pno
+     * @param pw
+     * @return
+     */
+    public p_Board selectOne(String pno,String pw) {
+        Connection con = getConnection();
+
+        p_Board p = pbDao.selectOne(con, pno, pw);
+        
+        if(p != null) commit(con);      
+        else rollback(con);
+        
+        close(con);
+        return p;
+     }
 
    
 

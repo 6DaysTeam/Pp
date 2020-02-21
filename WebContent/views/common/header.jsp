@@ -355,4 +355,15 @@ function up(){
 	}
 }
 </script>
+
+<script>
+function myPage(){
+      
+
+      var userId= document.getElementById('userId').value;
+      location.href="/6Days/pbSelect.bo?userId="+ userId;
+      
+   
+}
+</script>
 </html>

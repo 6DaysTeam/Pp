@@ -172,8 +172,103 @@ public class pBoardDao {
 			return list;				
 		}
 
-
+	/**
+     * 게시글 전체 랜덤 둘러보기
+     * @return
+     */
+	
+	public ArrayList<p_Board> surroundList(Connection con, String userId) {
+     ArrayList<p_Board> list = null;
+      Statement stmt = null;
+      ResultSet rset = null;
+      
+      String sql = prop.getProperty("surroundpBoard");
+      
+      try {
+       	     	
+    	  stmt=con.createStatement();
+    	  
+    	  rset=stmt.executeQuery(sql);
+    	  
+    	  
+         list = new ArrayList<>();
+         
+         while(rset.next()) {
+            p_Board pb= new p_Board();
+            
+            pb.setPbno(rset.getInt("PBNO"));
+            pb.setPbwriter(rset.getString("PBWRITER"));
+            pb.setPbdate(rset.getDate("PBDATE"));
+            pb.setPhoto1(rset.getString("PHOTO1"));
+            pb.setPhoto2(rset.getString("PHOTO2"));
+            pb.setPhoto3(rset.getString("PHOTO3"));
+            pb.setPhoto4(rset.getString("PHOTO4"));
+            pb.setPhoto5(rset.getString("PHOTO5"));
+            pb.setPhoto6(rset.getString("PHOTO6"));
+            	            
+            list.add(pb);
+         
+         }
+         
+         
+      } catch(SQLException e) {
+         e.printStackTrace();
+      } finally {
+         close(rset);
+         close(stmt);
+      }
    
+      return list;
+}
+
+	/**
+     * 게시물 하나만 보는 모달창
+     * @return
+     */
+	public p_Board selectOne(Connection con, String pno, String pw) {
+        p_Board pb = null;
+        
+        PreparedStatement pstmt = null;
+        
+        ResultSet rset = null;
+        
+        String sql = prop.getProperty("selectOne");
+        
+        try {
+           pstmt = con.prepareStatement(sql);
+           
+           pstmt.setString(1, pno);
+           
+           rset = pstmt.executeQuery();
+           
+           if(rset.next()) {
+                 pb= new p_Board();
+              
+                 pb.setPbno(rset.getInt("PBNO"));
+                 pb.setPbwriter(rset.getString("PBWRITER"));
+                 pb.setPbdate(rset.getDate("PBDATE"));
+                 pb.setPcontent(rset.getString("PCONTENT"));
+                 pb.setPhoto1(rset.getString("PHOTO1"));
+                 pb.setPhoto2(rset.getString("PHOTO2"));
+                 pb.setPhoto3(rset.getString("PHOTO3"));
+                 pb.setPhoto4(rset.getString("PHOTO4"));
+                 pb.setPhoto5(rset.getString("PHOTO5"));
+                 pb.setPhoto6(rset.getString("PHOTO6"));
+                 pb.setPnickname(rset.getString("USERNAME"));
+                 pb.setPproimg(rset.getString("PROIMG"));
+                 System.out.println("***********사진하나 뽑아오기 ************");
+              }
+           
+           System.out.println("p_board 확인 : " + pb);
+           } catch(SQLException e) {
+              e.printStackTrace();
+           } finally {
+              close(rset);
+              close(pstmt);
+           }
+           return pb;
+     }
+
    
    
    
