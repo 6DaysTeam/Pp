@@ -36,7 +36,13 @@ public class userManage {
 		this.email = email;
 		this.mycomment = mycomment;
 	}
+	
 
+	public userManage(Date pdate, String pcontent) {
+		super();
+		this.pdate = pdate;
+		this.pcontent = pcontent;
+	}
 
 	public userManage(String userId, String userName, int pCount, Date enrolldate, String delflag, String proimg,
 			String email, String mycomment, Date pdate, String pcontent) {
@@ -116,7 +122,7 @@ public class userManage {
 	public void setPdate(Date pdate) {
 		this.pdate = pdate;
 	}
-
+ 
 	public String getPcontent() {
 		return pcontent;
 	}

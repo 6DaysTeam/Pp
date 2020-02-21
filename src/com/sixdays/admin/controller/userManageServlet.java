@@ -39,7 +39,7 @@ public class userManageServlet extends HttpServlet {
 		
 		int startPage;
 		
-		int endPage; 
+		int endPage;  
 		
 		int maxPage;
 		

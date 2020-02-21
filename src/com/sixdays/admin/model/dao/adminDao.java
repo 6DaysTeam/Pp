@@ -14,6 +14,8 @@ import java.util.Properties;
 
 import javax.sql.StatementEvent;
 
+import org.omg.PortableInterceptor.TRANSPORT_RETRY;
+
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
 
@@ -134,10 +136,13 @@ public class adminDao {
 				u = new userManage();
 				
 				u.setUserId(userId);
-				u.setProimg(rset.getString("proimg"));
-				u.setUserName(rset.getString("userName"));
-				u.setEmail(rset.getString("email"));
-				u.setMycomment(rset.getString("mycomment"));
+				u.setProimg(rset.getString("PROIMG"));
+				u.setUserName(rset.getString("USERNAME"));
+				u.setEmail(rset.getString("EMAIL"));
+				u.setMycomment(rset.getString("MYCOMMENT"));
+				u.setEnrolldate(rset.getDate("ENROLLDATE"));
+				u.setPdate(rset.getDate("PBDATE"));
+				u.setPcontent(rset.getString("PCONTENT"));
 			
 				}
 			
@@ -149,6 +154,49 @@ public class adminDao {
 				close(pstmt);
 			}
 			return u;
+	}
+
+	public ArrayList<userManage> selectUserList(Connection con, String userId) {
+
+		
+		PreparedStatement pstmt = null;
+		
+		ArrayList<userManage> list = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectUserList");
+		
+		try {
+		
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<userManage>();
+			
+			while(rset.next()) {
+				
+				userManage u = new userManage();
+				
+				u.setPdate(rset.getDate("PBDATE"));
+				u.setPcontent(rset.getString("PCONTENT"));
+				
+				list.add(u);	
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();	
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+	
+		return list;
 	}
  
 }

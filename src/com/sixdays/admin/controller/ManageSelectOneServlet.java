@@ -1,6 +1,8 @@
 package com.sixdays.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +40,17 @@ public class ManageSelectOneServlet extends HttpServlet {
 		adminService as = new adminService();
 		
 		userManage u = as.selectOne(userId);
+		ArrayList<userManage> list = as.selectUserList(userId);
+		
+		
 		
 		String page = "";
 		 
 		if(u != null) {
 			page = "views/admin/user_managedetail.jsp";
+			request.setAttribute("list", list);
 			request.setAttribute("userManage", u);
+			
 		} else {
 			request.setAttribute("msg", "사용자 관리자 상세보기 실패!");
 		}
