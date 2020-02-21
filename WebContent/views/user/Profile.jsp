@@ -11,6 +11,11 @@
 	// 사진 게시글 리스트 가져오기
     ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
 	p_Board pba = new p_Board();
+	
+/* 	// 사진 게시글 리스트 가져오기
+    ArrayList<p_Board> pblist = (ArrayList<p_Board>)request.getAttribute("list"); 
+ */	
+	
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,206 +36,103 @@
 
 <input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 
-
-<!--    작성자 : 박주완
-        작성일 : 2020-01-09
-        내용 : 유저 프로필 화면 -->
-    <div id="container">
-        <div id="profile" class="profile">
-            <div id="show-profile">
-              <% if(m.getProback() != null) {%>
-                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
-                <%}else{ %>
-                <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/proback.png" style="width: 850px; height: 280px;">
-               <%} %>
-
-                <div id="profileimgbox">
-				<% if(m.getProimg() != null) {%>
-				     <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
-				<%}else{ %>
-					 <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
-				<%} %>
-                </div>
-
-                    <div id="profilename">
-                        <label id="name" class="profile"><%=m.getUserName() %></label>
-                        <hr style="margin-top: -5px; margin-bottom: 5px;">
-                        <label id="memo" class="profile"><%=m.getMycomment() %></label>
-                    </div>
-                    <div id="profileright">
-                        <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" >프로필 편집</button><br>
-                        <button id="settingbtn" class="profile" onclick="settingbtn();">설정</button><br><br>
-                        <label id="postCount" class="profile">게시물</label>
-                        <span>5</span><span>   </span><br>
-                        <label id="followers" class="profile">팔로워</label>
-                        <span>2.6k</span><span>   </span><br>
-                        <label id="following" class="profile">팔로우</label>
-                        <span>104</span><span>   </span><br>    
-                    </div>
-                </div>
-                
-                
-            </div>
-            
-            
-            
-            <hr id="hr1">
             
 <!--    작성자 : 박주완,이서현
         작성일 : 2020-01-09
         내용 : 유저 프로필 화면
 	수정일 : 2020-02-19   
--->			
-            <div id="postlist">
-                <!-- <table align="center">
-                    <tr>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy8.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy7.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy5.JPG" onclick="modalOpen();"></td>
-                    </tr>
-                    <tr>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy4.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy6.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy3.JPG" onclick="modalOpen();"></td>
-                    </tr>
-                    <tr>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy2.JPG" onclick="modalOpen();"></td>
-                        <td><img class="post" src="/6Days/resources/maruta/dummy1.JPG" onclick="modalOpen();"></td>
-                    </tr>
-                </table> -->
-                <table align="center" style="width: 900px;">
-                <tr>
-                <% for(p_Board pb : list) {
-                	if(pb.getPhoto1() != null){
-                	
-                	%>
-				
-				<td style="display: inline-block; float:left; margin-left:2%">		
-						<input type="hidden" value="<%= pb.getPbno()%>">
-						<img src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
-						     width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
-				
-				</td>
-				<% 
-                	}
-                	} %>
-				</tr>
-            	</table>
-        </div>
- 		<%-- <script>
- 			$(function(){
- 				$('.thumb-list').click(function(){
-					var bno = $(this).children().children().eq(0).val();
-					location.href = "<%=request.getContextPath()%>/selectOne.tn?bno=" + bno;
-				});
- 			})
- 		</script> --%>
-
-
-<!--    작성자 : 박주완
-        작성일 : 2020-01-09
-        내용 : 유저 게시물 클릭시 확대창 -->
-        
-        <div id="modal">
-            <div id="modalcontent">
-                <button id="closebtn" onclick="modalclose();">X</button>
-                <div id="modalpost">
-                <% for(p_Board pb : list) {
-                	int count = 2;
-                	String PhotoCk = "pb.getPhoto"+count+"()";
-                	%>
-                	<%= pb.getPcontent() %>  
-                
-                    <div id="modalimg" class="slideshow-container" >
-                        <div class="mySlides fade" style="display: block;">
-                            <div class="numbertext">1</div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/<%=pb.getPhoto1() %>" >
-                        </div>                    
-
-                	<%
-                	if(PhotoCk != null){
-                		count++;
-                	
-                	%>              
-                        <div class="mySlides fade" style="display: block;">
-                            <div class="numbertext"><%=count %></div>
-                            <img class="contentimgs" src="/6Days/resources/maruta/<%=PhotoCk %>" >
-                        </div>
-      
-                 <% 
-                	}
-                	} %>
-                        
-                        <a class="prev" onclick="plusSlides(-1);">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1);">&#10095;</a>
-                        
-                        
-                        
-                        <div id="dotbox" style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1);"></span> 
-                        </div>      
-                        
-                                    
-                   </div>
-
-            
+-->
+   <div id="container">
+       <div id="profile" class="profile">
+           <div id="show-profile">
+               <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
+               <div id="profileimgbox">
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
                </div>
 
+                   <div id="profilename">
+                       <label id="name" class="profile"><%=m.getUserName() %></label>
+                       <hr style="margin-top: -5px; margin-bottom: 5px;">
+                       <label id="memo" class="profile"><%=m.getMycomment() %></label>
+                   </div>
+                   <div id="profileright">
+                       <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" >프로필 편집</button><br>
+                       <button id="settingbtn" class="profile" onclick="settingbtn();">설정</button><br><br>
+                       <label id="postCount" class="profile">게시물</label>
+                       <span>5</span><span>   </span><br>
+                       <label id="followers" class="profile">팔로워</label>
+                       <span>2.6k</span><span>   </span><br>
+                       <label id="following" class="profile">팔로우</label>
+                       <span>104</span><span>   </span><br>    
+                   </div>
+               </div>
+               
+               
+           </div>
+           
+           
+           
+    <hr id="hr1">
+        <div id="postlist">
 
-
-
-
-<!-- 	작성자 : 박주완
-		수정알 : 2020-02-18
-		내용 : 게시물 부분 수정 -->
-<!-- 	***************************** 컨탠츠 클릭시 나타나는 모달창 영역 ****************************** -->
-
-                    <div id="coments">
-                        <div id="userprofilshow">
-                        	<div id="profileIMG2">
-								<% if(m.getProimg() != null) {%>
-								     <img id="profileimg2" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
-								<%}else{ %>
-									 <img id="profileimg2" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
-								<%} %>
-								<label id="name2" class="profile"><%=m.getUserName() %></label>
-							</div>
-                        <div id="innercoment">
-                            <span id="ment" class="coments">게시글내용들어갈 자리. 님덜 부산가면 요트 꼭타셈 ㄹㅇ 개꿀잼 인생의 추억 짱짱</span>
-                            <span id="tag" class="tag">태그 들어갈 자리. #광안리#부산#해운대#데이트#1주년#난멋져#뇌바사삭</span>
-<!--                  *******************************   여기서부터 댓글 들어갈 자리!!   *******************************  -->
-
-
-
-
-
-
-
-<!--                  *******************************   여기서까지 댓글   *******************************  -->
-                        </div>
-
-		                <div id="toolsbox"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
-		                    <img id="whitesmile"  src="/6Days/resources/icon/whitesmile.png" onclick="like();" >
-		                    <div id="likerUsersName" name="likerUsersName" >좋아요 </div>
-		                    <div id="likeCount" name="likeCount" >214</div>
-		                    <div id="likeMent" >개</div>
-		                    <div id="comentsCount" name="comentsCount" > 댓글 12</div>
-		                    <div id="postmakeDate">2020년 02월 19일</div>
-		                </div>
-
-                        <div id="comentarea">
-                            <input type="text" id="comentinput" placeholder="댓글 달기..." >
-                            <button onclick="" id="comentsend">게시</button>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-         </div>
-         
-
- <!-- 	***************************** 모달창 영역 끝 ****************************** -->     
+            <table align="center" style="width: 900px;" id="t1">
+            <tr>
+            <% for(p_Board pb : list) {
+               int pbno = pb.getPbno();
+               if(pb.getPhoto1() != null){
+               
+               %>
         
+        <td style="display: inline-block; float:left; margin-left:2%">   
+              <input id="pbWriter" type="hidden" value="<%=pb.getPbwriter()%>">         
+              <input id="TEST" name="pbno95"  type="hidden" value="<%=pb.getPbno()%>"> 
+              <img  src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
+                   width="260px" height="260px" style="margin:7px" id="pushdata">
+
+        </td>    
+        <% 
+               }
+               
+               } 
+         %>
+        </tr>
+           </table>
+
+    </div>
+        
+        
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->              
+       <script> 
+          $(function(){
+             $('#t1 td img').click(function(){
+                var test = $(this);
+                var url = '/6Days/pSelectOne.bo?pbno='+ $(this).parent().find('input[name=pbno95]').val();//document.getElementById("TEST").value;
+                
+                  w = 980; //팝업창의 너비
+                   h = 630; //팝업창의 높이
+                   
+                   //중앙위치 구해오기
+                   LeftPosition=(screen.width-w)/2;
+                   TopPosition=(screen.height-h)/2; 
+                    
+                               
+                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no');
+                
+             });
+          });
+       
+         
+             
+         function modalclose(){
+             $('#modal').css("display","none");
+         }
+
+       
+
+      
+       </script>
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->     		
+ 
 
 <!--    작성자 : 박주완
         작성일 : 2020-01-14
@@ -392,21 +294,6 @@
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
     }
-
-
-// <!--    작성자 : 박주완
-//     작성일 : 2020-02-04
-//     내용 : 포스트 [...]버튼 클릭시 모달창 온오프 코드-->
-        function postModalOpen(){
-            var ulr = $(this).attr("src");
-            $("#postModal").attr("src",ulr);
-            $("#postModal").show();
-        }
-
-        function postModalClose(){
-            $('#postModal').css("display",'none');
-        }
-
     
     
     
