@@ -32,10 +32,7 @@
          }
          html{overflow:hidden;}
          
-         #contentimgs{
-         margin:1%;
-         }
-         
+    
       
       </style>
 
