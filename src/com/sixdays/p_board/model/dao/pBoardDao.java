@@ -256,6 +256,7 @@ public class pBoardDao {
                  pb.setPhoto6(rset.getString("PHOTO6"));
                  pb.setPnickname(rset.getString("USERNAME"));
                  pb.setPproimg(rset.getString("PROIMG"));
+                 pb.setHashtag(rset.getString("HASHTAG"));
                  System.out.println("***********사진하나 뽑아오기 ************");
               }
            
