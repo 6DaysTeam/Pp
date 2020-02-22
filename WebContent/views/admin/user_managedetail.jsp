@@ -89,16 +89,16 @@
         </div>
         
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-         <form id="delflagForm"  action="/6Days/mDelfag.ad" method="post">
+
           <h1 class="page-header">사용자관리
-           <input type="hidden" id="userId" value="<%= u.getUserId() %>">
+           <input type="hidden" id="userIdcheck" value="<%= u.getUserId() %>">
            <button style="margin-left: 60%; width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
             background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagN();">활성화</button>
              <button style="width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
             background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagY();">비활성화</button> 
          
             </h1>   
-               </form>
+        
           
  
           <div class="row placeholders">
@@ -211,7 +211,7 @@
                 'color':'white'
             });
         });
-    });
+   
 
       //이벤트 제거
       $('#color_change').bind('click',function(){
@@ -223,14 +223,15 @@
   });
   		
   		function delflagN(){
-
-  			document.getElementById("delflagForm").submit();
+  			var userId = document.getElementById('userIdcheck').value;
+			location.href="/6Days/mDelfagN.ad?userid="+userId;
 		}
 		
-		function delflagY(){
-			
-			document.getElementById("delflagForm").submit();
+  		function delflagY(){
+  			var userId = document.getElementById('userIdcheck').value;
+			location.href="/6Days/mDelfagY.ad?userid="+userId;
 		}
+
     
     </script>
   </body>

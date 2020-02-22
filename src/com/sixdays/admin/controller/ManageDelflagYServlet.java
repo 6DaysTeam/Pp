@@ -8,25 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.admin.model.service.adminService;
-import com.sixdays.admin.model.vo.userManage;
-import com.sixdays.board.model.service.BoardService;
-import com.sixdays.board.model.vo.Board;
-import com.sixdays.p_board.model.service.p_BoardService;
-import com.sixdays.userMember.model.exception.MemberException;
-import com.sixdays.userMember.model.service.userMemberService;
-import com.sixdays.userMember.model.vo.userMember;
 
 /**
- * Servlet implementation class ManageDelfagServlet
+ * Servlet implementation class ManageDelflagYServlet
  */
-@WebServlet("/mDelfagN.ad")
-public class ManageDelfagServlet extends HttpServlet {
+@WebServlet("/mDelfagY.ad")
+public class ManageDelflagYServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageDelfagServlet() {
+    public ManageDelflagYServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +28,11 @@ public class ManageDelfagServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		
 		String userId = request.getParameter("userid");
 	      
 
 	      
-	      int result = new adminService().delflagcheckN(userId);
+	      int result = new adminService().delflagcheckY(userId);
 	      
 	    
 	     
@@ -57,6 +48,7 @@ public class ManageDelfagServlet extends HttpServlet {
 		
 		
 		
+	
 	}
 
 	/**
