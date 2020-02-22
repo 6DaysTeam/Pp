@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.sixdays.admin.model.dao.adminDao;
+import com.sixdays.admin.model.vo.Report;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
 import com.sixdays.userMember.model.exception.MemberException;
@@ -72,5 +73,39 @@ public class adminService {
 		return result;
 		
 	}
+	
+	//	--------------------------------------------------
+	//	신고사항 관리 
+	
+	
+	/**
+	* 신고사항 전체 조회
+	* @param currentPage
+	* @param limit
+	* @return
+	*/
+	public ArrayList<Report> rselectList(int currentPage, int limit) {
+	Connection con = getConnection();
+	
+	ArrayList<Report> list = aDao.rselectList(con, currentPage, limit);
+	
+	close(con);
+	return list;
+	}
+	
+	
+	public int getrListCount() {
+	Connection con = getConnection();
+	int listCount = aDao.getrListCount(con);
+	
+	close(con);
+	
+	return listCount;
+	}
+	
+
+
+	
+	
 
 }

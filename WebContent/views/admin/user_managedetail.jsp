@@ -70,7 +70,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="#"onclick="location.href='aManage.ad'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
-            <li><a href="#"onclick="location.href='report.jsp'" id="color_change">신고사항</a></li>
+            <li><a href="#"onclick="location.href='report.ad'" id="color_change">신고사항</a></li>
             <li><a href="#"onmouseover="over(this)" id="color_change">페이지관리</a></li>
             <li><a href="#" onmouseover="over(this)" id="color_change">설정</a></li>
           </ul>
