@@ -28,13 +28,14 @@
     <link rel="stylesheet" href = "/6Days/resources/css/MainContact.css">
     <link rel="stylesheet" href = "/6Days/resources/css/Scrollbar.css">
     <link rel="stylesheet" href = "/6Days/resources/css/main-header.css">
+            <script src="/6Days/resources/js/Profile.js"></script>
 </head>
 <body>
 
 	<input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 	<div id="backgroundArea" style="background-color:smokewhite;">
 		<div id="contentArea" class="contentArea" style="background:orange; width:60%; margin-left:20%; position:absolute; background-color:white;">
-		<table align="center" style="width: 900px;">
+		<table align="center" style="width: 900px;" id="table96">
                 <tr>
                 <% for(p_Board pb : list) {
                 	if(pb.getPhoto1() != null){
@@ -42,9 +43,9 @@
                 %>
 				
 				<td style="display: inline-block; float:left; margin-left:2%">		
-						<input type="hidden" value="<%= pb.getPbno()%>">
+						<input type="hidden"name="pbno96" value="<%= pb.getPbno()%>">
 						<img src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>"
-						     width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
+						     width="260px" height="260px" style="margin:7px" >
 				
 				</td>
 				
@@ -56,11 +57,36 @@
 		</div>
 	</div>
 	
-	
-<!--    작성자 : 박주완
-        작성일 : 2020-01-09
-        내용 : 유저 게시물 클릭시 확대창 -->
-        
+<!--         작성자 : 박주완
+        작성일 : 2020-02-21
+	내용 : 게시물 이미지 클릭시 비동기방식으로 게시물 상세보기 팝업 오픈 -->
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->              
+       <script> 
+          $(function(){
+             $('#table96 td img').click(function(){
+                var test = $(this);
+                var url = '/6Days/pSelectOne.bo?pbno='+ $(this).parent().find('input[name=pbno96]').val();//document.getElementById("TEST").value;
+                
+                  w = 980; //팝업창의 너비
+                   h = 630; //팝업창의 높이
+                   
+                   //중앙위치 구해오기
+                   LeftPosition=(screen.width-w)/2;
+                   TopPosition=(screen.height-h)/2; 
+                    
+                               
+                   window.open(url,'상세보기',"width="+w+"px,height="+h+"px,top="+TopPosition+",left="+LeftPosition+',status=no,location=no,resizable=no');
+                
+             });
+          });
+       
+         
+             
+         function modalclose(){
+             $('#modal').css("display","none");
+         }
+       </script>
+<!--********************************************** 게시물 상세보기 팝업  **********************************************-->   
 
 </body>
 </html>

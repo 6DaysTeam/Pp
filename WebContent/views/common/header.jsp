@@ -155,11 +155,9 @@
   
                 <div id="userinfo">
                    <div id="userimgbox">
-                  <% if(m.getProimg() != null) {%>
+
                        <img id="userimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>" onclick="profileModalOpen();" >
-                  <%}else{ %>
-                      <img id="userimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/proimg.png" onclick="profileModalOpen();" >
-                  <%} %>
+
                    </div>
                    <div id="userName0">
                        <label id="username" class="profile"><%=m.getUserName() %></label>            
