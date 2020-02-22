@@ -1,3 +1,4 @@
+<%@page import="com.sixdays.maincomment.model.vo.*" %>
 <%@page import="com.sixdays.p_board.model.vo.p_Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sixdays.userMember.model.vo.userMember"%>
@@ -6,6 +7,7 @@
   
 <%
 	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
+	ArrayList<MainComment> mlist = (ArrayList<MainComment>)request.getAttribute("mlist");
 	int result = 1;
 	int report1 = 0;
 %>
@@ -62,13 +64,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
                 <div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
                     <img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" onclick="like();" >
                     <div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
@@ -77,20 +72,21 @@
                     <div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
 
                 </div>
-                <div id="contentComent"">
-                    nobie : 여기에 댓글을 작성할 겁니다<br>
-                    nobie : 이런식으로 말이죠.<br>
-                    nobie : 사실 무슨 태그로 만들지 못정했어요<br>
-                    nobie : 하지만 이런건 대충해도 아무도 모르더라고요<br>
-                    nobie : 왜일까요?? 누가 이걸 확인하고 무슨태그 쓸지 정해주면 좋겠어요<br>
-                    nobie : 태그안에 대댓글 쓰기 버튼이랑 삭제 버튼같은걸 넣어야하거든요.<br>
-                    nobie : 아 그리고 메인 컨텐츠에서 사용할 폰트 구함@@@@@@@@추천좀.<br>
-                    nobie : 2020-01-15<br>
-                    <p style="font-size: 13px; color: gray; float: left;">1시간전</p>
+                
+                <div id="contentComment">
+                <% for(MainComment mc : mlist) { 
+                	if(mc.getPbno() == pb.getPbno()) { %>
+                       
+
+           <%= mc.getCproimg() %> <%= mc.getMwriter() %> <%= mc.getMcontent() %> <br>
+                <% }} %>
                 </div>
                 <hr style="margin: 5px;">
-                    <input id="sendcoment" type="text" placeholder="댓글달기..." style="width: 85%;">
-                    <input type="button" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0;"  value="확인">
+                	<input type="hidden" name="mpbno" value="<%= pb.getPbno() %>">
+                	<input type="hidden" id="mmo" name="mno" value="1">
+                	<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
+                    <input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
+                    <input type="button" id="mcommentbtn" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0; cursor:pointer;"  value="확인">
             </div>
             <br><br><br><br><br>
             </td></tr>
@@ -118,12 +114,60 @@
 
 
 
+    <script>
+    
+    
+    
+ 		$('#pnocheck td #mcommentbtn').click(function(){
+ 			
+ 			var test1 = $(this).parent().find('div[id=contentComment]');
+ 			var test = $(this).parent().find('input[id=sendcomment]');
+ 			 			
+ 			if(test.val() != "") {
+ 				
+ 			console.log("pbno : " + $(this).parent().find('input[name=mpbno]').val());
+ 			
+	       $.ajax({
+	    	   url:"/6Days/InsertComment.mo",
+	    	   type: "post",
+	    	   data:{ 
+	    		   pbno : $(this).parent().find('input[name=mpbno]').val(),
+	    		   mno : $('#pnocheck td #mmo').val(),
+	    		   mwriter : $(this).parent().find('input[id=mwriter]').val(),
+	    		   mcontent : $(this).parent().find('input[id=sendcomment]').val()
+	    	   },
+	    	   
+	    	   success:function(result){
+	    		   alert("성공");
+	    		  $('#pnocheck td #sendcomment').val('');
+    		      /* $($(this).parent().find('div[id=contentComment]')).load(window.location.href + $(this).parent().find('div[id=contentComment]')); */
+	    	       document.getElementById(test1).reload();
+	    	       console.log(result);
+	    	   },
+	    	   error:function(result){
+	    		   alert("실패");
+	    	   
+	    	   }
+	       });
+ 			}
+		});
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
 <!--    작성자 : 이서현
         작성일 : 2020-01-31
         내용 : 클릭시 변하는 스마일아이콘 -->
-        <script>
-
-
+	<script>
         var result= 1;
         function like(){
             if(result==1){

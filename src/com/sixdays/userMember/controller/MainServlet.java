@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sixdays.maincomment.model.service.MainCommentService;
+import com.sixdays.maincomment.model.vo.MainComment;
 import com.sixdays.p_board.model.service.p_BoardService;
 import com.sixdays.p_board.model.vo.p_Board;
 
@@ -35,6 +37,15 @@ public class MainServlet extends HttpServlet {
 		  p_BoardService pb = new p_BoardService();
 		  list = pb.allList();
 		  
+		  ArrayList<MainComment> mlist = null;
+		  
+		  
+		  MainCommentService mcs = new MainCommentService();
+		  mlist = mcs.selectList();
+		  
+		  System.out.println("ddddddddddddddddddddd : " +  mlist);
+		  
+		  
 		  
 		  String page = "";
 		  
@@ -42,7 +53,7 @@ public class MainServlet extends HttpServlet {
 		         
 		         page = "/main.jsp";
 		         request.setAttribute("list", list);
-		         
+		         request.setAttribute("mlist", mlist);
 		      } else {
 		         
 		         System.out.println("메인 페이지 조회 실패!");
