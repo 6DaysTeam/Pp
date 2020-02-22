@@ -226,11 +226,14 @@
         작성일 : 2020-02-21
         내용 : 포스트 [...] 버튼 클릭시 모달창 오픈 
 		----- 세션ID와 작성자 ID가 *같을 * 시에  -->
+
         <div id="SettingMadal15">
             <div id="Setting15">
                 <p style="color: red;">부적절한 게시물 신고</p><hr>
                  <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
+
                 <p style="color: red;" onclick="deletepost(this)">게시글 삭제</p><hr>
+
 					
                 <p onclick="SettingMadalClose15();">닫기</p>
             </div>
@@ -298,9 +301,21 @@
        	   }else{
        		   madalId = "#SettingMadal16";
        	   } */
-       	   var madalId = "#SettingMadal15";
+       	   
+       	   
+       		var userId = '<%=m.getUserId()%>'
+       	   var writer = '<%=pba.getPbwriter() %>'
         	   
            function SettingMadalOpen15(){
+
+
+        	   if(userId != writer){
+        		  
+        		   var madalId = "#SettingMadal16";
+        	   }else{
+        		  
+        		   var madalId = "#SettingMadal15";
+        	   }
         	   
                var ulr = $(this).attr("src");
                $(madalId).attr("src",ulr);
@@ -308,8 +323,16 @@
            }
 
            function SettingMadalClose15(){
+        	   if(userId != writer){
+         		  
+        		   var madalId = "#SettingMadal16";
+        	   }else{
+        		  
+        		   var madalId = "#SettingMadal15";
+        	   }
+        	   
                $(madalId).css("display",'none');
-           }
+           } 
            
            
            

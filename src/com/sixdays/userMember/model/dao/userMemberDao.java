@@ -7,10 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.sixdays.common.JDBCTemplate.*;
 
+import com.sixdays.board.model.vo.Board;
 import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.vo.userMember;
 
@@ -543,6 +545,89 @@ public class userMemberDao {
 		
 		return result;
 	}
+
+	public ArrayList<userMember> selectList(Connection con, String result) {
+		ArrayList<userMember> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearch");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			
+			pstmt.setString(1, result);
+
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<>();
+			
+			while(rset.next()) {
+				userMember result1 = new userMember();
+				
+				result1.setUserId(rset.getString("USERID"));
+				result1.setUserpwd(rset.getString("USERPWD"));
+				result1.setUserName(rset.getString("USERNAME"));
+				result1.setEmail(rset.getString("EMAIL"));
+				result1.setPhone(rset.getString("PHONE"));
+				result1.setGender(rset.getString("GENDER"));
+				result1.setMycomment(rset.getString("MYCOMMENT"));
+				result1.setProimg(rset.getString("PROIMG"));
+				result1.setProback(rset.getString("PROBACK"));
+				
+				list.add(result1);
+			
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+
+		return list;
+	}
+
+	public userMember selectProfileMember(Connection con, String userid) {
+		userMember result = null; // 결과를 담을 객체
+		PreparedStatement pstmt = null;
+		ResultSet rset = null; // Select의 결과를 담을 객체
+		
+		try {
+			String sql = prop.getProperty("selectProfileMember");
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+		
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = new userMember();
+				
+				result.setUserId(rset.getString("USERID"));
+				result.setUserpwd(rset.getString("USERPWD"));
+				result.setUserName(rset.getString("USERNAME"));
+				result.setEmail(rset.getString("EMAIL"));
+				result.setPhone(rset.getString("PHONE"));
+				result.setGender(rset.getString("GENDER"));
+				result.setMycomment(rset.getString("MYCOMMENT"));
+				result.setProimg(rset.getString("PROIMG"));
+				result.setProback(rset.getString("PROBACK"));
+			}	
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+
+
 
 
 

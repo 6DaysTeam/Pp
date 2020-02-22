@@ -11,7 +11,7 @@
 	// 사진 게시글 리스트 가져오기
     ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
 	p_Board pba = new p_Board();
-	
+	userMember user = (userMember)request.getAttribute("user");
 /* 	// 사진 게시글 리스트 가져오기
     ArrayList<p_Board> pblist = (ArrayList<p_Board>)request.getAttribute("list"); 
  */	
@@ -45,19 +45,24 @@
    <div id="container">
        <div id="profile" class="profile">
            <div id="show-profile">
-               <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= m.getProback() %>" style="width: 850px; height: 280px;">
+               <img id="profilebackgound" src="/6Days/resources/probackUploadFiles/<%= user.getProback() %>" style="width: 850px; height: 280px;">
                <div id="profileimgbox">
-                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= m.getProimg() %>">
+                <img id="profileimg" name="profileimg" src="/6Days/resources/proimgUploadFiles/<%= user.getProimg() %>">
                </div>
 
                    <div id="profilename">
-                       <label id="name" class="profile"><%=m.getUserName() %></label>
+                       <label id="name" class="profile"><%=user.getUserName() %></label>
                        <hr style="margin-top: -5px; margin-bottom: 5px;">
-                       <label id="memo" class="profile"><%=m.getMycomment() %></label>
+                       <label id="memo" class="profile"><%=user.getMycomment() %></label>
                    </div>
                    <div id="profileright">
+                   <%if(m.getUserId().equals(user.getUserId())){ %>
                        <button id="profileSetbtn" class="profile" onclick="profileModalOpen();" >프로필 편집</button><br>
                        <button id="settingbtn" class="profile" onclick="settingbtn();">설정</button><br><br>
+                     <% }else{ %>
+                       <button  id="profileSetbtn" class="profile">비공개</button><br>
+                       <button  id="settingbtn" class="profile" >비공개</button><br><br>
+                      <%} %> 
                        <label id="postCount" class="profile">게시물</label>
                        <span>5</span><span>   </span><br>
                        <label id="followers" class="profile">팔로워</label>

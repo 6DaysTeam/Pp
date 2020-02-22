@@ -8,7 +8,9 @@ import static com.sixdays.common.JDBCTemplate.getConnection;
 import static com.sixdays.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import com.sixdays.board.model.vo.Board;
 import com.sixdays.userMember.model.dao.userMemberDao;
 import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.vo.userMember;
@@ -239,6 +241,12 @@ public int nameUpdateMember(userMember m) throws MemberException {
 	}
 
 
+	/**
+	 * 회원탈퇴
+	 * 작성자:윤석훈
+	 * @param m
+	 * @return
+	 */
 	public int memberOut(userMember m) {
 		
 		con = getConnection();
@@ -253,6 +261,36 @@ public int nameUpdateMember(userMember m) throws MemberException {
 		return result;
 		
 	}
+
+
+	/**
+	 * 유저조회
+	 * 작성자:윤석훈
+	 * @param result
+	 * @return
+	 */
+	public ArrayList<userMember> selectList(String result) {
+		Connection con = getConnection();
+		
+		ArrayList<userMember> list = mDao.selectList(con, result);
+		
+		close(con);
+		return list;
+	}
+
+
+	public userMember selectProfileMember(String userid) {
+		con = getConnection();
+		
+		userMember result = mDao.selectProfileMember(con,userid);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
 
 
 

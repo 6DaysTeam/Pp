@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.p_board.model.service.p_BoardService;
 import com.sixdays.p_board.model.vo.p_Board;
+import com.sixdays.userMember.model.service.userMemberService;
+import com.sixdays.userMember.model.vo.userMember;
 
 /**
  * Servlet implementation class pBoardSelectListServlet
@@ -33,7 +35,16 @@ public class pBoardSelectListServlet extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       ArrayList<p_Board> list = null;
       String userid = request.getParameter("userId");
+      
+      userMember m = new userMember(userid);
+      
+      userMemberService ms = new userMemberService();
+      
+      
+      
       p_BoardService pb = new p_BoardService();
+      
+      
       list =pb.selectList(userid);
       
 
@@ -41,9 +52,11 @@ public class pBoardSelectListServlet extends HttpServlet {
       String page = "";
       
       if(list != null) {
-         
+    	  m = ms.selectProfileMember(userid);
          page = "/views/user/Profile.jsp";
          request.setAttribute("list", list);
+         request.setAttribute("user", m);
+    	  
       } else {
          
          System.out.println("마이 페이지 조회 실패!");

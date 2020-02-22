@@ -42,7 +42,6 @@ public class pBoardSelectUserProfileServlet extends HttpServlet {
 	      
 	       p_BoardService pb = new p_BoardService();     
 	       p_Board pb2 = pb.selectOne(pno);
-	       ArrayList<p_Board> list = pb.selectList(userid);
 	       
 
 	       
@@ -51,10 +50,13 @@ public class pBoardSelectUserProfileServlet extends HttpServlet {
 	      String page = "";
 	      
 	      if(pb2 != null) {
+	    	  ArrayList<p_Board> list = pb.selectList(userid);
+	    	  if(list != null) {
 	         page = "/views/user/ProfilePeople.jsp";
 	         request.setAttribute("pb2", pb2);
 	         request.setAttribute("list", list);
 	         System.out.println("유저프로필 서블릿 성공");
+	    	  }
 	      } else {
 	         request.setAttribute("msg", "유저프로필 상세보기 실패!");
 	         System.out.println("유저프로필 서블릿 에러");

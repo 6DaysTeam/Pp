@@ -1,6 +1,8 @@
 package com.sixdays.userMember.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,18 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.p_board.model.service.p_BoardService;
 import com.sixdays.p_board.model.vo.p_Board;
+import com.sixdays.userMember.model.service.userMemberService;
+import com.sixdays.userMember.model.vo.userMember;
 
 /**
- * Servlet implementation class imageServlet
+ * Servlet implementation class userSearchServlet
  */
-@WebServlet("/imageServlet.me")
-public class imageServlet extends HttpServlet {
+@WebServlet("/usersearch.me")
+public class userSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public imageServlet() {
+    public userSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,27 +33,30 @@ public class imageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-	      response.setContentType("application/json; charset=UTF-8");
-	      String pno = request.getParameter("pbno");
-	      String pw = request.getParameter("pbWriter");
+		ArrayList<userMember> list = null;
+	      String result = request.getParameter("result");
+	      userMemberService um = new userMemberService();
+	      list =um.selectList(result);
 	      
+
 	      
-	       p_BoardService pb = new p_BoardService();
-	      
-	       p_Board pb2 = pb.selectOne(pno);
-	       /*/views/user/Profile.jsp*/
 	      String page = "";
 	      
-	      if(pb2 != null) {
-	            page = "/views/user/imgdetail.jsp";
-	         request.setAttribute("pb3", pb2);
-	         System.out.println("셀릭트 원 서블릿 성공");
+	      if(list != null) {
+	         
+	         page = "/views/user/UserSearch.jsp";
+	         request.setAttribute("list", list);
 	      } else {
-	         request.setAttribute("msg", "공지사항 상세보기 실패!");
+	         
+	         System.out.println("마이 페이지 조회 실패!");
+	         request.setAttribute("msg", "사진 게시판 목록 조회 실패!!");
+	         
 	      }
+	      
 	      request.getRequestDispatcher(page).forward(request, response);
-	}
+	      
+	   }
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

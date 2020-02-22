@@ -184,7 +184,7 @@
 <!--********************************************** 게시물 상세보기 팝업  **********************************************-->              
        <script> 
           $(function(){
-             $('#pnocheck td img').click(function(){
+             $('#pnocheck td img[class=contentimgs]').click(function(){
                 var test = $(this);
                 var url = "imageServlet.me?pbno="+ $(this).parent().find('input[name=pnobar]').val();
                 				 
