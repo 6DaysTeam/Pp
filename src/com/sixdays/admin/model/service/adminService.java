@@ -102,6 +102,33 @@ public class adminService {
 	
 	return listCount;
 	}
+
+	public int delflagcheckN(String userid) {
+		Connection con = getConnection();
+		
+		int result = aDao.delflagcheckN(con,userid);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+	public int delflagcheckY(String userid) {
+		Connection con = getConnection();
+		
+		int result = aDao.delflagcheckY(con,userid);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
 	
 
 

@@ -305,5 +305,57 @@ public class adminDao {
 	}
 		return listCount;
 	}
+
+	public int delflagcheckN(Connection con, String userid) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("delflagcheckN");
+			
+			pstmt = con.prepareStatement(sql);
+			
+
+			pstmt.setString(1, userid);
+
+			
+			result = pstmt.executeUpdate();
+
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int delflagcheckY(Connection con, String userid) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("delflagcheckY");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			
+			pstmt.setString(1, userid);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
  
 }

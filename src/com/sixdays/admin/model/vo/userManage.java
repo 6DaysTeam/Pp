@@ -20,6 +20,11 @@ public class userManage {
 		super();
 	}
 
+	public userManage(String userId) {
+		super();
+		this.userId = userId;
+	}
+
 	public userManage(String userId, String userName, int pCount, Date enrolldate, String delflag) {
 		super();
 		this.userId = userId;
