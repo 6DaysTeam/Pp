@@ -2,6 +2,10 @@ package com.sixdays.maincomment.model.vo;
 
 import java.io.Serializable;
 
+/**
+ * @author tjrgn
+ *
+ */
 public class MainComment implements Serializable{
 	
 	/**
@@ -14,10 +18,41 @@ public class MainComment implements Serializable{
 	private String status;		// 삭제유무
 	private String mwriter;
 	private String cproimg;
+	private String mnickname;
 
+
+	public String getMnickname() {
+		return mnickname;
+	}
+
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
+	}
+	
+	
+	public MainComment(int pbno, int mno, String mcontent, String mwriter, String mnickname) {
+		super();
+		this.pbno = pbno;
+		this.mno = mno;
+		this.mcontent = mcontent;
+		this.mwriter = mwriter;
+		this.mnickname = mnickname;
+	}
 
 	public MainComment() {}
 	
+	public MainComment(int pbno, int mno, String mcontent, String status, String mwriter, String cproimg,
+			String mnickname) {
+		super();
+		this.pbno = pbno;
+		this.mno = mno;
+		this.mcontent = mcontent;
+		this.status = status;
+		this.mwriter = mwriter;
+		this.cproimg = cproimg;
+		this.mnickname = mnickname;
+	}
+
 	public MainComment(int pbno, int mno, String mwriter, String mcontent) {
 		super();
 		this.pbno = pbno;

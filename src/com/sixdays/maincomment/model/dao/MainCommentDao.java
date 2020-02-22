@@ -55,6 +55,7 @@ public class MainCommentDao {
 				mc.setMcontent(rset.getString("MCONTENT"));
 				mc.setMwriter(rset.getString("USERNAME"));
 				mc.setCproimg(rset.getString("PROIMG"));
+				mc.setMnickname(rset.getString("MNICKNAME"));
 				
 				mlist.add(mc);
 				
@@ -84,6 +85,7 @@ public class MainCommentDao {
 			pstmt.setInt(1, mc.getPbno());
 			pstmt.setString(2, mc.getMwriter());
 			pstmt.setString(3, mc.getMcontent());
+			pstmt.setString(4, mc.getMnickname());
 			
 			
 			result = pstmt.executeUpdate();

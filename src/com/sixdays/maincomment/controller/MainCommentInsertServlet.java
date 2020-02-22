@@ -36,8 +36,9 @@ public class MainCommentInsertServlet extends HttpServlet {
 		int mno = Integer.parseInt(request.getParameter("mno"));
 		String mwriter = request.getParameter("mwriter");
 		String mcontent = request.getParameter("mcontent");
+		String mnickname = request.getParameter("mnickname");
 		
-		MainComment mc = new MainComment(pbno, mno, mwriter, mcontent);
+		MainComment mc = new MainComment(pbno, mno, mwriter, mcontent,mnickname);
 		
 		int result = new MainCommentService().insertComment(mc);
 		

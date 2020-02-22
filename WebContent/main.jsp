@@ -21,6 +21,7 @@
 	<%@ include file="views/common/left-sidebar.jsp" %>
 	<%@ include file="views/common/right-sidebar.jsp" %>
     <link rel="stylesheet" href = "/6Days/resources/css/MainContact.css">
+
 </head>
 
 <body>
@@ -78,14 +79,15 @@
                 	if(mc.getPbno() == pb.getPbno()) { %>
                        
 
-           <%= mc.getCproimg() %> <%= mc.getMwriter() %> <%= mc.getMcontent() %> <br>
+           <%= mc.getCproimg() %> <%= mc.getMnickname() %> <%= mc.getMcontent() %> <br>
                 <% }} %>
                 </div>
                 <hr style="margin: 5px;">
                 	<input type="hidden" name="mpbno" value="<%= pb.getPbno() %>">
                 	<input type="hidden" id="mmo" name="mno" value="1">
                 	<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
-                    <input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
+                	<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
+                     <input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
                     <input type="button" id="mcommentbtn" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0; cursor:pointer;"  value="확인">
             </div>
             <br><br><br><br><br>
@@ -134,15 +136,15 @@
 	    		   pbno : $(this).parent().find('input[name=mpbno]').val(),
 	    		   mno : $('#pnocheck td #mmo').val(),
 	    		   mwriter : $(this).parent().find('input[id=mwriter]').val(),
-	    		   mcontent : $(this).parent().find('input[id=sendcomment]').val()
+	    		   mcontent : $(this).parent().find('input[id=sendcomment]').val(),
+	    		   mnickname : $(this).parent().find('input[name=mnickname]').val()
 	    	   },
 	    	   
 	    	   success:function(result){
 	    		   alert("성공");
 	    		  $('#pnocheck td #sendcomment').val('');
-    		      /* $($(this).parent().find('div[id=contentComment]')).load(window.location.href + $(this).parent().find('div[id=contentComment]')); */
-	    	       document.getElementById(test1).reload();
-	    	       console.log(result);
+	    
+
 	    	   },
 	    	   error:function(result){
 	    		   alert("실패");
