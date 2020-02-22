@@ -13,6 +13,7 @@
 
    p_Board pba = (p_Board)request.getAttribute("pb2");
 
+
 %>
 
 <!DOCTYPE html>
@@ -229,7 +230,6 @@
 
         <div id="SettingMadal15">
             <div id="Setting15">
-                <p style="color: red;">부적절한 게시물 신고</p><hr>
                  <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
 
                 <p style="color: red;" onclick="deletepost(this)">게시글 삭제</p><hr>
@@ -245,7 +245,8 @@
         ----- 세션ID와 작성자 ID가 * 다를 *시에  -->
         <div id="SettingMadal16">
             <div id="Setting16">
-                <p style="color: red;">부적절한 게시물 신고</p><hr>
+                <p id="reportcheck" style="color: red;">부적절한 게시물 신고</p><hr>
+                <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
                 <p onclick="SettingMadalClose15();">닫기</p>
             </div>
         </div>
@@ -351,8 +352,34 @@
     		
     		
     	}
-    	
+    
 
+            $(function(){ //게시물 신고
+
+                
+            	  $('#reportcheck').click(function(){
+                      
+                      var report=$('#pbno').val();
+                 
+         				
+             	        $.ajax({
+           	           url:"/6Days/reportboard.bo",
+           	           type:"post",
+           	           data:{pbno: report},
+           	           success:function(data){
+           				alert("정상적으로 신고되었습니다.");
+           	     		
+           	           },error:function(){
+      					alert("오류 발생.");
+           	           }
+        	        });
+             });
+             });
+            
+
+
+
+          
 
     </script>
     
