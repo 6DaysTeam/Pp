@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.sixdays.admin.model.dao.adminDao;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.userMember.model.exception.MemberException;
 import com.sixdays.userMember.model.vo.userMember;
 
 
@@ -42,10 +43,6 @@ public class adminService {
 				
 		userManage u= aDao.selectOne(con, userId);	
 		
-//		userManage u2 = aDao.selectOne2(con, userId);
-		
-		System.out.println("www"+u);
-		
 		close(con);
 		return u;
 	}
@@ -60,6 +57,20 @@ public class adminService {
 		
 		
 		return list;
+	}
+
+	public int updateDelfag(userManage u) throws MemberException {
+		Connection con = getConnection();
+		System.out.println("서비스로 넘어왔닝");
+		int result = aDao.updateDelfag(con,u);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
 	}
 
 }

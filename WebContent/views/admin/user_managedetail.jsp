@@ -48,7 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">6Days</a>
+          <a class="navbar-brand" onclick="location.href='/6Days/main.me'" style="cursor:pointer">6Days</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <!-- <ul class="nav navbar-nav navbar-right">
@@ -87,16 +87,18 @@
             <li><a href="">Another nav item</a></li>
           </ul> -->
         </div>
+        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         <form id="delflagForm"  action="/6Days/mDelfag.ad" method="post">
           <h1 class="page-header">사용자관리
-          <form id="delflagForm" method="post">
-          <input type="hidden" value="<%= u.getUserId() %>">
+           <input type="hidden" id="userId" value="<%= u.getUserId() %>">
            <button style="margin-left: 60%; width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
             background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagN();">활성화</button>
              <button style="width: 100px; height: 30px; font-size: 19px; font-weight: lighter; 
-            background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagY();">비활성화</button>
-            </form>
-            </h1>
+            background: white; border: 1px solid gray; border-radius: 5px; color: black;" onclick="delflagY();">비활성화</button> 
+         
+            </h1>   
+               </form>
           
  
           <div class="row placeholders">
@@ -168,11 +170,12 @@
                     <th style="width: 40%;">가일일</th>
                     <th style="width: 60%;"><%=u.getEnrolldate() %></th>
                 </tr>
-              </thead>
+         
              
             </table>
           </div>
         </div>
+      
       </div>
     </div>
 
@@ -189,7 +192,7 @@
      //메뉴바 선택하기 
      $(function(){
         //이벤트 연결(바인딩)
-        $('#color_change').bind('mouseenter',function(){
+        $('#color_change').bind('mouseenter',function(){	
             $(this).css({
             'background': rgb(15, 76, 129),
             'color':'white'
@@ -217,19 +220,16 @@
               'color':'white'
    		       });
       		});
-  		});
+  });
   		
   		function delflagN(){
-  			<%
-  			
-  			%>
-  			
-			$("#delflagForm").attr("action","<%=request.getContextPath() %>/bUpdate.bo");
+
+  			document.getElementById("delflagForm").submit();
 		}
 		
 		function delflagY(){
-			// delete 는 예약어 이므로 deleteNotice 로 ...!
-			$("#delflagForm").attr("action","<%=request.getContextPath() %>/bDelete.bo");
+			
+			document.getElementById("delflagForm").submit();
 		}
     
     </script>

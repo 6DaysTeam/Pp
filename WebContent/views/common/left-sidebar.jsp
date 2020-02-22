@@ -57,7 +57,9 @@
    &nbsp;&nbsp;&nbsp;&nbsp;Tel : 010-1234-5678 <br>
                Email : Team6Days@gmail.com
                 </span>
+                <%if(ms.getUserId().equals("admin")) {%>
                 <p id="adminMenuBtn" onclick="location.href='aManage.ad'" style="cursor: pointer;">관리자 화면</p>
+                <%} %>
             </div>
             <button><span class="sidebar-btn">메뉴</span></button>
         </aside>

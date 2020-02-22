@@ -18,6 +18,7 @@ import org.omg.PortableInterceptor.TRANSPORT_RETRY;
 
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.userMember.model.exception.MemberException;
 
 public class adminDao {
 	private Properties prop; 
@@ -141,8 +142,6 @@ public class adminDao {
 				u.setEmail(rset.getString("EMAIL"));
 				u.setMycomment(rset.getString("MYCOMMENT"));
 				u.setEnrolldate(rset.getDate("ENROLLDATE"));
-				u.setPdate(rset.getDate("PBDATE"));
-				u.setPcontent(rset.getString("PCONTENT"));
 			
 				}
 			
@@ -197,6 +196,32 @@ public class adminDao {
 		}
 	
 		return list;
+	}
+
+	public int updateDelfag(Connection con, userManage u) throws MemberException {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		System.out.println("dsdass");
+		
+		try {	
+			String sql = prop.getProperty("updateDelfag");
+
+			pstmt = con.prepareStatement(sql);	
+			
+			pstmt.setString(1, u.getUserId());		
+			
+			result = pstmt.executeUpdate();
+		
+			
+		}catch(SQLException e) {
+			throw new MemberException(e.getMessage());
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
 	}
  
 }

@@ -1,8 +1,6 @@
 package com.sixdays.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,18 +11,20 @@ import com.sixdays.admin.model.service.adminService;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.service.BoardService;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.userMember.model.exception.MemberException;
+import com.sixdays.userMember.model.service.userMemberService;
 
 /**
- * Servlet implementation class ManageSelectOneServlet
+ * Servlet implementation class ManageDelfagServlet
  */
-@WebServlet("/mSelectOne.ad")
-public class ManageSelectOneServlet extends HttpServlet {
+@WebServlet("/mDelfag.ad")
+public class ManageDelfagServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageSelectOneServlet() {
+    public ManageDelfagServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,25 +35,24 @@ public class ManageSelectOneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		
-		System.out.println(userId);
+		userManage u = new userManage();
 		
 		adminService as = new adminService();
 		
-		userManage u = as.selectOne(userId);
-		ArrayList<userManage> list = as.selectUserList(userId);
-		
-		
-		String page = "";
-		 
-		if(u != null) {
-			page = "views/admin/user_managedetail.jsp";
-			request.setAttribute("list", list);
-			request.setAttribute("userManage", u);
+		u.setUserId(userId);
+		try {
+			as.updateDelfag(u);
 			
-		} else {
-			request.setAttribute("msg", "사용자 관리자 상세보기 실패!");
+			response.sendRedirect("views/admin/user_managedetail.jsp");
+			
+		} catch (MemberException e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "삭제여부 수정 중 에러 발생!");
+			request.setAttribute("exception", e);
+			
+			request.getRequestDispatcher("views/common/userNameErrorPage.jsp").forward(request, response);
+		
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
