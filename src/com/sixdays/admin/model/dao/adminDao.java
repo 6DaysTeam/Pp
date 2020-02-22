@@ -240,7 +240,7 @@ public class adminDao {
 	
 	try {
 		pstmt = con.prepareStatement(sql);
-		
+		  
 		int startRow = (currentPage-1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
