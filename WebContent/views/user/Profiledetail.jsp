@@ -325,7 +325,7 @@
 
            function SettingMadalClose15(){
         	   if(userId != writer){
-         		  
+         		   
         		   var madalId = "#SettingMadal16";
         	   }else{
         		  
