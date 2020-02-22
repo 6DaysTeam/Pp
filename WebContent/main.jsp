@@ -7,6 +7,7 @@
 <%
 	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
 	int result = 1;
+	int report1 = 0;
 %>
     
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
                    <input type="hidden" name="pnosi" value="<%=pb.getPbno() %>">
                    <input type="hidden" name="userid33" value="<%=pb.getPbwriter()%>">
                     <label id="showUserName"><%= pb.getPnickname() %></label>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
-                    <p id="contentSettingbtn" onclick="postModalOpen();">...</p>
+                    <p id="contentSettingbtn" onclick="postModalOpen();" >...</p>
                 </div>
                 <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
 				<%= pb.getPcontent()%>
@@ -102,7 +103,7 @@
         내용 : 포스트 [...] 버튼 클릭시 모달창 오픈 -->
         <div id="postModal">
             <div id="postModalSet">
-                <p style="color: red;">부적절한 게시물 신고</p><hr>
+                <p style="color: red;" id="reportcheck" >부적절한 게시물 신고</p><hr>
                 <p style="color: red;">팔로우 취소</p><hr>
                 <p onclick="postModalClose();">닫기</p>
             </div>
@@ -215,6 +216,33 @@
                 
              });
           });
+         
+         $(function(){ //게시물 신고
+             $('#pnocheck td p[id=contentSettingbtn]').click(function(){
+                var test = $(this);
+                report1=$(this).parent().find('input[name=pnosi]').val();
+				
+                
+             });
+             
+             $("#reportcheck").click(function(){
+            	
+            	 
+     	        $.ajax({
+     	           url:"/6Days/reportboard.bo",
+     	           type:"post",
+     	           data:{pbno: report1},
+     	           success:function(data){
+     				alert("정상적으로 신고되었습니다.");
+     	     		
+     	           },error:function(){
+					alert("오류 발생.");
+     	           }
+     	        });
+          });
+          });
+
+
 
      	
        </script>

@@ -296,6 +296,28 @@ public class pBoardDao {
 		
 	}
 
+
+
+	public int Reportboard(Connection con, int pbno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("reportBoard");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pbno);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
    
    
    

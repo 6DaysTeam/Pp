@@ -34,7 +34,7 @@
 	<input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 	<div id="backgroundArea" style="background-color:smokewhite;">
 		<div id="contentArea" class="contentArea" style="background:orange; width:60%; margin-left:20%; position:absolute; background-color:white;">
-		<table align="center" style="width: 100%;">
+		<table align="center" style="width: 900px;">
                 <tr>
                 <% for(p_Board pb : list) {
                 	if(pb.getPhoto1() != null){

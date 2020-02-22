@@ -113,6 +113,20 @@ private pBoardDao pbDao = new pBoardDao();
 
 	}
 
+
+	public int Reportboard(int pbno) {
+		Connection con = getConnection();
+		
+		int result = pbDao.Reportboard(con, pbno);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
    
 
 }

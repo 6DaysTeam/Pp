@@ -45,13 +45,8 @@
                 <p onclick="location.href='/6Days/pbSelect.bo?userId=<%=ms.getUserId() %>'" style="cursor: pointer;">내 프로필</p>
 
                 <span>
-                <input id="menusearch1" type="text" list="menusearch"  placeholder="검색 내용을 입력하세요.">
-                <datalist id="menusearch" style="width:1000px;">
-                    <option>프로필수정</option>
-                    <option>프로필수정</option>
-                    <option>프로필수정</option>
-                    <option>프로필수정</option>
-                </datalist>
+                <input id="menusearch1" type="text" list="menusearch"  placeholder="검색 내용을 입력하세요." readonly>
+
                 </span>
 
 
