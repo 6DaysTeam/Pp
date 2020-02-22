@@ -58,7 +58,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">6Days</a>
+            <a class="navbar-brand"  onclick="location.href='/6Days/main.me'" style="cursor:pointer">6Days</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <!-- <ul class="nav navbar-nav navbar-right">
@@ -91,8 +91,8 @@
 													    margin-top: 2px;
 													    width: 250px;">
             <ul class="nav nav-sidebar">
-              <li><a href="#"onclick="location.href='user_manage.jsp'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
-              <li><a href="#"onclick="location.href='report.jsp'" id="color_change">신고사항</a></li>
+              <li><a href="#"onclick="location.href='aManage.ad'" id="color_change" style="background: rgb(78, 75, 75); color: white;">사용자관리 </a></li>
+              <li><a href="#"onclick="location.href='report.ad'" id="color_change">신고사항</a></li>
               <li><a href="#"onmouseover="over(this)" id="color_change">페이지관리</a></li>
               <li><a href="#" onmouseover="over(this)" id="color_change">설정</a></li>
             </ul>
