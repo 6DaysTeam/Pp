@@ -4,21 +4,35 @@ public class Report {
 	
 	
 	private int rownum;			// 글순서
-	private String userId;		// id
-	private String userName;	// 닉네임(게시글 작성자)
+/*	위쪽부분에 출력될 사용자 정보	*/
+	private String userId;		// 아이디(작성자)
+	private String userName;	// 닉네임(작성자)
 	private String proimg;      // 프로필 이미지
 	private String email;		// 이메일
 	private String mycomment;  	// 코멘트
-	private String status;		//삭제여부
-	private String blockflag;	//정지유무
-	private String report_yn;	//신고유무
+	private String Blockflag;	//현재정지유무
+	private String pbDate;		//작성일
+	private String pContent;	//게시글 내용
+	private String hashtag;		//해쉬태그내용
+	private String report_yn;
+	private String Status;
+/*	밑부분에 뿌려줄 정보	*/
+	private int rpno;			//신고된게시글번호
+	private String reason;		//정지사유
+	private String reportdate;	//신고일
+	private String releasedate; //정지해제일
+	private String reporter;	//신고자
+	private int rpcount;		//누적 정지 횟수
 	
 	
-	public Report() {	}
-	
-	
+	public Report() {
+		super();
+	}
+
+
 	public Report(int rownum, String userId, String userName, String proimg, String email, String mycomment,
-			String status, String blockflag, String report_yn) {
+			String blockflag, String pbDate, String pContent, String hashtag, String report_yn, String status, int rpno,
+			String reason, String reportdate, String releasedate, String reporter, int rpcount) {
 		super();
 		this.rownum = rownum;
 		this.userId = userId;
@@ -26,9 +40,18 @@ public class Report {
 		this.proimg = proimg;
 		this.email = email;
 		this.mycomment = mycomment;
-		this.status = status;
-		this.blockflag = blockflag;
+		Blockflag = blockflag;
+		this.pbDate = pbDate;
+		this.pContent = pContent;
+		this.hashtag = hashtag;
 		this.report_yn = report_yn;
+		Status = status;
+		this.rpno = rpno;
+		this.reason = reason;
+		this.reportdate = reportdate;
+		this.releasedate = releasedate;
+		this.reporter = reporter;
+		this.rpcount = rpcount;
 	}
 
 
@@ -92,23 +115,43 @@ public class Report {
 	}
 
 
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
 	public String getBlockflag() {
-		return blockflag;
+		return Blockflag;
 	}
 
 
 	public void setBlockflag(String blockflag) {
-		this.blockflag = blockflag;
+		Blockflag = blockflag;
+	}
+
+
+	public String getPbDate() {
+		return pbDate;
+	}
+
+
+	public void setPbDate(String pbDate) {
+		this.pbDate = pbDate;
+	}
+
+
+	public String getpContent() {
+		return pContent;
+	}
+
+
+	public void setpContent(String pContent) {
+		this.pContent = pContent;
+	}
+
+
+	public String getHashtag() {
+		return hashtag;
+	}
+
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
 	}
 
 
@@ -122,14 +165,85 @@ public class Report {
 	}
 
 
+	public String getStatus() {
+		return Status;
+	}
+
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+
+	public int getRpno() {
+		return rpno;
+	}
+
+
+	public void setRpno(int rpno) {
+		this.rpno = rpno;
+	}
+
+
+	public String getReason() {
+		return reason;
+	}
+
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+
+	public String getReportdate() {
+		return reportdate;
+	}
+
+
+	public void setReportdate(String reportdate) {
+		this.reportdate = reportdate;
+	}
+
+
+	public String getReleasedate() {
+		return releasedate;
+	}
+
+
+	public void setReleasedate(String releasedate) {
+		this.releasedate = releasedate;
+	}
+
+
+	public String getReporter() {
+		return reporter;
+	}
+
+
+	public void setReporter(String reporter) {
+		this.reporter = reporter;
+	}
+
+
+	public int getRpcount() {
+		return rpcount;
+	}
+
+
+	public void setRpcount(int rpcount) {
+		this.rpcount = rpcount;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Report [rownum=" + rownum + ", userId=" + userId + ", userName=" + userName + ", proimg=" + proimg
-				+ ", email=" + email + ", mycomment=" + mycomment + ", status=" + status + ", blockflag=" + blockflag
-				+ ", report_yn=" + report_yn + "]";
+				+ ", email=" + email + ", mycomment=" + mycomment + ", Blockflag=" + Blockflag + ", pbDate=" + pbDate
+				+ ", pContent=" + pContent + ", hashtag=" + hashtag + ", report_yn=" + report_yn + ", Status=" + Status
+				+ ", rpno=" + rpno + ", reason=" + reason + ", reportdate=" + reportdate + ", releasedate="
+				+ releasedate + ", reporter=" + reporter + ", rpcount=" + rpcount + "]";
 	}
-	
-	
+
 	
 	
 }

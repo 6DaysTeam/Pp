@@ -81,8 +81,8 @@
               <li><a href="#"onclick="location.href='report.ad'" id="color_change" style="background-color: rgb(78, 75, 75); color: white;">신고사항</a></li>
               <li><a href="#"onmouseover="over(this)" id="color_change">페이지관리</a></li>
               <li><a href="#" onmouseover="over(this)" id="color_change">설정</a></li>
-              </ul>
             </ul>
+            
          
           </div>
 
@@ -92,7 +92,7 @@
             background: white; border: 1px solid gray; border-radius: 5px; color: black;">삭제</button>
           </h2>
           <div id ="checkAll" class="table-responsive" style="margin-left: -2%; margin-top: -2%;">
-            <table class="table table-striped" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
+            <table class="table table-striped" id="reportlistArea" style="text-align: center; width: 70%; margin-left: 23%; margin-top: 4%;">
                 <thead>
                   <tr style="font-size: 13pt;">
                       <th style="width: 7.5%; text-align: center;"><input type="checkbox" class="checkAll"></th>
@@ -134,11 +134,11 @@
 
 
     <div class="text-center" style="margin-right: -10%;">
-			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=1'"><<</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=1'">&#10094;&#10094;</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%=currentPage - 1 %>'"><</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%=currentPage - 1 %>'">&#10094;</button>
 			<%  } %>
 			
 			<% for(int p = startPage; p <= endPage; p++){
@@ -153,9 +153,9 @@
 			<%  if(currentPage >= maxPage){  %>
 			<button disabled>></button>
 			<%  }else{ %>
-			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%=currentPage + 1 %>'">></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%=currentPage + 1 %>'">&#10095;</button>
 			<%  } %>
-			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%= maxPage %>'">>></button>
+			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%= maxPage %>'">&#10095;&#10095;</button>
 			
 		</div>
 
@@ -168,12 +168,12 @@
           //이벤트 연결(바인딩)
           $('#color_change').bind('mouseenter',function(){
               $(this).css({
-              'background': rgb(15, 76, 129),
+              'background': 'rgb(15, 76, 129)', 
               'color':'white'
               });
           }).bind('mouseleave',function(){
               $(this).css({
-                  'background': rgb(15, 76, 129),
+                  'background': 'rgb(15, 76, 129)', 
                   'color':'white'
               });
           });
@@ -181,7 +181,7 @@
           //이벤트 제거
           $('#color_change').bind('click',function(){
               $(this).unbind('mouseenter').unbind('mouseleave').css({
-                  'background': rgb(15, 76, 129),
+/*                   'background': rgb(15, 76, 129), */
                   'color':'white'
               });
           });
@@ -219,16 +219,16 @@
       });
     };
 
-   <%--  // td(class=next) 클릭시 페이지 이동
-    $("#mangelistArea td").click(function(){
+     // td(class=next) 클릭시 페이지 이동
+     $("#reportlistArea td").click(function(){
   	  
   	 var userId = $(this).parent().find('input').val();
   	 
-  	 console.log(userId);
+  	 console.log("선택한 유저 ID : "+userId);
   	 
-     location.href="<%= request.getContextPath() %>/mSelectOne.ad?userId=" + userId;
-    }); --%>
-              
+     location.href="<%= request.getContextPath() %>/sone.rp?userId=" + userId;
+    }); 
+               
 	</script>
 </body>
 </html>

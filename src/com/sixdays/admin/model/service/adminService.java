@@ -94,6 +94,8 @@ public class adminService {
 	}
 	
 	
+	
+	
 	public int getrListCount() {
 	Connection con = getConnection();
 	int listCount = aDao.getrListCount(con);
@@ -102,6 +104,9 @@ public class adminService {
 	
 	return listCount;
 	}
+	
+	
+	
 
 	public int delflagcheckN(String userid) {
 		Connection con = getConnection();
@@ -130,6 +135,33 @@ public class adminService {
 		
 	}
 	
+	/* 작성자 : 박주완
+	 * 내용 : 신고사항 리스트 에서 사용자 ID 클릭시 디테일창으로 넘어감 ㅇㅇ
+	 * 작성일 : 2020-02-22
+	 */
+	public Report reportselectOne(String userId) {
+		Connection con = getConnection();
+		
+		Report rep= aDao.reportselectOne(con, userId);	
+		
+		close(con);
+		
+		return rep;
+	}
+	
+	
+
+	public ArrayList<Report> reportList(String userId) {
+		Connection con = getConnection();
+		
+		ArrayList<Report> rlist = aDao.reportList(con, userId);
+		
+		close(con);
+		
+		return rlist;
+	}
+
+
 
 
 	

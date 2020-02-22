@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.admin.model.service.adminService;
 import com.sixdays.admin.model.vo.Report;
-import com.sixdays.board.model.vo.PageInfo;
+import com.sixdays.admin.model.vo.userManage;
 
 /**
- * Servlet implementation class ReportServlet
+ * Servlet implementation class ReportSelectOneServlet
  */
-@WebServlet("/report.ad")
-public class ReportServlet extends HttpServlet {
+@WebServlet("/sone.rp")
+public class ReportSelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportServlet() {
+    public ReportSelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,58 +32,26 @@ public class ReportServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Report> list = null;
+		String userId = request.getParameter("userId");
+		System.out.println("신고사항 상세보기 서블릿 작동.");
+		System.out.println("선택한 게시물 작성자 : "+userId);
 		
 		adminService as = new adminService();
 		
-		int startPage;
+		Report rep = as.reportselectOne(userId);
+		ArrayList<Report> rlist = as.reportList(userId);
 		
-		int endPage;  
-		
-		int maxPage;
-		
-		int currentPage;
-		
-		int limit;
-		
-		currentPage = 1;
-		
-		limit = 10;
-		
-		if(request.getParameter("currentPage") != null) {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		}
-		
-		int rlistCount = as.getrListCount();
-		
-		System.out.println("신고사항 게시판 총 페이지 갯수 : " + rlistCount);
-		
-		maxPage = (int)((double)rlistCount / limit + 0.9);
-		
-		startPage = ((int)((double)currentPage / limit + 0.9)-1) * limit + 1;
-		
-		endPage = startPage + limit - 1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		
-		list = as.rselectList(currentPage, limit);
 		
 		String page = "";
-		
-		if(list != null) {
-			page = "/views/admin/report.jsp";
-			request.setAttribute("list", list);
+		 
+		if(rep != null) {
+			page = "views/admin/reportdetail.jsp";
+			request.setAttribute("rlist", rlist);
+			request.setAttribute("report", rep);
+			System.out.println("신고사항  상세보기 서블릿 성공.");
 			
-			PageInfo pi = new PageInfo(currentPage, rlistCount, limit, maxPage, startPage, endPage);
-			
-			request.setAttribute("pi", pi);
 		} else {
-			page = "";
-			request.setAttribute("msg", "신고사항관리 목록 불러오기 에러!");
-			
+			request.setAttribute("msg", "신고사항 상세보기 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}

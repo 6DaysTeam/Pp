@@ -19,6 +19,7 @@ import org.omg.PortableInterceptor.TRANSPORT_RETRY;
 import com.sixdays.admin.model.vo.Report;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.p_board.model.vo.p_Board;
 import com.sixdays.userMember.model.exception.MemberException;
 
 public class adminDao {
@@ -87,6 +88,12 @@ public class adminDao {
 		return list;
 	}
 
+	
+	
+	
+	
+	
+	
 	public int getListCount(Connection con) {
 		int listCount = 0;
 		Statement stmt = null;
@@ -244,8 +251,7 @@ public class adminDao {
 		int startRow = (currentPage-1) * limit + 1;
 		int endRow = startRow + limit - 1;
 		
-		
-		
+
 		System.out.println("start : "+startRow);
 		System.out.println("end : "+endRow);
 		
@@ -265,6 +271,8 @@ public class adminDao {
 		r.setStatus(rset.getString(4));
 		r.setBlockflag(rset.getString(5));
 		r.setReport_yn(rset.getString(6));
+		
+				
 	
 		list.add(r);
 	
@@ -277,7 +285,7 @@ public class adminDao {
 		close(pstmt);
 	}
 	
-	System.out.println("list : "+list);
+
 		return list;
 	}
 	
@@ -296,7 +304,7 @@ public class adminDao {
 	if(rset.next()) {
 		listCount = rset.getInt(1);
 	}
-		System.out.println(listCount);
+		System.out.println("신고사항 DAO 리스트 카운트 : "+listCount);
 	} catch(SQLException e) {
 		e.printStackTrace();
 	} finally {
@@ -357,5 +365,95 @@ public class adminDao {
 		
 		return result;
 	}
- 
+
+	public Report reportselectOne(Connection con, String userId) {
+		Report rep = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReportOne");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			 
+			if(rset.next()) {
+				rep = new Report();
+
+				rep.setUserId(userId);
+				rep.setUserName(rset.getString("USERNAME"));
+				rep.setProimg(rset.getString("PROIMG"));
+				rep.setEmail(rset.getString("EMAIL"));
+				rep.setMycomment(rset.getString("MYCOMMENT"));
+				rep.setBlockflag(rset.getString("BLOCKFLAG"));
+				
+				
+				
+				}
+			
+			System.out.println("Report 확인 : " + rep);
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return rep;
+	}
+	
+	
+	/*신고관리 디테일에서 사용할 DOA */
+	
+	public ArrayList<Report> reportList(Connection con, String userId) {
+		
+		ArrayList<Report> rlist = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("selectReportList");
+	      
+	      try {
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setString(1, userId);
+	         rset = pstmt.executeQuery();
+	         
+	         rlist = new ArrayList<>();
+	         
+	         while(rset.next()) {
+	        	 Report rp= new Report();
+	            
+				rp.setUserName(rset.getString("USERNAME"));
+				rp.setProimg(rset.getString("PROIMG"));
+				rp.setEmail(rset.getString("EMAIL"));
+				rp.setMycomment(rset.getString("MYCOMMENT"));
+				rp.setStatus(rset.getString("BLOCKFLAG"));
+				rp.setPbDate(rset.getString("PBDATE"));
+				rp.setpContent(rset.getString("PCONTENT"));
+				rp.setRpno(rset.getInt("RPNO"));
+				rp.setReason(rset.getString("REASON "));
+				rp.setReportdate(rset.getString("RPDATE "));
+				rp.setReleasedate(rset.getString("RELEASEDATE "));
+				rp.setReporter(rset.getString("REPORTER "));
+				rp.setRpcount(rset.getInt("RPCOUNT "));
+	            rp.setHashtag(rset.getString("HASHTAG"));
+	            rlist.add(rp);
+	         System.out.println("rlist : "+ rlist);
+	         }
+	         
+	      } catch(SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	   
+	      return rlist;
+	
+	}
 }

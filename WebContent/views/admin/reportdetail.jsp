@@ -1,5 +1,13 @@
+<%@page import="com.sixdays.p_board.model.vo.p_Board"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.sixdays.admin.model.vo.Report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%
+  	  Report rep = (Report)request.getAttribute("report"); 
+ 	  ArrayList<Report> rlist = (ArrayList<Report>)request.getAttribute("rlist");
+
+	%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +17,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    
+
     
 
     <title>신고사항 관리</title>
@@ -41,7 +51,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">6Days</a>
+          <a class="navbar-brand" onclick="location.href='/6Days/main.me'" style="cursor:pointer">6Days</a>
         </div>
       </div>
     </nav>
@@ -51,8 +61,8 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#"onclick="location.href='user_manage.jsp'">사용자관리 </a></li>
-            <li><a href="#"onclick="location.href='report.jsp'" style="background-color: rgb(78, 75, 75); color: white;">신고사항</a></li>
+            <li><a href="#"onclick="location.href='aManage.ad'">사용자관리 </a></li>
+            <li><a href="#"onclick="location.href='report.ad'" style="background-color: rgb(78, 75, 75); color: white;">신고사항</a></li>
             <li><a href="#">페이지관리</a></li>   
             <li><a href="#">설정</a></li>
           </ul>
@@ -62,50 +72,63 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">신고사항
             <button style="float: right; width: 150px; height: 40px; font-size: 22px; font-weight: lighter; 
-            background: white; border: 1px solid gray; border-radius: 5px; color: black;">정지해제</button>
+            background: white; border: 1px solid gray; border-radius: 5px; color: black;">뒤로가기</button>
           </h1>
 
 
           <div class="row placeholders">
             <!-- 프로필 사진 -->
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="/6Days/resources/images/profile2.PNG" style="width: 284px; height: 284px;" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="/6Days/resources/proimgUploadFiles/<%=rep.getProimg() %>" style="width: 284px; height: 284px; margin-top: 50px;" class="img-responsive" alt="Generic placeholder thumbnail">
               <span class="text-muted"></span>
             </div>
 
             <!-- 프로필 정보 -->
             <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left; padding-right: 20px;">
                 <br><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">ID</label> <label>abc123</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임</label> <label>에이비씨</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">이메일</label> <label>abc123@test.com</label><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">코멘트</label><label>안녕하세요^^</label>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">I D  :</label> <label><%=rep.getUserId() %> </label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임 :</label> <label><%=rep.getUserName() %> </label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">이메일 :</label> <label> <%=rep.getEmail() %> </label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">코멘트 :</label><label> <%=rep.getMycomment() %> </label>
             </div>
 
             <!-- 정지관련 부분  -->
             <div class="col-xs-6 col-sm-3 placeholder1"  style="text-align: left; width: 30%;">
               <br><br><br>
-              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">정지사유</label>
+              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 비활성화 사유</label>
+    <!--           자주 사용되는 정지 사유. -->
               <select style="height:30px">
-                <option value="naver">부적절한 홍보 게시물로 정지</option>
-                <option value="gmail">음란물입니다.</option>
-                <option value="daum">모욕,욕설이 포함되었습니다.</option>
+              	<option value="daum">다음과 같은 사유로 사용이 일시적으로 중단되었습니다.</option>
+                <option value="naver">부적절한 게시물 작성</option>
+                <option value="gmail">나체 이미지 또는 성적행위 게시물 작성</option>
+                <option value="daum">혐오 발언 또는 상징 게시물 작성</option>
+                <option value="daum">폭력 또는 위험한 단체  게시물 작성</option>
+                <option value="daum">불법 또는 규제 상품 판매 게시물 작성</option>
+                <option value="daum">따돌림 또는 괴롭힘  게시물 작성</option>
+                <option value="daum">지적 재산권 침해  게시물 작성</option>
+                <option value="daum">자살 또는 자해  게시물 작성</option>
+                <option value="daum">사기 또는 거짓  게시물 작성</option>
+                <option value="daum">자살 또는 자해  게시물 작성</option>
+                <option value="daum">고인의 계정 </option>
+                <option value="daum">거짓 정보  게시물 작성</option>
+                <option value="daum">스팸  게시물 작성</option>
+                <option value="daum">마음에 들지 않습니다.</option>
               </select><br><br>
-              <input type="text" placeholder=" 기타" style="width: 100%; border-top: 0; border-right:0; 
-              border-left:0; border-bottom: 1; border-color:black; outline: none;"><br><br><br>
-
-
-
-              <span class="text-muted"></span>
               
-              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">정지유무</label><br>
+              
+              <input type="text" placeholder="비활성화 사유 직접입력" style="width: 100%; border-top: 0; border-right:0; 
+              border-left:0; border-bottom: 1; border-color:black; outline: none;" value=""><br><br>
+              
+              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 비활성화 기간</label><br>
               <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">3개월</button>
               <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">6개월</button>
               <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">9개월</button>
               <br><br>
-              <input type="text" placeholder="직접입력" style="height: 30px;">
-              <button style="width: 60px; height:30px; background: white; border: 1px solid gray; border-radius: 5px; color:  black;"">확인</button>
+              <input type="text" placeholder="비활성화 기간 직접입력" style="height: 30px;"><hr>
+              <button style="width: 115px; height:30px; background: #acacac; border: 1px solid gray; border-radius: 5px; color:  black;">비활성화 적용</button>
+              <button style="width: 115px; height:30px; background: rgb(67, 158, 235); border: 1px solid gray; border-radius: 5px; color:  black; margin-left: 15px;">계정 활성화</button>
               <span class="text-muted"></span>
+              
             </div>
           </div>
 
@@ -119,70 +142,30 @@
               <thead>
                 <tr>
                   <th><input class="list" type="checkbox" style="width: 45px;"onclick="rcheck();" id="chk1_all"></th>
+                  <th>글번호</th>
                   <th>작성일</th>
                   <th>신고일</th>
                   <th>내용</th>
                   <th style="width: 200px;">신고자</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>   
-                  <td><input class="list" type="checkbox"name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                   <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                   <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr> 
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="list" type="checkbox" name="chk1"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-              </tbody>
+              
+              
+	              <tbody>
+	          <% for(Report rp : rlist) {
+
+	             %>
+	                <tr>   
+	                  <td><input class="list" type="checkbox"name="chk1"></td>
+	                  <td><%=rp.getRpno() %></td>	<!-- 글번호 -->
+	                  <td><%=rp.getPbDate() %></td>	<!-- 작성일 -->
+	                  <td><%=rp.getReportdate() %></td>	<!-- 신고일 -->
+	                  <td><%=rp.getpContent()%><%=rp.getHashtag() %></td>	<!-- 글내용,해시태그-->
+	                  <td></td>	<!-- 신고자 -->
+	                  <% System.out.println("게시글 찍어내느주"); %>
+	                </tr>
+				<% }%> 
+				</tbody>
             </table>
 
           <!-- 신고된 댓글 -->
@@ -202,13 +185,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>  
-                  <td><input class="reply" type="checkbox" name="chk"></td> 
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
+
                 <tr>
                   <td><input class="reply" type="checkbox" name="chk"></td>
                   <td>2020-01-21 02:07 오전</td>
@@ -216,48 +193,7 @@
                   <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
                   <td>홍길동</td>
                 </tr>
-                <tr>
-                  <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr> 
-            <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
-                <tr>
-                  <td><input class="reply" type="checkbox"name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
-                  <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
-                </tr>
+                
               </tbody>
             </table>
 
