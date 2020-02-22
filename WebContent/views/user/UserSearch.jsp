@@ -30,18 +30,16 @@
     <link rel="stylesheet" href = "/6Days/resources/css/Scrollbar.css">
     <link rel="stylesheet" href = "/6Days/resources/css/main-header.css">
  <style>
-  #profileimgbox{
-                width: 170px;
-                height: 165px;
-                border-radius: 100%;
-                float: left;
-                margin-top: 110px;
-                margin-left: 60px;  
-                text-align: center;
-                background-color: white;
-                box-shadow: 1px 3px 6px 0px #222;
-
+  
+  #imgbtnsearch{
+            border-radius: 100%;
+		    width: 220px;
+		    height: 220px;
+		    float: left;
+		    padding: 5px;
+		    text-align: center;
             }
+
  
  </style>
 </head>
@@ -50,7 +48,7 @@
 	<input type="hidden" id="userid" name="userid" value="<%=m.getUserId()%>">
 	<div id="backgroundArea" style="background-color:smokewhite;">
 		<div id="contentArea" class="contentArea" style="background:orange; width:60%; margin-left:20%; position:absolute; background-color:white;">
-		<table align="center" id="searchcheck" style="width: 100%;">
+		<table align="center" id="searchcheck" style="width: 900px; ">
                 <tr>
                 <% for(userMember um : list) {  %>
 				
@@ -58,7 +56,8 @@
 				<div>	
 						<input type="hidden" name="search" value="<%= um.getUserId() %>">
 						<img src="/6Days/resources/proimgUploadFiles/<%= um.getProimg() %>"
-						      width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
+						      id="imgbtnsearch"width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
+						 <div style="font-size:50px;"><%=um.getUserName() %></div> <br><br><br>
 				</div>
 				</td>
 				
