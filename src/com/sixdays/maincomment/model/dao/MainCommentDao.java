@@ -83,8 +83,8 @@ public class MainCommentDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, mc.getPbno());
-			pstmt.setString(2, mc.getMwriter());
-			pstmt.setString(3, mc.getMcontent());
+			pstmt.setString(2, mc.getMcontent());
+			pstmt.setString(3, mc.getMwriter());
 			pstmt.setString(4, mc.getMnickname());
 			
 			

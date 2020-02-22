@@ -21,7 +21,6 @@
 	<%@ include file="views/common/left-sidebar.jsp" %>
 	<%@ include file="views/common/right-sidebar.jsp" %>
     <link rel="stylesheet" href = "/6Days/resources/css/MainContact.css">
-
 </head>
 
 <body>
@@ -32,68 +31,67 @@
         내용 : 메인화면 컨텐츠섹션 수정 -->
         
         <div id="contentArea">  <!--컨텐츠가 출력될 중앙 영역 (길이값 무한대) -->
-        <table align="center" id="pnocheck">
-        <% for(p_Board pb : list) { %>
-        	<tr><td>
-            <div id="content">  <!--실제 컨텐츠 각각의 영역 -->
-                <div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
-                    <img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=pb.getPproimg()%>">  <!--유저 프로필 이미지 불러오기-->
-                   <input type="hidden" name="pnosi" value="<%=pb.getPbno() %>">
-                   <input type="hidden" name="userid33" value="<%=pb.getPbwriter()%>">
-                    <label id="showUserName"><%= pb.getPnickname() %></label>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
-                    <p id="contentSettingbtn" onclick="postModalOpen();" >...</p>
-                </div>
-                <div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
-				<%= pb.getPcontent()%>
-				<br>
-				<%= pb.getHashtag()%>
-				
-				<br>
-
-                </div>
-                <div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
-                    <div class="slideshow-container" >
-                    <div class="mySlides fade" style="display: block;">
-                        <div class="numbertext"></div>
-                        <input type="hidden" name="pnobar" value="<%=pb.getPbno() %>">
-                        <img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" style="width:100%;">
-                    </div>
-
-                    </div>
-
-          
-                </div>
-
-
-                <div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
-                    <img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" onclick="like();" >
-                    <div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
-                    <div name="likecount" style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
-                    <div style="font-size: 16px; color: gray; float: left; margin: 0;"> '명이 Like합니다.</div>
-                    <div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
-
-                </div>
-                
-                <div id="contentComment">
-                <% for(MainComment mc : mlist) { 
-                	if(mc.getPbno() == pb.getPbno()) { %>
-                       
-
-           <%= mc.getCproimg() %> <%= mc.getMnickname() %> <%= mc.getMcontent() %> <br>
-                <% }} %>
-                </div>
-                <hr style="margin: 5px;">
-                	<input type="hidden" name="mpbno" value="<%= pb.getPbno() %>">
-                	<input type="hidden" id="mmo" name="mno" value="1">
-                	<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
-                	<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
-                     <input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
-                    <input type="button" id="mcommentbtn" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0; cursor:pointer;"  value="확인">
-            </div>
-            <br><br><br><br><br>
-            </td></tr>
-           <%} %>
-          </table>
+			<table align="center" id="pnocheck">
+				<% for(p_Board pb : list) { %>
+					<tr>
+						<td>
+							<div id="content">  <!--실제 컨텐츠 각각의 영역 -->
+								<div id="userNamebar">  <!--컨텐츠 상단의 유저 프로필사진과 닉네임, 신고버튼 표시 부분-->
+									<img id="showUserProfileImg" src="/6Days/resources/proimgUploadFiles/<%=pb.getPproimg()%>">  <!--유저 프로필 이미지 불러오기-->
+									<input type="hidden" name="pnosi" value="<%=pb.getPbno() %>">
+									<input type="hidden" name="userid33" value="<%=pb.getPbwriter()%>">
+									<label id="showUserName"><%= pb.getPnickname() %></label>    <!--유저이름, 나중에 쿼리문작성하여 로그인한 계정의 이름 , 프로필사진 불러오기-->
+									<p id="contentSettingbtn" onclick="postModalOpen();" >...</p>
+								</div>  <!-- userNamebar end -->
+								
+								<div id="contentMemo" name="comentMent">  <!--컨텐츠 이미지 바로 위 컨텐츠 내용 부분-->
+									<%= pb.getPcontent()%>
+										<br>
+									<%= pb.getHashtag()%>
+										<br>
+								</div>  <!-- contentMemo end -->
+								
+								<div id="contentimg" >   <!-- 컨텐츠의 이미지 영역 & css에서 이미지 넣어줌 background-imgage 로  -->
+									<div class="slideshow-container" >
+										<div class="mySlides fade" style="display: block;">
+											<div class="numbertext"></div>
+											<input type="hidden" name="pnobar" value="<%=pb.getPbno() %>">
+											<img class="contentimgs" src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" style="width:100%;">
+										</div>  <!-- mySlides fade end -->
+									</div>  <!-- slideshow-container end -->
+								</div>  <!-- contentimg end -->
+							
+								<div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
+									<img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" onclick="like();" >
+									<div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
+									<div name="likecount" style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
+									<div style="font-size: 16px; color: gray; float: left; margin: 0;"> '명이 Like합니다.</div>
+									<div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
+								</div>  <!-- contentMenu end -->
+							
+								<div id="contentComment">
+									<% for(MainComment mc : mlist) { 
+										if(mc.getPbno() == pb.getPbno()) { %>
+										<div style="background-color: whitesmoke; margin-bottom: 10px; padding: 5px; border-radius: 15px;">
+									    <label style="color:skyblue; font-size:17px;"><%= mc.getMnickname() %></label> : 
+									    <label style="font-size:15px;"><%= mc.getMcontent() %></label>
+									    </div>
+									<% }} %>
+									</div>  <!-- contentComment end -->
+							
+								<hr style="margin: 5px;">
+								<input type="hidden" name="mpbno" value="<%= pb.getPbno() %>">
+								<input type="hidden" id="mmo" name="mno" value="1">
+								<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
+								<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
+								<input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
+								<input type="button" id="mcommentbtn" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0; cursor:pointer;"  value="확인">
+							</div>  <!-- content end -->
+							<br><br><br><br><br>
+						</td>
+					</tr>
+				<%} %>
+			</table>
         </div>
 
 <!--    작성자 : 박주완
@@ -117,16 +115,13 @@
 
 
     <script>
-    
-    
-    
- 		$('#pnocheck td #mcommentbtn').click(function(){
+ 		$('#pnocheck td #mcommentbtn').click(function(){		//확인버튼
  			
  			var test1 = $(this).parent().find('div[id=contentComment]');
  			var test = $(this).parent().find('input[id=sendcomment]');
  			 			
  			if(test.val() != "") {
- 				
+ 			pbno = 	$(this).parent().find('input[name=mpbno]').val();
  			console.log("pbno : " + $(this).parent().find('input[name=mpbno]').val());
  			
 	       $.ajax({
@@ -141,11 +136,12 @@
 	    	   },
 	    	   
 	    	   success:function(result){
-	    		   alert("성공");
+	    		  alert("성공");
 	    		  $('#pnocheck td #sendcomment').val('');
-	    
+	    		  
+	    		  location.reload();
 
-	    	   },
+	    	   }, 
 	    	   error:function(result){
 	    		   alert("실패");
 	    	   
@@ -153,16 +149,7 @@
 	       });
  			}
 		});
-
     </script>
-
-
-
-
-
-
-
-
 
 
 
