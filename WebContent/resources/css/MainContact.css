@@ -61,6 +61,7 @@
                 border-radius: 5px;
                 padding-left: 5px;
                 font-size: 15px;
+                cursor:pointer;
             }
 
             #contentSettingbtn{ /*而⑦뀗痢� �긽�떒 寃뚯떆臾� [�꽭�똿踰꾪듉] (ex �떊怨좏븯湲� �벑�벑)*/
@@ -72,6 +73,8 @@
                 line-height:20px;
                 margin: 0;
                 color: rgb(68, 68, 68);
+                cursor:pointer;
+                
             }
 
             #contentMemo{  /* 而⑦뀗痢� �긽�떒 �븘誘몄� 諛붾줈�쐞 寃뚯떆湲� [蹂몃Ц �궡�슜] �뱾�뼱媛� �쁺�뿭 */

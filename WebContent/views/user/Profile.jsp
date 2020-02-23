@@ -92,7 +92,7 @@
 			              <input id="pbWriter" type="hidden" value="<%=pb.getPbwriter()%>">         
 			              <input id="TEST" name="pbno95"  type="hidden" value="<%=pb.getPbno()%>"> 
 			              <img  src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>" 
-			                   width="260px" height="260px" style="margin:7px" id="pushdata">
+			                   width="260px" height="260px" style="margin:7px; cursor:pointer" id="pushdata">
 			
 			        </td>    
 		        <%	}
@@ -175,20 +175,20 @@
         내용 : 프로필 설정화면 -->
         <div id="profileModal">
             <div id="profileSet">
-                <p style="font-size: 25px;">프로필 편집</p><hr>
-                <p onclick="nameSetopen();">닉네임 변경</p><hr>
-                <p onclick="comentsetopen();">코멘트 변경</p><hr>
-                <p onclick="proImgChange();"style="color: royalblue;" >프로필 사진 바꾸기</p><hr>
-                <p onclick="proBackChange();" style="color: royalblue;">프로필 배경 사진 바꾸기</p><hr>
+                <p style="font-size: 25px; cursor:default;">프로필 편집</p><hr>
+                <p onclick="nameSetopen();" style="cursor:pointer;">닉네임 변경</p><hr>
+                <p onclick="comentsetopen();" style="cursor:pointer;">코멘트 변경</p><hr>
+                <p onclick="proImgChange();"style="color: royalblue; cursor:pointer;" >프로필 사진 바꾸기</p><hr>
+                <p onclick="proBackChange();" style="color: royalblue; cursor:pointer;">프로필 배경 사진 바꾸기</p><hr>
                 <form id="proImgDeleteForm" name="proimg" action="/6Days/pimgDelete.me" method="post" enctype="multipart/form-data">
-                <p onclick="proImgDelete();" style="color: red;">현재 프로필 사진 삭제</p><hr>
+                <p onclick="proImgDelete();" style="color: red; cursor:pointer;">현재 프로필 사진 삭제</p><hr>
                 <input type="hidden" id="userid4" name="userid4" value="<%=m.getUserId() %>">
                 </form>
                 <form id="proBackDeleteForm" name="proback" action="/6Days/pbackDelete.me" method="post" enctype="multipart/form-data">
-                <p onclick="proBackDelete();" style="color: red;">현재 프로필 배경 사진 삭제</p><hr>
+                <p onclick="proBackDelete();" style="color: red; cursor:pointer;">현재 프로필 배경 사진 삭제</p><hr>
                 <input type="hidden" id="userid5" name="userid5" value="<%=m.getUserId() %>">
                 </form>
-                <p onclick="profileModalClose();">닫기</p>
+                <p onclick="profileModalClose();" style="cursor:pointer;">닫기</p>
         </div>
         </div>
 
@@ -199,10 +199,10 @@
      <input type="hidden" id="userid0" name="userid0" value="<%=m.getUserId() %>">
         <div id="comentSetModal">
             <div id="comentSet">
-                <p>변경할 코멘트</p><hr>
+                <p style="cursor:default;">변경할 코멘트</p><hr>
                 <textarea id="comenttextarea" name="mycomment"></textarea><br>
-                <P onclick="comentInput();" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
-                <p onclick="comentsetclose();">닫기</p>
+                <P onclick="comentInput();" style="margin: 8px 0px 8px 0px; color: blue; cursor:pointer;">변경</P><hr>
+                <p onclick="comentsetclose();" style="cursor:pointer;">닫기</p>
             </div>
         </div>
    </form>
@@ -213,10 +213,10 @@
      <input type="hidden" id="userid1" name="userid1" value="<%=m.getUserId() %>">
         <div id="nameSetModal">
             <div id="nameSet">
-                <p>변경할 닉네임</p><hr>
+                <p style="cursor:default;">변경할 닉네임</p><hr>
                 <input type="text" id="nametextarea" name="userName"><br>
-                <P onclick="nameInput();" id="namebtn" style="margin: 8px 0px 8px 0px; color: blue;">변경</P><hr>
-                <p onclick="nameSetclose();">닫기</p>
+                <P onclick="nameInput();" id="namebtn" style="margin: 8px 0px 8px 0px; color: blue; cursor:pointer;">변경</P><hr>
+                <p onclick="nameSetclose();" style="cursor:pointer;">닫기</p>
             </div>
         </div>
     </form>
@@ -228,10 +228,10 @@
      <input type="hidden" id="userid2"name="userid2" value="<%=m.getUserId() %>">
       <div id="proImgModal">
          <div id="proImgSet">
-            <p>프로필 사진</p>
-            <input type="file" id="proimgarea" name="proimg"><br><br>
-            <p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-            <p onclick="proimgSetclose();">닫기</p>
+            <p style="cursor:default;">프로필 사진</p>
+            <input type="file" id="proimgarea" name="proimg" style="cursor:pointer;"><br><br>
+            <p onclick="proimgInput();" style="margin: 3px 0px 8px 0px; color: blue; cursor:pointer;">변경</p><hr>
+            <p onclick="proimgSetclose();" style="cursor:pointer;">닫기</p>
          </div>
       </div>
     </form>
@@ -243,10 +243,10 @@
      <input type="hidden" id="userid3" name="userid3" value="<%=m.getUserId() %>">
       <div id="proBackModal">
          <div id="proBackSet">
-            <p>프로필 사진</p>
-            <input type="file" id="probackarea" name="proback"><br><br>
-            <p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue;">변경</p><hr>
-            <p onclick="probackSetclose();">닫기</p>
+            <p style="cursor:default;">프로필 사진</p>
+            <input type="file" id="probackarea" name="proback" style="cursor:pointer;"><br><br>
+            <p onclick="probackInput();" style="margin: 3px 0px 8px 0px; color: blue; cursor:pointer;">변경</p><hr>
+            <p onclick="probackSetclose();" style="cursor:pointer;">닫기</p>
          </div>
       </div>
     </form>
