@@ -45,7 +45,7 @@
 				<td style="display: inline-block; float:left; margin-left:2%">		
 						<input type="hidden"name="pbno96" value="<%= pb.getPbno()%>">
 						<img src="/6Days/resources/pboardUploadFiles/<%=pb.getPhoto1() %>"
-						     width="260px" height="260px" style="margin:7px" >
+						     width="260px" height="260px" style="margin:7px; cursour:pointer;" >
 				
 				</td>
 				

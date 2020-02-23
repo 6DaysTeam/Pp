@@ -56,7 +56,7 @@
 				<div>	
 						<input type="hidden" name="search" value="<%= um.getUserId() %>">
 						<img src="/6Days/resources/proimgUploadFiles/<%= um.getProimg() %>"
-						      id="imgbtnsearch"width="260px" height="260px" style="margin:7px" onclick="modalOpen();">
+						      id="imgbtnsearch"width="260px" height="260px" style="margin:7px; cursor:pointer;" onclick="modalOpen();">
 						 <div style="font-size:50px;"><%=um.getUserName() %></div> <br><br><br>
 				</div>
 				</td>

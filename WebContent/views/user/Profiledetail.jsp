@@ -227,7 +227,7 @@
 							<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
                         	<input type="hidden" id="commenttest" value="<%=pba.getPbno() %>">
                             <input type="text" id="comentinput" placeholder="댓글 달기..." >
-                            <button  id="comentsend">게시</button>
+                            <button  id="comentsend" style="cursor:pointer;">게시</button>
                         </div>
                     </div>
                     

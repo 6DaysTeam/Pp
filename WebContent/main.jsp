@@ -111,9 +111,9 @@
         내용 : 포스트 [...] 버튼 클릭시 모달창 오픈 -->
         <div id="postModal">
             <div id="postModalSet">
-                <p style="color: red;" id="reportcheck" >부적절한 게시물 신고</p><hr>
-                <p style="color: red;">팔로우 취소</p><hr>
-                <p onclick="postModalClose();">닫기</p>
+                <p style="color: red; cursor:pointer;" id="reportcheck" >부적절한 게시물 신고</p><hr>
+                <p style="color: red; cursor:pointer;">팔로우 취소</p><hr>
+                <p onclick="postModalClose();" style="cursor:pointer;">닫기</p>
             </div>
         </div>
 

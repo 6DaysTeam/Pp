@@ -103,7 +103,7 @@
 			              <input id="pbWriter" type="hidden" value="<%=pbo.getPbwriter()%>">         
 			              <input id="TEST" name="pbno95"  type="hidden" value="<%=pbo.getPbno()%>"> 
 			              <img  src="/6Days/resources/pboardUploadFiles/<%=pbo.getPhoto1() %>" 
-			                   width="260px" height="260px" style="margin:7px" id="pushdata">
+			                   width="260px" height="260px" style="margin:7px; cursor:pointer;" id="pushdata">
 			
 			        </td>    
 		        <%	}
