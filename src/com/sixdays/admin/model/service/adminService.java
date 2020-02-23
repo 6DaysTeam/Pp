@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.sixdays.admin.model.dao.adminDao;
+import com.sixdays.admin.model.vo.Advertisement;
 import com.sixdays.admin.model.vo.Report;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
@@ -160,6 +161,21 @@ public class adminService {
 		
 		return rlist;
 	}
+
+	public int amUpdate(Advertisement a) {
+		Connection con = getConnection();;
+		
+		int result = aDao.amUpdate(con,a);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
 
 
 

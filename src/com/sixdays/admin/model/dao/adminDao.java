@@ -16,6 +16,7 @@ import javax.sql.StatementEvent;
 
 import org.omg.PortableInterceptor.TRANSPORT_RETRY;
 
+import com.sixdays.admin.model.vo.Advertisement;
 import com.sixdays.admin.model.vo.Report;
 import com.sixdays.admin.model.vo.userManage;
 import com.sixdays.board.model.vo.Board;
@@ -455,5 +456,28 @@ public class adminDao {
 	   
 	      return rlist;
 	
+	}
+
+	public int amUpdate(Connection con, Advertisement a) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = prop.getProperty("amupdate");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, a.getAdimg());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }
