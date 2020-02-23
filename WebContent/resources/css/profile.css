@@ -1,8 +1,8 @@
-/* <!--     �옉�꽦�옄 : 諛뺤＜�셿
-          �옉�꽦�씪 : 2020-01-09
-          �궡�슜 : �쑀�� �봽濡쒗븘 �솕硫� 
-          �닔�젙�씪 : 2020-02-18
-          �닔�젙�궡�슜 : css�닔�젙 
+/* <!--     占쎌삂占쎄쉐占쎌쁽 : 獄쏅벡竊쒙옙�끏
+          占쎌삂占쎄쉐占쎌뵬 : 2020-01-09
+          占쎄땀占쎌뒠 : 占쎌�占쏙옙 占쎈늄嚥≪뮉釉� 占쎌넅筌롳옙 
+          占쎈땾占쎌젟占쎌뵬 : 2020-02-18
+          占쎈땾占쎌젟占쎄땀占쎌뒠 : css占쎈땾占쎌젟 
           -->        */      
             
             body{
@@ -142,6 +142,7 @@
                 width: 100px;
                 height: 28px;
                 opacity: 70%;
+                cursor:pointer;
             }
 
             #settingbtn{
@@ -153,6 +154,7 @@
                 border-radius: 10px;
                 margin-left: 25px;
                 opacity: 70%;
+                 cursor:pointer;
             }
 
             #userprofilshow{
@@ -171,7 +173,7 @@
 
 
 
-             /* 占쎈연疫꿸퀣苑뚪겫占쏙옙苑� 筌뤴뫀�뼎筌∽옙 */
+             /* �뜝�럥�뿰�뼨轅명�ｈ땻�슞寃ュ뜝�룞�삕�땻占� 嶺뚮ㅄ維�占쎈펿嶺뚢댙�삕 */
 
           #modal{
                 display: none;
@@ -233,7 +235,7 @@
                 float: left;
             }
             
-      /* 게시물 내용글 들어갈 자리 */
+      /* 寃뚯떆臾� �궡�슜湲� �뱾�뼱媛� �옄由� */
             #innercoment{
              height: 420px;
              max-height: 420px;
@@ -321,7 +323,7 @@
             
             
             
-      /* 모달 닫기 버튼*/
+      /* 紐⑤떖 �떕湲� 踰꾪듉*/
             #closebtn{
             position: absolute;
              width: 25px;
@@ -392,6 +394,7 @@
 			    margin: 120px auto;
 			    padding-top: 2px;
 			    display: inline-block;
+		
             }
 
             #profileModal{
@@ -613,6 +616,7 @@
 		    margin-left: 315px;
 		    margin-top: -33px;
 		    color: rgb(68, 68, 68);
+		    cursor:pointer;
          }
          
          .imgbox{
@@ -628,9 +632,9 @@
 		 }
 		 
 		 
-/* 		 작성자 : 박주완
-		 작성일 : 2020-02-21
-		 내용 : 게시글상세 창에서 ... 버튼 클릭시 나오는 모달창 */
+/* 		 �옉�꽦�옄 : 諛뺤＜�셿
+		 �옉�꽦�씪 : 2020-02-21
+		 �궡�슜 : 寃뚯떆湲��긽�꽭 李쎌뿉�꽌 ... 踰꾪듉 �겢由��떆 �굹�삤�뒗 紐⑤떖李� */
 		 #SettingMadal15{
             display: none;
             position: fixed;
@@ -683,5 +687,9 @@
             padding-top: 2px;
             text-align: center;
             display: inline-block;
+        }
+        
+        .settingitem{
+        	cursor:pointer;
         }
 

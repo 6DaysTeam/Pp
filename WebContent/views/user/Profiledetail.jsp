@@ -247,10 +247,10 @@
             <div id="Setting15">
                  <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
 
-                <p style="color: red;" onclick="deletepost(this)">게시글 삭제</p><hr>
+                <p style="color: red; cursor:pointer" onclick="deletepost(this)">게시글 삭제</p><hr>
 
 					
-                <p onclick="SettingMadalClose15();">닫기</p>
+                <p onclick="SettingMadalClose15();" style="cursor:pointer">닫기</p>
             </div>
         </div>
         
@@ -260,9 +260,9 @@
         ----- 세션ID와 작성자 ID가 * 다를 *시에  -->
         <div id="SettingMadal16">
             <div id="Setting16">
-                <p id="reportcheck" style="color: red;">부적절한 게시물 신고</p><hr>
+                <p id="reportcheck" style="color: red; cursor:pointer"">부적절한 게시물 신고</p><hr>
                 <input id="pbno" name="pbno"  type="hidden" value="<%=pba.getPbno()%>"> 
-                <p onclick="SettingMadalClose15();">닫기</p>
+                <p onclick="SettingMadalClose15();" style="cursor:pointer">닫기</p>
             </div>
         </div>
  		
