@@ -2,6 +2,9 @@
 <%@page import="com.sixdays.p_board.model.vo.p_Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sixdays.userMember.model.vo.userMember"%>
+<%@ page import="com.sixdays.like.model.dao.LikeDao"%>
+<%@page import="com.sixdays.like.model.vo.Like"%>
+<%@ page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  %>
   

@@ -6,6 +6,7 @@ encoding//src/config/QnA-query.properties=UTF-8
 encoding//src/config/admin-query.properties=UTF-8
 encoding//src/config/board-query.properties=UTF-8
 encoding//src/config/comment-query.properties=UTF-8
+encoding//src/config/like-query.properties=UTF-8
 encoding//src/config/member-query.properties=UTF-8
 encoding//src/config/pboard-query.properties=UTF-8
 encoding/<project>=UTF-8
