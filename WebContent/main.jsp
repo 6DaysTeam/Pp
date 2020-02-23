@@ -15,6 +15,8 @@
 
 	int result = 1;
 	int report1 = 0;
+	boolean like = true;
+	int count = 0;
 
 %>
     
@@ -68,9 +70,15 @@
 								</div>  <!-- contentimg end -->
 							
 								<div id="contentMenu"> <!-- 좋아요버튼, 좋아요수, 글쓴시간 등을 표현할 영역  -->
-									<img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" onclick="like();" >
-									<div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
-									<div name="likecount" style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
+									
+									<img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" >
+									
+									<input type="hidden" id="likecheck" value="<%=pb.getPbno() %>">
+									<input type="hidden" id="likeid" value="<%=m.getUserId()%>">
+									<input type="hidden" id="likeno" value="1">
+		
+									<div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">게시물을  '</div>
+									<div name="likecount" id="likecheck2" style="font-size: 16px; color: black; float: left; margin: 0;"></div>
 									<div style="font-size: 16px; color: gray; float: left; margin: 0;"> '명이 Like합니다.</div>
 									<div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;">댓글</div>
 								</div>  <!-- contentMenu end -->
@@ -165,20 +173,120 @@
 
 
 
-<!--    작성자 : 이서현
-        작성일 : 2020-01-31
-        내용 : 클릭시 변하는 스마일아이콘 -->
 	<script>
-        var result= 1;
-        function like(){
-            if(result==1){
-           document.getElementById("whitesmile").src="/6Days/resources/icon/yellowsmile.png"
-                result=2;
-        }else if(result==2){
-            document.getElementById("whitesmile").src="/6Days/resources/icon/whitesmile.png"
-            result=1;
-        }
-     }
+	//좋아요 기능 구현 중--------------------------------------------------------------
+
+		var like=true;
+		
+		  $('#pnocheck td img[id=whitesmile]').click(function(){
+	
+		if(like){
+			
+        $.ajax({
+        	
+	    	   url:"/6Days/likecheck.me",
+	    	   type: "post",
+	    	   async: false,
+	    	   data:{ 
+	    		   pbno : $(this).parent().find('input[id=likecheck]').val(),
+	    		   userid : $(this).parent().find('input[id=likeid]').val(),
+	    		   lno : $(this).parent().find('input[id=likeno]').val(),
+
+	    	   },
+	    	   success:function(result){
+	    		   count = result;
+	    			
+	    		
+				like =false;
+
+	    	   }, 
+	    	   error:function(result){
+	    		   alert("실패");
+	    	   
+	    	   }
+
+			
+	       });
+        $('#pnocheck td div[id=likecheck2]').html(count);
+		 //$(this).html('<img src="/6Days/resources/icon/yellowsmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile1" >')
+		  $(this).attr('src','/6Days/resources/icon/yellowsmile.png');
+		 	return false;
+			}else{
+				
+			        $.ajax({
+				    	   url:"/6Days/likecheckN.me",
+				    	   type: "post",
+				    	   async: false,
+				    	   data:{ 
+				    		   pbno : $(this).parent().find('input[id=likecheck]').val(),
+				    		   userid : $(this).parent().find('input[id=likeid]').val(),
+				    		   lno : $(this).parent().find('input[id=likeno]').val(),
+
+				    	   },
+				    	   success:function(result){
+				    		   
+				    		 count=result;
+							like=true;
+							
+							
+							
+
+				    	   }, 
+				    	   error:function(result){
+				    		   alert("실패");
+				    	   
+				    	   }
+				       });
+
+						//$(this).html('<img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" >')
+					  	$('#pnocheck td div[id=likecheck2]').html(count);
+						$(this).attr('src','/6Days/resources/icon/whitesmile.png');
+						return false;
+					
+					
+				
+				
+			}
+		
+		  });
+
+	
+	
+
+		
+/* 				
+		  $('#pnocheck td img[id=whitesmile]').click(function(){
+		if(!like){
+        $.ajax({
+	    	   url:"/6Days/likecheckN.me",
+	    	   type: "post",
+	    	   data:{ 
+	    		   pbno : $(this).parent().find('input[id=likecheck]').val(),
+	    		   userid : $(this).parent().find('input[id=likeid]').val(),
+	    		   lno : $(this).parent().find('input[id=likeno]').val(),
+
+	    	   },
+	    	   success:function(result){
+	    		   
+	    		  alert("좋아요 수 : "  + result);
+				like=true;
+
+	    	   }, 
+	    	   error:function(result){
+	    		   alert("실패");
+	    	   
+	    	   }
+	       });
+
+			//$(this).html('<img src="/6Days/resources/icon/whitesmile.png" style="width: 50px; height: 50px; float: left; margin: 0; margin-top: -2%; margin-left: -1%;" id="whitesmile" >')
+		  $(this).attr('src','/6Days/resources/icon/whitesmile.png');
+			return false;
+		
+		}
+		  
+		  }); */
+  
+// ------------------------------------------------------------------------------------
  
 // <!--    작성자 : 박주완
 //        	 작성일 : 2020-01-23

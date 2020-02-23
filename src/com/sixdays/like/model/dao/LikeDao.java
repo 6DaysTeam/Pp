@@ -6,11 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
 import com.sixdays.board.model.vo.Board;
 import com.sixdays.like.model.vo.Like;
+import com.sixdays.like.model.vo.LikeUser;
+import com.sixdays.userMember.model.vo.userMember;
 
 public class LikeDao {
 //	좋아요 추천 DB접근
@@ -86,4 +89,84 @@ public class LikeDao {
 
 	return result-1;
 }
+
+	public int insertComment(Connection con, LikeUser lu) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("likeY");
+		
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, lu.getPbno());
+			pstmt.setString(2, lu.getUserid());
+			pstmt.setInt(3, lu.getPbno());
+			pstmt.setString(4, lu.getUserid());
+
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int UpdateLike(Connection con, LikeUser lu) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("likeN");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1,lu.getPbno());
+			pstmt.setString(2, lu.getUserid());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public LikeUser selectLike(Connection con, int pbno) {
+		LikeUser result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		
+		String sql = prop.getProperty("selectLike");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1,pbno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = new LikeUser();
+				
+				result.setPcount(rset.getInt("COUNT(*)"));
+
+			}	
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
