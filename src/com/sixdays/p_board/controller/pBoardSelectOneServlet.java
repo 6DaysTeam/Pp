@@ -1,6 +1,8 @@
 package com.sixdays.p_board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sixdays.board.model.service.BoardService;
 import com.sixdays.board.model.vo.Board;
+import com.sixdays.maincomment.model.service.MainCommentService;
+import com.sixdays.maincomment.model.vo.MainComment;
 import com.sixdays.p_board.model.service.p_BoardService;
 import com.sixdays.p_board.model.vo.p_Board;
 
@@ -41,14 +45,27 @@ public class pBoardSelectOneServlet extends HttpServlet {
       
        p_BoardService pb = new p_BoardService();
       
+       
+       
+       ArrayList<MainComment> mlist2 = null;
+       
+		  
+	  MainCommentService mcs = new MainCommentService();
+
+       
+
        p_Board pb2 = pb.selectOne(pno);
        /*/views/user/Profile.jsp*/
       String page = "";
       
       if(pb2 != null) {
-            page = "/views/user/Profiledetail.jsp";
-         request.setAttribute("pb2", pb2);
-         System.out.println("셀릭트 원 서블릿 성공");
+    	  mlist2 = mcs.selectOneList(pno);
+    	  if(mlist2 != null) {
+    		  page = "/views/user/Profiledetail.jsp";
+    		  request.setAttribute("pb2", pb2);
+    		  request.setAttribute("mlist2", mlist2);
+    		  System.out.println("셀릭트 원 서블릿 성공");
+    	  }
       } else {
          request.setAttribute("msg", "공지사항 상세보기 실패!");
       }

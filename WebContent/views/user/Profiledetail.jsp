@@ -1,3 +1,4 @@
+<%@page import="com.sixdays.maincomment.model.vo.MainComment"%>
 <%@page import="com.sixdays.p_board.model.service.p_BoardService"%>
 <%@page import="javax.crypto.interfaces.PBEKey"%>
 <%@page import="com.sixdays.p_board.model.vo.p_Board"%>
@@ -12,7 +13,7 @@
 <%
 
    p_Board pba = (p_Board)request.getAttribute("pb2");
-
+	ArrayList<MainComment> mlist2 = (ArrayList<MainComment>)request.getAttribute("mlist2");
 
 %>
 
@@ -191,7 +192,16 @@
 	                        
 
 <!--                  *******************************   여기서부터 댓글 들어갈 자리!!   *******************************  -->
-
+						<div id="contentComment" style="height:390px;">
+						<% for(MainComment mc : mlist2) { %>
+							
+							<div style="background-color: whitesmoke; margin-bottom: 10px; padding: 5px; border-radius: 15px; width:323px; margin-left: -30px;">
+						    <label style="color:skyblue; font-size:17px;"><%= mc.getMnickname() %></label> : 
+						    <label style="font-size:15px;"><%= mc.getMcontent() %></label>
+						    <label style="font-size: 12px; float: RIGHT; margin-top: 5px;"><%= mc.getMdate() %></label>
+						    </div>
+						<% } %>
+						</div>  <!-- contentComment end -->
 
 
 
@@ -211,8 +221,13 @@
                       </div>
 
                         <div id="comentarea">
+   
+							<input type="hidden" id="mmo" name="mno" value="1">
+							<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
+							<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
+                        	<input type="hidden" id="commenttest" value="<%=pba.getPbno() %>">
                             <input type="text" id="comentinput" placeholder="댓글 달기..." >
-                            <button onclick="" id="comentsend">게시</button>
+                            <button  id="comentsend">게시</button>
                         </div>
                     </div>
                     
@@ -383,5 +398,37 @@
 
     </script>
     
+        <script>
+ 		$('#comentsend').click(function(){		//확인버튼
+ 			var test = $('#comentinput');
+ 			 			
+ 			if(test.val() != "") {
+ 			pbno = 	$('#commenttest').val();
+ 			
+	       $.ajax({
+	    	   url:"/6Days/InsertComment.mo",
+	    	   type: "post",
+	    	   data:{ 
+	    		   pbno : $('#commenttest').val(),
+	    		   mno : $('#mmo').val(),
+	    		   mwriter : $('#mwriter').val(),
+	    		   mcontent : test.val(),
+	    		   mnickname : $('#mnickname').val()
+	    	   },
+	    	   success:function(result){
+	    		  $('#comentinput').val('');
+	    		  window.location.reload();
+	    		  
+	    		  
+
+	    	   }, 
+	    	   error:function(result){
+	    		   alert("실패");
+	    	   
+	    	   }
+	       });
+ 			}
+		});
+    </script>
 </body>
 </html>

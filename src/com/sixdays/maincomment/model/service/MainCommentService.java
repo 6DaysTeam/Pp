@@ -63,4 +63,15 @@ public class MainCommentService {
 		
 		return result;
 	}
+
+
+	public ArrayList<MainComment> selectOneList(String pno) {
+		Connection con = getConnection();
+		
+		ArrayList<MainComment> mlist = mco.selectOneList(con,pno);
+		
+		close(con);
+		
+		return mlist;
+	}
 }

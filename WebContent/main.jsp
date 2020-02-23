@@ -9,9 +9,10 @@
 	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
 	ArrayList<MainComment> mlist = (ArrayList<MainComment>)request.getAttribute("mlist");
 	
-	System.out.println("ddddddddddddddddddddddddddddd mlist : " + mlist);
+
 	int result = 1;
 	int report1 = 0;
+
 %>
     
 <!DOCTYPE html>
@@ -68,7 +69,7 @@
 									<div name="username1" style="font-size: 16px; color: gray; float: left; margin: 0; margin-left: 10px;">Juwan 님 외 '</div>
 									<div name="likecount" style="font-size: 16px; color: black; float: left; margin: 0;">214</div>
 									<div style="font-size: 16px; color: gray; float: left; margin: 0;"> '명이 Like합니다.</div>
-									<div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;"> 댓글 12</div>
+									<div name="comentCount" style="font-size: 14px; color: gray; float: right; margin: 0; margin-right: 15px;">댓글</div>
 								</div>  <!-- contentMenu end -->
 							
 								<div id="contentComment">
@@ -79,7 +80,10 @@
 									    <label style="font-size:15px;"><%= mc.getMcontent() %></label>
 									    <label style="font-size: 12px; float: RIGHT; margin-top: 5px;"><%= mc.getMdate() %></label>
 									    </div>
-									<% }} %>
+									<% }
+										
+									
+									} %>
 									</div>  <!-- contentComment end -->
 							
 								<hr style="margin: 5px;">
@@ -93,7 +97,9 @@
 							<br><br><br><br><br>
 						</td>
 					</tr>
-				<%} %>
+				<%
+			
+				} %>
 			</table>
         </div>
 
@@ -138,8 +144,9 @@
 	    		   mnickname : $(this).parent().find('input[name=mnickname]').val()
 	    	   },
 	    	   success:function(result){
-	    		  alert("성공");
+
 	    		  $('#pnocheck td #sendcomment').val('');
+	    		 
 	    		  
 	    		  location.reload();
 

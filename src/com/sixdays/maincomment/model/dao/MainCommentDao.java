@@ -144,7 +144,49 @@ public class MainCommentDao {
 			close(pstmt);
 		}
 		return result;
-	}	
+	}
+
+	public ArrayList<MainComment> selectOneList(Connection con, String pno) {
+		ArrayList<MainComment> mlist = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectOneComment");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,pno);
+			
+			rset = pstmt.executeQuery();
+			
+			mlist = new ArrayList<MainComment>();
+			
+			while(rset.next()) {
+				MainComment mc = new MainComment();
+				mc.setPbno(rset.getInt("PBNO"));
+				mc.setMno(rset.getInt("MNO"));
+				mc.setMcontent(rset.getString("MCONTENT"));
+				mc.setMwriter(rset.getString("USERNAME"));
+				mc.setCproimg(rset.getString("PROIMG"));
+				mc.setMnickname(rset.getString("MNICKNAME"));
+				mc.setMdate(rset.getDate("MDATE"));
+				
+				mlist.add(mc);
+				
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$ mlist : " + mlist);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return mlist;
+	}
 }
 
 
