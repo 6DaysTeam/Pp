@@ -108,38 +108,38 @@
         <%-- 페이지 처리 --%>
 		<div class="text-center" align="center">
 			<% if (category == null && keyword == null) { %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=1'"><<</button>
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=1'"><<</button>
 				<% } %>
 			
 				<%  if(currentPage <= 1){  %>
-				<button disabled><</button>
+				<button style="cursor:pointer;" disabled><</button>
 				<%  } else if(category == null && keyword == null){ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage - 1 %>'"><</button>
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage - 1 %>'"><</button>
 				<%  } else{%>
-					<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%=currentPage - 1 %>&category=<%=category%>&keyword=<%=keyword%>'"><</button>
+					<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%=currentPage - 1 %>&category=<%=category%>&keyword=<%=keyword%>'"><</button>
 				<%}%>
 				
 				<% for(int p = startPage; p <= endPage; p++){
 						if(p == currentPage){	
 				%>
-					<button disabled><%= p %></button>
+					<button style="cursor:pointer;" disabled><%= p %></button>
 				<%  }else if(category == null && keyword == null){%>
-					<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= p %>'"><%= p %></button>
+					<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= p %>'"><%= p %></button>
 				<% }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= p %>&category=<%=category%>&keyword=<%=keyword%>'"><%=p %></button>				
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= p %>&category=<%=category%>&keyword=<%=keyword%>'"><%=p %></button>				
 				<%      } %>
 				<% } %>
 					
 				<%  if(currentPage >= maxPage){ %>
-				<button disabled>></button>
+				<button style="cursor:pointer;" disabled>></button>
 				<%  }else if(category == null && keyword == null){%>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage + 1 %>'">></button>
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%=currentPage + 1 %>'">></button>
 				<%  }else{ %>
-				<button onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= currentPage + 1 %>&category=<%=category%>&keyword=<%=keyword%>'">></button>
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/qSearch.qo?currentPage=<%= currentPage + 1 %>&category=<%=category%>&keyword=<%=keyword%>'">></button>
 				<%  } %>
 				
 				<% if (category == null && keyword == null) { %>
-				<button onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= maxPage %>'">>></button>
+				<button style="cursor:pointer;" onclick="location.href='<%= request.getContextPath() %>/selectList.qo?currentPage=<%= maxPage %>'">>></button>
 				<% } %>
 			
 		</div> 
