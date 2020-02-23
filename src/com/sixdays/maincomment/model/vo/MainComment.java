@@ -1,6 +1,7 @@
 package com.sixdays.maincomment.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @author tjrgn
@@ -19,7 +20,16 @@ public class MainComment implements Serializable{
 	private String mwriter;
 	private String cproimg;
 	private String mnickname;
+	private Date mdate;
 
+
+	public Date getMdate() {
+		return mdate;
+	}
+
+	public void setMdate(Date mdate) {
+		this.mdate = mdate;
+	}
 
 	public String getMnickname() {
 		return mnickname;
@@ -29,48 +39,9 @@ public class MainComment implements Serializable{
 		this.mnickname = mnickname;
 	}
 	
-	
-	public MainComment(int pbno, int mno, String mcontent, String mwriter, String mnickname) {
-		super();
-		this.pbno = pbno;
-		this.mno = mno;
-		this.mcontent = mcontent;
-		this.mwriter = mwriter;
-		this.mnickname = mnickname;
-	}
-
 	public MainComment() {}
 	
-	public MainComment(int pbno, int mno, String mcontent, String status, String mwriter, String cproimg,
-			String mnickname) {
-		super();
-		this.pbno = pbno;
-		this.mno = mno;
-		this.mcontent = mcontent;
-		this.status = status;
-		this.mwriter = mwriter;
-		this.cproimg = cproimg;
-		this.mnickname = mnickname;
-	}
 
-	public MainComment(int pbno, int mno, String mwriter, String mcontent) {
-		super();
-		this.pbno = pbno;
-		this.mno = mno;
-		this.mwriter = mwriter;
-		this.mcontent = mcontent;
-	}
-
-	
-	public MainComment(int pbno, int mno, String mcontent, String status, String mwriter, String cproimg) {
-		super();
-		this.pbno = pbno;
-		this.mno = mno;
-		this.mcontent = mcontent;
-		this.status = status;
-		this.mwriter = mwriter;
-		this.cproimg = cproimg;
-	}
 
 	public String getMwriter() {
 		return mwriter;
@@ -119,11 +90,39 @@ public class MainComment implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+
+	public MainComment(int pbno, int mno, String mcontent, String mwriter, String mnickname, Date mdate) {
+		super();
+		this.pbno = pbno;
+		this.mno = mno;
+		this.mcontent = mcontent;
+		this.mwriter = mwriter;
+		this.mnickname = mnickname;
+		this.mdate = mdate;
+	}
+
+	public MainComment(int pbno, int mno, String mcontent, String status, String mwriter, String cproimg,
+			String mnickname, Date mdate) {
+		super();
+		this.pbno = pbno;
+		this.mno = mno;
+		this.mcontent = mcontent;
+		this.status = status;
+		this.mwriter = mwriter;
+		this.cproimg = cproimg;
+		this.mnickname = mnickname;
+		this.mdate = mdate;
+	}
 
 	@Override
 	public String toString() {
-		return "MainComment [pbno=" + pbno + ", mno=" + mno + ", mcontent=" + mcontent + ", status=" + status + "]";
+		return "MainComment [pbno=" + pbno + ", mno=" + mno + ", mcontent=" + mcontent + ", status=" + status
+				+ ", mwriter=" + mwriter + ", cproimg=" + cproimg + ", mnickname=" + mnickname + ", mdate=" + mdate
+				+ "]";
 	}
+
 	
 	
 	

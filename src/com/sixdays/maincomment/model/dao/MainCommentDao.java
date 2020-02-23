@@ -56,10 +56,11 @@ public class MainCommentDao {
 				mc.setMwriter(rset.getString("USERNAME"));
 				mc.setCproimg(rset.getString("PROIMG"));
 				mc.setMnickname(rset.getString("MNICKNAME"));
+				mc.setMdate(rset.getDate("MDATE"));
 				
 				mlist.add(mc);
 				
-				System.out.println(mlist);
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$ mlist : " + mlist);
 			}
 			
 		} catch(SQLException e) {

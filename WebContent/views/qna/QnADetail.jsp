@@ -4,7 +4,7 @@
 	QnA q = (QnA)request.getAttribute("qna");
 	/* QnAComment qc = (QnAComment)request.getAttribute("qnacomment"); */
 	ArrayList<QnAComment> clist = (ArrayList<QnAComment>)request.getAttribute("clist");
-	System.out.println(clist);
+	System.out.println("Ddddddddddddddddddd!!!!!!!!!!!!!!!! clist : " + clist);
 %>
 <!DOCTYPE html>
 <html>
@@ -117,7 +117,7 @@
 	             </td>
 	             
 	             <td id="userIdText" ><%=qco.getCwriter() %></td>
-	             <td id="comentsInsertDate"><%= q.getQdate()  %></td>
+	             <td id="comentsInsertDate"><%= qco.getCdate()  %></td>
               </tr>
               
               <tr>

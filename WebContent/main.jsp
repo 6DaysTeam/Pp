@@ -8,6 +8,8 @@
 <%
 	ArrayList<p_Board> list = (ArrayList<p_Board>)request.getAttribute("list"); 
 	ArrayList<MainComment> mlist = (ArrayList<MainComment>)request.getAttribute("mlist");
+	
+	System.out.println("ddddddddddddddddddddddddddddd mlist : " + mlist);
 	int result = 1;
 	int report1 = 0;
 %>
@@ -75,6 +77,7 @@
 										<div style="background-color: whitesmoke; margin-bottom: 10px; padding: 5px; border-radius: 15px;">
 									    <label style="color:skyblue; font-size:17px;"><%= mc.getMnickname() %></label> : 
 									    <label style="font-size:15px;"><%= mc.getMcontent() %></label>
+									    <label style="font-size: 12px; float: RIGHT; margin-top: 5px;"><%= mc.getMdate() %></label>
 									    </div>
 									<% }} %>
 									</div>  <!-- contentComment end -->
@@ -134,7 +137,6 @@
 	    		   mcontent : $(this).parent().find('input[id=sendcomment]').val(),
 	    		   mnickname : $(this).parent().find('input[name=mnickname]').val()
 	    	   },
-	    	   
 	    	   success:function(result){
 	    		  alert("성공");
 	    		  $('#pnocheck td #sendcomment').val('');

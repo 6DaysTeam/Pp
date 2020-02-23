@@ -64,6 +64,7 @@ public class QnACommentDao {
 				qco.setRefcno(rset.getInt("REF_CNO"));
 				qco.setClevel(rset.getInt("CLEVEL"));
 				qco.setCproimg(rset.getString("PROIMG"));
+				qco.setCdate(rset.getDate("CDATE"));
 				
 				clist.add(qco);
 				
