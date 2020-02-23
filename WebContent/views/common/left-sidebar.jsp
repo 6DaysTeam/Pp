@@ -61,7 +61,7 @@
                 <p id="adminMenuBtn" onclick="location.href='aManage.ad'" style="cursor: pointer;">관리자 화면</p>
                 <%} %>
             </div>
-            <button><span class="sidebar-btn">메뉴</span></button>
+            <button><span class="sidebar-btn" style="cursor:pointer;">메뉴</span></button>
         </aside>
 
 </body>

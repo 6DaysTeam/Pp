@@ -42,7 +42,7 @@
            <input type="hidden" name="userid" value="<%=m.getUserId() %>">
       <div id="updatepage" style="background: white;">
               
-         <input type="button" id="deletebtn"  value="회원탈퇴">
+         <input type="button" id="deletebtn"  value="회원탈퇴" style="cursor:pointer;">
         <div id="idupdate">
            <h1 style="text-align:center">개인 정보 변경</h1>
             <label>아이디</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -53,7 +53,7 @@
        
        <label style="margin-left:11%">현재 비밀번호</label>&nbsp;&nbsp;&nbsp;
        <input type="password" class="redata" id="pwdchk" name="pwdchk" placeholder="현재 비밀번호를 입력해주세요."  onchange="pwdchk1()" style="width:345px;"> &nbsp;&nbsp;
-        <input type="button"id="pwdchkbtn" onSubmit="return false" value="비밀번호 확인"><br><br>
+        <input type="button"id="pwdchkbtn" onSubmit="return false" value="비밀번호 확인" style="cursor:pointer;"><br><br>
        </div>
       <div id="password"> 
          <label>비밀번호</label>&nbsp;&nbsp;&nbsp;&nbsp;

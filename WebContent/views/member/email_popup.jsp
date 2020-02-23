@@ -19,7 +19,7 @@
     <input type="text" id="email1" style="width: 250px; height: 30px; border-radius:10px; border-style: solid; border-color:rgb(15,76,129)" placeholder="인증번호를 입력하세요."><br><br>
     <input type="submit" value="확인" onclick="confirm();" 
             style="width: 70px; height: 40px; background-color:rgb(15, 76, 129); color:white; border: none;
-            font-size: 20px; font-family: 'Jua', sans-serif; width:250px; border-radius:10px" >
+            font-size: 20px; font-family: 'Jua', sans-serif; width:250px; border-radius:10px; cursor:pointer;" >
      <input type="hidden" id="mailvalue" value=1>
     </center>
     

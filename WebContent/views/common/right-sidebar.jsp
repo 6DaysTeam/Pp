@@ -73,7 +73,7 @@
                     </ul>
                 </div>
             </div>
-            <button><span id="right_sidebar_btn">메신저</span></button>
+            <button><span id="right_sidebar_btn" style="cursor:pointer;">메신저</span></button>
         </aside>
 </body>
 </html>
