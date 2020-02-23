@@ -104,7 +104,7 @@
 								<input type="hidden" id="mmo" name="mno" value="1">
 								<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
 								<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
-								<input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%;">
+								<input id="sendcomment" name="mcontent" type="text" placeholder="댓글달기..." style="width: 85%; border: none;">
 								<input type="button" id="mcommentbtn" style="width: 6%; height: 10%; background-color: white; border: white; font-family: 'Jua', sans-serif; font-size: 15pt; outline:0; cursor:pointer;"  value="확인">
 							</div>  <!-- content end -->
 							<br><br><br><br><br>
