@@ -53,7 +53,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">6Days</a>
+            <a class="navbar-brand" onclick="location.href='/6Days/main.me'"href="#">6Days</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
           </div>
