@@ -127,6 +127,20 @@ private pBoardDao pbDao = new pBoardDao();
 		return result;
 	}
 
+	public int Reporterboard(int pbno,String pwriter,String reporter) {
+		Connection con = getConnection();
+		
+		int result = pbDao.Reporterboard(con,pbno,pwriter,reporter);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+
+	}
+
    
 
 }

@@ -17,6 +17,8 @@
 	int report1 = 0;
 	boolean like = true;
 	int count = 0;
+	String pwriter129 = "";
+	String reporter = "";
 
 %>
     
@@ -32,7 +34,7 @@
 </head>
 
 <body>
-     
+<input type="hidden" id="sessionid" name="sessionid" value="<%=m.getUserId()%>">    
 <!--    작성자 : 박주완
         작성일 : 2020-01-14
         수정일 : 2020-01-17
@@ -374,7 +376,8 @@
              $('#pnocheck td p[id=contentSettingbtn]').click(function(){
                 var test = $(this);
                 report1=$(this).parent().find('input[name=pnosi]').val();
-				
+                pwriter129=$(this).parent().find('input[name=userid33]').val();
+           	  	reporter=$('#sessionid').val();
                 
              });
              
@@ -384,7 +387,7 @@
      	        $.ajax({
      	           url:"/6Days/reportboard.bo",
      	           type:"post",
-     	           data:{pbno: report1},
+     	           data:{pbno: report1, pwriter: pwriter129,reporter: reporter},
      	           success:function(data){
      				alert("정상적으로 신고되었습니다.");
      	     		

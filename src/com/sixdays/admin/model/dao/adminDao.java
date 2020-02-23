@@ -410,7 +410,7 @@ public class adminDao {
 	
 	/*신고관리 디테일에서 사용할 DOA */
 	
-	public ArrayList<Report> reportList(Connection con, String userId) {
+public ArrayList<Report> reportList(Connection con, String userId) {
 		
 		ArrayList<Report> rlist = null;
 	      PreparedStatement pstmt = null;
@@ -425,24 +425,26 @@ public class adminDao {
 	         rset = pstmt.executeQuery();
 	         
 	         rlist = new ArrayList<>();
-	         
+	         System.out.println("신고사항 리스트 DAO 작동");
 	         while(rset.next()) {
 	        	 Report rp= new Report();
 	            
+	        	rp.setUserId(userId);
 				rp.setUserName(rset.getString("USERNAME"));
 				rp.setProimg(rset.getString("PROIMG"));
+				rp.setPbDate(rset.getString("PBDATE"));
+				rp.setpContent(rset.getString("PCONTENT"));
 				rp.setEmail(rset.getString("EMAIL"));
 				rp.setMycomment(rset.getString("MYCOMMENT"));
 				rp.setStatus(rset.getString("BLOCKFLAG"));
-				rp.setPbDate(rset.getString("PBDATE"));
-				rp.setpContent(rset.getString("PCONTENT"));
 				rp.setRpno(rset.getInt("RPNO"));
-				rp.setReason(rset.getString("REASON "));
-				rp.setReportdate(rset.getString("RPDATE "));
-				rp.setReleasedate(rset.getString("RELEASEDATE "));
-				rp.setReporter(rset.getString("REPORTER "));
-				rp.setRpcount(rset.getInt("RPCOUNT "));
+				rp.setReason(rset.getString("REASON"));
+				rp.setReportdate(rset.getString("RPDATE"));
+				rp.setReleasedate(rset.getString("RELEASEDATE"));
+				rp.setReporter(rset.getString("REPORTER"));
+				rp.setRpcount(rset.getInt("RPCOUNT"));
 	            rp.setHashtag(rset.getString("HASHTAG"));
+	            
 	            rlist.add(rp);
 	         System.out.println("rlist : "+ rlist);
 	         }
@@ -456,6 +458,90 @@ public class adminDao {
 	   
 	      return rlist;
 	
+	}
+
+	public int userBlockDao(Connection con, String userId, String reason, int releasDate) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("userBlock");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, reason);
+			pstmt.setInt(2, releasDate);
+			pstmt.setString(3, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int userReleaseDao(Connection con, String userId) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("userRelease");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+	
+			pstmt.setString(1, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int userLoginUpdateDao(Connection con, String userId) {
+		int result2 = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("userLoginBlock");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			result2 = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result2;
+	}
+	
+	public int userLoginReleaseDao(Connection con, String userId) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("userLoginRelease");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+	
+			pstmt.setString(1, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 	public int amUpdate(Connection con, Advertisement a) {

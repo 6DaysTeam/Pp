@@ -114,7 +114,7 @@
                 <tr style="cursor: pointer;">
                 <input type="hidden" value="<%= r.getUserId() %>">
                     <td><input type="checkbox" class="chkbox"></td>
-                    <td><%=num%></td>                
+                    <td><%=r.getRownum()%></td>                
                     <td><%= r.getUserId() %></td>
                     <td ><%= r.getUserName()%></td>
                     <td ><%= r.getStatus()%></td>

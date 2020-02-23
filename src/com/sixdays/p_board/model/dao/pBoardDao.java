@@ -318,6 +318,28 @@ public class pBoardDao {
 		return result;
 	}
 
+	public int Reporterboard(Connection con,int pbno,String pwriter, String reporter) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("reportinsert");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pbno);
+			pstmt.setString(2,pwriter);
+			pstmt.setString(3, reporter);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
    
    
    

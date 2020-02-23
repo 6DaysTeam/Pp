@@ -161,6 +161,36 @@ public class adminService {
 		
 		return rlist;
 	}
+	
+	public int userblock(String userId, String reason, int releasDate) {
+		Connection con = getConnection();
+		
+		int result = aDao.userBlockDao(con,userId,reason,releasDate);
+/*		int result2 = aDao.userLoginUpdateDao(con,userId);*/
+		
+		if(result > 0 /*&& result2 > 0*/) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+		
+		
+	}
+
+	public int userRelease(String userId) {
+		Connection con = getConnection();
+		
+		int result = aDao.userReleaseDao(con,userId);
+/*		int result2 = aDao.userLoginReleaseDao(con,userId);*/
+		
+		if(result > 0 /*&& result2 > 0*/) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 
 	public int amUpdate(Advertisement a) {
 		Connection con = getConnection();;

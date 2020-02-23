@@ -39,7 +39,7 @@
       </style>
 
     <body>
-
+<input type="hidden" id="sessionid" name="sessionid" value="<%=m.getUserId()%>">
 <!--    작성자 : 박주완
       수정알 : 2020-02-18
       내용 : 게시물 부분 수정 모달 -->
@@ -226,6 +226,7 @@
 							<input type="hidden" id="mwriter" name="mwriter" value= "<%= m.getUserId() %>">
 							<input type="hidden" id="mnickname" name="mnickname" value= "<%= m.getUserName() %>">
                         	<input type="hidden" id="commenttest" value="<%=pba.getPbno() %>">
+                        	<input type="hidden" id="pwriter" value="<%=pba.getPbwriter() %>">
                             <input type="text" id="comentinput" placeholder="댓글 달기..." >
                             <button  id="comentsend" style="cursor:pointer;">게시</button>
                         </div>
@@ -375,12 +376,13 @@
             	  $('#reportcheck').click(function(){
                       
                       var report=$('#pbno').val();
-                 
+                      var pwriter=$('#pwriter').val();
+                 	  var reporter=$('#sessionid').val();
          				
              	        $.ajax({
            	           url:"/6Days/reportboard.bo",
            	           type:"post",
-           	           data:{pbno: report},
+           	           data:{pbno: report, pwriter: pwriter, reporter: reporter},
            	           success:function(data){
            				alert("정상적으로 신고되었습니다.");
            	     		

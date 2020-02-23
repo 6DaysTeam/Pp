@@ -1,11 +1,22 @@
 <%@page import="com.sixdays.p_board.model.vo.p_Board"%>
+<%@page import="com.sixdays.userMember.model.vo.userMember"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sixdays.admin.model.vo.Report"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%
   	  Report rep = (Report)request.getAttribute("report"); 
  	  ArrayList<Report> rlist = (ArrayList<Report>)request.getAttribute("rlist");
+ 	  
+ 	 String stck = rep.getStatus();
+ 	 String stmsg = "";
+ 	 String ckY = "Y";
+ 	 if(stck == ckY){
+ 		 stmsg = "정 지";
+ 	 }else{
+ 		 stmsg = "활성화";
+ 	 }
 
 	%>
 <!DOCTYPE html>
@@ -17,7 +28,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    
+    <script src="/6Days/resources/js/jquery-3.4.1.min.js"></script>
+    <script src="/6Days/resources/js/jquery-ui-1.11.4.custom.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.6/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 
     
 
@@ -71,8 +86,7 @@
         <!-- 헤더 아래 제목? 부분 -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">신고사항
-            <button style="float: right; width: 150px; height: 40px; font-size: 22px; font-weight: lighter; 
-            background: white; border: 1px solid gray; border-radius: 5px; color: black;">뒤로가기</button>
+
           </h1>
 
 
@@ -86,7 +100,8 @@
             <!-- 프로필 정보 -->
             <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left; padding-right: 20px;">
                 <br><br><br>
-                <label style="font-size: 20px; font-weight: bold; padding-right: 25%;">I D  :</label> <label><%=rep.getUserId() %> </label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 16%;">상 태  :</label><label><%=stmsg %></label><br><br>
+                <label style="font-size: 20px; font-weight: bold; padding-right: 21%;">I D  :</label> <label><%=rep.getUserId() %> </label><br><br>
                 <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">닉네임 :</label> <label><%=rep.getUserName() %> </label><br><br>
                 <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">이메일 :</label> <label> <%=rep.getEmail() %> </label><br><br>
                 <label style="font-size: 20px; font-weight: bold; padding-right: 10%;">코멘트 :</label><label> <%=rep.getMycomment() %> </label>
@@ -95,42 +110,54 @@
             <!-- 정지관련 부분  -->
             <div class="col-xs-6 col-sm-3 placeholder1"  style="text-align: left; width: 30%;">
               <br><br><br>
-              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 비활성화 사유</label>
+              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 정지 사유</label>
     <!--           자주 사용되는 정지 사유. -->
-              <select style="height:30px">
-              	<option value="daum">다음과 같은 사유로 사용이 일시적으로 중단되었습니다.</option>
-                <option value="naver">부적절한 게시물 작성</option>
-                <option value="gmail">나체 이미지 또는 성적행위 게시물 작성</option>
-                <option value="daum">혐오 발언 또는 상징 게시물 작성</option>
-                <option value="daum">폭력 또는 위험한 단체  게시물 작성</option>
-                <option value="daum">불법 또는 규제 상품 판매 게시물 작성</option>
-                <option value="daum">따돌림 또는 괴롭힘  게시물 작성</option>
-                <option value="daum">지적 재산권 침해  게시물 작성</option>
-                <option value="daum">자살 또는 자해  게시물 작성</option>
-                <option value="daum">사기 또는 거짓  게시물 작성</option>
-                <option value="daum">자살 또는 자해  게시물 작성</option>
-                <option value="daum">고인의 계정 </option>
-                <option value="daum">거짓 정보  게시물 작성</option>
-                <option value="daum">스팸  게시물 작성</option>
-                <option value="daum">마음에 들지 않습니다.</option>
+              <select style="height:30px" onchange="document.getElementById('blockReason').value = this.options[this.selectedIndex].value">
+              	<option value="">정지사유 선택</option>
+              	<option value="정지사유 : ">다음과 같은 사유로 사용이 일시적으로 중단되었습니다.</option>
+                <option value="부적절한 게시물 작성">부적절한 게시물 작성</option>
+                <option value="나체 이미지 또는 성적행위 게시물 작성">나체 이미지 또는 성적행위 게시물 작성</option>
+                <option value="혐오 발언 또는 상징 게시물 작성">혐오 발언 또는 상징 게시물 작성</option>
+                <option value="폭력 또는 위험한 단체  게시물 작성">폭력 또는 위험한 단체  게시물 작성</option>
+                <option value="불법 또는 규제 상품 판매 게시물 작성">불법 또는 규제 상품 판매 게시물 작성</option>
+                <option value="따돌림 또는 괴롭힘  게시물 작성">따돌림 또는 괴롭힘  게시물 작성</option>
+                <option value="지적 재산권 침해  게시물 작성">지적 재산권 침해  게시물 작성</option>
+                <option value="자살 또는 자해  게시물 작성">자살 또는 자해  게시물 작성</option>
+                <option value="사기 또는 거짓  게시물 작성">사기 또는 거짓  게시물 작성</option>
+                <option value="자살 또는 자해  게시물 작성">자살 또는 자해  게시물 작성</option>
+                <option value="고인의 계정">고인의 계정 </option>
+                <option value="거짓 정보  게시물 작성">거짓 정보  게시물 작성</option>
+                <option value="스팸  게시물 작성">스팸  게시물 작성</option>
+                <option value="마음에 들지 않습니다.">마음에 들지 않습니다.</option>
               </select><br><br>
               
               
-              <input type="text" placeholder="비활성화 사유 직접입력" style="width: 100%; border-top: 0; border-right:0; 
+              <input id="blockReason" name="blockReason" type="text" placeholder="비활성화 사유 직접입력" style="width: 100%; border-top: 0; border-right:0; 
               border-left:0; border-bottom: 1; border-color:black; outline: none;" value=""><br><br>
               
-              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 비활성화 기간</label><br>
-              <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">3개월</button>
-              <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">6개월</button>
-              <button style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">9개월</button>
+              <label style="font-size: 20px; font-weight: bold; padding-right: 5%;">계정 정지 기간</label><br>
+              <button id="1m" value="1" onclick="input_day()" style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">1개월</button>
+              <button id="3m" value="3" onclick="input_day()" style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">3개월</button>
+              <button id="6m" value="6" onclick="input_day()" style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">6개월</button>
+              <button id="9m" value="9" onclick="input_day()" style="width: 80px; height: 28px; background: white; border: 1px solid gray; border-radius: 5px; color: black;">9개월</button>
               <br><br>
-              <input type="text" placeholder="비활성화 기간 직접입력" style="height: 30px;"><hr>
-              <button style="width: 115px; height:30px; background: #acacac; border: 1px solid gray; border-radius: 5px; color:  black;">비활성화 적용</button>
-              <button style="width: 115px; height:30px; background: rgb(67, 158, 235); border: 1px solid gray; border-radius: 5px; color:  black; margin-left: 15px;">계정 활성화</button>
+              <input id="releasDate" name="releasDate" type="text" placeholder="비활성화 기간 직접입력  ('월'단위) ex:2 = 2개월" style="height: 30px; width: 320px;" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/><hr>
+              <input id="userId1475" name="userId1475"  type="hidden" value="<%=rep.getUserId()%>">
+              <button id="userBlockBtn" name="userBlockBtn" style="width: 115px; height:30px; background: #acacac; border: 1px solid gray; border-radius: 5px; color:  black;">계정 정지 적용</button>
+              
+              <button id="userReleaseBtn" name="userReleaseBtn" style="width: 115px; height:30px; background: rgb(67, 158, 235); border: 1px solid gray; border-radius: 5px; color:  black; margin-left: 15px;">계정 활성화</button>
               <span class="text-muted"></span>
               
             </div>
           </div>
+          
+          <script>
+          function input_day(){
+        	    document.getElementById("releasDate").value = this.value;
+        	}
+
+          
+          </script>
 
           <!-- 신고된 게시글 -->
           <h2 class="sub-header">신고된 게시글
@@ -151,18 +178,17 @@
               </thead>
               
               
-	              <tbody>
-	          <% for(Report rp : rlist) {
-
+				<tbody>
+	          <% for(Report rp : rlist){
+	                 System.out.println("신고된 게시글 리스트 뿌리는즁");
 	             %>
 	                <tr>   
 	                  <td><input class="list" type="checkbox"name="chk1"></td>
 	                  <td><%=rp.getRpno() %></td>	<!-- 글번호 -->
-	                  <td><%=rp.getPbDate() %></td>	<!-- 작성일 -->
+	                  <td><%=rp.getPbDate() %></td>	<!-- 작성일 --> 
 	                  <td><%=rp.getReportdate() %></td>	<!-- 신고일 -->
-	                  <td><%=rp.getpContent()%><%=rp.getHashtag() %></td>	<!-- 글내용,해시태그-->
-	                  <td></td>	<!-- 신고자 -->
-	                  <% System.out.println("게시글 찍어내느주"); %>
+	                  <td><%=rp.getpContent()%><%=rp.getHashtag()%></td>	<!-- 글내용,해시태그-->
+	                  <td><%=rp.getReporter() %></td>	<!-- 신고자 -->
 	                </tr>
 				<% }%> 
 				</tbody>
@@ -178,6 +204,7 @@
               <thead>
                 <tr>
                   <th><input class="reply" type="checkbox" style="width: 45px;" onclick="rcheck2();" ></th>
+                  <th>댓글번호</th>
                   <th>작성일</th>
                   <th>신고일</th>
                   <th>내용</th>
@@ -188,10 +215,19 @@
 
                 <tr>
                   <td><input class="reply" type="checkbox" name="chk"></td>
-                  <td>2020-01-21 02:07 오전</td>
-                  <td>2020-01-21 04:09 오후</td>
+                  <td>12</td>
+                  <td>2020-01-11 12:00:08</td>
+                  <td>2020-02-01 01:24:12</td>
                   <td>2개 사면 1개 더!! 무조건 사야해요!!</td>
-                  <td>홍길동</td>
+                  <td>Juwan_p</td>
+                </tr>
+                <tr>
+                  <td><input class="reply" type="checkbox" name="chk"></td>
+                  <td>21</td>
+                  <td>2020-02-19 13:01:12</td>
+                  <td>2020-02-20 00:12:01</td>
+                  <td>신천지코로나개세끼들얘내대체왜그럼?</td>
+                  <td>병신천지</td>
                 </tr>
                 
               </tbody>
@@ -332,6 +368,57 @@
           $("#chk1_all").prop("checked",false);
         }
       })
+      
+      
+      
+      
+      $(function(){  //유저 정지
+
+                
+       $('#userBlockBtn').click(function(){
+                   
+	        var userId=$('#userId1475').val();
+	        var reason=$('#blockReason').val();
+	        var releasDate=$('#releasDate').val();
+	   	  	
+				
+		    $.ajax({
+		         url:"/6Days/update.rp",
+		         type:"post",
+		         data:{userId: userId, reason: reason, releasDate: releasDate},
+		         success:function(data){
+					alert("계정 정지 완료.");
+					stmsg = "정 지";
+		         },error:function(){
+					alert("정지사유와 정지기간을 확인해 주세요.");
+     	           }
+	        });
+     });
+     });
+    
+     
+      $(function(){ //유저 활성화 
+
+         
+         $('#userReleaseBtn').click(function(){
+        	          
+  	        var userId=$('#userId1475').val();
+  	   	  	
+  				
+  		    $.ajax({
+  		         url:"/6Days/release.rp",
+  		         type:"post",
+  		         data:{userId: userId},
+  		         success:function(data){
+  					alert("계정 활성화 완료.");
+  					stmsg = "활성화";
+  		         },error:function(){
+  					alert("오류 발생.");
+     	           }
+	        });
+     	});
+     });
+    
      
     </script>
   </body>

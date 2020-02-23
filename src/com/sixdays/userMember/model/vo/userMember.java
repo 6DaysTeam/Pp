@@ -30,6 +30,7 @@ public class userMember implements Serializable{
 	private String report;
 	private String delflag;
 	
+
 	
 	public userMember() {
 		
@@ -251,8 +252,6 @@ public class userMember implements Serializable{
 				+ ", proback=" + proback + ", enrolldate=" + enrolldate + ", otype=" + otype + ", admin=" + admin
 				+ ", blockflag=" + blockflag + ", report=" + report + ", delflag=" + delflag + "]";
 	}
-	
-	
 
-	
+
 }

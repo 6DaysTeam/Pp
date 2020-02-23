@@ -91,6 +91,7 @@ public class userMemberDao {
 	 */
 	public userMember selectMember(Connection con, userMember m) throws MemberException {
 		userMember result = null; // 결과를 담을 객체
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null; // Select의 결과를 담을 객체
 		
@@ -115,6 +116,8 @@ public class userMemberDao {
 				result.setMycomment(rset.getString("MYCOMMENT"));
 				result.setProimg(rset.getString("PROIMG"));
 				result.setProback(rset.getString("PROBACK"));
+
+				System.out.println(result);
 			}	
 		}catch(Exception e) {
 			//e.printStackTrace();

@@ -54,10 +54,10 @@ public class userMemberService {
 		userMember result = mDao.selectMember(con,m);
 		
 		close(con);
-		
 		if(result == null) {
 			throw new MemberException("아이디나 비밀번호가 올바르지 않습니다.");
 		}
+		
 		return result;
 	}
 
