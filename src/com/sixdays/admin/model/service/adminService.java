@@ -81,17 +81,15 @@ public class adminService {
 	
 	/**
 	* 신고사항 전체 조회
-	* @param currentPage
-	* @param limit
 	* @return
 	*/
-	public ArrayList<Report> rselectList(int currentPage, int limit) {
+	public ArrayList<Report> rselectList() {
 	Connection con = getConnection();
 	
-	ArrayList<Report> list = aDao.rselectList(con, currentPage, limit);
+	ArrayList<Report> list = aDao.rselectList(con);
 	
 	close(con);
-	return list;
+	return list; 
 	}
 	
 	

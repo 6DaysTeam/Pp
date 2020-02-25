@@ -89,8 +89,10 @@
 									<% for(MainComment mc : mlist) { 
 										if(mc.getPbno() == pb.getPbno()) { %>
 										<div style="background-color: whitesmoke; margin-bottom: 10px; padding: 5px; border-radius: 15px;">
-									    <label style="color:skyblue; font-size:17px;"><%= mc.getMnickname() %></label> : 
+									    <label id="testcheck" style="color:skyblue; font-size:17px;"><%= mc.getMnickname() %></label> : 
 									    <label style="font-size:15px;"><%= mc.getMcontent() %></label>
+									    <input type="hidden" name="pnosi2" value="<%=mc.getPbno() %>">
+									    <input type="hidden" name="userid332" value="<%=mc.getMnickname()%>">
 									    <label style="font-size: 12px; float: RIGHT; margin-top: 5px;"><%= mc.getMdate() %></label>
 									    </div>
 									<% }
@@ -364,9 +366,18 @@
          }
          
          $(function(){
-             $('#pnocheck td label').click(function(){
+             $('#pnocheck td label[id=showUserName]').click(function(){
                 var pnocheck = $(this);
                 location.href= "/6Days/userprofile.bo?pbno="+ $(this).parent().find('input[name=pnosi]').val() + "&userid="+$(this).parent().find('input[name=userid33]').val() ;
+                
+                
+             });
+          });
+         
+         $(function(){
+             $('#pnocheck td label[id=testcheck]').click(function(){
+                var pnocheck = $(this);
+                location.href= "/6Days/userprofile.bo?pbno="+ $(this).parent().find('input[name=pnosi2]').val() + "&userid="+$(this).parent().find('input[name=userid332]').val() ;
                 
                 
              });

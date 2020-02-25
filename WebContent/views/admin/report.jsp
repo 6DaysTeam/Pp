@@ -6,15 +6,15 @@
 	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list"); 
 	
 	/* 페이지 영역  */
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	int listCount = pi.getListCount();
+	//PageInfo pi = (PageInfo)request.getAttribute("pi");
+	/* int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	
 	adminService as = new adminService();
-	int Rnumber = as.getListCount();
+	int Rnumber = as.getListCount(); */
 		
 %>
 <!DOCTYPE html> 
@@ -107,9 +107,9 @@
               </thead>
               <tbody>
               <%
-                int num = 0;
+                
         		for(Report r : list) {
-        			num++;
+        			
         	  %>
                 <tr style="cursor: pointer;">
                 <input type="hidden" value="<%= r.getUserId() %>">
@@ -133,7 +133,7 @@
     <%-- 페이지 처리 --%>
 
 
-    <div class="text-center" style="margin-right: -10%;">
+  <%--   <div class="text-center" style="margin-right: -10%;">
 			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=1'">&#10094;&#10094;</button>
 			<%  if(currentPage <= 1){  %>
 			<button disabled><</button>
@@ -158,7 +158,7 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/report.ad?currentPage=<%= maxPage %>'">&#10095;&#10095;</button>
 			
 		</div>
-
+ --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    
     <script>        

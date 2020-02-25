@@ -36,7 +36,7 @@ public class ReportServlet extends HttpServlet {
 		
 		adminService as = new adminService();
 		
-		int startPage;
+		/*int startPage;
 		
 		int endPage;  
 		
@@ -52,9 +52,9 @@ public class ReportServlet extends HttpServlet {
 		
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		}
+		}*/
 		
-		int rlistCount = as.getrListCount();
+		/*int rlistCount = as.getrListCount();
 		
 		System.out.println("신고사항 게시판 총 페이지 갯수 : " + rlistCount);
 		
@@ -67,9 +67,10 @@ public class ReportServlet extends HttpServlet {
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
+		*/
 		
-		
-		list = as.rselectList(currentPage, limit);
+//		list = as.rselectList(currentPage, limit);
+		list = as.rselectList();
 		
 		String page = "";
 		
@@ -77,9 +78,9 @@ public class ReportServlet extends HttpServlet {
 			page = "/views/admin/report.jsp";
 			request.setAttribute("list", list);
 			
-			PageInfo pi = new PageInfo(currentPage, rlistCount, limit, maxPage, startPage, endPage);
+			//PageInfo pi = new PageInfo(currentPage, rlistCount, limit, maxPage, startPage, endPage);
 			
-			request.setAttribute("pi", pi);
+//			request.setAttribute("pi", pi);
 		} else {
 			page = "";
 			request.setAttribute("msg", "신고사항관리 목록 불러오기 에러!");

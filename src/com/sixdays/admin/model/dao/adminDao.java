@@ -237,7 +237,7 @@ public class adminDao {
 //	신고사항 관리 
 
 
-	public ArrayList<Report> rselectList(Connection con, int currentPage, int limit) {
+	public ArrayList<Report> rselectList(Connection con) {
 	
 		ArrayList<Report> list = null;
 		PreparedStatement pstmt = null;
@@ -249,15 +249,15 @@ public class adminDao {
 	try {
 		pstmt = con.prepareStatement(sql);
 		  
-		int startRow = (currentPage-1) * limit + 1;
-		int endRow = startRow + limit - 1;
+		/*int startRow = (currentPage-1) * limit + 1;
+		int endRow = startRow + limit - 1;*/
 		
-
+/*
 		System.out.println("start : "+startRow);
-		System.out.println("end : "+endRow);
+		System.out.println("end : "+endRow);*/
 		
-		pstmt.setInt(1, endRow);
-		pstmt.setInt(2, startRow);
+		/*pstmt.setInt(1, endRow);
+		pstmt.setInt(2, startRow);*/
 		rset = pstmt.executeQuery();
 		
 		list = new ArrayList<>();
@@ -266,12 +266,12 @@ public class adminDao {
 		
 		Report r = new Report();
 	
-		r.setRownum(rset.getInt(1));
-		r.setUserId(rset.getString(2));
-		r.setUserName(rset.getString(3));
-		r.setStatus(rset.getString(4));
-		r.setBlockflag(rset.getString(5));
-		r.setReport_yn(rset.getString(6));
+		r.setRownum(rset.getInt("PBNO"));
+		r.setUserId(rset.getString("PBWRITER"));
+		r.setUserName(rset.getString("USERNAME"));
+		r.setStatus(rset.getString("DELFLAG"));
+		r.setBlockflag(rset.getString("BLOCKFLAG"));
+		r.setReport_yn(rset.getString("REPORT_YN"));
 		
 				
 	
